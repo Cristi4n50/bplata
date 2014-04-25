@@ -1,0 +1,20 @@
+# Use the README file as a reference to customize settings.
+
+User:
+  fields:
+    #default: id, username, email, margin_requirement, level, leverage, prefcurrency, margin_balance, tradable_balance, unrealized_pl, net_value, minimum_net_value, total_assets_in_usd, total_usd, total_btc, total_ltc, timezone, auth_secret, otp_enabled, agreed_tos, created_at, updated_at
+    default: id, username, email, verified, no_withdraw, margin_requirement, level, leverage, prefcurrency, margin_balance, tradable_balance, unrealized_pl, net_value, minimum_net_value, total_assets_in_usd, total_usd, total_btc, total_ltc, btcusd_traded_7, btcusd_traded_30, ltcusd_traded_7, ltcusd_traded_30, ltcbtc_traded_7, ltcbtc_traded_30, usd_deposited, usd_withdrawn, btc_deposited, btc_withdrawn, ltc_deposited, ltc_withdrawn, timezone, otp_enabled, agreed_tos, created_at, updated_at
+    list: username, email, level, leverage, created_at
+    form: username, email, verified, no_withdraw, margin_requirement, leverage, prefcurrency, agreed_tos
+    options:
+      selectors: verification_status
+  relationships: deposits, ledger_entries, wallets, orders, positions, offers, loans, lends, bitcoin_addresses
+  application: Application
+  order_by: -id
+  filters: agreed_tos
+  search: username, email, id
+  actions:
+    edit: show
+  options:
+    default_action_on_item: show
+

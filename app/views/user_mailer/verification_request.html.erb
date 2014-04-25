@@ -1,0 +1,14 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+Verification request for <%= @user.username %>
+</h2>
+<p>A verification has been requested!<br />Details:</p>
+<p>User ID: <%= @user.id %></p>
+<p>Full name (or company name): <%= @name %></p>
+<p>Address: <%= @address %></p>
+<p>City: <%= @city %></p>
+<p>Zip code: <%= @zipcode %></p>
+<p>Country: <%= @country %></p>
+<p>Phone number: <%= @phone %></p>
+<p><% unless @occupation.nil? %>Occupation : <%= @occupation.to_s %><% end %></p>
+<p><% unless @employer.nil? %>Employer: <%= @employer %><% end %></p>
+<p>Thanks for verifying it and confirming if his application is approved.</p>

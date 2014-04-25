@@ -1,0 +1,155 @@
+</div>
+</div>
+<% title t "account.deposit" %> 
+<div class="row deposit" >
+  <div class="large-12 columns" >
+    <h6><%= t 'account.deposit_method' %></h6>
+
+    <div class="section-container auto" data-section data-options="one_up: true;">
+      <section>
+        <p class="title" style="width:25.1%;" data-section-title><a href="#panel1"><%= t 'account.bitcoin' %></a></p>
+
+        <div class="content" data-section-content>
+          <div class="row">
+            <div class="large-8 columns">
+              <p>
+                <% if current_user.bitcoin_address.nil? %>
+                    <%= t "account.bitcoin_daemon_down" %>
+                <% else %>
+                    <%= t 'account.send_to_bitcoin' %>
+                <% end %>
+                <br/>
+                <span style="font-weight: bold;"><%= current_user.bitcoin_address %></span>
+              </p>
+
+              <p><a href="/account/change_address"><%= t 'account.change_address' %></a><br/>
+                <small><%= t "account.six_confirmations" %></small>
+              </p>
+            </div>
+            <div class="large-4 columns">
+              <%= image_tag "https://chart.googleapis.com/chart?chs=100x100&chld=M%7C0&cht=qr&chl=bitcoin:#{current_user.bitcoin_address}" %>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p class="title" style="width:25.1%;" data-section-title><a href="#panel1"><%= t 'account.litecoin' %></a></p>
+
+        <div class="content" data-section-content>
+          <div class="row">
+            <div class="large-8 columns">
+              <p>
+                <% if current_user.litecoin_address.nil? %>
+                    <%= t "account.litecoin_daemon_down" %>
+                <% else %>
+                    <%= t 'account.send_to_litecoin' %>
+                <% end %>
+                <br/>
+                <span style="font-weight: bold;"><%= current_user.litecoin_address %></span>
+              </p>
+
+              <p><a href="/account/change_address_ltc"><%= t 'account.change_address' %></a><br/>
+                <small><%= t "account.six_confirmations_litecoin" %></small>
+              </p>
+            </div>
+            <div class="large-4 columns">
+              <%= image_tag "https://chart.googleapis.com/chart?chs=100x100&chld=M%7C0&cht=qr&chl=litecoin:#{current_user.litecoin_address}" %>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p class="title" style="width:25.1%;" data-section-title><a href="#panel3">Wire</a></p>
+
+        <div class="content" data-section-content>
+          <div class="row">
+            <div class="large-12 columns">
+              <h5><%= t "account.deposit_by_wire" %></h5>
+              <% if current_user.verified? %>
+                  <p><%= t "account.initiate_a_wire" %></p>
+                  <% unless @bank.nil? %>
+                      <dl class="dl-horizontal">
+                        <dt><%= t "account.account_name" %></dt>
+                        <dd><%= @bank.account_name %></dd>
+                        <dt>Address</dt>
+                        <dd>1601, The Sun Group Centre, 200 Gloucester Road, Hong Kong</dd>
+                        <!--<dt><%= t "account.iban" %></dt>
+    <dd></dd>-->
+                        <dt><%= t "account.account_number_strict" %></dt>
+                        <dd><%= @bank.account_number %></dd>
+                        <dt><%= t "account.bank_name" %></dt>
+                        <dd><%= @bank.bank_name %></dd>
+                        <dt><%= t "account.bank_address" %></dt>
+                        <dd><%= @bank.bank_address %></dd>
+                        <dt><%= t "account.swift" %></dt>
+                        <dd><%= @bank.swift %></dd>
+                        <dt><%= t "account.transaction_reference" %></dt>
+                        <dd>
+                          <strong><span style="border: 1px dashed #666; padding: 2px;">4161-<%= current_user.id %></span>
+                            (<%= t "account.important" %>)</strong></dd>
+                      </dl>
+                  <% end %>
+                  <p class="important"><%= t "account.ensure_correct_wire" %></p>
+                  <h4>Deposit Notification</h4>
+                  <%= form_tag("/account/deposit_notify", {:class => "form"}) do %>
+                      <label name="amount"><%= t "account.amount" %></label>
+                      <span class="add-on">USD</span><input name="amount"/>
+
+                      <p><%= t "account.wire_confirmation" %></p>
+                      <input type="submit" class="button radius success" value="<%= t "account.wire_create_notification" %>"/>
+                  <% end %>
+              <% else %>
+                  <p>
+                    <span style="font-weight:bold" class="alert"><%= t "account.verification_account_unverified" %></span>. <%= t "account.verification_go_verify" %>
+                    <a href="/account/verification">Verification
+                      page</a>. <%= t "account.verification_only_verified_can_wire" %>.
+                  </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+      <% if current_user.associate || Setting.get_value('egopay_on').to_d > 0 %>
+          <section>
+            <p class="title" style="width:25.1%;" data-section-title><a href="#panel4"><%= t 'account.egopay' %></a></p>
+
+            <div class="content" data-section-content>
+              <div class="row">
+                <% if current_user.verified? %>
+                <form action="https://www.egopay.com/payments/pay/form" method="post" id="egopay_form">
+                  <div class="large-8 columns">
+                    <div style="float:left;margin:15px;">
+                      <% if [0,(Setting.get_value('maximum_egopay_balance').to_d - Stat.get_value('EGOPAYUSD balance').to_d)].max == 0 %>
+                          <p class="red">You cannot deposit EgoPay funds at this moment.</p>
+                      <% else %>
+                          <p>You can deposit a maximum of <%= dollar([0,(Setting.get_value('maximum_egopay_balance').to_d - Stat.get_value('EGOPAYUSD balance').to_d)].max) %></p>
+
+                          <p>There is a <%= Fee.fee("egopay_deposit_fee") * 100 %>% fee on EgoPay deposit</p>
+                          </div>
+                          <div style="display:none;" id="limit_egopay"><%= [0,(Setting.get_value('maximum_egopay_balance').to_d - Stat.get_value('EGOPAYUSD balance').to_d)].max %></div>
+                          <input value="<%= Egopay::STOREID %>" name="store_id" type="hidden">
+                          <span class="add-on">USD</span><input style="width:70px;" value="0" name="amount" id="egopay_amount" type="text">
+                          <input value="USD" name="currency" id="egopay_currency" type="hidden">
+                          <input value="BFX deposit 4161-<%= current_user.id %>" name="description" type="hidden">
+                          <input value="<%= current_user.id %>" name="cf_1" type="hidden">
+                          </div>
+                          <div class="large-4 columns">
+                            <a value="Payment" class="button radius success" type="submit" onclick="if (validateEgopay()) {$('form#egopay_form').submit();}">Payment</a>
+                          </div>
+                      <% end %>
+                      </form>
+                    <% else %>
+                    <p>
+                      <span style="font-weight:bold" class="alert"><%= t "account.verification_account_unverified" %></span>. <%= t "account.verification_go_verify" %>
+                      <a href="/account/verification">Verification
+                        page</a>. <%= t "account.verification_only_verified_can_wire" %>.
+                    </p>
+                <% end %>
+              </div>
+            </div>
+          </section>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "deposits" %>

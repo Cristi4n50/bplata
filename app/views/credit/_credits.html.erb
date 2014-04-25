@@ -1,0 +1,79 @@
+<table cellspacing="0">
+  <thead>
+  <tr>
+    <th><%= t 'credit.currency' %></th>
+    <th><%= t 'credit.amount' %></th>
+    <th><%= t 'credit.rate' %></th>
+    <th><%= t 'credit.expirein' %></th>
+    <th><%= t "credit.insured" %></th>
+    <th><%= t 'trading.actions' %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @lentcredits.empty? %>
+      <tr>
+        <td colspan="7"><%= t "credit.no_active_credits" %></td>
+      </tr>
+  <% else %>
+      <% unless current_user.credits.active.nil? %>
+          <% current_user.credits.active.each do |credit| %>
+              <tr>
+                <td><%= credit.currency %></td>
+                <td><%= credit.amount %></td>
+                <td><%= (credit.rate * 100).round(4).to_s + "%" if credit.rate > 0 %><%= t "credit.vir" if credit.rate == 0 %></td>
+                <td><%= distance_of_time_in_words((credit.created_at + credit.period.days - Time.now).to_i) %></td>
+                <td>
+                  <% if credit.insured? %>
+                      <%= 'Yes' %>
+                  <% else %>
+                      <%= "No" %>
+                  <% end %></td>
+                <td>
+                  <!--<% if credit.renew %>
+                      <%= link_to t("credit.dontrenew"), {:controller => "credit/renew/#{credit.id}"}, :confirm => t("credit.confirmdontrenew"), :remote => true %>
+                  <% else %>
+                      <%= link_to t("credit.renew"), {:controller => "credit/renew/#{credit.id}"}, :confirm => t("credit.confirmrenew"), :remote => true %>
+                  <% end %>
+                  &nbsp;-->
+                  <% if credit.notify? %>
+                      <%= link_to t("trading.dontnotify"), "/credit/notify/#{credit.id}", :remote => true %>
+                  <% else %>
+                      <%= link_to t("trading.notify"), "/credit/notify/#{credit.id}", :remote => true %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+      <% unless current_user.lends.active.nil? %>
+          <% current_user.lends.active.each do |lend| %>
+              <tr>
+                <td><%= lend.currency %></td>
+                <td><%= lend.amount %></td>
+                <td><%= (lend.rate * 100).round(4).to_s + "%" if lend.rate > 0 %><%= t "credit.vir" if lend.rate == 0 %></td>
+                <td><%= distance_of_time_in_words((lend.created_at + lend.period.days - Time.now).to_i) %></td>
+                <td>
+                  <% if lend.insured? %>
+                      <%= "Yes" %>
+                  <% else %>
+                      <%= "No" %>
+                  <% end %></td>
+                <td>
+                  <!--<% if lend.renew %>
+                      <%= link_to t("credit.dontrenew"), {:controller => "loan/renew/#{lend.id}"}, :confirm => t("credit.confirmdontrenew"), :remote => true %>
+                  <% else %>
+                      <%= link_to t("credit.renew"), {:controller => "loan/renew/#{lend.id}"}, :confirm => t("credit.confirmrenew"), :remote => true %>
+                  <% end %>
+                  &nbsp;-->
+                  <% if lend.notify? %>
+                      <%= link_to t("trading.dontnotify"), "/loan/notify/#{lend.id}", :remote => true %>
+                  <% else %>
+                      <%= link_to t("trading.notify"), "/loan/notify/#{lend.id}", :remote => true %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<p class="small"><%= t "credit.fee_explain", :fee => @cut %></p>

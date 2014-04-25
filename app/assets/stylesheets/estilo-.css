@@ -1,0 +1,1526 @@
+*
+{
+	margin:auto;
+}
+
+html, body
+{
+	width:100%;
+	height:100%;
+}
+
+#inf{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+
+	font-family:"lato";
+}
+
+#col{
+	color: white;
+}
+
+.Active{
+	background-image: url(/assets/qesbitcoinslogosmall.png);
+}
+
+#check1{
+	margin-left: -140px;
+}
+
+#text1{
+	margin-left: -90px;
+	margin-top: -35px;
+}
+
+#comve{
+	margin-left: -70px;
+	margin-top: -120px;
+}
+
+#Container1
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	margin-top: -15px;
+	padding:0;
+	background-image:url(/assets/wallpaper_seven.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	font-family:"lato";
+}
+
+#Menu
+{
+	background-image:url(/assets/bgtop-1.jpg);
+	background-position:center center;
+	background-size:100% 100%;
+	padding:20px;
+	width:100%;
+	height:112px;
+}
+
+#Menu ul
+{
+	text-align:center;
+}
+
+#Menu #ppl
+{
+	font-size:12px;
+	text-align:left;
+	margin-left:250px;
+}
+
+#Menu ul li
+{
+	display:inline-block;
+	list-style:none;
+	z-index:10;
+}
+
+#Menu ul li a
+{
+	text-decoration:none;
+	margin-right:12px;
+	font-size:14px;
+	color:rgba(112,112,112,1.00);
+	transition:all 0.5s;
+	-webkit-transition:all 0.5s;
+	-moz-transition:all 0.5s;
+}
+
+#Menu ul li a:hover
+{
+	color:rgba(255,255,255,1.00);
+}
+
+#Menu ul li > #Actual
+{
+	color:rgba(255,255,255,1.00) !important;
+	font-size:12px;
+}
+
+#Select
+{
+	position:absolute;
+	top:40px;
+	left:253px;
+	z-index:2;
+}
+
+#Logo
+{
+	margin-left:60px;
+}
+
+#Desc
+{
+	margin-top:-18px;
+	color:rgba(112,112,112,1.00);
+}
+
+#Monedas
+{
+	text-align:center;
+	margin-top:-93px;
+}
+
+#idiomas{
+	margin-left: 830px;
+	margin-top:-48px;
+}
+
+
+#soporte{
+	float: right;
+	margin-right: 20px;
+	margin-top: -50px;
+}
+
+#Monedas #Descmonedas
+{
+	margin-left: 50px;
+margin-top:10px;
+	font-weight:bold;
+	font-size:18px;
+	color:rgba(113,113,113,1.00);
+}
+
+#Monedas > #aa
+{
+	background-image:url(/assets/shadows.png);
+	background-repeat:no-repeat;
+	background-position:143px center;
+	width:520px;
+	margin-left:480px;
+	text-align:center;
+}
+
+#Monedas ul li > a
+{
+	
+	font-size:12px !important;
+	margin-right:10px;
+}
+
+
+#Menu #Menusec
+{
+	text-align:right;
+	margin-right:80px;
+	margin-top:25px;
+}
+
+#Menu #Menusec #Act
+{
+	color:rgba(255,255,255,1.00);
+}
+
+#Login
+{
+	margin-right:10px;
+	float: right;
+	margin-top:20px;
+	cursor:pointer;
+	width:270px;
+}
+
+#quees{
+	color: white;
+	margin-top: -90px;
+}
+
+#quee{
+	color: white;
+	margin-top: -20px;
+}
+
+#Container1 #Contenido1 #Login ul #Inicio
+{
+	background-image:url(/assets/startsession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	margin-top:-140px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 #Login ul #Registro
+{
+	background-image:url(/assets/registersession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+
+
+#Container1 #Contenido1 #Login ul li a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:130px;
+}
+
+#Container1 #Contenido1 #Info1
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+	margin-top:-370px;
+	font-family:"lato";
+}
+
+#Container1 #Contenido1 #Info1 h1
+{
+	font-family:"lato";
+}
+
+#Container1 #Contenido1 #Info1 p
+{
+	font-family:"lato-ligth";
+}
+
+#Container1 #Contenido1 #Info1 img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#Container1 #Contenido1 #Login #Inicio, #Registro a
+{
+	font-family:"lato-ligth";
+}
+
+
+
+#Container1 #Contenido1 #Preguntas1 ul li
+{
+	text-align:right;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #ques
+{
+	
+	margin:auto;
+	margin-bottom:-20px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #ques a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:70px;
+}
+
+#Container1 #Contenido1 #ques:hover
+{
+	background-image:url(/assets/qesbitcoinslogosmall.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #comp
+{
+	
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:left;
+	margin-left: 140px;
+	width:310px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #comp a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #comp:hover
+{
+	background-image:url(/assets/comprayvendelogosmall.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #como
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #como a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #como:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #qui
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #qui a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #qui:hover
+{
+	background-image:url(/assets/activerightmenu.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #security
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #security a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #security:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #contact
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #contact a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #contact:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #terminos
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:center;
+	width:270px;
+	height:70px;
+}
+
+#Container1 #Contenido1 ul #terminos a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container1 #Contenido1 #Preguntas1 ul #terminos:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+/*Fin*/
+
+#Container2
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	background-image:url(/assets/wallpaper_nine.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	font-family:"lato";
+}
+
+#Login
+{
+	margin-right:10px;
+	margin-top:-60px;
+	cursor:pointer;
+	width:270px;
+}
+
+#Preguntas1
+{
+	color:white;
+	margin-left:650px;
+	margin-top:140px;
+	width:550px;
+}
+#Container2 #Contenido2 #Login ul #Inicio
+{
+	background-image:url(/assets/startsession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+#Container2 #Contenido2 #Login ul #Registro
+{
+	background-image:url(/assets/registersession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+
+#Container2 #Contenido2 #Login ul li a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:130px;
+}
+
+#Container2 #Contenido2 #Info2
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+	margin-top:-40px;
+	font-family:"lato";
+}
+
+#Container2 #Contenido2 #Info2 p
+{
+	font-family:"lato-ligth";
+}
+
+#Container2 #Contenido2 #Info2 img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#Preguntas2
+{
+	margin-right:30px;
+	margin-top:-40px;
+	width:550px;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul li
+{
+	text-align:right;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #ques
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container2 #Contenido2 ul #ques a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #ques:hover
+{
+	background-image:url(/assets/qesbitcoinslogosmall.png);
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #comp
+{
+	
+	background-image:url(/assets/comprayvendelogosmall.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container2 #Contenido2 ul #comp a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #comp:hover
+{
+	
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #como
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container2 #Contenido2 ul #como a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #como:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #qui
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container2 #Contenido2 ul #qui a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container2 #Contenido2 #Preguntas2 ul #qui:hover
+{
+	background-image:url(/assets/activerightmenu.png);
+}
+
+
+
+/*Fin*/
+
+#Container3
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	background-image:url(/assets/wallpaper_seven.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	font-family:"lato";
+}
+
+#Login
+{
+	margin-right:10px;
+	margin-top:20px;
+	cursor:pointer;
+	width:270px;
+}
+
+#Container3 #Contenido3 #Login ul #Inicio
+{
+	background-image:url(/assets/startsession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+#Container3 #Contenido3 #Login ul #Registro
+{
+	background-image:url(/assets/registersession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+
+#Container3 #Contenido3 #Login ul li a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:130px;
+}
+
+#Container3 #Contenido3 #Info3
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+	margin-top:-40px;
+	font-family:"lato";
+}
+
+#Container3 #Contenido3 #Info3 p
+{
+	font-family:"lato-ligth";
+}
+
+#Container3 #Contenido3 #Info3 img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#Container3 #Contenido3 #Login #Inicio, #Registro li a
+{
+	font-family:"lato-ligth";
+}
+
+#Preguntas3
+{
+	margin-right:30px;
+	margin-top:-100px;
+	width:550px;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul li
+{
+	text-align:right;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #ques
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container3 #Contenido3 ul #ques a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #ques:hover
+{
+	background-image:url(/assets/qesbitcoinslogosmall.png);
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #comp
+{
+	
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container3 #Contenido3 ul #comp a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #comp:hover
+{
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #como
+{
+	
+	background-image:url(/assets/comohacerlologosmall.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container3 #Contenido3 ul #como a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #como:hover
+{
+	
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #qui
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container3 #Contenido3 ul #qui a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container3 #Contenido3 #Preguntas3 ul #qui:hover
+{
+	background-image:url(/assets/activerightmenu.png);
+}
+
+/*Fin*/
+
+#Container4
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	background-image:url(/assets/wallpaper_eight.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	font-family:"lato";
+}
+
+#Login
+{
+	margin-right:10px;
+	margin-top:20px;
+	cursor:pointer;
+	width:270px;
+}
+
+#Container4 #Contenido4 #Login ul #Inicio
+{
+	background-image:url(/assets/startsession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+#Container4 #Contenido4 #Login ul #Registro
+{
+	background-image:url(/assets/registersession.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:5px;
+	text-align:center;
+	font-size:12px;
+	width:270px;
+	height:70px;
+}
+
+
+#Container4 #Contenido4 #Login ul li a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:130px;
+}
+
+#Container4 #Contenido4 #Info4
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+	margin-top:-40px;
+	font-family:"lato";
+}
+
+#Container4 #Contenido4 #Info4 p
+{
+	font-family:"lato-ligth";
+}
+
+#Container4 #Contenido4 #Info4 img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#Container4 #Contenido4 #Login #Inicio, #Registro li a
+{
+	font-family:"lato-ligth";
+}
+
+#Preguntas4
+{
+	margin-right:30px;
+	margin-top:-40px;
+	width:550px;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul li
+{
+	text-align:right;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #ques
+{
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container4 #Contenido4 ul #ques a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #ques:hover
+{
+	background-image:url(/assets/qesbitcoinslogosmall.png);
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #comp
+{
+	
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container4 #Contenido4 ul #comp a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #comp:hover
+{
+	
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #como
+{
+	
+	
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container4 #Contenido4 ul #como a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #como:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #qui
+{
+	
+	background-image:url(/assets/comohacerlologosmall.png);
+	margin:auto;
+	margin-bottom:-30px;
+	background-repeat:no-repeat;
+	list-style:none;
+	padding-top:10px;
+	text-align:right;
+	width:270px;
+	height:70px;
+}
+
+#Container4 #Contenido4 ul #qui a
+{
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+	margin-right:65px;
+}
+
+#Container4 #Contenido4 #Preguntas4 ul #qui:hover
+
+{
+	
+}
+
+/*Fin*/
+
+#ContPreview
+{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.48);
+	display:none;
+}
+
+#Pre
+{
+	background-image:url(/assets/Inicio.png) !important;
+	background-repeat:no-repeat;
+	width:662px;
+	height:580px;
+	margin:80px auto;
+}
+
+#div2{
+	display: none;
+}
+
+#div3{
+	display: none;
+}
+
+#div4{
+	display: none;
+}
+
+#div5{
+	display: none;
+}
+
+#div6{
+	display: none;
+}
+
+#div7{
+	display: none;
+}
+
+#Pre h1
+{
+	text-align:left;
+	margin-left:180px;
+	margin-top:20px;
+	color:rgba(255,255,255,1.00);
+	font-family:"lato";
+	margin-bottom:50px;
+}
+
+#contenidologin{
+	margin-top: -15px;
+}
+
+#signup{
+	color: white;
+	text-align: center;
+	margin-top: -30px;
+}
+
+#Cerrar
+{
+	position:absolute;
+	top:75px;
+	right:590px;
+	cursor:pointer;
+}
+
+#user{
+	margin-right: 170px;
+}
+
+#Pre img
+{
+	position:relative;
+	left:115px;
+	top:85px;
+}
+
+#Pre form
+{
+	margin-left:190px;
+}
+
+#Pre input
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/field.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:rgba(255,255,255,1.00);
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+	text-align:center;
+}
+
+input::-webkit-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-moz-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-ms-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+#Enviar
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/open_count.png) !important;
+	background-repeat:no-repeat;
+	background-position:center center;
+	border-radius:5px;
+	cursor:pointer;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+}
+
+/*Fin*/
+
+#ContPreviewR
+{
+	position:fixed;
+	top:0;
+	left:0;
+	width:150%;
+	height:100%;
+	background-color:rgba(0,0,0,0.48);
+	display:none;
+}
+
+.colorlabel{
+	color: white;
+	margin-left: -45px;
+	margin-top: -25px;
+}
+
+.time{
+	color: white;
+	margin-left: 140px;
+	margin-top: -38px;
+}
+
+.left{
+	background-color: gray;
+}
+
+#conpas{
+	margin-left: 10px;
+}
+
+#confipass{
+	margin-left: -200px;
+}
+
+#hr1{
+	margin-left: -150px;
+}
+
+#colorspan{
+	color: white;
+	font-size: 15px;
+	margin-left: -100px;
+}
+
+#colortime{
+	color: white;
+	font-size: 15px;
+	margin-left: -280px;
+}
+
+
+#colorref{
+	color: white;
+	font-size: 15px;
+	float: left;
+	margin-left: -180px;
+}
+
+#conpass{
+	color: white;
+	font-size: 15px;
+	margin-left: -150px;
+}
+
+#email{
+	color: white;
+	font-size: 15px;
+	margin-left: -90px;
+}
+
+#moverinput{
+	margin-left: -20px;
+}
+
+#ref{
+	margin-left: -260px;
+}
+
+#inputuser{
+	margin-left: -320px;
+}
+
+#inputemail{
+	margin-left: -200px;
+}
+
+#PreR
+{
+	background-image:url(/assets/Registro1.png) !important;
+	background-repeat:no-repeat;
+	width:962px;
+	height:700px;
+	margin:-30px auto;
+}
+
+#reg{
+	margin-top: -50px;
+}
+
+#sudmit{
+	margin-left: 350px;
+}
+
+#titulo{
+	margin-left: 400px;
+}
+
+#infor{
+	color: white;
+	margin-left: -140px;
+	margin-top: -40px;
+}
+
+#usd{
+	margin-left: 460px;
+	margin-top: -50px;
+}
+
+#inforr{
+	color: white;
+	margin-left: -150px;
+	margin-top: -10px;
+}
+
+#inforrr{
+	color: white;
+	margin-left: -80px;
+	margin-top: -10px;
+}
+
+#PreR h1
+{
+	text-align:left;
+	margin-left:180px;
+	margin-top:30px;
+	color:rgba(255,255,255,1.00);
+	font-family:"lato";
+	margin-bottom:50px;
+}
+
+#CerrarR
+{
+	position:absolute;
+	top:-80px;
+	right:600px;
+	cursor:pointer;
+}
+
+#PreR img
+{
+	position:relative;
+	left:115px;
+	top:85px;
+}
+
+#PreR form
+{
+	margin-left:190px;
+}
+
+#PreR input
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/field.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:rgba(255,255,255,1.00);
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+	text-align:center;
+}
+
+input::-webkit-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-moz-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-ms-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+#Enviar
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/open_count.png) !important;
+	background-repeat:no-repeat;
+	background-position:center center;
+	border-radius:5px;
+	cursor:pointer;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+}
+
+
+@font-face
+{
+	font-family:"lato";
+	src:url(../Lato-Reg.ttf);
+}
+
+@font-face
+{
+	font-family:"lato-ligth";
+	src:url(../Lato-Lig.ttf);
+}
+
+
+#Container1 #Contenido1 #Infoc
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:80px;
+
+	font-family:"lato";
+}
+
+#Container1 #Contenido1 #Infoc h1
+{
+	font-family:"lato";
+}
+
+#Container1 #Contenido1 #Infoc p
+{
+	font-family:"lato-ligth";
+}
+
+#Container1 #Contenido1 #Infoc img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#nombre{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#correo{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#telefono{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#pais{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#ciudad{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#mensaje{
+	opacity: 0.6;
+	background-color: black;
+	width: 300px;
+	border:2px solid white;
+	color: white;
+}
+
+#nombr{
+	color: white;
+}
+
+#pai{
+	color: white;
+}
+
+#ciuda{
+	color: white;
+}
+
+#corre{
+	color: white;
+}
+
+#telefon{
+	color: white;
+}
+
+#enviar{
+	border-radius: 5px;
+	background-color: blue;
+	color: white;
+}

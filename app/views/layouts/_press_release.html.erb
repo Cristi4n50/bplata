@@ -1,0 +1,6 @@
+<% if @post = Post.published.recent.first %>
+<div class="alert alert-info" style="margin-top: 20px">
+<h6 style="margin: 0px">Press Release</h6>
+<a href="/posts/<%= @post.permalink %>"><%= @post.title %></a>
+</div>
+<% end %>

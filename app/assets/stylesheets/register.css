@@ -1,0 +1,128 @@
+#signup-modal {
+display: block;
+opacity: 1;
+visibility: visible;
+top: 100px;
+background-color:rgba(0,0,0,0.47);
+border: 1px solid rgba(255,255,255,1.00);
+border-radius:5px;
+}
+#fondo{
+	background-color:rgba(0,0,0,0.59);
+	height:100%;
+	padding-top:50px;
+}	
+h2
+{
+	margin:auto;
+	text-align:left;
+	font-family:"lato";
+	color:rgba(255,255,255,1.00);
+}
+
+.registrarse{background:url(/assets/open_count.png)no-repeat;
+	background-position:center center;
+	margin-top:20px;
+	cursor:pointer;
+	width:280px;
+	height:40px;
+	border-radius:5px;
+	}
+input
+{
+	background-image:url(img/background_info.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	width:275px;
+	height:28px;
+	border-radius:5px;
+	margin-bottom:25px;
+}
+name-field{ margin-top:20px;}	
+(index)media="screen"
+@media only screen and (min-width: 768px)
+.reveal-modal.small {
+margin-left: -20%;
+width: 40%;
+}
+(index)media="screen"
+.reveal-modal {
+padding: 0;
+text-align: center;
+}
+(index)media="screen"
+@media only screen and (min-width: 768px)
+.reveal-modal {
+padding: 1.875em;
+top: 6.25em;
+}
+(index)media="screen"
+.reveal-modal {
+visibility: hidden;
+display: none;
+position: absolute;
+left: 50%;
+z-index: 99;
+height: auto;
+margin-left: -40%;
+width: 80%;
+background-color: white;
+padding: 1.25em;
+border: solid 1px #666666;
+-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+box-shadow: 0 0 10px rgba(0,0,0,0.4);
+top: 50px;
+}
+(index)media="screen"
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+margin: 0;
+padding: 0;
+direction: ltr;
+}
+(index)media="screen"
+*, *:before, *:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+user agent stylesheetdiv {
+display: block;
+}
+Pseudo ::before element
+(index)media="screen"
+*, *:before, *:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+Pseudo ::after element
+(index)media="screen"
+*, *:before, *:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+Inherited from form
+(index)media="screen"
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+direction: ltr;
+}
+Inherited from body
+(index)media="screen"
+body {
+color: #fff;
+font-family: "Roboto", "Helvetica", Helvetica, Arial, sans-serif;
+font-weight: normal;
+font-style: normal;
+line-height: 1;
+cursor: default;
+}
+(index)media="screen"
+html, body {
+font-size: 100%;
+}
+Inherited from html.js.no-touch.svg.inlinesvg.svgclippaths.no-ie8compat.translated-ltr
+(index)media="screen"
+html, body {
+font-size: 100%;
+}

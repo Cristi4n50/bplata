@@ -1,0 +1,71 @@
+<br><div id='contenidomenu'>
+<div id="Menu">
+
+<div id="Logo1"><BR><BR><BR><BR>
+<%= image_tag('logotipo.png') %>
+<div id="Desc">El primer sitio bitcoin seguro y facil para latinoam&eacute;rica</div><!-- Desc -->
+</div><!-- Logo -->
+<div id="Monedas">
+<ul id="aa">
+<li><a href="#">BTC 1020 USD</a></li>
+<li><a href="#">BTC 0,33 LTC</a></li>
+<li><a href="#">LTC 25 USD</a></li>
+</ul>
+<ul id='idiomas'>
+  <li><%= image_tag('idespañol.png', :width=>'30') %></li>
+  <li><%= image_tag('idprotugal.png', :width=>'30') %></li>
+  <li><%= image_tag('idingles.png', :width=>'30') %></li>
+</ul>
+<ul id='soporte'>
+  <li id='support'
+    <% if controller.controller_name == 'pages' && controller.action_name == 'support' %> class="active"
+    <% end %>><a  href="/pages/support"><%= t 'nav.support' %></a></li>
+</ul>
+</div><!-- Monedas -->
+<ul id="Menusec">
+<li><a id="Act" href="/">INICIO</a></li>
+<li><a href="intercambio.html">INTERCAMBIO</a></li>
+<li><a href="#">MERCADO</a></li> 
+<li><a href="#">DEP&Oacute;SITO</a></li>
+<li><a href="#">RETIROS</a></li>
+<li><a href="#">CUENTA</a></li>
+</ul>
+</div><!-- Menu -->
+</div>
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Our security practices" %>
+
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="border">
+        <h2><i class="icon-lock"></i> <span>Security</span></h2>
+        <hr/>
+        <div class="row">
+          <div class="large-9 columns">
+            <h4>When it comes to security, we are paranoid.</h4>
+            <p>Every detail is analyzed to avoid security holes. We pride ourselves on being the most secure bitcoin exchange. Here is why:</p>
+            <p><b>Secure cold wallet to hold crypto-currencies</b><br/>
+              Your bitcoins are stored in the cold wallet. We have bitcoind (official daemon) running only to handle the blockchain transactions.</p>
+            <p><b>Trade only exchanges API keys</b><br/>
+              The API keys to the different exchanges are encrypted and not stored in our code or database. These keys provides only the right to get balances and buy and sell bitcoins, except on our withdrawal box (which is isolated from the rest of our servers network).</p>
+            <p><b>Automatic backup of the database once a day</b><br/>
+              Once a day, the database of the platform is backed up, encrypted and compressed as an archive. The passwords of users it contains are hashed</p>
+            <p><b>Duplication of backup data automatically</b><br/>
+              As soon as a new backup is ready (database, log files,...), it is sent to others servers in several physical locations.</p>
+            <p><b>Always up-to-date linux systems to host the platform</b><br/>
+              Our servers network is protected using always up-to-date software and the best possible practices.</p>
+            <p><b>Security monitored by the security company Arcui</b><br/>
+            Our platform is regularly tested by the company Arcui to detect and prevent any intrusion.</p>
+            <a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

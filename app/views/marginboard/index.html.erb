@@ -1,0 +1,73 @@
+<%= render "javascript" %>
+</div>
+</div>
+<% title 'Marginboard' %>
+<% Currency.pairs.each do |pair| %>
+    <table style="font-size: small" class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th colspan="10">Top 10 positions on <%= pair %> pair</th>
+      </tr>
+      <tr>
+        <th>Position ID</th>
+        <th>User</th>
+        <th>Size</th>
+        <th>Base price</th>
+        <th>P/L</th>
+        <th>Swap</th>
+        <th>Liquidation price</th>
+        <th>Collateral</th>
+        <th>Actual leverage</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @toppositions[Currency.pairs.index(pair)].empty? %>
+          <tr>
+            <td colspan="9">No active positions found!</td>
+          </tr>
+      <% else %>
+          <% @toppositions[Currency.pairs.index(pair)].each do |position| %>
+              <tr>
+                <td><%= position.id %></td>
+                <td><%= position.user_id %>
+                  <% if current_user.associate? %>
+                      <br/>
+                      <a href="mailto:<%= position.user.email %>"><%= position.user.username %></a>
+                  <% end %>
+                </td>
+                <td><%= position.amount.round(3) %></td>
+                <td><%= position.base.round(4) %></td>
+                <td><%= colored_dollar(position.pl) %></td>
+                <td><%= position.swap.round(2) %> <%= Currency.lastunit(position.pair) if position.amount > 0 %><%= Currency.firstunit(position.pair) if position.amount < 0 %></td>
+                <td><%= dollar(position.liquidation_price, "") %></td>
+                <td>
+                  <% total_usd = 0 %>
+                  <% position.user.wallets.where(:name => 'trading').each do |wallet| %>
+                      <% wallet.walletbalances.each do |bal| %>
+                          <%= bal.currency %>: <%= colored_dollar(bal.balance, 0, "") %>
+                          <% total_usd += Currency.currencyvalue(bal.balance, bal.currency) %>
+                          <br/>
+                      <% end %>
+                  <% end %>
+                </td>
+                <td><%= ([Currency.currencyvalue(position.cost, Currency.lastunit(position.pair)),Currency.currencyvalue(position.amount.abs, Currency.firstunit(position.pair))].min / total_usd).round(2) %>
+                  :1
+                </td>
+                <td>
+                  <% if current_user.associate? %>
+                      <% unless position.noliquidation? %>
+                          <a class="button success round" href="/marginboard/switchliquidate/<%= position.id %>">Liquidation
+                            active</a>
+                      <% else %>
+                          <a class="button alert round" href="/marginboard/switchliquidate/<%= position.id %>">Activate
+                            liquidation</a>
+                      <% end %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

@@ -1,0 +1,168 @@
+<%= render "javascript" %>
+<%= render "/power/menu" %>
+</div>
+</div>
+<% title 'System tweaks' %>
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th colspan="3">Trading orders</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Minimum hidden order</td>
+    <td>Minimum order size for hidden order (in first unit of the pair)</td>
+    <td><%= value_setting("minhiddenorder", "minhiddenorder") %></td>
+  </tr>
+  </tbody>
+</table>
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th colspan="3">Trading engine</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Reserve ratio</td>
+    <td>Minimum reserve to maintain in each currency on external exchanges (in absoluate of total liabilities)</td>
+    <td><%= value_setting("reserve_ratio", "reserve_ratio") %></td>
+  </tr>
+  <tr>
+    <td>Depth dividor</td>
+    <td>How much to divide amount from external orderbooks (to account for slippage)</td>
+    <td><%= value_setting("depth_dividor", "depth_dividor") %></td>
+  </tr>
+  <tr>
+    <td colspan="3">Margin requirements and leverage</td>
+  </tr>
+  <% User.leverage.each do |leverage| %>
+      <tr>
+        <td colspan="2">Leverage <%= leverage %>:1</td>
+        <td><%= value_setting("margin_requirement_" + leverage.to_s, "margin_requirement_" + leverage.to_s) %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <td colspan="2">Collateral threshold (USD)</td>
+    <td>Maximum leverage</td>
+  </tr>
+  <tr>
+    <td>Less than <%= Setting.get_value("threshold_leverage_1", 1) %> USD of trading collateral</td>
+    <td><%= value_setting("threshold_leverage_1", "threshold_leverage_1") %></td>
+    <td><%= value_setting("max_leverage", "max_leverage") %></td>
+  </tr>
+  <tr>
+    <td>More than <%= Setting.get_value("threshold_leverage_1", 1) %> USD of trading collateral</td>
+    <td colspan="2"><%= value_setting("max_leverage_" + Setting.get_value("threshold_leverage_1").to_s, "max_leverage_" + Setting.get_value("threshold_leverage_1").to_s) %></td>
+  </tr>
+  </tbody>
+</table>
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th colspan="3">Lending engine</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Minimum lending period</td>
+    <td>Minimum period for lending offer</td>
+    <td><%= value_setting("minlendingperiod", "minlendingperiod") %></td>
+  </tr>
+  </tbody>
+</table>
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th colspan="5">Fees</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Wire withdrawal fee</td>
+    <td colspan="2">Fixed wire withdrawal fee (charged when requesting a withdrawal)</td>
+    <td colspan="2"><%= value_setting("wirewithdrawal_fees", "wirewithdrawal_fees") %></td>
+  </tr>
+  <tr>
+    <td>Express wire withdrawal fee</td>
+    <td colspan="2">wire withdrawal fee (charged when requesting an express withdrawal, less than 1 business day), in % of the total amount</td>
+    <td colspan="2"><%= value_setting("express_wirewithdrawal_fees", "express_wirewithdrawal_fees") %></td>
+  </tr>
+  <tr>
+    <td>Representatives fee</td>
+    <td colspan="2">Cut earned by representatives on affiliate's fees</td>
+    <td colspan="2"><%= value_setting("rep_fees", "rep_fees") %></td>
+  </tr>
+  <tr>
+    <td>Hidden order fees</td>
+    <td colspan="2">Fee for placing an hidden order (in absolute value of first unit of the pair</td>
+    <td colspan="2"><%= value_setting("hiddenorder_fee", "hiddenorder_fee") %></td>
+  </tr>
+  <tr>
+    <td>Position claiming fee</td>
+    <td colspan="2">Fee for claiming a position amount in the user's wallet (taken on the amount claimed)</td>
+    <td colspan="2">
+      <%= value_setting("claiming_fee_0", "claiming_fee_0") %>
+      <br/>
+      <%= value_setting("claiming_fee_50000", "claiming_fee_50000") %>
+      <br/>
+      <%= value_setting("claiming_fee_100000", "claiming_fee_100000") %>
+      <br/>
+      <%= value_setting("claiming_fee_500000", "claiming_fee_500000") %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5"><strong>Trading fees</strong></td>
+  </tr>
+  <tr>
+    <td>Trading fees on Bitstamp</td>
+    <td colspan="2">Trading fees on Bitstamp</td>
+    <td colspan="2"><%= value_setting("bitstamp_fees", "Bitstamp fees") %></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Volume</td>
+    <td colspan="2">BTC pairs</td>
+    <td colspan="2">LTC pairs</td>
+  </tr>
+  <tr>
+    <td>Maker</td>
+    <td>Taker</td>
+    <td>Maker</td>
+    <td>Taker</td>
+  </tr>
+  <% Fee.marks.each do |mark| %>
+      <tr>
+        <td>More than <%= mark %> traded per 30 days</td>
+        <td><%= value_setting("bfx_maker_fees_BTC_" + mark.to_s, "fee") %></td>
+        <td><%= value_setting("bfx_fees_BTC_" + mark.to_s, "fee") %></td>
+        <td><%= value_setting("bfx_maker_fees_LTC_" + mark.to_s, "fee") %></td>
+        <td><%= value_setting("bfx_fees_LTC_" + mark.to_s, "fee") %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th colspan="3">Crytpo-assets management</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Withdrawals activated</td>
+    <td>Activate/Deactivate withdrawals processing</td>
+    <td><%= switch_setting("withdrawals_on", " Withdrawals") %></td>
+  </tr>
+  <tr>
+    <td>Minimum hot wallet balance</td>
+    <td>Minimum balance to maintain on hot wallets</td>
+    <td><%= value_setting("minimum_hot_wallet_balance", "minimum_hot_wallet_balance") %></td>
+  </tr>
+  <tr>
+    <td>Ratio hot/cold wallet</td>
+    <td>Maximum amount to maintain on hot wallet (as % of total balance of one crypto-currency</td>
+    <td><%= value_setting("ratio_hot_cold_wallet", "ratio_hot_cold_wallet") %></td>
+  </tr>
+  </tbody>
+</table>

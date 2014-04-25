@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  Walletbalance: read
+
+partner:
+  Walletbalance: read
+
+associate:
+  Walletbalance: read

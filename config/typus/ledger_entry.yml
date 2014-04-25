@@ -1,0 +1,13 @@
+# Use the README file as a reference to customize settings.
+
+LedgerEntry:
+  fields:
+    default: currency, amount, description, balance, user_id, created_at
+    form: currency, amount, description, balance, user_id
+    options:
+      selectors: currency,
+  relationships: 
+  application: Application
+  order_by: -id
+  filters: currency
+  search: description

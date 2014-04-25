@@ -1,0 +1,93 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: bfxdev
+  pool: 5
+  username: root
+  password: pablo
+  host: localhost
+
+  slave01:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: bfxdev
+    pool: 5
+    username: root
+    password: pablo
+    host: localhost
+
+  slave02:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: bfxdev
+    pool: 5
+    username: root
+    password: pablo
+    host: localhost
+
+  slave03:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: bfxdev
+    pool: 5
+    username: root
+    password: pablo 
+    host: localhost
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+#test:
+#  adapter: sqlite3
+#  database: db/test.sqlite3
+#  pool: 5
+#  timeout: 5000
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: database
+  pool: 5
+  username: user
+  password: password
+  host: 0.0.0.0
+
+  slave01:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: database
+    pool: 5
+    username: user
+    password: password
+    host: 0.0.0.0
+
+  slave02:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: database
+    pool: 5
+    username: user
+    password: password
+    host: 0.0.0.0
+
+  slave03:
+    adapter: mysql2
+    encoding: utf8
+    reconnect: false
+    database: database
+    pool: 5
+    username: user
+    password: password
+    host: 0.0.0.0

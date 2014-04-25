@@ -1,0 +1,320 @@
+</div>
+</div>
+<% title t "account.withdraw" %>
+<div class="row withdraw">
+<div class="large-12 columns">
+<div class="row ">
+  <div class="large-12 columns">
+    <h6><%= t "account.withdraw" %></h6>
+  </div>
+  <div class="large-12 columns">
+    <div class="panel">
+      <p><%= t "account.withdrawal_explain" %></p>
+    </div>
+  </div>
+</div>
+<div class="row ">
+  <div class="large-12 small-12 columns">
+    <table cellspacing="0" class="large-12">
+      <thead>
+      <tr>
+      <th class="th-right"><%= t "account.wallet" %></th>
+      <th colspan="<%= @currencies.count %>"><%= t "account.balance" %></th>
+      </thead>
+      <tbody>
+      <% current_user.wallets.each do |wallet| %>
+          <tr>
+            <td class="right"><%= wallet.name %></td>
+            <% @currencies.each do |currency| %>
+                <td><%= current_user.available_balance(currency, wallet.name).to_d.floor(8) %> <%= currency.to_s %></td>
+            <% end %>
+      <% end %>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <%= t 'account.available_balance_explain' %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="section-container auto" data-section data-options="one_up: true;">
+<section>
+  <p class="title" style="width:25.1%;" data-section-title><a href="#panel1">Bitcoin</a></p>
+
+  <div class="content" data-section-content>
+    <div class="row">
+      <%= form_tag({:controller => :account, :action => :withdrawing_bitcoin}, {:remote => false, :class => "custom", :id => "bitcoin_form"}) do %>
+          <div class="large-8 columns">
+            <p><%= t "account.withdraw_bitcoin" %></p>
+            <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+
+            <div class="large-4 columns">
+              <select name="walletselectedbitcoin" id="selectWallet" class="medium">
+                <% current_user.wallets.each do |wallet| %>
+                    <option value="<%= wallet.name %>"><%= wallet.name %></option>
+                <% end %>
+              </select>
+              <label for="orderType">Select Wallet</label>
+            </div>
+            <div class="large-4 columns">
+              <input type="text" name="address" placeholder="Wallet Address">
+              <label><%= t "account.wallet_address" %></label>
+            </div>
+            <div class="large-4 columns">
+              <input type="text" placeholder="0" name="amount">
+              <label><%= t "account.amount" %></label>
+            </div>
+            <% if current_user.otp_enabled? %>
+                <div class="large-4 columns">
+                  <%= text_field_tag :otp, nil, :size => 6 %>
+                  <label><%= t "account.otp_number" %></label>
+                </div>
+            <% end %>
+          </div>
+          <div class="large-4 columns">
+            <input type="submit" class="button success radius green large" value="Withdraw BTC"/>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<section>
+  <p class="title" style="width:25.1%;" data-section-title><a href="#panel2">Litecoin</a></p>
+
+  <div class="content" data-section-content>
+    <div class="row">
+      <%= form_tag({:controller => :account, :action => :withdrawing_litecoin}, {:remote => false, :class => "custom", :id => "litecoin_form"}) do %>
+          <div class="large-8 columns">
+            <p><%= t "account.withdraw_litecoin" %></p>
+            <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+
+            <div class="large-4 columns">
+              <select name="walletselectedlitecoin" id="selectWallet" class="medium">
+                <% current_user.wallets.each do |wallet| %>
+                    <option value="<%= wallet.name %>"><%= wallet.name %></option>
+                <% end %>
+              </select>
+              <label for="orderType">Select Wallet</label>
+            </div>
+            <div class="large-4 columns">
+              <input name="address" type="text" placeholder="Wallet Address">
+              <label><%= t "account.wallet_address" %></label>
+            </div>
+            <div class="large-4 columns">
+              <input name="amount" type="text" placeholder="0">
+              <label><%= t "account.amount" %></label>
+            </div>
+            <% if current_user.otp_enabled? %>
+                <div class="large-4 columns">
+                  <%= text_field_tag :otp, nil, :size => 6 %>
+                  <label><%= t "account.otp_number" %></label>
+                </div>
+            <% end %>
+          </div>
+          <div class="large-4 columns">
+            <input type="submit" value="Withdraw LTC" class="button success radius green large"/>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<section>
+  <p class="title" style="width:25.1%;" data-section-title><a href="#panel3">Wire Transfer</a></p>
+
+  <div class="content" data-section-content>
+    <div class="row">
+      <%= form_tag({:controller => :account, :action => :withdrawing_wire}, {:remote => false, :class => "custom", :id => "wire_form"}) do %>
+          <div class="large-8 columns">
+            <p>Your account is currently
+              <% if current_user.verified? %><span style="font-weight:bold" class="green">verified</span>
+              <% else %><span style="font-weight:bold" class="red">unverified</span>. You can verify your account
+                  on
+                  the
+                  <a href="/account/verification">Verification page</a>. Only verified account can withdraw US
+                  dollars.
+              <% end %></p>
+            <% if current_user.verified? %>
+                <p>You already made <%= @nbwirewithdrawals %> wire withdrawals in the last 24
+                  hours. <%= t "account.international_wire_transfer_fee", :fee => @wirewithdrawal * [1, (2 ** @nbwirewithdrawals)].max %></p>
+
+                <p class="red">Important:
+                <ul class="red">
+                  <li>For each additional wire withdrawal you make in less than 24 hours, your
+                    withdrawal fee will be double the fee of the previous one.
+                  </li>
+                  <li>Wire withdrawals will be processed within 3 business days, unless you request the option
+                    "Express". In this case, they will be processed within 1 business day, for <%= Fee.user_fee("express_wirewithdrawal_fees", current_user).to_d * 100 %>% of the amount requested.
+                  </li>
+                </ul>
+                </p>
+                <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+
+                <div class="large-4 columns">
+                  <select name="walletselectedwire" id="selectWallet" class="medium">
+                    <% current_user.wallets.each do |wallet| %>
+                        <option value="<%= wallet.name %>"><%= wallet.name %></option>
+                    <% end %>
+                  </select>
+                  <label for="orderType">Select Wallet</label>
+                  <label><input type="checkbox" value="1" name="expressWire" id="expressWire"/> Express wire (within 24 hours)</label>
+                </div>
+                <div class="large-4 columns">
+                  <!--<div style="margin:5px;width:390px">
+                    Bank template name:
+                  <select name="templatechoice" id="templatechoice" class="medium" onchange="choose_wire_template(<%= @templates_wire.to_json %>)">
+                        <option value=""></option>
+                    <% @templates_wire.each do |template| %>
+                        <option value="<%= template.template_name %>"><%= template.template_name %></option>
+                    <% end %>
+                  </select><br/>
+                    <div>
+                    <div><label><input id="save_template" type="checkbox" value="1" name="save_template" onchange="select_wire_template();"/> Save as template (or update current template)</label></div><br/>
+                      <div style="" id="template_name_choice"><span style="float:left;width:40%;">Template name: </span> <input type="text" value="" name="template_name" style="width:50%;"/>
+                        <label for="template_name" style=""/><br/></div>
+                    </div>
+                  </div>-->
+                  <input name="amount" style="width:400px;"/>
+                  <label style="width:400px;"><%= t "account.amount" %> (USD, minimum 50)</label>
+                  <br/>
+                  <% if @fullname == "" %>
+                      <input name="account_name" style="width:400px;"/>
+                  <% else %>
+                      <input name="account_name" value="<%= @fullname %>" style="width:400px;" disabled/>
+                  <% end %>
+                  <label style="width:400px;"><%= t "account.beneficiary_account_name" %></label>
+                  <br/>
+                  <% if @fulladdress == "" %>
+                      <input name="account_address" style="width:400px;"/>
+                  <% else %>
+                      <input name="account_address" value="<%= @fulladdress %>" style="width:400px;" disabled/>
+                  <% end %>
+                  <label style="width:400px;"><%= t "account.beneficiary_account_address" %></label>
+                  <br/>
+                  <input name="account_number" style="width:400px;"/>
+                  <label for="account_number" style="width:400px;"><%= t "account.beneficiary_account_number" %></label>
+                  <br/>
+                  <input name="bank_name" style="width:400px;"/>
+                  <label for="bank_name" style="width:400px;"><%= t "account.beneficiary_bank_name" %></label>
+                  <br/>
+                  <input name="bank_address" style="width:400px;"/>
+                  <label for="bank_address" style="width:400px;"><%= t "account.beneficiary_bank_address" %></label>
+                  <br/>
+                  <input name="bank_city" style="width:400px;"/>
+                  <label for="bank_city" style="width:400px;"><%= t "account.beneficiary_bank_city" %></label>
+                  <br/>
+                  <input name="bank_country" style="width:400px;"/>
+                  <label for="bank_country" style="width:400px;"><%= t "account.beneficiary_bank_country" %></label>
+                  <br/>
+                  <input name="swift" style="width:400px;"/>
+                  <label for="swift" style="width:400px;"><%= t "account.beneficiary_bank_swift" %></label>
+                  <br/>
+                  <input name="detail_payment" style="width:400px;"/>
+                  <label for="detail_payment" style="width:400px;"><%= t "account.details_payment_wire" %></label>
+                  <br/>
+                  <p style="width:400px;">In some cases your bank will require the use of an intermediary bank, please fill out below if needed:</p>
+                  <input name="interm_bank_name" style="width:400px;"/>
+                  <label for="interm_bank_name" style="width:400px;"><%= t "account.intermediary_bank_name" %></label>
+                  <br/>
+                  <input name="interm_bank_address" style="width:400px;"/>
+                  <label for="interm_bank_address" style="width:400px;"><%= t "account.intermediary_bank_address" %></label>
+                  <br/>
+                  <input name="interm_bank_city" style="width:400px;"/>
+                  <label for="interm_bank_city" style="width:400px;"><%= t "account.intermediary_bank_city" %></label>
+                  <br/>
+                  <input name="interm_bank_country" style="width:400px;"/>
+                  <label for="interm_bank_country" style="width:400px;"><%= t "account.intermediary_bank_country" %></label>
+                  <br/>
+                  <input name="interm_bank_account" style="width:400px;"/>
+                  <label for="interm_bank_account" style="width:400px;"><%= t "account.intermediary_bank_account" %></label>
+                  <br/>
+                  <input name="interm_bank_swift" style="width:400px;"/>
+                  <label for="interm_bank_swift" style="width:400px;"><%= t "account.intermediary_bank_swift" %></label>
+                  <br/>
+                </div>
+                </div>
+                <div class="large-4 columns">
+                  <input type="submit" value="<%= t "account.request_for_withdrawal" %>" class="button success radius green large"/>
+                </div>
+            <% end %>
+      <% end %>
+    </div>
+    <div>
+      <small>
+        <ul>
+          <li>If you cannot provide a SWIFT code or if your bank does not have a SWIFT code, you may incur additional
+            wire transfer charges imposed by an intermediary bank
+          </li>
+          <li>If not all details are provided this may lead to delays or additional bank charges imposed by the
+            processing bank
+          </li>
+          <li>If mistakes are made in the bank details provided by the customer, and if this results in the wire to be
+            returned, BITFINEX will reserve the right to charge a handling fee of USD 25 on top of the additional
+            fees charged by the bank to resolve such errors. BITFINEX shall not be responsible in case of delays or
+            non-return of such funds based on mistaken information provided by the customer. It is the responsibility
+            of the customer to properly check all details in advance.
+          </li>
+        </ul>
+      </small>
+    </div>
+  </div>
+</section>
+<% if current_user.associate || Setting.get_value('egopay_on').to_d > 0 %>
+    <section>
+      <p class="title" style="width:25.1%;" data-section-title><a href="#panel3">EgoPay</a></p>
+
+      <div class="content" data-section-content>
+        <div class="row">
+          <%= form_tag({:controller => :account, :action => :withdrawing_egopay}, {:remote => false, :class => "custom", :id => "egopay_form"}) do %>
+              <div class="large-8 columns">
+                <p>Your account is currently
+                  <% if current_user.verified? %><span style="font-weight:bold" class="green">verified</span>
+                  <% else %><span style="font-weight:bold" class="red">unverified</span>. You can verify your account
+                      on
+                      the
+                      <a href="/account/verification">Verification page</a>. Only verified account can withdraw US
+                      dollars.
+                  <% end %></p>
+                <% if current_user.verified? %>
+                    <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+
+                    <p>Available funds on EgoPay: <%= dollar(Stat.get_value('EGOPAYUSD balance').to_d) %></p>
+
+                    <div class="large-4 columns">
+                      <select name="walletselectedegopay" id="selectWallet" class="medium">
+                        <% current_user.wallets.each do |wallet| %>
+                            <option value="<%= wallet.name %>"><%= wallet.name %></option>
+                        <% end %>
+                      </select>
+                      <label for="orderType">Select Wallet</label>
+                    </div>
+                    <div class="large-4 columns">
+                      <input name="beneficiary" type="text" placeholder="Beneficiary email address">
+                      <label><%= t "account.egopay_email_address" %></label>
+                    </div>
+                    <div class="large-4 columns">
+                      <input name="amount" type="text" placeholder="0">
+                      <label><%= t "account.amount" %></label>
+                    </div>
+                    <% if current_user.otp_enabled? %>
+                        <div class="large-4 columns">
+                          <%= text_field_tag :otp, nil, :size => 6 %>
+                          <label><%= t "account.otp_number" %></label>
+                        </div>
+                    <% end %>
+                    </div>
+                    <div class="large-4 columns">
+                      <input type="submit" value="<%= t "account.request_for_withdrawal" %>" class="button success radius green large"/>
+                    </div>
+                <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+<% end %>
+</div>
+</div>
+</div>
+
+<%= render "deposits" %>

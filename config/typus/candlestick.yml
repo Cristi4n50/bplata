@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+Candlestick:
+  fields:
+    default: pair, period, start_time, open, close, highest, lowest, created_at
+    form: pair, period, start_time, open, close, highest, lowest
+  relationships: 
+  application: Application
+  order_by: -id

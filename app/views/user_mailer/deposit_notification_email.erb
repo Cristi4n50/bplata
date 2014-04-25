@@ -1,0 +1,11 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	A <%= @deposit.method.capitalize %> deposit notification #<%= @deposit.id %> has been received.
+</h2>
+<p>Deposit Details: </p>
+<strong>User: <%= @user.username %> / <%= @user.email %> / ID: <%= @user.id %></strong><br/>
+<strong>Amount: </strong> &nbsp; <%= @deposit.amount %><br/>
+<strong>Currency: </strong> &nbsp; <%= @deposit.currency %><br/>
+<strong>Method: </strong> &nbsp; <%= @deposit.method %><br/>
+<strong>Status: </strong> &nbsp; <%= @deposit.status %><br/>
+<strong>Remark: </strong> &nbsp; <%= @deposit.remark %><br/>
+<strong>Received at </strong><%= @deposit.updated_at %><br/>

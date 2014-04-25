@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body style="font: 14px; font-family: Calibri, sans-serif;line-height: 1.5!important;">
+  <div class="content" style="background-color: #FFF;margin: 4%;padding: 2% 4%;">
+    <image src="logo.png" class="logo" style="float: right;
+      margin-top: 10px;"></image>
+    <h1 style="margin: 1.1em 0 1.75em;color: #000;font-weight: bold;font-size: 1.4em;">
+    	<% if @user.nil? %>
+          <% if @username_dest.nil? %>
+    		Hello admin,
+          <% else %>
+            Hello <%= @username_dest %>,
+          <% end %>
+    	<% else %>
+      	Hello <%= @user.username %>,
+      <% end %>
+    </h1>
+
+    <%= yield %>
+
+    <p style="margin-top: 20px">
+      <% if @username_dest.nil? %>
+     Saludos, <br/>
+      Equipo Bplata <br/>
+      <a style="font-weight: bold;" href="https://www.bplata.com/">https://www.bplata.com/</a>
+      <% else %>
+      Saludos, <br/>
+      Alex <br/>
+      Equipo Bplata
+      <% end %>
+    </p>
+
+    </div>
+  </body>
+</html>

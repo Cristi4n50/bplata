@@ -1,0 +1,5 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	Warning: User <%= @negative_user.id.to_s + ", " + @negative_user.username.to_s %> has a negative balance for wallet <%= @wallet.name %>.
+</h2>
+<strong>Balance USD: </strong> &nbsp; <%= @balance_usd %><br/>
+<strong>Balance BTC: </strong> &nbsp; <%= @balance_btc %><br/>

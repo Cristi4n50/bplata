@@ -1,0 +1,1064 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic);
+
+body{
+	background: #f9f9f9;
+}
+label{
+	color: #666;
+}
+p.small{
+	font-size: 60%;
+	margin: 5px;
+}
+/* HEADER */
+
+#header{
+	height: 84px;
+	line-height: 84px;
+	background: url(/assets/header-background.png) repeat-x;
+}
+.magellan{background: #fff}
+.magellan.fixed{
+	border-bottom: 1px solid #ccc;
+}
+
+#header .button{height: 44px;width: 135px;}
+#header .account{
+	text-align: right;
+}
+#header .logo{
+}
+button, .button,input .button {
+  border-width: 0px;
+  -webkit-box-shadow: 0 -3px 0 rgba(42, 108, 143, 0.5) inset;
+  box-shadow: 0 -3px 0 rgba(42, 108, 143, 0.5) inset;
+}
+button.red, .button.red{
+	-webkit-box-shadow: 0 -3px 0 rgba(175, 55, 55, 0.5) inset;
+    box-shadow: 0 -3px 0 rgba(175, 55, 55, 0.5) inset;
+}
+button.green, .button.green{
+	-webkit-box-shadow: 0 -3px 0 rgba(110, 136, 50, 0.5) inset;
+    box-shadow: 0 -3px 0 rgba(110, 136, 50, 0.5) inset;
+}
+.reveal-modal{
+	padding: 0;
+	text-align: center;
+}
+.reveal-modal div{
+	padding: 0 40px;
+	text-align: center;
+}
+.reveal-modal input{
+	font-size: 1.1em;
+	margin-top: 20px;
+}
+.reveal-modal .submit{
+	text-align: center;
+	margin: 10px auto;
+	display: block;
+}
+.reveal-modal a.change-modal{
+	text-align: center;
+	margin: 30px 0;
+	display: block;
+}
+#login-modal button{
+	background-color: #9ec052;
+	border-color: #83a33c;
+	color: white;
+	-webkit-box-shadow: 0 -3px 0 rgba(110, 136, 50, 0.5) inset;
+	box-shadow: 0 -3px 0 rgba(110, 136, 50, 0.5) inset;
+	margin-bottom: 40px;
+}
+
+#login-modal h3{
+	color: #fff;
+	background: #bad878;
+	text-align: center;
+	width: 100%;
+	font-size: 1.5;
+	height: 50px;
+	line-height: 50px;
+}
+#signup-modal button{
+	background-color: #e15656;
+	border-color: #d92b2b;
+	color: white;
+	-webkit-box-shadow: 0 -3px 0 rgba(175, 55, 55, 0.5) inset;
+	box-shadow: 0 -3px 0 rgba(175, 55, 55, 0.5) inset;
+	margin-bottom: 40px;
+}
+
+#signup-modal h3{
+	color: #fff;
+	background: #ec9e9e;
+	text-align: center;
+	width: 100%;
+	font-size: 1.5;
+	height: 50px;
+	line-height: 50px;
+}
+.title-area,.top-bar.expanded .title-area{
+	background: #428db6;
+}
+.top-bar,.top-bar-section li a:not(.button),.top-bar-section ul,.top-bar-section ul li.active > a{
+	background: #f9f9f9;
+	color: #3b7fa3;
+	text-align: left;
+}
+.top-bar{
+	border-bottom: 1px solid #ccc;
+	overflow: hidden;
+	margin: 5px 0 10px 0;
+}
+.top-bar-section .left li{
+	margin-right: 60px;
+}
+.top-bar-section li a:not(.button){
+	padding: 10px 30px 0 0;
+	line-height: 30px;
+	font-size: 16px;
+}
+.top-bar-section ul li.active > a,.top-bar-section ul li > a:hover{
+	border-bottom: 4px solid #d92b2b;
+	color: #d92b2b;
+}
+#header .f-dropdown.tiny.open{
+	top:64px !important;
+}
+/* HOME-PAGE */
+
+.orbit-container .orbit-slides-container img{margin: auto;}
+.orbit-container .orbit-slides-container > * .orbit-caption{
+	background: rgba(255,255,255,0.7);
+	max-width: 470px;
+	left:20px;
+	bottom: 20px;
+}
+.orbit-container .orbit-slides-container > * .orbit-caption p{
+	color: #666;
+	font-size: 19px;
+	line-height: 24px;
+}
+#call-to-action{
+	padding: 20px 0;
+}
+#call-to-action .text h5,#call-to-action .text h3{
+	text-align: right;
+	color: #666;
+	margin: 0;
+}
+#call-to-action .button{
+	margin: 0;
+}
+#boxes{
+	padding: 0 0 20px 0;
+}
+#boxes .large-12.border{
+	border: 1px solid #ccc;
+}
+#boxes .panel{
+	margin: 20px 0;
+	background: #fff;
+}
+#boxes .panel a h3{
+	text-align: center;
+	font-size: 34px;
+	color: #110875;
+	font-weight: normal;
+}
+#boxes .panel a h3 i{
+	color: #ccc;
+	font-size: 70px;
+}
+#boxes .panel a.button{
+	display: block;
+	font-size: 14px;
+	font-weight: normal;
+	padding-bottom: 15px;
+}
+#community{
+	background: #e7e7e7;
+	padding: 20px 0;
+}
+#community .info{
+	padding: 0px 15px;
+	background: #fff;
+	display: block;
+	height: 39px;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	margin: 0;
+}
+#community .info a,#community .info h4{
+	float: left;
+	display: block;
+	line-height: 38px;
+	padding: 0;
+	margin: 0;
+}
+#community .info a{
+	color: #9ec052;
+	float: right;
+}
+.faq .accordion{
+	margin-bottom: 0;
+}
+#community section p.title a,.large-10.faq section p.title a{
+	color: #428db6;
+	font-size: 1em;
+	font-weight: normal;
+	background: #fff;
+	line-height: 30px;
+	padding-top: 0;
+	padding-bottom: 0;
+	white-space: normal !important;
+}
+.faq section p.title a i:after{
+	content: "\F107";
+	font-family: FontAwesome;
+	float: right;
+	line-height: 30px;
+	font-size: 30px;
+	font-style: normal;
+	color: #9ec052;
+}
+.faq section.active p.title a i:after{
+	content: "\F106";
+	font-family: FontAwesome;
+	float: right;
+	line-height: 30px;
+	font-size: 30px;
+	font-style: normal;
+	color: #e15656;
+}
+#community section.active p.title a,.large-10.faq section.active p.title a{
+	background: #f1f1f1;
+	color: #428db6;
+}
+.faq section.active p.title{
+	border-bottom: 0; 
+}
+.faq section .content p{
+	color: #666;
+	font-size: 14px;
+	font-weight: normal;
+	background: #fff;
+	line-height: 18px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+#community .buttons .panel{
+	font-size: 24px;
+	background: #fff;
+	padding: 10px;
+	margin-bottom: 0;
+}
+#community .buttons .panel a{
+	width: 100%;
+	margin: 0;
+	padding-top: 27px;
+	padding-bottom: 27px;
+}
+#community .buttons .panel a.community{
+	margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+#pre-footer,#footer{
+	padding: 20px 0;
+}
+#pre-footer h4{
+	font-size: 21px;
+	line-height: 21px;
+	margin: 0 0 20px 0;
+}
+#pre-footer p{
+	font-size: 14px;
+}
+#pre-footer .buttons a{
+	width: 100%;
+	font-size: 21px;
+	height: 75px;
+	margin-bottom: 20px;
+}
+#pre-footer .buttons a.fees,#pre-footer .buttons a.api{
+	padding-top: 25px;
+}
+#pre-footer .panel{
+	background: #fff;
+	padding: 10px;
+}
+#pre-footer .panel h4{
+	color: #110875;
+	font-weight: normal;
+	margin-bottom: 5px;
+}
+#pre-footer .panel p{
+	color: #666;
+}
+#footer{
+	background: #428db6;
+}
+#footer p{
+	margin: 0;
+	color: #fff;
+}
+
+/* PAGE CONTENT */
+
+.content hr{
+	margin-top: 0;
+}
+.content .border{
+	border: 1px solid #ccc;
+	background: #fff;
+	padding: 30px 40px;
+	margin-top: 30px;
+}
+.content .border h2{
+	font-weight: normal;
+}
+.content .border h2 i{
+	color: #9ec052;
+	font-size: 2em;
+}
+.content .border h2 span{
+	line-height: 2em;
+	vertical-align: top;
+}
+.content .border h4{
+	font-weight: normal;
+	color: #428db6;
+}
+.content a.top{
+	color: #428db6;
+	font-weight: bold;
+}
+.content a.top i{
+	font-size: 1.3em;
+}
+.content ul{
+	margin: 0 0 20px 30px;
+	list-style: circle;
+}
+.content ul.tips li{
+	list-style: disc;
+}
+ul.side-nav,ul.side-nav li{
+	list-style: none;
+	margin: 0;
+}
+ul.side-nav{
+	max-width: 640px;
+	margin: auto;
+	padding-top: 0;
+}
+ul.side-nav.how-it-works,ul.side-nav.api{
+	max-width: 400px;
+}
+ul.side-nav li{
+	float: left;
+	margin: 0 5px;
+	width: 100%
+}
+ul.side-nav li a{
+	height: 40px;
+	text-transform: uppercase;
+}
+.magellan.fixed ul.side-nav li{
+	width: 18%
+}
+.magellan.fixed ul.side-nav.how-it-works li,.magellan.fixed ul.side-nav.api li{
+	width: 30%
+}
+.side-nav li.active > a:first-child{
+	color: #fff;
+	background-color: #83a33c;
+}
+[data-magellan-expedition]{
+	padding: 0;
+}
+.sidebar.large-2 a{
+	width: 100%;
+	padding: 40px 10px;
+	font-size: 1.3em;
+	font-weight: normal;
+}
+.sidebar.large-2 a i{
+	font-size: 2.2em;
+}
+.sidebar.large-2 a.contact{
+	font-size: 1em;
+	padding: 30px 7px;
+}
+.sidebar.large-2 a.contact span{
+	font-size: 1.3em;
+	padding: 10px 0;
+}
+.content .large-10.faq section p.title a.long{
+	font-size: 0.9em;
+}
+.content .contact textarea{
+	height: 150px;
+}
+.content .contact a.button{
+	width: 100%;
+}
+.content table{
+	width: 100%;
+}
+.content table td{
+	color: #666;
+}
+.content table td.green,.content table th.green,.content table td.green a{
+	background: #9ec052;
+	color: #fff;
+}
+.content .api a.button,.content .api .fixed a.button{
+	padding: 12px 5px;
+	font-size: 0.8em;
+}
+.content .api td,.content .api th{
+	text-align: center;
+}
+.content .api span.red{
+	color: #e15656;
+}
+
+/* HEADER TRADING PLATFORM*/
+#header .dropdown{
+	width: 200px;
+}
+#header .dropdown:before{
+	border: none;
+	content: "\F013";
+	font-family: FontAwesome;
+	float: right;
+	line-height: 10px;
+	font-size: 20px;
+	font-style: normal;
+	color: #fff;
+}
+.f-dropdown li a{
+	padding: 0.9em;
+	text-align: left;
+}
+.f-dropdown li a i{
+	margin-right: 10px;
+}
+#sub-header{
+	background: #fff;
+	padding: 10px 0;
+	margin-bottom: 20px;
+	-webkit-box-shadow: 0px 5px 5px #dedfe0;
+	-moz-box-shadow: 0px 5px 5px #dedfe0;
+	-o-box-shadow: 0px 5px 5px #dedfe0;
+	-ms-box-shadow: 0px 5px 5px #dedfe0;
+	box-shadow: 0px 5px 5px #dedfe0;
+}
+#sub-header .last-prices{
+	border-right: 1px solid #ccc;
+	padding: 15px 0;
+}
+#sub-header h5, #sub-header h6{
+	color: #666;
+	font-weight: normal;
+}
+/*#sub-header h5 span, #sub-header h6 span{
+	color: #9dc24a;
+}*/
+#sub-header table{
+	margin: 0;
+	border: 0;
+	width: 100%;
+}
+#sub-header table th{
+	text-align: center;
+	line-height: 0.3em;
+	background: #428db6;
+	color: #fff;
+}
+#sub-header table td{
+	text-align: center;
+	line-height: 0.6em;
+	color: #666;
+}
+#sub-header table td.right{
+	color: #428db6;
+	font-weight: bold;
+}
+#interface .withdraw table th.th-right{
+	text-align: right;
+}
+
+/* AlERT BOX */
+.alert-box{
+	margin: 0 0 1em 0;
+	border: none;
+}
+.alert-box.alert{
+	background: #e15656;
+}
+.ajax span{
+	font-size: 1em;
+	text-align: center;
+	color: #666;
+}
+
+#ajax.smallest{
+	position: fixed;
+	margin-left: -8%;
+	width: 15%;
+	padding: 40px 20px 20px 20px;
+	text-align: center;
+	border: 0;
+	top: -10px !important;
+	-webkit-border-radius: 0px 0px 2px 2px;
+	-moz-border-radius: 0px 0px 2px 2px;
+	-o-border-radius: 0px 0px 2px 2px;
+	-ms-border-radius: 0px 0px 2px 2px;
+	border-radius: 0px 0px 2px 2px;
+}
+#ajax.smallest span{
+	line-height: 1.3em;
+}
+
+/* INTERFACE */
+#interface .welcome .panel{
+	border: 0;
+}
+#interface #menu.button-group .button{
+	border-bottom: 1px solid #d9d9d9;
+}
+#interface .button-group .button.active,#interface .button-group .button:hover{
+	border-bottom-color: #438db6;
+}
+#interface #sub-menu.button-group .button{
+	border-top: 1px solid #d9d9d9;
+}
+#interface .button{
+	width: 100%;
+}
+#interface .panel{
+	margin-bottom: 20px;
+	background: #e7e7e7;
+}
+#interface .panel h5{
+	color: #666;
+}
+#interface .panel p{
+	color: #666;
+	font-size: 0.9em;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+#interface .panel .button.small{
+	padding-top: 0.8em;
+	padding-bottom: 0.8em;
+	margin-bottom: 1em;
+}
+
+#interface #menu .button,#interface #sub-menu .button{
+	background: #fff;
+	color: #438db6;
+	box-shadow: none;
+	margin-bottom: 10px;
+}
+#interface #menu .button.active,#interface #menu .button:hover{
+	background: #438db6;
+	color: #fff;
+}
+#interface #sub-menu .button.active,#interface #sub-menu .button:hover{
+	border-bottom: 4px solid #438db6;
+}
+#interface .active-orders .accordion{
+	border: 0;
+}
+#interface .active-orders .accordion .content{
+	border-top: 0;
+}
+#interface .active-orders .accordion p.title a{
+	background: #438db6;
+	text-align: center;
+	color: #fff;
+	height: 42px;
+	line-height: 42px;
+	padding: 0;
+}
+#interface .active-orders section p.title a i:after{
+	content: "\F107";
+	font-family: FontAwesome;
+	float: right;
+	line-height: 42px;
+	font-size: 30px;
+	font-style: normal;
+	color: #fff;
+	margin-right: 10px;
+}
+#interface .active-orders section.active p.title a i:after{
+	content: "\F106";
+	font-family: FontAwesome;
+}
+#interface .active-orders section.active .content{
+	padding: 0;
+}
+#interface .active-orders section.active .content table{
+	width: 100%;
+	border: 0;
+}
+#interface .lending-overview .accordion{
+	margin-bottom: 1px;
+}
+#interface .lending-actions{
+	margin-top: 20px;
+}
+#interface .lending-actions p.title,#interface .deposit p.title,#interface .withdraw p.title{
+	width: 33.5%;
+	text-align: center;
+	font-weight: bold;
+	color: #666;
+	font-size: 1.3em;
+	line-height: 1em;
+}
+#interface .history p.title{
+	width: 14.5%;
+	font-size: 1em;
+}
+#interface .lending-actions form,#interface .lending-actions .button,#interface .deposit form,#interface .deposit .button,#interface .withdraw form,#interface .withdraw .button{
+	margin-bottom: 0;
+}
+#interface .lending-actions p.title a,#interface .deposit p.title a,#interface .withdraw p.title a{
+	color: #666;
+}
+#interface .lending-actions input,#interface .deposit input,#interface .withdraw input{
+	margin-bottom: 0;
+}
+#interface .lending-actions label,#interface .deposit label,#interface .withdraw label{
+	font-size: 0.9em;
+	text-align: center;
+}
+#interface .lending-actions .section-container{
+	margin-bottom: 0;
+}
+#interface .lending-actions p.desc{
+	font-size: 0.8em;
+	text-align: right;
+}
+#interface form.custom .custom.dropdown.small{
+	max-width: none;
+}
+#interface form.custom input.order_price{
+	margin: 0;
+}
+#interface .active-orders.options .insurance{
+	font-size: 0.8em;
+	line-height: 1.2em;
+}
+
+#interface .active-orders.options p.title a{
+	height: 35px;
+	background: #ededed;
+	line-height: 35px;
+	color: #666;
+}
+#interface .active-orders.options p.title a i:after{
+	line-height: 35px;
+	color: #666;
+}
+#interface .active-orders.options form label,#interface .active-orders.options p{
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 2em;
+	margin-bottom: 0;
+}
+
+
+
+
+#interface form.order{
+	margin-bottom: 0;
+}
+#interface .actions{
+	margin-bottom: 20px;
+}
+#interface .actions .large-4{
+	width: 33.4%;
+}
+#interface .actions .panel{
+	background: #fff;
+	padding: 10px;
+	min-height: 118px;
+	margin-bottom: 0;
+}
+#interface .actions .panel .ordertype{
+	font-size: 0.8em;
+}
+#interface .actions .buy{
+	padding-right: 0;
+}
+#interface .actions .sell{
+	padding-left: 0;
+}
+#interface .actions .options{
+	padding-left: 0;
+	padding-right: 0;
+	font-size: 0.8em;
+	text-align: center;
+}
+#interface .actions .options .panel{
+	border-bottom-color: #d9d9d9;
+}
+#interface .actions .options .panel .row{
+	padding: 0;
+}
+#interface .actions .options .ordersize{
+	background: #e7e7e7;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding-top: 5px;
+}
+#interface .actions .options .ordersize input{
+	height: 34px;
+}
+#interface .actions .options a#options-trigger{
+	margin-bottom: 5px;
+}
+#interface .actions .more-options{
+	display: none;
+}
+#interface .actions .more-options .panel{
+	background: #e7e7e7;
+	min-height: 0;
+	border-top: 0;
+	padding: 5px;
+	font-size: 0.8em;
+}
+#interface .actions .options input{
+	text-align: center;
+	width: 100%;
+	margin: 0 auto 10px auto;
+}
+#interface .actions .buy .panel{
+	border-right: 0;
+}
+#interface .actions .options .panel{
+	padding: 0;
+}
+#interface .actions .sell .panel{
+	border-left: 0;
+}
+#interface .buy .button,#interface .sell .button{
+	margin-bottom: 0;
+	padding: 1em 0;
+}
+#interface .buy span.value,#interface .sell span.value{
+	width: 100%;
+	display: block;
+	line-height: 1.8em;
+	-webkit-border-radius: 2px 2px 0px 0px;
+	-moz-border-radius: 2px 2px 0px 0px;
+	-o-border-radius: 2px 2px 0px 0px;
+	-ms-border-radius: 2px 2px 0px 0px;
+	border-radius: 2px 2px 0px 0px;
+	text-align: center;
+	color: #666;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+#interface .buy span.value{
+	background: #c9dc9d;
+}
+#interface .sell span.value{
+	background: #eb8787;
+}
+#interface .buy .button,#interface .sell .button{
+	margin-top: -2px;
+}
+#interface .actions form .columns{
+	font-size: 0.9em;
+	padding-left: 0;
+}
+#interface form label{
+	font-size: 1em;
+	line-height: 2em;
+}
+#interface form label span.checkbox{
+	line-height: 1.2em;
+}
+form.custom .custom.dropdown{
+	margin-bottom: 0em;
+}
+#interface thead th{
+	background: #e7e7e7;
+}
+#interface thead.first th{
+	background: #fff;
+	font-size: 1.3em;
+}
+#interface .buy table td.price{
+	color: #e15656;
+}
+
+#interface .sell table td.price{
+	color: #9ec052;
+}
+#interface table th,#interface table td{
+	line-height: 1em;
+	color: #666;
+	border: 0;
+	margin: 0;
+	text-align: center;
+}
+#interface .margin-available h6,#interface .order-book h6,#interface .withdraw h6,#interface .deposit h6,#interface .manage-wallet h6{
+	background: #438db6;
+	text-align: center;
+	color: #fff;
+	padding: 0;
+	line-height: 42px;
+	height: 42px;
+	font-weight: normal;
+	font-size: 0.9em;
+	margin: 0;
+}
+#interface .margin-available .header{
+	background: #e7e7e7;
+	padding: 5px;
+}
+#interface .margin-available .header form,#interface .margin-available .header input{
+	margin-bottom: 0;
+}
+#interface .margin-available table{
+	width: 100%;
+}
+#interface .margin-available table span{
+	color: #e15656;
+}
+#interface .order-book .even-1 li{
+	width: 100%;
+}
+#interface .deposit p,#interface .deposit h5,#interface .withdraw p,#interface .withdraw h5{
+	text-align: center;
+}
+#interface .deposit h5,#interface .withdraw h5{
+	color: #438db6;
+}
+#interface .deposit h5 .alert,#interface .withdraw h5 .alert{
+	color: #e15656;
+}
+#interface .manage-wallet h6{
+	margin-bottom: 20px;
+}
+#interface .manage-wallet .panel .row>div{
+	display: block;
+	float: left;
+	margin: 0 0.7em;
+	line-height: 2em;
+}
+#interface .manage-wallet .panel .row>div.large-offset-4{
+	margin-left: 33.3%;
+	margin-top: 20px;
+}
+#interface .manage-wallet table tr td.ui-state-active {
+	background-color: #9ec052;
+}
+
+/* PAGE */
+#interface .page{
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+#interface .page h4,#interface .page h6{
+	color: #428db6;
+}
+#interface .page p span{
+	color: #9ec052;
+}
+#interface .page p span.key{
+	color: #438db6;
+}
+#interface .page table{
+	width: 100%
+}
+#interface .verification ul{
+	margin-left: 20px;
+}
+
+
+/* SIDEBAR */
+
+#interface .order-book .button{
+	padding-top: 1.2em;
+	padding-bottom: 1.2em;
+	font-size: 0.7em;
+}
+#interface .wallet{
+	background:#9ec052;
+	padding-bottom: 10px;
+}
+#interface .wallet label{
+	color: #fff;
+	text-align: center;
+}
+#interface .overview table{
+	width: 100%;
+	min-height: 280px;
+	margin-bottom: 0;
+}
+#interface .overview table td{
+	text-align: left;
+}
+#interface .overview table tr td:nth-child(2){
+	text-align: right;
+}
+#interface .sidebar .manage-wallet{
+	background: #e7e7e7;
+	padding-bottom: 10px;
+}
+#interface .sidebar .manage-wallet .button{
+	margin: 10px 0 0 0;
+}
+#interface .sidebar .manage-wallet .button i{
+	margin-right: 10px;
+}
+#interface .sidebar .links{
+	background: #fff;
+}
+#interface .sidebar .links ul{
+	list-style: none;
+	margin-top: 10px;
+}
+#interface .sidebar .links ul li a{
+	margin: 5px 0;
+	display: block;
+	color: #666;
+	line-height: 2em;
+	padding-left: 10px;
+}
+#interface .sidebar .links ul li a.active,#interface .sidebar .links ul li a:hover{
+	color: #fff;
+	background: #9ec052;
+}
+#interface .sidebar .links ul li a.active:before{
+	content: "\F104";
+	font-family: FontAwesome;
+	float: left;
+	font-size: 30px;
+	font-style: normal;
+	color: #fff;
+	margin-right: 10px;
+}
+
+#menu-footer{
+	background: #fff;
+	margin: 20px 0 0 0;
+	-webkit-box-shadow: 0px -5px 5px #dedfe0;
+	-moz-box-shadow: 0px -5px 5px #dedfe0;
+	-o-box-shadow: 0px -5px 5px #dedfe0;
+	-ms-box-shadow: 0px -5px 5px #dedfe0;
+	box-shadow: 0px -5px 5px #dedfe0;
+}
+#menu-footer .top-bar, #menu-footer .top-bar-section li a:not(.button), #menu-footer .top-bar-section ul, #menu-footer .top-bar-section ul li.active > a{
+	background: #fff;
+}
+#menu-footer .top-bar-section .left li{
+	margin-right: 30px;
+}
+#footer .link-terms {
+	text-align: right;
+}
+#footer .link-terms a{
+	color: #fff;
+	text-decoration: underline;
+}
+
+@media only screen and (max-width: 1023px) {
+	#call-to-action .text h5{
+		font-size: 1em;
+	}
+	#call-to-action .text h3{
+		font-size: 1.1em;
+	}
+	#community .community{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#pre-footer .buttons a{
+		font-size: 1.2em;
+	}
+	#pre-footer .contacts a{
+		font-size: 0.9em;
+	}
+	.reveal-modal form .account-type-field label{
+		font-size: 0.9em;
+		margin-bottom: 10px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#call-to-action .text h5, #call-to-action .text h3{
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	#call-to-action .button.right{
+		float: none !important;
+		margin: auto;
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 639px) {
+	#header .small-6{
+		width: 100%;
+		text-align: center;
+	}
+	#header .button{
+		margin-bottom: 0px;
+	}
+	#slider h3{
+		font-size: 0.9em;
+	}
+	#slider p{
+		font-size: 0.8em;
+		line-height: 14px;
+	}
+	.orbit-container .orbit-slides-container > * .orbit-caption{
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		max-width: none;
+	}
+	ul.side-nav li a {
+		font-size: 0.7em;
+		padding: 7px 0;
+		height: 30px;
+	}
+	#community section p.title a,.large-10.faq section p.title a{
+		line-height: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	#community section p.title a{
+		font-size: 0.8em;
+	}
+	.reveal-modal form .currency-field label,.reveal-modal form .account-type-field label{
+		font-size: 0.8em;
+	}
+	ul.side-nav li {
+		margin: 0 3px;
+	}
+}
+
+
+
+
+
+
+
+

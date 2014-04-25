@@ -1,0 +1,9 @@
+Lag status: <br/>
+<% if @lag_trading %>
+<span class="
+            <% if @lag_trading < 10 %>green
+            <% else %>red
+            <% end %>">
+            <%= @lag_trading %> seconds
+          </span>
+<% end %>

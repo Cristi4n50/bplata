@@ -1,0 +1,47 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title t "nav.public_log" %>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page">
+      <h4><%= t "nav.public_log" %></h4>
+
+      <p><%= t "nav.publiclog_information" %></p>
+      <table cellspacing="0">
+        <thead>
+        <tr>
+        <th>#</th>
+        <th><%= t 'trading.pair' %></th>
+        <th><%= t ".trade_price" %></th>
+        <th><%= t 'trading.amount' %></th>
+        <th><%= t '.execution_time' %></th>
+        </thead>
+        <tbody>
+        <% unless @tradedorders.nil? %>
+            <% cpt = 0 %>
+            <% @tradedorders.each do |tradedorder| %>
+                <tr>
+                  <td><%= tradedorder.id %></td>
+                  <td><%= tradedorder.pair %></td>
+                  <td><%= tradedorder.status %></td>
+                  <% if !tradedorder.originalamount.nil? %>
+                      <td><%= tradedorder.originalamount.round(2) %></td>
+                  <% else %>
+                      <td><%= tradedorder.amount.round(2) %></td>
+                  <% end %>
+                  <td><%= friendly_timestamp(tradedorder.updated_at) %></td>
+                </tr>
+                <% if cpt > 100
+                     break
+                   end %>
+                <% cpt += 1 %>
+            <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

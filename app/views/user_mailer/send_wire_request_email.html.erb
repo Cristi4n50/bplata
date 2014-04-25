@@ -1,0 +1,34 @@
+<p>A new wire has been requested</p>
+<br/>
+<p>Express:
+  <% if @express > 0 %>YES
+  <% else %>NO
+  <% end %><br/>
+  Reference number: <%= @ref_number.to_s %><br/>
+  BFX Username: <%= @username %><br/>
+  User email address: <%= @user_email %><br/>
+  Amount: <%= @amount.to_d.round(2).to_s %>
+  <% if @express > 0 %> USD (express fee deducted)
+  <% else %> USD
+  <% end %>
+  </br>
+  Account Name: <%= @account_name %></br>
+  Account Address: <%= @account_address %></br>
+  Account Number: <%= @account_number %></br>
+  Bank Name: <%= @bank_name %></br>
+  Bank Address: <%= @bank_address %></br>
+  Bank City: <%= @bank_city %></br>
+  Swift: <%= @swift %></br>
+  Country: <%= @country %></br>
+  Details of payment: <%= @details_payment %><br/>
+  <% if @intermediary_bank_name.length > 0 %>
+      Intermediary Bank Name: <%= @intermediary_bank_name %><br/>
+      Intermediary Bank Address: <%= @intermediary_bank_address %><br/>
+      Intermediary Bank City: <%= @intermediary_bank_city %><br/>
+      Intermediary Bank Country: <%= @intermediary_bank_country %><br/>
+      Intermediary Bank Account: <%= @intermediary_bank_account %><br/>
+      Intermediary Bank SWIFT: <%= @intermediary_bank_swift %><br/>
+  <% end %>
+</p>
+<br/>
+<p>Thanks a lot</p>

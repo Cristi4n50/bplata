@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  Offer: read
+  
+partner:
+  Offer: read
+
+associate:
+  Offer: read

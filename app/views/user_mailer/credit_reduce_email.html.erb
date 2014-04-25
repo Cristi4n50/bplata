@@ -1,0 +1,8 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	Your swap #<%= @credit.id %> has been reduced at: <%= @credit.updated_at %>.
+</h2>
+<p>Details: </p>
+<strong>Currency: </strong> &nbsp; <%= @credit.currency %><br/>
+<strong>Rate: </strong> &nbsp; <% if @credit.rate > 0 %><%= (@credit.rate * 100).round(4) %><% else %><%= @avgrate.round(4) %><% end %>% per day<br/>
+<strong>Open on: </strong> &nbsp; <%= @credit.created_at.strftime("%b %d %I:%M %p") %><br/>
+<strong>Remaining amount: </strong> &nbsp; <%= @credit.amount %><br/>

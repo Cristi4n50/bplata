@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+Loan:
+  fields:
+    default: currency, amount, rate, status, period, lender_id, loaner_id, created_at, updated_at
+    form: currency, amount, rate, status, period, lender_id, loaner_id
+  relationships: 
+  application: Application
+  order_by: -id
+  #filters: status

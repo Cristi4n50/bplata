@@ -1,0 +1,249 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+
+ *= require jquery.pnotify
+ *= require foundation
+ *= require custom
+ *= require_self
+*/
+
+.buying {
+    background-color: #9dc24a;
+}
+
+.green {
+    color: #9dc24a;
+}
+
+
+
+.red {
+    color: rgb(196, 60, 53);
+}
+
+.selling {
+    background-color: rgb(196, 60, 53);
+}
+
+.system_trades {
+    background-color: #9dc24a;
+    color: #ffffff;
+}
+
+.error_trades {
+    background-color: rgb(196, 60, 53);
+    color: #ffffff;
+}
+
+.blockbutton {
+    margin: 10px;
+}
+
+#asks table td, #bids table td, #orderbook table td {
+    line-height: 0.5em;
+}
+
+#interface .margin-available .accordion{
+    border: 0;
+}
+#interface .margin-available .accordion .content{
+    border-top: 0;
+    padding: 0.01em;
+}
+#interface .margin-available .accordion p.title a{
+    background: #438db6;
+    text-align: center;
+    color: #fff;
+    height: 42px;
+    line-height: 42px;
+    padding: 0;
+}
+.nowrapping {
+    white-space:nowrap;
+}
+
+div.error {
+    background-color: red;
+}
+
+*
+{
+    margin:auto;
+}
+
+
+
+#inf{
+    width:400px;
+    color:rgba(255,255,255,1.00);
+    margin-left:150px;
+    margin-top:-320px;
+    font-family:"lato";
+}
+
+#col{
+    color: white;
+}
+
+.Active{
+    background-image: url(/assets/qesbitcoinslogosmall.png);
+}
+
+#check1{
+    margin-left: -140px;
+}
+
+#text1{
+    margin-left: -90px;
+    margin-top: -35px;
+}
+
+#comve{
+    margin-left: -70px;
+}
+
+
+
+#Menu
+{
+    background-image:url(/assets/bgtop-1.jpg);
+    background-position:center center;
+    background-size:100% 100%;
+    padding:20px;
+    width:100%;
+    height:112px;
+}
+
+#Menu ul
+{
+    text-align:center;
+}
+
+#Menu #ppl
+{
+    font-size:12px;
+    text-align:left;
+    margin-left:250px;
+}
+
+#Menu ul li
+{
+    display:inline-block;
+    list-style:none;
+    z-index:10;
+}
+
+#Menu ul li a
+{
+    text-decoration:none;
+    margin-right:12px;
+    font-size:14px;
+    color:rgba(112,112,112,1.00);
+    transition:all 0.5s;
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+}
+
+#Menu ul li a:hover
+{
+    color:rgba(255,255,255,1.00);
+}
+
+#Menu ul li > #Actual
+{
+    color:rgba(255,255,255,1.00) !important;
+    font-size:12px;
+}
+
+#Select
+{
+    position:absolute;
+    top:40px;
+    left:253px;
+    z-index:2;
+}
+
+#Logo1
+{
+    margin-left:60px;
+    margin-top: -65px;
+}
+
+#Desc
+{
+    margin-top:-18px;
+    color:rgba(112,112,112,1.00);
+}
+
+#Monedas
+{
+    text-align:center;
+    margin-top:-93px;
+}
+
+#idiomas{
+    margin-left: 830px;
+    margin-top:-48px;
+}
+
+
+#soporte{
+    float: right;
+    margin-right: 20px;
+    margin-top: -50px;
+}
+
+#Monedas #Descmonedas
+{
+    margin-left: 50px;
+margin-top:10px;
+    font-weight:bold;
+    font-size:18px;
+    color:rgba(113,113,113,1.00);
+}
+
+#Monedas > #aa
+{
+    background-image:url(/assets/shadows.png);
+    background-repeat:no-repeat;
+    background-position:143px center;
+    width:520px;
+    margin-left:480px;
+    text-align:center;
+}
+
+#Monedas ul li > a
+{
+    
+    font-size:12px !important;
+    margin-right:10px;
+}
+
+#contenidomenu{
+    margin-top: -15px;
+}
+
+
+#Menu #Menusec
+{
+    text-align:right;
+    margin-right:80px;
+    margin-top:25px;
+}
+
+#Menu #Menusec #Act
+{
+    color:rgba(255,255,255,1.00);
+}
+
+#Login
+{
+    margin-right:10px;
+    float: right;
+    margin-top:20px;
+    cursor:pointer;
+    width:270px;
+}
+

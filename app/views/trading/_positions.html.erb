@@ -1,0 +1,17 @@
+<div class="row active-orders">
+  <div class="large-12 columns">
+    <div class="section-container accordion" data-options="one_up: true;" data-section="accordion">
+      <section>
+        <p class="title" data-section-title><a href="#"><%= t "trading.active_positions" %> <i></i></a></p>
+        <div id="positions" class="content" data-section-content>
+          <%= render "/trading/interior_positions" %>
+          <p>
+            <small><%= t "trading.pl_explain" %></small>
+            <br/>
+            <small><%= t "trading.lp_explain" %></small>
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title t 'account.trading_sum' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> <%= t "account.trading_sum" %></h6>
+    <% unless @dauser.nil? %>
+        <br/>
+        <br/>
+        <% usd_volume = Trade.on_slave.where(["created_at >= ? and (buyer_id = ? or seller_id = ?) and pair like '%USD'", Time.now - 30.days, current_user.id, current_user.id]).sum('amount * price').to_d
+           usd_volume += Currency.currencyvalue(Trade.on_slave.where(["created_at >= ? and (buyer_id = ? or seller_id = ?) and pair like '%BTC'", Time.now - 30.days, @dauser.id, @dauser.id]).sum('amount * price').to_d, "BTC", false) %>
+        <div class="row">
+          <div class="large-12 columns"><%= t 'account.btc_volume' %>
+            : <%= dollar(@dauser.volume("BTCUSD", 30).to_d, "") %></div>
+          <br/><br/>
+
+          <div class="large-12 columns"><%= t 'account.ltc_volume' %>
+            : <%= dollar(@dauser.volume("LTCUSD", 30).to_d + @dauser.volume("LTCBTC", 30).to_d, "") %></div>
+          <br/><br/>
+          <% unless @dauser.level == 'deposit' || @dauser.prefcurrency != 'USD' %>
+              <div class="large-12 columns"><%= t 'account.total_fees_paid' %>: <br/>
+                <% usd_fee = 0 %>
+                <% Currency.currencies.each do |curr| %>
+                    <% fee = @dauser.total_fees_paid(curr, 30)
+                       usd_fee += Currency.currencyvalue(fee, curr, false) %>
+                    <%= dollar(fee, "") %> <%= curr %>
+                    <br/>
+                <% end %>
+                <br/>
+                Average fees paid (on total USD volume on Bitfinex and
+                Bitstamp): <%= percentage(usd_fee / usd_volume) %>
+                <br/><br/>
+                Your fees on Bitfinex (based on your trading volume): <br/>
+                <% ["BTC", "LTC"].each do |curr| %>
+                    <%= curr %> pairs: <%= percentage(Fee.user_fee("bfx_fees_" + curr, @dauser)) %>
+                    <br/>
+                <% end %>
+              </div>
+          <% end %>
+          <br/><br/>
+          <hr/>
+          <% unless @dauser.level != 'trader' %>
+              <div class="large-12 columns">
+                <% pl = 0
+                   Currency.currencies.each do |curr|
+                     conv = 1
+                     conv = Ticker.last_midpoint(curr + "USD") if curr != "USD"
+                     pl += @dauser.ledger_entries.on_slave.where(["(description like ? or description like ?) and currency = ? and created_at >= ?", "Trading fees%wallet trading", "Position%wallet trading", curr, Time.now - 30.days]).sum("amount * #{conv}").to_d
+                   end %>
+                <%= t 'account.total_profit_loss', :nbdays => 30 %>: <%= colored_dollar(pl) %>
+              </div>
+          <% end %>
+          <br/>
+          <hr/>
+          <br/>
+
+          <div class="large-12 columns">
+            <%= t 'account.total_interests_earned', :nbdays => 30 %>:<br/>
+            <% Currency.currencies.each do |curr| %>
+                <%= dollar(@dauser.ledger_entries.on_slave.where(["description like ? and currency = ? and created_at >= ?", "Interest Payment%", curr, Time.now - 30.days]).sum('amount').to_d, "") %> <%= curr %>
+                <br/>
+            <% end %>
+          </div>
+        </div>
+    <% else %>
+        No user selected
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<ul class="button-group radius even-<%= 2 + Currency.currencies.count %>" id="sub-menu">
+  <li><a href="/account/trading_sum" class="button small
+    <% if controller.controller_name == 'account' && controller.action_name == 'trading_sum' %> active
+    <% end %>"><%= t "account.trading_sum" %></a></li>
+  <% Currency.currencies.each do |curr| %>
+      <li><a href="/account/ledger/<%= curr.downcase %>" class="button small
+        <% if controller.controller_name == 'account' && controller.action_name == 'ledger' && @currency == curr %> active
+        <% end %>"><%= curr %></a></li>
+  <% end %>
+  <li><a href="/orders" class="button small
+    <% if controller.controller_name == 'orders' %> active
+    <% end %>"><%= t "trading.order_history" %></a></li>
+  </ul>
+<ul class="button-group radius even-4" id="sub-menu">
+  <li><a href="/offers" class="button small
+    <% if controller.controller_name == 'offers' %> active
+    <% end %>"><%= t "credit.offer_history" %></a></li>
+  <li><a href="/account/trades" class="button small
+    <% if controller.controller_name == 'account' && controller.action_name == 'trades' %> active
+    <% end %>"><%= "Trades" %></a></li>
+  <li><a href="/account/unused_swaps" class="button small
+    <% if controller.controller_name == 'account' && controller.action_name == 'unused_swaps' %> active
+    <% end %>"><%= t "account.unused_swaps" %></a></li>
+  <li><a href="/account/margin_swaps" class="button small
+    <% if controller.controller_name == 'account' && controller.action_name == 'margin_swaps' %> active
+    <% end %>"><%= t "account.margin_swaps" %></a></li>
+</ul>

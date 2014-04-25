@@ -1,0 +1,18 @@
+# Use the README file as a reference to customize settings.
+
+Wallet:
+  fields:
+    default: id, user_id, wallettype
+    list: id, user_id,wallettype
+    form: id, user_id, wallettype
+#    options:
+#      selectors: user_id
+  relationships: walletbalances
+  application: Application
+  order_by: -id
+#  filters: wallettype, user_id
+  search: user_id
+  actions:
+    edit: show
+  options:
+    default_action_on_item: show

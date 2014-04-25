@@ -1,0 +1,178 @@
+<%= render "javascript" %>
+<%= render "menu" %>
+</div>
+</div>
+<% title 'Deposits and Withdrawals' %>
+<table class="history table table-bordered table-striped">
+<thead>
+<tr>
+  <th colspan="5">Pending outflow</th>
+</tr>
+<tr>
+  <th>Currency</th>
+  <th>Pending approval</th>
+  <th>Processing</th>
+  <th>Total</th>
+  <th>Processable (hot wallet if crypto-currencies)</th>
+</tr>
+</thead>
+<tbody>
+    <% Currency.base_currencies.each do |curr| %>
+        <tr>
+          <td><%= curr %></td>
+          <td><%= dollar(Deposit.where(["currency = ? and amount < 0 and status = ?", curr, "PENDING APPROVAL"]).sum('amount'),"") %></td>
+          <td><%= dollar(Deposit.where(["currency = ? and amount < 0 and status = ?", curr, "PROCESSING"]).sum('amount'),"") %></td>
+          <td><%= dollar(Deposit.where(["currency = ? and amount < 0 and (status = ? or status like ?)", curr, "PENDING APPROVAL", "PROCESSING"]).sum('amount'),"") %></td>
+          <td><% if CRYPTO_CURRENCIES.include?(curr) %><% if curr == "BTC" %><%= Setting.get_value("bank_btc").to_d.round(2) %><% else %><%= Setting.get_value("hot_#{curr.downcase}").to_d.round(2) %><% end %><% else %>NA<% end %></td>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<% if current_user.associate? %>
+    <table class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th colspan="7">Pending withdrawals</th>
+      </tr>
+      <tr>
+        <th>Amount</th>
+        <th>Method</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>User</th>
+        <th>Wallet balances</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @withdrawals.empty? %>
+          <tr>
+            <td colspan="7">No withdrawals to process!</td>
+          </tr>
+      <% else %>
+          <% @withdrawals.each do |withdrawal| %>
+              <tr
+              <% if withdrawal.user.no_withdraw? %> style="background-color: #FF9999;"
+              <% elsif withdrawal.user.otp_enabled? %> style="background-color: #99FF66;"
+              <% end %>>
+                <td><%= dollar(withdrawal.amount, "") %> <%= withdrawal.currency %></td>
+                <td><%= withdrawal.method %></td>
+                <td><%= withdrawal.remark %></td>
+                <td><%= friendly_timestamp(withdrawal.created_at) %></td>
+                <td><%= withdrawal.user.id %>
+                  <br/>
+                  Full Name: <%= withdrawal.user.fullname %>
+                  <br/>
+                  <a href="mailto:<%= withdrawal.user.email %>"><%= withdrawal.user.username %></a>
+                </td>
+                <td>
+                  <% withdrawal.user.wallets.each do |wallet| %>
+                      <%= wallet.name %>:<br/>
+                      <% wallet.walletbalances.each do |bal| %>
+                          <%= bal.currency %>: <%= colored_dollar(bal.balance + bal.unsettled_interest, 0, "") %>
+                          <br/>
+                      <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= form_tag({:controller => :power, :action => :approve_withdrawal}, {:remote => false}) do %>
+                      <input type="hidden" name="withdrawalid" id="withdrawalid" value="<%= withdrawal.id %>"/>
+                      <%= select_tag "validate", options_for_select(["", "Approve", "Refuse"], ""), :onchange => "if(confirm('Are you sure?')) {this.form.submit();}" %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="5">Processing wires</th>
+  </tr>
+  <tr>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>User</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @processing_wire.empty? %>
+      <tr>
+        <td colspan="5">No wire to process!</td>
+      </tr>
+  <% else %>
+      <% @processing_wire.each do |withdrawal| %>
+          <tr>
+            <td><%= dollar(withdrawal.amount, "") %> <%= withdrawal.currency %></td>
+            <td><%= withdrawal.remark %></td>
+            <td><%= friendly_timestamp(withdrawal.created_at) %></td>
+            <td><%= withdrawal.user.id %>
+              <br/>
+              <a href="mailto:<%= withdrawal.user.email %>"><%= withdrawal.user.username %></a>
+            </td>
+            <td>
+              <%= form_tag({:controller => :power, :action => :process_wire}, {:remote => false}) do %>
+                  <input type="hidden" name="withdrawalid" id="withdrawalid" value="<%= withdrawal.id %>"/>
+                  <%= select_tag "process", options_for_select(["", "Complete", "Cancel"], ""), :onchange => "if(confirm('Are you sure?')) {this.form.submit();}" %>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="5">Pending wires</th>
+  </tr>
+  <tr>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>User</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= form_tag({:controller => :power, :action => :add_wire}, {:remote => false}) do %>
+      <tr>
+        <td><%= text_field_tag :amount, params[:amount], :value => 0, :title => "Amount" %> USD</td>
+        <td colspan="2"><%= text_field_tag :description, params[:description], :value => "", :title => "Description" %></td>
+        <td><%= text_field_tag :userid, params[:userid], :value => "", :title => "User ID" %></td>
+        <td>
+          <%= submit_tag "Add", :id => "submit", :name => "submit", :class => "button radius" %>
+        </td>
+      </tr>
+  <% end %>
+  <% if @pending_wire.empty? %>
+      <tr>
+        <td colspan="5">No wire to process!</td>
+      </tr>
+  <% else %>
+      <% @pending_wire.each do |wire| %>
+          <tr>
+            <%= form_tag({:controller => :power, :action => :approve_wire}, {:remote => false}) do %>
+                <td><%= text_field_tag :amount, params[:amount], :value => wire.amount, :title => "Amount" %> <%= wire.currency %></td>
+                <td><%= text_field_tag :description, params[:description], :value => "", :title => "Description" %></td>
+                <td><%= friendly_timestamp(wire.created_at) %></td>
+                <td><%= wire.user.id %>
+                  <br/>
+                  Full Name: <%= wire.user.fullname %>
+                  <br/>
+                  <a href="mailto:<%= wire.user.email %>"><%= wire.user.username %></a>
+                </td>
+                <td>
+                  <input type="hidden" name="wireid" id="wireid" value="<%= wire.id %>"/>
+                  <%= select_tag "process", options_for_select(["", "Approve", "Cancel"], ""), :onchange => "if(confirm('Are you sure?')) {this.form.submit();}" %>
+                </td>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

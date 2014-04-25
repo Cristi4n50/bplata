@@ -1,0 +1,24 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<div class="row order-book">
+  <div class="large-12 columns">
+    <h6><%= t 'nav.order_book' %></h6>
+    <ul class="button-group radius even-3" id="sub-menu">
+      <% @pairs.each do |currentpair| %>
+          <li><a href="/pages/order_book/?pair=<%= currentpair.downcase %>" class="button small
+        <% if @pair == currentpair %> active
+        <% end %>"><%= currentpair %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<%= render "javascript" %>
+<% title t "nav.order_book" %>
+<p>
+  <% t "nav.orderbook_information" %></p>
+<div class="row tables" id="orderbook">
+  <%= render "/trading/bids" %>
+  <%= render "/trading/asks" %>
+</div>

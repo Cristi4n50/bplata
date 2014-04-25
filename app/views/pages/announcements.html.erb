@@ -1,0 +1,22 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Annoucements" %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="border">
+        <h2><span><%= 'Announcements' %></span></h2>
+        <% @posts.each do |post| %>
+            <hr/>
+            <h3><%= post.title %></h3>
+            <div>Posted: <%= friendly_timestamp(post.created_at) %></div><br/>
+            <div><%= simple_format(post.body) %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

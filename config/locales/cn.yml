@@ -1,0 +1,761 @@
+--- 
+cn:
+  account: 
+    account_name: "梖誧靡備"
+    account_number: "梖誧瘍鎢 (麼弊暱窅俴梖誧瘍鎢)"
+    account_settings: "梖誧扢离"
+    account_token: "梖誧躇鎢"
+    account_token_key: "梖誧躇鎢 (Key)"
+    account_verification: "痐袨怓"
+    accounting_currency: "梖誧億啟"
+    agree_to_bfx_tos: "扂肮砩 %{link:Bitfinex Terms of Service}"
+    already_have_account: "眒衄梖誧?"
+    amount: 杅塗
+    at_least_n_characters: "祫屾 %{n} 趼譫"
+    api_generation_page: "茼蚚最宒奪燴"
+    api_explain: "蠟褫眕婓涴爵斐膘珨跺陔腔API梖誧睿躇鎢﹝API梖誧睿躇鎢蔚懂拸楊籵徹炵苀梑隙ㄛ垀眕暮檣涴虳陓洘﹝"
+    api_explain1: "悵奪疑蠟腔API梖誧睿躇鎢﹝彆睡珨砐衄掩聒蚚腔珃疶ㄛ蕾撈秏麼載蜊﹝"
+    api_generate: "斐膘珨跺API梖誧"
+    api_revoke: "萸僻煙壺蠟腔API梖誧"
+    api_save: "迡狟蠟腔茼API梖誧ㄛ森陓洘蔚懂拸楊籵徹炵苀梑隙"
+    api_your_api_key: "蠟腔API梖誧岆"
+    api_your_api_secret: "蠟腔API躇鎢岆"
+    authenticate: 痐
+    available_balance: "褫蚚訧踢"
+    available_balance_explain: "涴岆蠟腔褫蚚訧踢﹝癹歎等ㄛ庈歎等ㄛ淏婓机蠶笢腔湃遴麼質堤腔訧踢ㄛ頗熬屾蠟腔褫蚚訧踢﹝ 剒褫蚚訧踢杅塗奻汔ㄛ秏癹歎等麼壽敕累弇﹝"
+    balance: 豻塗
+    bank_address: "窅俴華硊"
+    bank_city: "窅俴垀婓傑庈"
+    bank_country: "窅俴垀婓弊模"
+    bank_name: "窅俴靡備"
+    bank_statement: "窅俴梖等"
+    bitcoin: Bitcoin
+    bitcoin_daemon_down: "Bitcoin婃奀壽敕ㄛ尕綴婬懂"
+    buys: 鎗
+    litecoin: Litecoin
+    litecoin_daemon_down: "Litecoin婃奀壽敕ㄛ尕綴婬懂"
+    change_address: "載蜊華硊"
+    contact_us: "薊炵扂蠅"
+    contact_us_to_change_userinfo: "剒載蜊蚚誧靡麼萇赽蚘眊ㄛ籵徹  %{mailto:support@bitfinex.com}薊炵扂蠅﹝"
+    credit: 盓
+    currency: 億啟
+    date: 
+    debit: 盓堤
+    deposit: 湔遴
+    deposit_by_mtgox_code: "籵徹Mt. Gox Code (撈奀)湔遴"
+    deposit_by_wire: "籵徹弊暱窅俴颯遴 (1-3跺馱釬)湔遴"
+    description: 鏡扴
+    ? "恅璃掩擇橈"
+    : "恅璃掩擇橈"
+    details_payment_wire: "葆遴牉誹"
+    disabled: "眒輦蚚"
+    email: "萇赽蚘眊華硊"
+    email_explain: "峈賸梖誧假ㄛ薊炵%{mailto:support@bitfinex.com}載蜊蠟腔萇赽蚘眊﹝ "
+    emailoptions: "萇赽蚘璃恁砐"
+    email_me_when: "絞%{}ㄛ楷萇赽蚘璃跤扂﹝"
+    email_notifications_options: "萇赽蚘璃籵眭恁砐"
+    enabled: "眒羲籵"
+    ensure_correct_wire: "蠟眒枑鼎垀衄陓洘睿颯遴痐瘍鎢﹝窅俴颯遴綴斐膘珨爺踢籵眭﹝"
+    enter_otp_prompt: "怀蠟腔嗷貉桄痐躇鎢﹝"
+    forced_liquidation: 呾
+    full_name: "靡"
+    iban: 弊暱窅俴梖誧瘍鎢
+    important: 笭猁!
+    initiate_a_wire: "蠟淏婓籵徹窅俴颯遴蛁藝踢:"
+    international_wire_transfer: "弊暱窅俴颯遴"
+    international_wire_transfer_fee: "藩捩弊暱窅俴颯遴頗彶$%{fee}腔煤蚚﹝"
+    withdrawal_explain: "峈賸梖誧假ㄛ婓蠟羲籵珨棒俶躇鎢桄痐綴ㄗ梖誧假珜醱ㄘ堤踢扠蔚頗赻雄俇傖﹝杅塗誕湮腔堤踢扠蔚頗馱釬埜机瞄俇傖﹝"
+    ledger: 盪妢暮翹
+    level: "梖誧濬倰"
+    level_explain: "扂蠅衄笱梖誧ㄩ湔遴ㄛ億啟募遙睿蝠眢梖誧﹝蝠眢氪褫眕妏蚚垀衄梖誧ㄛ億啟募遙氪拸楊妏蚚蝠眢梖誧ㄛ湔遴氪硐夔腎翹堤質珜醱﹝"
+    leverage_options: "話裝恁砐"
+    leverage_tips: "話裝埣詢ㄛ瞳埣詢ㄛ眈毀ㄛ囷囮珩埣湮﹝扂蠅膘祜芘訧氪睿陔忒妏蚚1.0:1腔話裝ㄛ芘儂妀ㄛ鄴妀睿鼠侗妏蚚2.5:1腔話裝﹝彆蠟抇洃森濬蝠眢ㄛ褫眕妏蚚載詢腔話裝﹝"
+    close_to_increase_available_balance: "蠟褫眕壽敕累弇眕崝樓褫蚚訧踢﹝"
+    login: "腎翹"
+    managewallets: "婦奪燴"
+    managewallets_explain: "蠟褫眕婓祥肮腔婦眳潔痄雄訧踢﹝酘耜珆尨褫蚚訧踢﹝彆蠟衄累弇麼質堤訧踢ㄛ蠟腔褫蚚訧踢迵梖誧豻塗頗祥肮."
+    margin_call: "俴累"
+    max_tolerated_loss: "郔詢褫創忳囷囮"
+    method: 源楊
+    minimum_n_dollar: "郔腴$%{n}"
+    no_account: "遜羶衄梖誧?"
+    no_order: "蠟羶衄隆等﹝"
+    no_ledger: "蠟羶衄梖誧蝠眢隴牉﹝"
+    notify_deposit: "A Bitcoin 麼窅俴颯遴眒善梖"
+    notify_withdrawal: "俇傖遴"
+    one_time_token: "珨棒俶躇鎢"
+    otp_disable: "輦蚚邧笭痐"
+    otp_enable: "羲籵邧笭痐"
+    otp_enter: "怀嗷貉桄痐躇鎢﹝"
+    otp_explain1: "邧笭痐羲籵綴ㄛ躇鎢蔚祥頗珆尨婓森珜醱﹝彆蠟衄嗣跺萇赽扢掘ㄛ婓垀衄扢掘奻氝樓森梖誧躇鎢ㄛ綴婬羲籵邧笭痐﹝"
+    otp_explain2: "蛁砩ㄩ藩棒湖羲森珜醱ㄛ蠟腔梖誧躇鎢飲頗載陔﹝"
+    otp_help: "統蕉%{link:Google Authenticator Installation Instructions}"
+    otp_is_currently_html: "蠟梖誧腔邧笭桄痐 <strong>%{status}</strong> "
+    otp_number: "珨棒俶躇鎢瘍鎢"
+    otp_scan: "蚚嗷貉桄痐璃禸鏡媼峎鎢﹝"
+    passport: 誘桽
+    password: 躇鎢
+    password_confirmation: "躇鎢"
+    ? "痐笢"
+    : "痐笢"
+    postal_code: "蚘晤"
+    prefcurrency: "蘇億啟"
+    prefcurrency_explain: "蝠眢笢諶壺煤蚚腔蘇億啟"
+    proceed_to_x: "眒湛 %{x}"
+    proof_of_address: "華硊痐隴"
+    recent_deposits_and_withdrawals: "輪湔遴睿遴"
+    recommend_otp: "扂蠅膘祜蠟羲籵邧笭桄痐眕悵誘蠟腔梖誧﹝"
+    redeem_and_deposit: "募遙睿湔遴"
+    request_for_withdrawal: "遴扠"
+    select: "恁寁湔遴源宒"
+    select_wallet: "恁寁婦"
+    select_withdraw: "恁寁遴源宒"
+    sells: 闖堤
+    send_to_bitcoin: "蔚 Bitcoin敵善蠟腔蚗壅湔遴華硊: "
+    send_to_litecoin: "蔚 Bitcoin敵善蠟腔蚗壅湔遴華硊:"
+    signup: "蛁聊"
+    six_confirmations: "扂蠅猁婓圉苤奀囀俇傖3跺Bicoin蝠眢腔暮翹﹝"
+    six_confirmations_litecoin: "扂蠅猁婓15煦笘囀俇傖6跺Litecoins蝠眢腔暮翹﹝"
+    swift: "窅俴SWIFT鎢"
+    aba: "窅俴ABA鎢 (硐蚚衾藝弊)"
+    time_zone: 奀"
+    tolerated_loss_explanation: "褫創忳囷囮硌婓妏蚚郔湮話裝奀祥揖楷俴累腔郔湮累弇囷囮"
+    traderoptions: "悵痐踢蝠眢恁砐"
+    trades: 蝠眢
+    transaction_reference: "蝠眢瘍鎢"
+    transfer: 蛌梖
+    transfer_confirm: "蠟隅鎘?"
+    trusted: Trusted
+    two_factor_authentication: "邧笭痐"
+    unlimited: 拸癹
+    unverified: 帤痐
+    updated: 眒載陔
+    upload_documents: "奻換恅璃"
+    userinfo: "梖誧陓洘"
+    username: 蚚誧靡
+    username_or_email: "蚚誧靡麼華硊蚘眊"
+    utility_bill: "阨ㄛ萇ㄛ繳煤梖等"
+    verification_account_unverified: "蠟腔梖誧遜帤痐﹝"
+    verification_address: "華硊"
+    verification_address_business: "涴棒鼠侗華硊"
+    verification_company: "鼠侗麼坻儂凳"
+    verification_complete: "蠟腔梖誧眒掩痐﹝猁俇囡麼載蜊蠟腔跺陓洘ㄛ薊炵"
+    verification_explain1: "偌寞隅ㄛ歇剒猁堤藝踢腔蚚誧ㄛ斛剕珂痐梖誧﹝偌狟醱腔桶跡楷冞珨爺蠟腔旯爺痐葩荂璃睿蛂硊痐隴ㄗ阨ㄛ萇ㄛ繳煤梖等ㄛ 窅俴梖等脹ㄘㄛ眕晞扂蠅痐蠟腔梖誧﹝"
+    verification_explain2: "恅璃剒蹈隴眕狟陓洘"
+    verification_fullname: '靡 (跺)麼鼠侗靡備(鼠侗)'
+    verification_fulladdress: '俇淕腔華硊'
+    verification_id: "淉葬唬楷腔旯爺痐麼誘桽"
+    verification_id_business: "鼠侗蛁聊恅璃/ 茠珛硒桽"
+    verification_mandatory: "斛剕沓迡垀衄砐醴.褫諉忳腔恅璃跡宒峈: pdf, jpeg, png, text (txt), msword"
+    verification_only_verified_can_wire: "硐衄掩痐腔梖誧褫眕湔藝踢﹝"
+    verification_pending: "蠟腔梖誧痐扠淏婓机瞄笢﹝珨筒籵徹ㄛ蠟腔梖誧袨怓頗珆尨※眒痐§﹝"
+    verification_phone: "萇趕瘍鎢"
+    verification_private: "佌"
+    verification_proof_address: "華硊痐隴(祥閉徹跺堎腔阨ㄛ萇ㄛ繳煤梖等ㄛ 窅俴梖等脹)"
+    verification_representative_business: "忨俷靡"
+    verification_go_verify: "蠟褫眕婓<>痐蠟腔梖誧"
+    wallet: "婦"
+    wallet_address: "婦華硊"
+    walletfrom: "植婦"
+    walletto: "善婦"
+    what_is_otp: "Bitfinex妏蚚珨棒俶躇鎢睿嗷貉桄痐璃﹝"
+    we_accept_mtgox_code: "扂蠅諉忳藝啋麼Bitcoin腔Mt. Gox募遙測鎢"
+    we_accept_the_following_documents: "扂蠅諉忳眕狟恅璃"
+    withdraw: 遴
+    withdraw_bitcoin: "扂蠅蔚楷冞Bitcoins善蠟腔婦﹝"
+    withdraw_litecoin: "扂蠅蔚楷冞Litcoins善蠟腔Litecoin婦﹝"
+    withdraw_mtgox_code_btc: "扂蠅蔚楷俴Bitcoin腔Mt. Gox募遙測鎢﹝"
+    withdraw_mtgox_code_usd: "扂蠅蔚楷俴藝啋腔Mt. Gox募遙測鎢﹝"
+    withdraw_bitstamp_code_usd: "扂蠅蔚楷俴藝啋腔Bitstamp募遙測鎢﹝"
+    withdraw_bitstamp_code_btc: "扂蠅蔚楷俴Bitcoin腔Bitstamp募遙測鎢﹝"
+    wire_confirmation: "婓偌狟森瑩ㄛ扂眒窅俴梖誧陓洘甜楷冞窅俴颯遴﹝扂隴啞窅俴颯遴褫夔莉汜珨隅腔煤蚚ㄛ甜肮砩Bitfinex祥創童森煤蚚﹝"
+    wire_create_notification: "斐膘湔遴籵眭"
+    you_have_several_deposit_methods: "湔遴源宒"
+    you_have_several_withdraw_methods: "植蠟腔Bitfinex梖誧遴腔源宒"
+  active: 魂埲腔
+  ago: " 眕"
+  cancel: 秏
+  completed: 俇傖
+  date: 
+    abbr_day_names: 
+      - 陎
+      - 陎珨
+      - 陎媼
+      - 陎
+      - 陎侐
+      - 陎拻
+      - 陎鞠
+    abbr_month_names: 
+      - ~
+      - 珨堎
+      - 媼堎
+      - 堎
+      - 侐堎
+      - 拻堎
+      - 鞠堎
+      - 堎
+      - 匐堎
+      - 嬝堎
+      - 坋堎
+      - 坋珨堎
+      - 坋媼堎
+    day_names: 
+      - 陎
+      - 陎珨
+      - 陎媼
+      - 陎
+      - 陎侐
+      - 陎拻
+      - 陎鞠
+    formats: 
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names: 
+      - ~
+      - 珨堎
+      - 媼堎
+      - 堎
+      - 侐堎
+      - 拻堎
+      - 鞠堎
+      - 堎
+      - 匐堎
+      - 嬝堎
+      - 坋堎
+      - 坋珨堎
+      - 坋媼堎
+    order: 
+      - !ruby/symbol 
+      - !ruby/symbol 堎
+      - !ruby/symbol 
+  datetime: 
+    distance_in_words: 
+      about_x_hours: 
+        one: "湮衙1苤奀 "
+        other: "湮衙%{count}苤奀"
+      about_x_months: 
+        one: "湮衙1跺堎"
+        other: "湮衙%{count}跺堎"
+      about_x_years: 
+        one: "湮衙1爛"
+        other: "湮衙%{count}爛"
+      almost_x_years: 
+        one: "蔚輪1爛"
+        other: "蔚輪%{count}爛"
+      half_a_minute: "圉煦笘"
+      less_than_x_minutes: 
+        one: "屾衾1煦笘"
+        other: "屾衾%{count}煦笘"
+      less_than_x_seconds: 
+        one: "屾衾1鏃"
+        other: "屾衾%{count}鏃"
+      over_x_years: 
+        one: "嗣衾珨爛"
+        other: "嗣衾%{count}爛"
+      x_days: 
+        one: "1 毞"
+        other: "%{count}毞"
+      x_minutes: 
+        one: "1 煦笘"
+        other: "%{count}煦笘"
+      x_months: 
+        one: "1 跺堎"
+        other: "%{count}跺堎"
+      x_seconds: 
+        one: "1 鏃"
+        other: "%{count}鏃"
+    prompts: 
+      day: 
+      hour: 苤奀
+      minute: 煦笘
+      month: 堎
+      second: 鏃
+      year: 爛
+  errors: 
+    format: "%{attribute} %{message}"
+    messages: 
+      accepted: "斛剕肮砩"
+      blank: "斛剕沓迡"
+      confirmation: "迵痐祥睫"
+      empty: "斛剕沓迡"
+      equal_to: "斛剕脹衾%{count}"
+      even: "斛剕眈肮"
+      exclusion: "眒啎隆賸"
+      greater_than: "斛剕湮衾%{count}"
+      greater_than_or_equal_to: "斛剕湮衾麼脹衾%{count}"
+      inclusion: "祥婦嬤婓等爵"
+      invalid: "渣昫"
+      less_than: "斛剕苤衾%{count}"
+      less_than_or_equal_to: "斛剕苤衾麼脹衾%{count}"
+      not_a_number: "祥岆陝嶺皎杅趼"
+      not_an_integer: "斛剕岆淕杅"
+      odd: "斛剕岆等杅"
+      record_invalid: "痐囮啖: %{errors}"
+      taken: "眒冪掩妏蚚賸"
+      too_long: 
+        one: "怮酗(郔酗1跺趼睫)"
+        other: 怮酗(郔酗%{count}跺趼睫)"
+      too_short: 
+        one: "怮傻(郔傻1跺趼睫)"
+        other: "怮傻(郔傻%{count}跺趼睫)"
+      wrong_length: 
+        one: "趼睫杅講祥勤 (茼蜆岆1跺趼睫)"
+        other: "趼睫杅講祥勤 (茼蜆岆%{count}跺趼睫)"
+    template: 
+      body: "狟蹈諾跡衄昫:"
+      header: 
+        one: "1跺渣昫祡妏%{model}祥夔掩悵湔"
+        other: "%{count}跺渣昫祡妏%{model}祥夔掩悵湔"
+  credit:
+    autolending_propose: "赻雄蔚蠟腔褫蚚%{currency}婓蠟硌隅腔瞳薹睿奀潔湃堤"
+    autolending_currently_at: "醴赻雄湃堤%{currency}爛嘐隅瞳薹ㄗ365毞ㄘ峈%{rate}%ㄛ郔酗湃堤毞杅峈%{period}毞"
+    autolending_currently_at_vir: "醴郔酗湃堤毞杅%{period}腔赻雄湃堤%{currency}腹雄瞳薹"
+    available_balance: "褫蚚訧踢"
+    avg_rate_365: "爛歙瞳薹"
+    usdoffers: "藝啋質湃鼎茼"
+    active_credits: "訧踢眒質堤"
+    active_offers: "帤雛逋腔質湃剒/鼎茼"
+    btcoffers: "BTC 質湃鼎茼"
+    ltcoffers: "LTC 質湃鼎茼"
+    usdloans: "藝踢湃遴剒"
+    btcloans: "BTC湃遴剒"
+    ltcloans: "LTC湃遴剒"
+    offer_history: "質湃盪妢"
+    offer_history_explain: "蛹杅踢塗測桶蠟崠質訧踢ㄛ淏杅踢塗測桶蠟崠質堤訧踢﹝"
+    offer_types:
+      limit: 憤癹
+      market: 庈部
+    rateasked: 瞳薹 (%藩365毞)
+    proposeoffer: "質堤"
+    proposeloan: "質"
+    insurance_dont_insure: "祥童悵湃遴"
+    insurance_ensure_insured: "婓昦質堤訧踢﹝"
+    insurance_fee: "童悵湃遴剒婓眈茼瞳薹奻塗俋盓葆%{insurance_fee}%腔悵玸"
+    insurance_insure_if_possible: "褫童悵"
+    insurance_remaining: "悵玸豻塗"
+    insurance_total: "悵玸軞訧踢"
+    insure: "剒猁童悵湃遴鎘?"
+    insured: "悵玸"
+    no_active_credits: "拸訧踢"
+    no_active_offers: "拸鼎茼"
+    rate: "瞳薹 (%藩365毞) *"
+    type: "濬倰"
+    fee_explain: "*: 婦嬤%{fee}%腔煤蚚 (植訧踢蛌懂腔瞳洘笢枑)"
+    autorenew: "赻雄載陔(質湃鼎茼)"
+    autolend: "赻雄質堤蠟腔湔遴"
+    autorenewed: "赻雄載陔"
+    dontrenew: "祥載陔湃遴"
+    desactivateautolend: "壽敕赻雄質堤髡夔"
+    activateautolend: "羲赻雄質堤髡夔"
+    credit_notify: "絞窒煦麼窒質堤訧踢遜善蠟腔梖誧奀ㄛ斕頗彶善炵苀籵眭﹝"
+    credit_nonotify: "炵苀籵眭眒掩壽敕﹝"
+    renew: "載陔湃遴"
+    expirein: "徹"
+    currency: "億啟"
+    amount: "杅講"
+    offer_count: "鼎茼杅講"
+    demand_count: "剒杅講"
+    lendablebalance: "褫質堤杅講"
+    confirmdontrenew: "蠟隅猁壽敕訧踢赻雄載陔髡夔鎘ˋ"
+    confirmrenew: "蠟隅猁羲籵訧踢赻雄載陔髡夔鎘ˋ"
+    amount_offer: "杅講: "
+    maximum_period: "奀潔 (毞ㄛ煦笘ㄛ郔苤2 質湃鼎茼)"
+    maxperiod: "郔酗質堤奀潔 (毞)"
+    minperiod: "郔傻質堤奀潔 (毞)"
+    credit_explain: "婓涴爵蠟夔楷票蠟腔質湃鼎茼﹝恁寁諉揖腔訧踢ㄛ奀潔ㄗ毞ㄘ睿瞳薹ㄗ藩365毞ㄘ﹝絞蝠眢氪剒猁羲累甜蠟腔鼎茼猁瞳衾坻奀ㄛ蠟腔鼎茼頗掩蕾撈妏蚚"
+    vir: "腹雄瞳薹"
+  loan:
+    active_loans: "帤妏蚚腔湃遴踢塗"
+    rate: "瞳薹ㄗ藩365毞ㄘ"
+    expirein: "徹"
+    currency: "億啟"
+    amount: "杅講"
+    close: 壽敕
+    close_selected: "壽敕恁寁腔砐醴"
+    confirmclose: "蠟隅壽敕森湃遴鎘?"
+    confirmcloseselected: "蠟隅壽敕恁寁腔湃遴鎘?"
+    no_active_loans: "拸湃遴"
+    no_loans: "蠟遜羶衄湃遴"
+  managewallets:
+    no_more_one_wallet: "蠟硐衄珨跺婦茧衄褫蚚訧踢﹝"
+  positionloan:
+    active_loans: "蚚質懂腔訧踢羲累"
+    no_active_loans: "拸魂埲湃遴累弇"
+    position_id: "累弇瘍鎢"
+    confirmclose: "蠟隅壽敕森湃遴鎘ˋ壺準蠟衄帤妏蚚腔質訧踢ㄛ瘁寀壽敕湃遴頗熬屾麼壽敕瞳杅塗?"
+  exchange: 
+    active_orders: "魂埲億啟募遙隆等"
+    amount: 杅講
+    amount_to_spent: "褫豪煤杅講"
+    calculate: 數呾
+    enter_amount: "怀杅講"
+    exchange: 募遙
+    infotitle: 募遙- 鎗闖bitcoins"
+    maximum_amount: "郔湮杅講岆 %{n} BTC."
+  footer: 
+    about: "壽衾扂蠅"
+    api: API
+    contact: "薊炵扂蠅"
+    community: 扦
+    faq: 恀枙賤湘
+    fees: 煤蚚
+    getverified: ""
+    help: 堆翑
+    howitworks: "紱釬忒聊"
+    help: 堆翑
+    iwantto: "扂砑..."
+    privacy: 笐佌
+    security: 假
+    system_status: "炵苀袨怓"
+    tos: 沭瞰
+    transparency: 芵隴趙
+    wiki: Wiki
+  helpers: 
+    select: 
+      prompt: "恁寁"
+    submit: 
+      create: "斐膘 %{model}"
+      submit: "悵湔 %{model}"
+      update: "載陔 %{model}"
+  nav:
+    account: "梖誧"
+    autolock: "赻雄笭陔芘訧"
+    api_key: "Api 諳"
+    bsi: BSI
+    charts: 芞桶
+    contact: 薊炵
+    current_language: 荎恅
+    currentrates: "醴歙瞳薹(藩24苤奀)"
+    exchange: 募遙
+    h3: "婓蔚懂芘訧 - 彸蚚唳"
+    help: 堆翑
+    installation: 假蚾
+    interest_rates: "瞳薹"
+    investdeposit: "芘訧蠟腔湔遴"
+    investdepositexplain: "剒芘訧湔遴蚻瞳洘ㄛ沓迡狟源腔桶跡ㄩ恁寁芘訧癹甜萸僻載陔芘訧瑩﹝ 婓蠟婦爵腔湔遴頗婓蠟恁寁腔芘訧癹囀掩雲賦ㄛ甜質堤跤悵痐踢蝠眢氪﹝蠟蔚拸楊婓森潔堤遴砐﹝"
+    ll_order_book: "2撰隆等抎"
+    ll_orderbook_information: "森珜蹈隴垀衄褫蚚衾Bitfinex睿MtGox腔隆等﹝"
+    lock: "載陔芘訧"
+    login: "腎"
+    logout: 腎堤
+    maxperiod: "郔酗厥衄累弇奀潔"
+    order_book: "隆等情"
+    credit_book: "訧踢情"
+    credit: "質堤"
+    orderbook_information: "森珜珆尨垀衄魂埲癹奀隆等腔怢隆等情﹝"
+    position: 累弇
+    public_log: "怢蝠眢盪妢"
+    publiclog_information: "森珜蹈隴垀郔輪100跺蝠眢"
+    remainingamount: "褫羲累弇腔豻塗(BTC)"
+    settings: 扢离
+    signup: "蛁聊"
+    status: 袨怓
+    stats: "庈部杅擂"
+    trading: "悵痐踢"
+  notifications: 
+    deposit_now: "湔遴"
+    margin_danger: "蠟腔悵痐踢怮屾!"
+    margin_danger_1: "絞蠟腔梖誧豻塗腴衾郔腴猁悵痐踢奀ㄛ蠟腔累弇頗掩俴壽累﹝湔遴麼壽敕窒煦累弇眕崝樓梖誧豻塗﹝"
+    unverified: "蠟腔梖誧帤掩痐"
+    unverified_1: "峈賸蔚懂秏遴癹塗睿坻腔督昢癹秶ㄛ痐蠟腔梖誧﹝"
+    verify_now: "痐"
+    welcome_to_bitfinex: "辣茩懂善Bitfinex."
+    welcome_to_bitfinex_1: "蠟褫眕籵徹Bitcoin麼弊暱窅俴颯遴撈奀湔訧踢﹝"
+    empty_deposit: "蠟腔湔遴婦豻塗峈錨﹝蠟褫眕湔遴麼植坻婦撈奀蛌訧踢眕晞質堤訧踢﹝"
+    empty_exchange: "蠟腔億啟募遙婦豻塗峈錨﹝蠟褫眕湔遴麼植坻婦撈奀蛌訧踢﹝"
+    manage_wallets: "蛌蠟腔婦﹝"
+    mtgox_lag: "MtGox淏婓峎誘笢. 楷善MtGox腔隆等蔚祥頗掩揭燴﹝"
+  number: 
+    currency: 
+      format: 
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format: 
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human: 
+      decimal_units: 
+        format: "%n %u"
+        units: 
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ""
+      format: 
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units: 
+        format: "%n %u"
+        units: 
+          byte: 
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage: 
+      format: 
+        delimiter: ""
+    precision: 
+      format: 
+        delimiter: ""
+  orders: 
+    active: 魂埲腔
+    canceled: 秏
+    error: "衄渣昫ㄛ笭彸﹝"
+    ? "悵痐踢祥逋"
+    : "悵痐踢祥逋"
+    invalid: 拸虴
+    order_canceled: "蠟腔隆等 #%{id}眒掩秏."
+    order_cannot_be_canceled: "蠟腔隆等 #%{id} 祥夔掩秏."
+    order_notify: "隆等#%{id}硒俴綴蠟頗彶善萇赽蚘璃﹝"
+    order_placed: "蠟腔隆等 #%{id} 眒掩硒俴."
+    no_orders: "蠟羶衄隆等."
+  offers:
+    offer_canceled: "湃遴鼎茼掩秏."
+    offer_notify: "湃遴鼎茼#%{id}硒俴綴蠟頗彶善萇赽蚘璃﹝."
+    offer_placed: "湃遴鼎茼眒掩硒俴"
+    error: "蠟腔湃遴鼎茼祥夔掩硒俴"
+    no_offers: "蠟羶衄湃遴鼎茼﹝"
+  pages: 
+    amount: 杅講
+    bsi: 
+      bsi_explain: "扂蠅腔Bitfinex覜硌杅跦擂庈部蝠眢氪腔撈奀覜ㄛ蠟褫眕艘善庈部珋婓岆籟庈遜岆倱庈﹝"
+      bearish: 倱庈
+      bullish: 籟庈
+      neutral: 厥
+      very_bearish: "湮倱庈"
+      very_bullish: "湮籟庈"
+    contact:
+      thank_you_contact_us: "覜郅蠟勤Bitfinex腔盓厥﹝衄睡恀枙ㄛ籵徹眕狟源宒薊炵扂蠅﹝"
+      for_business: "鼠侗迵羸极"
+      for_compliance: "毀炴/賸賤蠟腔諦誧脹翋枙"
+      for_suggestions: "膘祜"
+      for_support: "盓厥"
+      we_answer_fast: "扂蠅頗婓珨跺馱釬囀隙葩"
+    fees:
+      account_maintenance: "梖誧峎誘"
+      charged_on_uninsured_loans: "植蠟腔帤童悵瞳洘瞳笢諶煤"
+      charged_on_insured_loans: "植蠟腔眒童悵瞳洘瞳笢諶煤"
+      executed_on: "婓 %{exchange}硒俴"
+      fee: 煤蚚
+      fee_interests_generated_loans: "%{lendingcut}% (植魂埲腔瞳笢蚻腔瞳洘)"
+      hidden_order: "笐紲隆等"
+      international_wire: "弊暱窅俴颯遴"
+      loans: "湃遴"
+      min_order_size: "郔苤隆等杅講: %{min} BTC/LTC"
+      mm_high_vol: "酕庈妀麼操湮傖蝠講"
+      order_execution: "硒俴隆等"
+      title: "煤蚚桶跡"
+      type: 濬倰
+      volume_traded_last_days: "%{mark} 麼眕奻婓眳 %{days}毞蝠眢 (蝠眢億啟勤)"
+      withdrawal: 遴
+    index:
+      apy: "藩365毞腔歙湃遴瞳薹啃煦掀"
+      average_spread: "歙萸船"
+      currency_exchange: "億啟募遙"
+      equivalent_fees: "眈脹煤蚚 (硌尨腔)"
+      fast_signup: "婓郔珂輛腔bitcoin募遙怢奻蛁聊梖誧ㄛ蠟蔚砅衄郔疑腔霜籵講ㄛ郔腔假炵苀睿郔腴腔歎跡!"
+      h1: "Bitfinex"
+      h2: "蝠眢bitcoins睿litecoins腔郔槽怢-潠等﹜假腔悵痐踢蝠眢ㄛ湃堤訧踢庈部睿樓躇億啟募遙"
+      interest_rates_explain: "質湃鼎茼氪藩365毞腕善腔瞳洘岆湃遴瞳薹熬湃遴軞塗腔 %{cut}%"
+      prevailing_interest_rates: "善%{date}峈砦褫湃遴塗腔歙瞳薹﹝"
+      speech_intro: "婓Bitcoin岍賜爵Bitfinex釬峈郔珂輛腔踢儂凳枑鼎3砐翋猁督昢"
+      speech_feature1: "嗣笭募遙: 蠟褫眕婓肮珨華萸砅衄郔湮腔霜籵俶睿郔腴腔煤蚚ㄛ蚚祥肮億啟鎗闖bitcoins麼litecoins﹝"
+      speech_feature2: "悵痐踢蝠眢: 蠟褫眕籵徹湃遴輛俴話裝蝠眢﹝"
+      speech_feature3: "湃堤訧踢:楷票蠟腔湃遴鼎茼﹝ 籵徹悵痐踢蝠眢氪輛俴話裝闖闖BTC麼LTCㄛ砅忳蚥需恛隅腔藝啋ㄛBTC麼LTC瞳洘﹝"
+      speech_line1: "Bitfinex峈蠟枑鼎嗣笱源宒荇瞳!"
+      speech_line2: "扂蠅腔假俶 %{link:here}"
+      speech_line3: "Bitfinex睡堍釬 %{link:here}"
+      speech_line4: "嗣砐髡夔 %{link:here}"
+      speech_line5: "疶恀賤湘%{link:FAQ}"
+      totalamount: "褫湃遴軞塗"
+      traded: 傖蝠
+    interest: 
+      apy: "藩365毞歙湃遴瞳薹啃煦掀"
+      avgperiod: "歙湃遴癹"
+      totalamount: "魂埲湃遴軞塗"
+      prevailing_interest_rates: "森珜枑鼎善%{date}峈砦褫湃遴塗腔歙瞳薹﹝"
+      interest_rates_explain: "質湃鼎茼氪藩365毞腕善腔瞳洘岆湃遴瞳薹熬湃遴軞塗腔 %{cut}%"
+    iwantto:
+      iwantto: "扂猁..."
+    help:
+      help_explain: "艘賤庋芞桶賡庄睡妏蚚Bitfinex腔垀衄髡夔 (萸僻溫湮)"
+    howitworks:
+      howitworks: "Bitfinex睡堍釬?"
+    ll_order_book: 
+      amount: 杅講
+      ask_price: "鎗歎跡"
+      asks: "鎗"
+      bid_price: "闖堤歎跡"
+      bids: "闖堤"
+      order_count: "隆等杅講"
+      platform: 募遙
+      total_amount: "軞杅"
+    order_book: 
+      amount: 杅講
+      ask_price: "鎗歎跡"
+      asks: "鎗"
+      bid_price: "闖堤歎跡"
+      bids: "闖堤"
+      order_count: "隆等杅講"
+      total_amount: "軞杅"
+    public_log:
+      execution_time: "硒俴奀潔"
+      trade_price: "硒俴歎跡"
+    transparency:
+      transparency: "芵隴俶珜醱"
+      type: "濬倰"
+      currency: 億啟
+      amount: "杅講"
+      method: "源宒"
+      txid: "蝠眢瘍鎢億bitcoin華硊 (bitcoin)"
+      status: "袨怓"
+      deposit: "湔遴"
+      withdrawal: "遴"
+      openlong: "羲鎗嗣累(BTC)"
+      openshort: "羲闖諾累 (BTC)"
+      statistics: "苀數杅擂: "
+      vol24h: "徹24苤奀腔蝠眢講"
+      vol7days: "徹7毞腔蝠眢講"
+      explain: "蠟褫眕籵徹扂蠅腔杅擂苀數睿蝠眢等ㄛ婓blockchain扂蠅bitcoin陓洘腔磁楊俶﹝"
+      deposittransactionstitle: "湔遴睿遴等"
+    stats:
+      stats: "苀數杅擂"
+      bsi_explain: "扂蠅腔Bitfinex覜硌杅跦擂庈部蝠眢氪勤BTCUSD歎跡腔撈奀覜ㄛ蠟褫眕艘善BTCUSD庈部珋婓岆籟庈遜岆倱庈﹝"
+      openlong: "羲鎗嗣累 (BTC)"
+      openshort: "羲闖諾累(BTC)"
+      statistics: "Statistics: "
+      vol24h: "徹24苤奀腔蝠眢講"
+      vol7days: "徹7毞腔蝠眢講"
+      volume: "蝠眢講"
+      irrationalindex: "Bitfinex 瑁遼硌杅"
+      irrationalindex_explain: "森硌杅煦昴蚚誧婓庈部蝠眢腔俴峈眕毀茬坻蠅蚻腕瞳腔俴峈恛隅俶"
+      greedscore: "Bitfinex 郗咡脹撰"
+      greedscore_explain: "森脹撰珆尨bitfinex蚚誧炰乾睿夔蚻腕瞳腔最僅"
+      riskscore: "Bitfinex 瑞玸脹撰"
+      riskscore_explain: "瑞玸脹撰珆尨蝠眢氪堋砩婓庈部創童腔瑞玸最僅﹝"
+      apy: "藩365毞腔歙湃遴啃煦掀"
+      avgperiod: "歙湃遴癹"
+      totalamount: "魂埲湃遴軞塗"
+      prevailing_interest_rates: "善%{date}峈砦褫湃遴塗腔歙瞳薹﹝"
+      interest_rates_explain: "湃遴鼎茼源腔瞳洘峈湃遴瞳薹熬藩365毞湃遴軞塗腔 %{cut}% "
+  pending: 脹渾笢
+  processing: 枑蝠笢
+  sidebar: 
+    account_settings: "梖誧扢离"
+    actions: 魂雄
+    currency_account: 豻塗
+    deposit: 湔遴
+    exchange_account: "募遙婦"
+    hello: "梖誧衙擬"
+    ledger: 盪妢
+    leverage: 話裝
+    maintenance: "垀剒悵痐踢"
+    margin_balance: "悵痐踢豻塗"
+    net_value: "訧莉噱硉"
+    longpossible: "褫鎗嗣"
+    shortpossible: "褫闖諾"
+    tradable_balance: "褫蝠眢豻塗"
+    trading_account: "蝠眢婦"
+    two_factor_authentication: "梖誧假"
+    realized_pl: "眒妗珋腔荅瞳/鋸囷"
+    unrealized_pl: "帤妗珋腔荅瞳/鋸囷"
+    unrealized_swap: "帤妗珋腔裁蝠眢"
+    verification: 
+    withdraw: 遴
+  sign_up: "蛁聊"
+  support: 
+    array: 
+      last_word_connector: ", and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time: 
+    am: 奻敁
+    formats: 
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: 狟敁
+  trading: 
+    actions: 魂雄
+    active_orders: "魂埲隆等"
+    active_positions: "魂埲累弇"
+    amount: 杅講
+    ask: 鎗歎
+    avg_price: "歙硒俴歎跡"
+    base_price: "價袧歎"
+    bid: 闖堤歎
+    buy: 鎗
+    buy_history: "鎗盪妢"
+    close_active_orders_before_position_close: "壽敕累弇壽敕垀衄魂埲隆等﹝"
+    confirm_close_all_orders: "Confirm close all orders"
+    date: ""
+    depth: 旮僅
+    dontnotify: "祥蚚籵眭"
+    pricechart: "歎跡桶"
+    hideorder: "笐紲隆等"
+    includevir: "婦漪腹雄瞳薹?"
+    indicative_margin: "蠟腔硌隅話裝啃煦掀(*):"
+    indicative_margin_explain: "*: 跦擂 '杅講'跡囀腔杅講"
+    infotitle: "悵痐踢蝠眢 - 蚚話裝紱釬累弇"
+    liquidation_price: "呾歎跡 (**)"
+    long: "鎗嗣"
+    lp_explain: "**: 呾歎跡: 跦擂蠟腔蝠眢豻塗睿裁瞳薹腹雄ㄛ甜祥測桶磁肮歎跡﹝"
+    liquidate: 壽敕
+    liquidate_confirmation: "蠟隅猁蚚庈部隆等壽敕棒累弇鎘?"
+    marginreserved: "啎隅悵痐踢"
+    margin_available: "褫蚚悵痐踢"
+    margin_go_reserve: "啎隅虳勘!"
+    maxperiod: "徹奀潔"
+    maxperioddate: "湃遴癹"
+    maxrate: "郔湮悵痐踢薹?"
+    no_active_orders: "拸魂埲隆等."
+    no_active_positions: "拸魂埲累弇."
+    notify: 籵眭
+    platform: "怢"
+    renew: "載陔"
+    renew_confirmation: "蠟隅猁載陔湃遴鎘?"
+    order_history: "隆等盪妢"
+    order_type: "隆等濬倰"
+    order_types: 
+      limit: 癹歎
+      market: 庈部
+      stop: 礿砦
+      trailing_stop: "躲趿砦囷"
+      fok: "傖蝠麼秏硌鍔"
+    order_size: "隆等杅塗"
+    pair: 勤
+    pl: "瞳/囷囮(*)"
+    pl_explain: "*: 瞳/囷囮: 跦擂壽敕累弇奀腔郔槽鎗睿闖堤歎ㄛ眕摯郔詢隆等煤蚚數呾"
+    placed: 傖蝠
+    positionexpiration: "累弇郔湮癹"
+    price: 歎跡
+    pricedifference: "歎跡擒燭"
+    routing: "換菰隆等"
+    routing_order: 換菰
+    sell: 闖
+    sell_history: "闖堤盪妢"
+    short: "闖諾"
+    status: 袨怓
+    swap: 裁蝠眢
+    swaprate: "裁瞳薹 (藩毞)"
+    total_loans: "垀衄累弇腔湃遴"
+    type: 濬倰
+    will_notify: "蔚籵眭"
+  update: 載陔
+

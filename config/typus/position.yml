@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+Position:
+  fields:
+    default: id, pair, amount, base, status, user_id, pl, swap, created_at, updated_at
+    form: pair, amount, base, status, swap, user_id, noliquidation
+  relationships: 
+  application: Application
+  order_by: -id
+  filters: status

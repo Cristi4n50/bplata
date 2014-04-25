@@ -1,0 +1,113 @@
+#ContPreviewR
+{
+	position:fixed;
+	top:0;
+	left:0;
+	width:130%;
+	height:100%;
+	background-color:rgba(0,0,0,0.85);
+	display:none;
+}
+
+#PreR
+{
+	background-image:url(/assets/Registro1.png) !important;
+	background-repeat:no-repeat;
+	width:1362px;
+	height:900px;
+	margin-left: 50px;
+}
+
+
+
+.colorlabel{
+	color: white;
+	margin-left: -45px;
+	margin-top: -25px;
+}
+
+#colorspan{
+	color: white;
+}
+
+#PreR h1
+{
+	text-align:left;
+	margin-left:180px;
+	margin-top:30px;
+	color:rgba(255,255,255,1.00);
+	font-family:"lato";
+	margin-bottom:50px;
+}
+
+#PreR img
+{
+	position:relative;
+	left:115px;
+	top:85px;
+}
+
+#PreR form
+{
+	color: white;
+	margin-left:190px;
+}
+
+#PreR input
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/field.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:rgba(255,255,255,1.00);
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+	text-align:center;
+}
+
+input::-webkit-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-moz-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::-ms-input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+input::input-placeholder 
+{
+    color:rgba(255,255,255,1.00);
+}
+
+#Enviar
+{
+	background:none;
+	border:none;
+	background-image:url(/assets/open_count.png) !important;
+	background-repeat:no-repeat;
+	background-position:center center;
+	border-radius:5px;
+	cursor:pointer;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	width:308px;
+	height:40px;
+	margin:auto;
+}
+
+@font-face
+{
+	font-family:"lato";
+	src:url(../Lato-Reg.ttf);
+}

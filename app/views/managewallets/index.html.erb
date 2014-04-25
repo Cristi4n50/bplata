@@ -1,0 +1,86 @@
+</div>
+</div>
+<%= render "layouts/notifications" %>
+<%= render "javascript" %>
+<% title t "account.managewallets" %>
+<div class="row withdraw manage-wallet">
+  <div class="large-12 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <h6><%= t 'account.managewallets' %></h6>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 small-12 columns">
+        <table cellspacing="0" class="large-12">
+          <thead>
+          <tr>
+          <th class="th-right"><%= t "account.wallet" %></th>
+          <th colspan="<%= @currencies.count %>"><%= t "account.balance" %></th>
+          </thead>
+          <tbody>
+          <% current_user.wallets.each do |wallet| %>
+              <tr>
+                <td class="right"><%= wallet.name %></td>
+                <% @currencies.each do |currency| %>
+                    <td class="value <%= currency.to_s %>" data-value="<%= current_user.available_balance(currency, wallet.name).to_d.floor(8) %>" data-wallet="<%= wallet.name %>" data-currency="<%= currency.to_s %>"><%= current_user.available_balance(currency, wallet.name).to_d.floor(8) %> <%= currency.to_s %></td>
+                <% end %>
+          <% end %>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <%= t 'account.available_balance_explain' %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= form_tag({:controller => :managewallets, :action => :create}, {:remote => false, :class => "custom"}) do %>
+        <input type="hidden" id="actionwallet" name="actionwallet" value=""/>
+        <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+
+        <div class="row">
+          <div class="large-12 small-12 columns">
+            <div class="panel">
+              <div class="row">
+                <div><%= t 'managewallets.transfer_from' %></div>
+                <div><%= text_field_tag :amount, params[:amount], :value => "1.00", :title => t('exchange.enter_amount'), :size => 13 %></div>
+                <div>
+                  <select name="currency" id="currency">
+                    <% @currencies.each do |currency| %>
+                        <option value="<%= currency %>"><%= currency %></option>
+                    <% end %>
+                  </select>
+                </div>
+                <div><%= t 'managewallets.from_wallet' %></div>
+                <div>
+                  <select name="walletfrom" id="walletfrom" class="small">
+                    <% @wallets.each do |wallet| %>
+                        <option value="<%= wallet.name %>"><%= wallet.name %>
+                        </option>
+                    <% end %>
+                  </select>
+                </div>
+                <div><%= t 'managewallets.to_wallet' %></div>
+                <div>
+                  <select name="walletto" id="walletto" class="small">
+                    <% @walletsto.each do |wallet| %>
+                        <option value="<%= wallet.name %>"><%= wallet.name %>
+                        </option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-4 large-offset-4 columns">
+                  <%= submit_tag t("account.transfer"), :id => "submit", :name => "submit", :class => "button success radius green", :onclick => "$('input#actionwallet').val('TRANSFER');this.style.visibility = 'hidden';" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

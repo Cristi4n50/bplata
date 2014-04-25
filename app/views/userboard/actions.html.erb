@@ -1,0 +1,45 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title t 'account.ledger' %>
+<div class="row deposit history" xmlns="http://www.w3.org/1999/html">
+  <div class="large-12 columns">
+    <h6>Actions</h6>
+
+    <p>
+
+    <form accept-charset="UTF-8" action="/userboard/change_username" method="post">
+      <div style="display:inline">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+        <input type="hidden" id="dauser_id" name="dauser_id" value="<%= @dauser.id %>"/>
+        <label for="davalue">Username: </label><input id="davalue" name="davalue" title="Username" type="text" value="<%= @dauser.username %>" <% unless current_user.associate? %>disabled<% end %> />
+      </div>
+    </form>
+    </p>
+    <p>
+
+    <form accept-charset="UTF-8" action="/userboard/change_email" method="post">
+      <div style="display:inline">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+        <input type="hidden" id="dauser_id" name="dauser_id" value="<%= @dauser.id %>"/>
+        <label for="davalue">Email: </label><input id="davalue" name="davalue" title="Email" type="text" value="<%= @dauser.email %>" <% unless current_user.associate? %>disabled<% end %> />
+      </div>
+    </form>
+    </p>
+    <p>
+      <a class="button success round" href="/userboard/reset_pwd/<%= @dauser.id %>">Reset password</a>
+    </p>
+
+    <p>
+      <% if @dauser.otp_enabled? %><a class="button success round" href="/userboard/reset_otp/<%= @dauser.id %>">Reset
+          OTP</a>
+      <% else %>
+          <a class="button alert round" href="" onclick="return false;">OTP disabled</a>
+      <% end %></p>
+    <p>
+      <% if @dauser.no_withdraw? %><a class="button alert round" href="/userboard/no_withdraw/<%= @dauser.id %>">Account on hold: Disable account hold (allow withdrawals)</a>
+      <% else %>
+          <a class="button success round" href="/userboard/no_withdraw/<%= @dauser.id %>">Put account on hold (no withdrawals)</a>
+      <% end %></p>
+  </div>
+</div>

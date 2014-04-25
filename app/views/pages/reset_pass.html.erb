@@ -1,0 +1,33 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<% title t "account.reset_password" %>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="border">
+        <h2><span><%= t 'account.reset_password' %></span></h2>
+        <% if @status.nil? %>
+            <div class="center optionscontent">
+              <%= form_tag({:controller => :pages, :action => :reset_pwd}, {:remote => false}) do %>
+                  <% if logged_in? %>
+                      <input type="hidden" name="email" value="<%= current_user.email %>"/><br/>
+                  <% else %>
+                      <label class="control-label" for="email"><%= t '.enter_email' %></label>
+                      <input type="text" name="email"/><br/>
+                  <% end %>
+                  <input type="submit" value="<%= t 'account.click_here_reset_password' %>"/>
+              <% end %>
+            </div>
+        <% else %>
+            <% if @status == 1 %>
+                <div class="center optionscontent">An email has been sent with a link to reset your password</div>
+            <% else %>
+                <div class="center optionscontent">Your password has been reset and sent by email</div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<% title t 'account.ledger' %>
+
+<%= render "/account/_ledger_menu" %>
+
+<h3><%= t "credit.loans_history" %></h3>
+
+<% if @loans.empty? %>
+
+<div class="empty">
+	<h3>You don't have any loan yet.</h3>
+</div>
+
+<% else %>
+<p><%= t "credit.loan_history_explain" %></p>
+<%= paginate @loans %>
+
+<table class="history table table-bordered table-striped">
+  	<thead>
+      <tr>
+		<th>#</th>
+        <th><%= t "credit.currency" %></th>
+		<th><%= t "credit.type" %></th>
+        <th><%= t "credit.amount" %></th>
+        <th><%= t "credit.rate" %></th>
+		<th><%= t "account.updated" %></th>
+		<th><%= t "credit.autorenewed" %></th>
+		<th><%= t "credit.status" %></th>
+      </tr>
+    </thead>
+	<tbody>
+		<% @loans.each do |loan| %>
+      <tr>
+		<td><%= loan.id %></td>
+        <td><%= loan.currency %></td>
+        <td><%= loan.type.capitalize %></td>
+		<td><%= loan.originalamount %></td>
+        <td><%= "-" if loan.rate.nil? %><%= (loan.rate * 100).round(4) unless loan.rate.nil? %>%</td>
+		<td><%= friendly_timestamp(loan.updated_at) %></td>
+		<td><% if loan.renew %><%= "Yes" %><% else %><%= "-" %><% end %></td>
+		<td><%= loan.status["EXECUTED"] == "EXECUTED" ? loan.status.capitalize : loan.status.downcase %></td>
+      </tr>
+	<% end %>
+	</tbody>
+</table>
+
+<%= paginate @loans %>
+
+<% end %>

@@ -1,0 +1,280 @@
+<%= render "javascript" %>
+<% title 'Administration Dashboard' %>
+<%= render "menu" %>
+</div>
+</div>
+<a name="top"></a>
+<div class="content">
+<div class="row">
+<div class="large-12 columns">
+<div class="border">
+<h2><span>Administration Dashboard</span></h2>
+<hr/>
+<div class="row">
+<div class="large-12 columns">
+<table class="history table table-bordered table-striped" xmlns="http://www.w3.org/1999/html">
+  <thead>
+  <tr>
+    <th>Current profit for <%= Date::MONTHNAMES[Time.now.utc.month] %>
+      : <%= colored_dollar(Dailyprofit.on_slave.where(:currency => "USD").where(:key => "profit system").where(["created_at >= ?", Time.now - 2.hours]).average('amount').to_f.to_d) %></th>
+    <th colspan="3"><h3><%= 'Assets and capital' %></h3></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td rowspan="<%= Currency.base_currencies.count %>">
+      <% if current_user.associate? %>
+          Profit breakdown:<br/>
+          <ul>
+            <li>Profit from swaps: <%= dollar(Capital.get_value('profit lending').to_d) %></li>
+          </ul>
+          <br/><br/>
+      <% end %>
+      Total
+      assets: <%= dollar(Stat.get_value("total_assets")) %>
+      <br/>Total Bitfinex assets: <%= dollar(@bfx_assets) %>
+      <br/>
+      <%= value_capital("capital USD", "Capital USD") %>
+      <br/>
+      <%= value_capital("capital GBP", "Capital GBP") %>
+      <br/>
+      <%= value_capital("capital HKD", "Capital HKD") %>
+      <br/>
+      <%= value_capital("capital BTC", "Capital BTC") %>
+      <br/>
+      <strong>Liabilities to Bitfinex</strong>:<br/>
+      <% Currency.currencies.each do |curr| %>
+          <%= curr %>: <%= dollar(@liabilities[Currency.currencies.index(curr)], "") %>
+          <br/>
+      <% end %>
+    </td>
+    <% Currency.base_currencies.each do |curr| %>
+        <td>Total <%= curr.to_s %>
+          assets: <%= number_to_currency(Stat.get_value("total_" + curr.to_s + "_assets"), :unit => "", :precision => 2) + " " + curr.to_s %></td>
+        <td>
+          <% if curr == "BTC" %>
+              <a href="bitcoin:122JyMtGtiiP4mMFn86tAGfrqiyhXAnrrk">Hot
+                wallet: <%= Setting.get_value("bank_btc").to_d.round(2) %> <%= curr.to_s %></a><br/>
+              <% if current_user.associate? %>
+                  BTC Cold wallet 1: <%= Setting.get_value("cold_btc_1").round(2) %>
+                  <br/>
+                  <%= value_setting("cold_btc_2", "BTC Cold wallet 2") %>
+                  <br/>
+                  <%= value_setting("cold_btc_3", "BTC Cold wallet 3") %>
+                  <br/>
+                  <%= value_setting("cold_btc_4", "BTC Cold wallet 4") %>
+                  <br/>
+                  <%= value_setting("cold_btc_5", "BTC Cold wallet 5") %>
+                  <br/>
+                  <%= value_setting("cold_btc_6", "BTC Cold wallet 6") %>
+                  <br/>
+                  <%= value_setting("cold_btc_7", "BTC Cold wallet 7") %>
+                  <br/>
+              <% end %>
+          <% elsif curr == "LTC" %>
+              <a href="litecoin:LZEjmUtU4prwqs27bnrBC5fUvYyCzj7JKC">Hot
+                wallet: <%= Setting.get_value("hot_ltc", 1).to_d.round(2) %> <%= curr.to_s %></a><br/>
+              <% if current_user.associate? %>
+                  <%= value_setting("bank_ltc", "LTC Cold wallet 1") %>
+                  <%= value_setting("cold_ltc_2", "LTC Cold wallet 2") %>
+                  <br/>
+                  <%= value_setting("cold_ltc_3", "LTC Cold wallet 3") %>
+                  <br/>
+                  <%= value_setting("cold_ltc_4", "LTC Cold wallet 4") %>
+                  <br/>
+                  <%= value_setting("cold_ltc_5", "LTC Cold wallet 5") %>
+                  <br/>
+              <% end %>
+          <% end %>
+        </td>
+        <td>Surplus <%= curr.to_s %>
+          : <%= Stat.get_value("surplus (unhedged position) " + curr.to_s).round(4) %>
+          <% if curr == "BTC" || curr == "LTC" %>
+              <a class="button radius small" href="/power/tradesurplus/<%= curr %>" onclick="return confirm('This will trade this surplus with a market order. Are you sure to do this?');">Settle</a>
+          <% end %></td>
+        </tr>
+        <tr>
+    <% end %>
+    <td rowspan="3"><strong>Data for <%= Date::MONTHNAMES[Time.now.utc.month] %></strong></td>
+    <td><a href="/power/expenses">Expenses</a>: <%= dollar(Capital.get_value("Expenses of the month")) %>
+    </td>
+    <td>Calculated profit: <%= dollar(Capital.get_value("profit_calculated")) %></td>
+    <td>Spread calculated / real
+      profit: <%= colored_dollar((Capital.get_value("profit system") + Capital.get_value("Expenses of the month")) - Capital.get_value("profit_calculated")) %></td>
+    </tr>
+    <tr>
+      <td>Daily
+        turnover: <%= colored_dollar((Capital.get_value("profit system") + Capital.get_value("Expenses of the month")) / (Time.now.utc.day - 1 + (Time.now.utc.hour.to_d / 24))) %></td>
+      <td>Daily
+        profit: <%= colored_dollar((Capital.get_value("profit system")) / (Time.now.utc.day - 1 + (Time.now.utc.hour.to_d / 24))) %></td>
+      <td rowspan="2">Normalized change in total deposits: <br/>
+        <%= colored_dollar(@normalized_change) %>
+        (<%= colored_percentage(@normalized_change / Stat.get_value("total_assets")) %> of current deposits)
+      </td>
+    </tr>
+    <tr>
+      <td>Change in user deposits: <br/>
+        <% Currency.currencies.each do |curr| %>
+            <%= curr %>
+            : <%= colored_dollar(@total_change_deposits[Currency.currencies.index(curr)], 0, "") %>
+            <br/>
+        <% end %>
+      </td>
+      <td>Daily change in user deposits: <br/>
+        <% Currency.currencies.each do |curr| %>
+            <%= curr %>
+            : <%= colored_dollar(@total_change_deposits[Currency.currencies.index(curr)] / Time.now.utc.day, 0, "") %>
+            <br/>
+        <% end %>
+      </td>
+    </tr>
+    </tbody>
+</table>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th><%= switch_setting("trade_engine_on", "Trading engine") %></th>
+    <th colspan="2"><h3><%= 'Trading engine' %></h3></th>
+    <th>
+      <div id="lag_status"><%= ajax_loader("lag_status") %><%= render "lag_status" %></div>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= switch_setting("margin_on", "Margin Trading") %></td>
+    <td>Volume in the last 24 hours: <br/>
+      <% Currency.pairs.each do |pair| %>
+          <%= pair.to_s + ": " %><%= dollar(Stat.get_value("volume (24h) " + pair.to_s).round(2), "") %>
+          <br/>
+      <% end %>
+    </td>
+    <td rowspan="2">
+      <strong>Unbacked margin:</strong><br/><br/>
+      <% Currency.currencies.each do |curr| %>
+          <%= curr %>: <%= dollar(Stat.get_value("unbacked " + curr.downcase + " margin"), "") %>
+          <br/>
+      <% end %>
+    </td>
+    <td rowspan="2">
+      <strong>Margin positions:</strong><br/><br/>
+      <% Currency.pairs.each do |pair| %>
+          <%= pair %>:
+          <%= Stat.get_value("open_long " + pair).round %> long<br/>
+          <%= Stat.get_value("open_short " + pair).round %> short<br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= switch_setting("liquidation_on", "Liquidation") %></td>
+    <td>Volume in the last 7 days: <br/>
+      <% Currency.pairs.each do |pair| %>
+          <%= pair.to_s + ": " %><%= dollar(Stat.get_value("volume (7 days) " + pair.to_s).round(2), "") %>
+          <br/>
+      <% end %>
+      <br/>
+      Volume in the last 30 days: <br/>
+      <% Currency.pairs.each do |pair| %>
+          <%= pair.to_s + ": " %><%= dollar(Stat.get_value("volume (30 days) " + pair.to_s).round(2), "") %>
+          <br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2"></td>
+    <td></td>
+    <td rowspan="2"><%= switch_setting("bitstamp_trade", " Trading Bitstamp") %></td>
+    <td><%= Stat.get_value("Bitstamp part of total volume (%) ").to_s + "% of BTCUSD traded in the last 7 days" %>
+      <br/>
+      <%= Stat.get_value("Bitstamp part of total volume (%) last 24 hours").to_s + "% of BTCUSD traded in the last 24 hours" %>
+      <br/>Balance: <%= Stat.get_value("BITSTAMPUSD balance ").round(2).to_s + " USD" %>
+      <br/><a href="bitcoin:1F4nDC6z11GKE1ewU8jaWgFkyG9CyVdL76 ">Balance: <%= Stat.get_value("BITSTAMPBTC balance ").round(2).to_s + " BTC" %></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="2"><h3>Payment processors</h3></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colspan="2">EgoPay</td>
+  </tr>
+  <tr>
+    <td rowspan="2"><%= switch_setting("egopay_on", "Egopay") %></td>
+    <td>Balances:<br/>
+      <% Currency.base_currencies.each do |curr| %>
+          <%= curr %>: <%= Stat.get_value("EGOPAY" + curr + " balance") %>
+          <br/>
+      <% end %>
+    </td>
+  <tr>
+    <td><%= value_setting("maximum_egopay_balance", "Maximum exposure") %>
+      <br/>
+      <%= value_setting('egopay_deposit_fee', "EgoPay deposit fee") %></td>
+  </tr>
+  </tbody>
+</table>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th><%= switch_setting("swap_on", "Swap engine") %></th>
+    <th colspan="2"><h3><%= 'Swap engine' %></h3></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <% Currency.currencies.each do |curr| %>
+          Total <%= curr.to_s %>
+          provided:
+          <strong><%= number_to_currency(Stat.get_value("total" + curr.to_s + "loan"), :unit => "", :precision => 2) %></strong>
+          (<%= number_to_currency(Stat.get_value("amount of VIR loans (included in total amount) " + curr.to_s), :unit => "", :precision => 2) %>
+          on VIR) at <strong><%= Stat.get_value("avg" + curr.to_s + "interest").round(2) %>%</strong>
+          <br/>
+      <% end %>
+    </td>
+    <td>
+      <% Currency.currencies.each do |curr| %>
+          Total <%= curr %> funds provided
+          insured: <%= dollar(Capital.get_value("insured loans " + curr.downcase), "") %>
+          <br/>
+      <% end %></td>
+    <td><%= value_setting("base_interest", "Lending fees") %></td>
+  </tr>
+  <tr>
+    <td
+    <% unless current_user.associate? %> colspan="2"
+    <% end %>>
+      <% Currency.currencies.each do |curr| %>
+          <%= curr.to_s %> volatility:
+          <strong><%= percentage(Stat.get_value("volatility " + curr)) %></strong>
+          <br/>
+      <% end %>
+      <% if current_user.associate? %>
+          <br/><br/>
+          <% Currency.currencies.each do |curr| %>
+              Total <%= curr.to_s %>
+              reserve: <%= number_to_currency(Capital.get_value("insurance reserve " + curr.to_s), :unit => "", :precision => 2) + " (funded: " + number_to_currency(Capital.get_value("account reserve " + curr.to_s), :unit => "", :precision => 2) + ", or " + ((Capital.get_value("account reserve " + curr.to_s).round(2) / (0.01 + Capital.get_value("insurance reserve " + curr.to_s).round(2))) * 100).round(2).to_s + "%)" %>
+              <br/>
+          <% end %>
+      <% end %>
+    </td>
+    <% if current_user.associate? %>
+        <td><%= value_setting("vir_cut", "1907 cut") %></td>
+    <% end %>
+    <td><%= value_setting("insurance_cut", "Insurance cut") %>
+      <br/>
+      <%= value_setting("insurance_fee", "Insurance fee") %></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

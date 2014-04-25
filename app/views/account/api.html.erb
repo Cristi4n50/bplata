@@ -1,0 +1,29 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<% title t "account.api_generation_page" %>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page">
+      <h4><%= t 'account.api_generation_page' %></h4>
+      <% if @apikey.nil? %>
+          <p><%= t 'account.api_explain' %></p>
+
+          <p><%= t "account.api_explain1" %></p>
+          <%= link_to t("account.api_generate"), :controller => "account", :action => "generate_api", :tkt => @token.to_s %>
+      <% elsif @thekey.nil? %>
+          <p><%= t 'account.api_explain' %></p>
+          <%= t "account.api_your_api_secret" %>
+          <br/> <%= @apikey.secret.to_s %>
+          <br/>
+          <%= t "account.api_revoke" %> <%= link_to "here", :controller => "account", :action => "revoke_api", :tkt => @token.to_s %>
+      <% else %>
+          <%= t "account.api_your_api_key" %>:<br/><br/><b><%= @thekey.to_s %></b><br/><br/>
+          <%= t "account.api_your_api_secret" %>:<br/> <%= @apikey.secret.to_s %>
+          <br/><br/>
+          <%= t "account.api_save" %>
+      <% end %>
+    </div>
+  </div>
+</div>

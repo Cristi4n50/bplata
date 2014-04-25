@@ -1,0 +1,11 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	Your <%= @order.type.capitalize %> order #<%= @order.id %> has been executed.
+</h2>
+<p>Order Details: </p>
+<strong>Pair: </strong> &nbsp; <%= @order.pair %><br/>
+<strong>Quantity: </strong> &nbsp; <%= @order.originalamount %><br/>
+<strong>Order Type: </strong> &nbsp; <%= @order.type %><br/>
+<strong>Order Price: </strong> &nbsp; <%= @order.price %><br/>
+<strong>Status: </strong> &nbsp; <%= @order.status %><br/>
+<strong>Placed at </strong><%= @order.created_at %><br/>
+<strong>Executed at </strong><%= @order.updated_at %><br/>

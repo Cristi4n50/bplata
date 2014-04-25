@@ -1,0 +1,67 @@
+</div>
+</div>
+<% title t "footer.security" %>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page">
+      <h4><i class="icon-lock"></i> <%= t 'footer.security' %></h4>
+
+      <p><%= t "account.recommend_otp" %></p>
+
+      <p><%= t "account.what_is_otp" %></p>
+      <br/>
+      <h6><%= t "nav.installation" %></h6>
+      <%= it "account.otp_help", link: It.link("http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447", target: '_blank') %>
+      .<br/>
+      <%= t 'account.otp_alt_download' %> <%= link_to "here", "/google_authenticator.apk" %>
+      <br/>
+      <% unless current_user.otp_enabled? || session[:pending_otp] == 1 %>
+          <h6><%= t "account.account_token" %></h6>
+
+          <p><%= t 'account.otp_explain1' %></p>
+
+          <p><%= t 'account.otp_explain2' %></p>
+          <% current_user.assign_auth_secret! %>
+          <p><%= t 'account.otp_scan' %>:</p>
+          <%= image_tag("https://chart.googleapis.com/chart?chs=150x150&chld=M|0&cht=qr&chl=#{Rack::Utils.escape("otpauth://totp/Bitfinex?secret=#{current_user.auth_secret}")}", :alt => 'Google Authenticator QR Code') %>
+          <p><%= t 'account.account_token_key' %>: <strong><%= current_user.auth_secret %></strong></p>
+      <% end %>
+      <br/>
+      <% if current_user.otp_enabled? %>
+          <h6><%= t 'account.otp_disable' %></h6>
+      <% else %>
+          <h6><%= t 'account.otp_enable' %></h6>
+      <% end %>
+      <p>
+        <% if current_user.otp_enabled? %>
+            <%= t 'account.otp_is_currently_html', :status => t('account.enabled') %>
+        <% else %>
+            <%= t 'account.otp_is_currently_html', :status => t('account.disabled') %>
+        <% end %>.
+      </p>
+      <% if session[:pending_otp] == 1 %><p>OTP activation is currently pending, please check your emails</p><% end %>
+
+      <p><%= t 'account.otp_enter' %></p>
+      <%= form_tag do %>
+          <% if current_user.otp_enabled? %>
+              <input type="hidden" id="whattodo" name="whattodo" value="Disable"/>
+          <% else %>
+              <input type="hidden" id="whattodo" name="whattodo" value="Enable"/>
+          <% end %>
+          <div class="large-4 columns">
+            <input name="otp" type="text" id="right-label" placeholder="One-Time Token">
+
+            <% if current_user.otp_enabled? %>
+                <%= submit_tag t 'account.otp_disable', :class => "button red secondary radius" %>
+            <% else %>
+                <%= submit_tag t 'account.otp_enable', :class => "button green success radius" %>
+            <% end %>
+          </div>
+
+          <div class="large-8 columns">
+            <img src="https://bitfinex.com/assets/google-authenticator-850941b40f863fa8473f7b11eb261aa0.png" title="google authenticator"/>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<script type="text/javascript">
+    <% if @notification %>
+    $.pnotify('<%= @notification %>');
+    <% end %>
+    setInterval("update_wallets()", 60000);
+
+</script>

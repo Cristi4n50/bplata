@@ -1,0 +1,81 @@
+<div class="large-6 columns buy">
+  <table cellspacing="0">
+    <thead class="first">
+    <tr class="table-header">
+      <th colspan="5"><%= t "pages.order_book.asks" %></th>
+    </tr>
+    </thead>
+    <thead>
+    <tr>
+      <th><%= t "pages.order_book.total_amount" %></th>
+      <th><%= t "trading.amount" %></th>
+      <th><%= t "pages.order_book.ask_price" %></th>
+      <th><%= t "pages.order_book.order_count" %></th>
+      <th><%= t "trading.platform" %></th>
+    </tr>
+    <% if Setting.get_value("bstp:" + @pair.downcase + ":nobuying").to_d > 0 && Currency.externalpairs.include?(@pair) %>
+        <tr>
+          <th colspan="5">
+            <small>Not enough <%= Currency.lastunit(@pair) %> reserve on Bitstamp, you cannot buy on Bitstamp at the moment.</small>
+          </th>
+        </tr>
+    <% end %>
+    </thead>
+    <tbody>
+    <% unless @asks.nil? %>
+        <%
+           prev_ask = 0
+           ask_amount = 0
+           ask_sum = 0
+           ask_count = 0
+           prev_platform = ""
+        %>
+        <% @asks.each do |ask| %>
+            <%
+               if ask.price.round(2) == prev_ask.round(2) and ask.platform == prev_platform and Currency.lastunit(@pair) == "USD"
+                 ask_amount += ask.amount.abs
+                 ask_sum += ask.amount.abs
+                 ask_count += 1
+               elsif ask.price.round(5) == prev_ask.round(5) and ask.platform == prev_platform and Currency.lastunit(@pair) == "BTC"
+                 ask_amount += ask.amount.abs
+                 ask_sum += ask.amount.abs
+                 ask_count += 1
+               else
+            %>
+                <% unless prev_ask == 0 %>
+                    <tr style="<% if ask_amount >= 10 and ask_amount <= 99 %>background-color: rgba(255, 155, 155, 0.49);<% elsif ask_amount >= 100 %>background-color: rgba(235, 135, 135, 0.69);<% else %>background-color: #ffffff;
+                      <% end %>" onclick="$('#buy_price').val('<%= prev_ask %>');$('#amount').val('<%= ask_sum.round(2) %>');">
+                      <td><%= ask_sum.round(2) %></td>
+                      <td><%= ask_amount.round(2) %></td>
+                      <td class="price"><%= dollar(prev_ask.round(2)) if Currency.lastunit(@pair) == "USD" %><%= dollar(prev_ask.round(5), "&#3647;", 5) if Currency.lastunit(@pair) == "BTC" %></td>
+                      <td><%= ask_count %></td>
+                      <td><%= prev_platform %></td>
+                    </tr>
+                <% end %>
+                <%
+                   prev_platform = ask.platform.to_s
+                   prev_ask = ask.price.round(2) if Currency.lastunit(@pair) == "USD"
+                   prev_ask = ask.price.round(5) if Currency.lastunit(@pair) == "BTC"
+                   ask_amount = ask.amount.abs
+                   ask_sum += ask.amount.abs
+                   ask_count = 1 %>
+            <% end %>
+        <% end %>
+        <% unless prev_ask == 0 %>
+            <tr style="<% if ask_amount >= 10 and ask_amount <= 99 %>background-color: rgba(255, 155, 155, 0.49);<% elsif ask_amount >= 100 %>background-color: rgba(235, 135, 135, 0.69);<% else %>background-color: #ffffff;
+              <% end %>" onclick="$('#buy_price').val('<%= prev_ask %>');$('#amount').val('<%= ask_sum.round(2) %>');">
+              <td><%= ask_sum.round(2) %></td>
+              <td><%= ask_amount.round(2) %></td>
+              <td class="price"><%= dollar(prev_ask.round(2)) if Currency.lastunit(@pair) == "USD" %><%= dollar(prev_ask.round(5), "&#3647;", 5) if Currency.lastunit(@pair) == "BTC" %></td>
+              <td><%= ask_count %></td>
+              <td><%= prev_platform %></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td colspan="5">Loading...</td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

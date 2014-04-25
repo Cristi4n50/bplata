@@ -1,0 +1,20 @@
+<div class="large-12 columns">
+  <table cellspacing="0">
+    <% Currency.currencies.each do |curr| %>
+        <tr>
+          <td><%= curr.to_s %></td>
+          <td><%= dollar(@exchange_balance[Currency.currencies.index(curr)],"") %></td>
+        </tr>
+    <% end %>
+    <!--
+    <tr>
+      <td><%= t 'account.btc_volume' %></td>
+      <td><%=  %></td>
+    </tr>
+    <tr>
+      <td><%= t 'account.ltc_volume' %></td>
+      <td><%=  %></td>
+    </tr>
+    -->
+  </table>
+</div>

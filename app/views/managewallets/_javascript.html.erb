@@ -1,0 +1,73 @@
+<script type="text/javascript">
+<% if @notification %>
+	$.pnotify('<%= @notification %>');
+<% end %>
+
+	setInterval("update_wallets()", 10000)
+
+	$(document).ready(function() {
+		$('input#amount').focus();
+
+		// Enable drag-and-drop of values between wallets
+		$('div.manage-wallet table tbody tr td.value').draggable({
+			opacity: 0.7,
+			cursorAt: { left: 15 },
+			helper: 'clone',
+			containment: 'div.manage-wallet table'
+		});
+		$('div.manage-wallet table tbody tr td').droppable({
+			accept: function(obj) {
+				if( (obj.hasClass('USD') && $(this).hasClass('USD'))
+						||
+					(obj.hasClass('BTC') && $(this).hasClass('BTC'))
+						||
+					(obj.hasClass('LTC') && $(this).hasClass('LTC'))
+				) {
+					return true;
+				}
+				return false;
+			},
+			over: function(event, ui) {
+				if( (ui.draggable.hasClass('USD') && $(this).hasClass('USD'))
+						||
+					(ui.draggable.hasClass('BTC') && $(this).hasClass('BTC'))
+						||
+					(ui.draggable.hasClass('LTC') && $(this).hasClass('LTC'))
+				) {
+					$(this).addClass('ui-state-active');
+				}
+			},
+			out: function(event, ui) {
+				$(this).removeClass('ui-state-active');
+			},    
+			drop: function(evt, ui) {
+				$(this).removeClass('ui-state-active');
+
+				$('input#amount').val(ui.draggable.data('value'));
+				$('select#currency').val(ui.draggable.data('currency')).trigger('change');
+				$('select#walletfrom').val(ui.draggable.data('wallet')).trigger('change');
+				$('select#walletto').val($(this).data('wallet')).trigger('change');
+
+				// Foundation doesn't seem to be picking up on the change event, so we provoke it here too
+				Foundation.libs.forms.refresh_custom_select($('select#currency'), true);
+				Foundation.libs.forms.refresh_custom_select($('select#walletfrom'), true);
+				Foundation.libs.forms.refresh_custom_select($('select#walletto'), true);
+
+				$('input#amount').focus();
+			}
+		});
+
+		// Clicking on a value populates the from details of the transfer
+		$('div.manage-wallet table tbody tr td.value').on('click', function() {
+			$('input#amount').val($(this).data('value'));
+			$('select#currency').val($(this).data('currency')).trigger('change');
+			$('select#walletfrom').val($(this).data('wallet')).trigger('change');
+
+			Foundation.libs.forms.refresh_custom_select($('select#currency'), true);
+			Foundation.libs.forms.refresh_custom_select($('select#walletfrom'), true);
+			Foundation.libs.forms.refresh_custom_select($('select#walletto'), true);
+
+			$('input#amount').focus();
+		});
+	});
+</script>

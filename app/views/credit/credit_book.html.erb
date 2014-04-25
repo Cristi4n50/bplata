@@ -1,0 +1,36 @@
+<%= render "javascript" %>
+<div class="submenu">
+  <% Currency.currencies.each do |currentcurrency| %>
+      <% if @currency == currentcurrency %>
+          <a class="active" href="/credit/credit_book/<%= currentcurrency.downcase %>"><%= currentcurrency %></a>
+      <% else %>
+          <a href="/credit/credit_book/<%= currentcurrency.downcase %>"><%= currentcurrency %></a>
+      <% end %>
+  <% end %>
+</div>
+<% title t "nav.credit_book" %>
+<p>
+  <% t "nav.creditbook_information" %></p>
+<%= form_tag({:controller => :offers, :action => :create}) do %>
+    <input type="hidden" id="loan_type" name="buy_type" value=""/>
+    <input type="hidden" id="lend_type" name="sell_type" value=""/>
+    <input type="hidden" id="currency" name="currency" value="<%= @currency.to_s %>"/>
+    <input type="hidden" id="direction" name="direction" value=""/>
+    <input type="hidden" id="loanrate" name="btc_loanrate" value=""/>
+    <input type="hidden" id="amount" name="amount" value="0.00"/>
+    <input type="hidden" id="autorenew" name="autorenew" value=""/>
+    <input type="hidden" id="period" name="period" checked="checked"/>
+    <input type="hidden" id="lendrate" name="btc_lendrate" value=""/>
+    <div class="row">
+      <table class="table orderbook">
+        <tr>
+          <td colspan="4">
+            <%= render "/credit/offerbook" %>
+          </td>
+          <td colspan="4">
+            <%= render "/credit/loanbook" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+<% end %>

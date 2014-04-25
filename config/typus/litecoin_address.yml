@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+LitecoinAddress:
+  fields:
+    default: address, user_id, created_at
+    form: address, user_id
+  relationships: 
+  application: Application
+  order_by: -id

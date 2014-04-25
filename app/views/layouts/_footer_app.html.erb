@@ -1,0 +1,45 @@
+<div id="menu-footer">
+  <div class="row">
+    <div class="large-12 columns">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name"></li>
+          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span><%= t 'nav.menu' %></span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li><a href="/"><i class="icon-home"></i> <%= t 'nav.home' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'announcements' %> class="active"<% end %>><a href="/pages/announcements"><%= t 'Announcements' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'security' %> class="active"<% end %>><a href="/pages/security"><%= t 'footer.security' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'howitworks' %> class="active"<% end %>><a href="/pages/howitworks"><%= t 'footer.howitworks' %></a></li>
+            <li<% if controller.controller_name == 'account' && controller.action_name == 'verification' %> class="active"<% end %>><a href="/account/verification"><%= t 'footer.verification' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'features' %> class="active"<% end %>><a href="/pages/features"><%= t 'nav.features' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'fees' %> class="active"<% end %>><a href="/pages/fees"><%= t 'footer.fees' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'api' %> class="active"<% end %>><a href="/pages/api"><%= t 'footer.api' %></a></li>
+            <li<% if controller.controller_name == 'pages' && controller.action_name == 'support' %> class="active"<% end %>><a href="/pages/support"><%= t 'nav.support' %></a></li>
+          </ul>
+
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li><a href="/pages/contact"><%= t 'footer.contact' %></a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="row">
+    <div class="large-9 columns">
+      <p>Copyrights © 2013 - 2014 Bitfinex</p>
+    </div>
+    <div class="large-3 columns link-terms">
+      <a href="/pages/tos">Terms and conditions</a>
+    </div>
+  </div>
+</div>
+<%= render "layouts/footer" %>

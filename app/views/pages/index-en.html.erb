@@ -1,0 +1,83 @@
+<div id="slider">
+  <div class="row">
+    <div class="slideshow-wrapper">
+      <div class="preloader"></div>
+      <ul data-orbit data-options="timer:true;bullets:false;stack_on_small:false;navigation_arrows:false;slide_number:false;timer_speed:4000;animation:fade;pause_on_hover:false;">
+        <li>
+          <img src="/assets/slider1.png" />
+          <div class="orbit-caption"><h3><%= t '.speech_feature1_title' %></h3><p><%= t '.speech_feature1' %></p></div>
+        </li>
+        <li>
+          <img src="/assets/slider1.png" />
+          <div class="orbit-caption"><h3><%= t '.speech_feature2_title' %></h3><p><%= t '.speech_feature2' %></p></div>
+        </li>
+        <li>
+          <img src="/assets/slider1.png" />
+          <div class="orbit-caption"><h3><%= t '.speech_feature3_title' %></h3><p><%= t '.speech_feature3' %></p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="call-to-action">
+  <div class="row">
+    <div class="large-8 columns text">
+      <h5><%= t '.speech_line1' %></h5>
+      <h3><%= t '.fast_signup' %></h3>
+    </div>
+    <div class="large-4 columns">
+      <a href="#" class="secondary red radius button large right" data-reveal-id="signup-modal"><i class="icon-user"></i> <%= t 'pages.index.open_account' %></a>
+    </div>
+  </div>
+</div>
+
+<div id="boxes">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="large-12 columns border">
+        <div class="large-4 columns">
+          <div class="panel">
+            <a href="/pages/security"><h3><i class="icon-lock"></i></h3></a>
+            <a href="/pages/security"><h3><%= t 'footer.security' %></h3></a>
+            <a href="/pages/security" class="success green radius button"><%= t 'pages.index.read_more_security' %></a>
+          </div>
+        </div>
+        <div class="large-4 columns">
+          <div class="panel">
+            <a href="/pages/howitworks"><h3><i class="icon-cogs"></i></h3></a>
+            <a href="/pages/howitworks"><h3><%= t 'pages.index.how_it_works' %></h3></a>
+            <a href="/pages/howitworks" class="success green radius button"><%= t 'pages.index.read_more_how_it_works' %></a>
+          </div>
+        </div>
+        <div class="large-4 columns">
+          <div class="panel">
+            <a href="/pages/features"><h3><i class="icon-list"></i></h3></a>
+            <a href="/pages/features"><h3><%= t 'nav.features' %></h3></a>
+            <a href="/pages/features" class="success green radius button"><%= t 'pages.index.read_more_features' %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="community">
+  <div class="row">
+    <div class="large-8 columns faq">
+      <div class="info">
+        <h4><%= t 'footer.faq' %></h4>
+        <a href="/pages/support"><%= t 'pages.index.other_questions' %> <i class="icon-question-sign"></i></a>
+      </div>
+      <div class="section-container accordion" data-section="accordion">
+        <%= render '/pages/support_short' %>
+      </div>
+    </div>
+    <div class="large-4 columns buttons">
+      <div class="panel">
+        <a href="https://community.bitfinex.com/content.php" class="success green radius button large community" target="_blank"><i class="icon-group"></i><br/>Community</a>
+        <a href="https://community.bitfinex.com/showwiki.php" class="success green radius button large" target="_blank"><i class="icon-globe"></i><br/>Wiki</a>
+      </div>
+    </div>
+  </div>
+</div>

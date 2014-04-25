@@ -1,0 +1,30 @@
+<%= render "javascript" %>
+<% title 'Pending orders' %>
+<%= render "menu" %>
+</div>
+</div>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="border">
+        <h2><span>Pending orders</span></h2>
+        <hr/>
+        <div class="row">
+          <div class="large-12 columns">
+            <table class="history table table-bordered table-striped" xmlns="http://www.w3.org/1999/html">
+              <tr>
+                <td><%= switch_setting("trade_engine_on", "Trading engine") %></td>
+                <td><%= switch_setting("margin_on", "Margin Trading") %></td>
+                <td><%= switch_setting("liquidation_on", "Liquidation") %></td>
+              </tr>
+            </table>
+            <div id="adminorders">
+              <%= render "/power/active_orders" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

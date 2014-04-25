@@ -1,0 +1,63 @@
+<%= render "account/ledger_menu" %>
+</div>
+</div>
+<% title t 'account.ledger' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> <%= t "credit.offer_history" %></h6>
+
+    <% if @offers.empty? %>
+
+        <div class="empty">
+          <h3><%= t 'offers.no_offers' %></h3>
+        </div>
+
+    <% else %>
+        <p><%= t "credit.offer_history_explain" %></p>
+        <br/>
+        <br/>
+        <%= paginate @offers %>
+        <br/>
+        <br/>
+        <table class="history table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th><%= t "credit.currency" %></th>
+            <th><%= t "credit.type" %></th>
+            <th><%= t "credit.amount" %></th>
+            <th><%= t "credit.rate" %></th>
+            <th><%= t "account.updated" %></th>
+            <th><%= t "credit.autorenewed" %></th>
+            <th><%= t 'trading.status' %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @offers.each do |offer| %>
+              <tr>
+                <td><%= offer.id %></td>
+                <td><%= offer.currency %></td>
+                <td><%= offer.type.capitalize %></td>
+                <td><%= offer.originalamount %></td>
+                <td><%= "-" if offer.rate.nil? %>
+                  <% unless offer.rate.nil? %><%= (offer.rate * 100).round(4).to_s + "%" if offer.rate > 0 %>
+                      <%= 'VIR' if offer.rate == 0 %>
+                  <% end %></td>
+                <td><%= friendly_timestamp(offer.updated_at) %></td>
+                <td>
+                  <% if offer.renew %><%= "Yes" %>
+                      <% else %><%= "-" %>
+                  <% end %></td>
+                <td><%= offer.status["EXECUTED"] == "EXECUTED" ? offer.status.capitalize : offer.status.downcase %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <%= paginate @offers %>
+        <br/>
+        <br/>
+    <% end %>
+  </div>
+</div>

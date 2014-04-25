@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  Deposit: read, update, create
+  
+partner:
+  Deposit: read
+
+associate:
+  Deposit: read

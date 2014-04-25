@@ -1,0 +1,88 @@
+</div>
+</div>
+<% title t "account.account_verification" %>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page verification">
+      <h4><%= t 'account.account_verification' %></h4>
+      <% if current_user.verified.nil? || current_user.verified == 0 %>
+          <p><%= t "account.verification_explain1" %></p>
+          <p>We distinguish between two types of accounts:</p>
+          <ul>
+            <li>Individual account (account in your own name)</li>
+            <li>Company account (account in the name of the company)</li>
+          </ul>
+          <p>Please find hereunder the requirements for both account types.</p>
+          <h6>Verification requirements for an individual account:</h6>
+          <ul>
+            <li>You must be at least 18 years of age.</li>
+            <li>Holder page of passport or other government issued ID with validity not less than 6 months (it must carry your picture).</li>
+            <li><%= it 'account.verification_explain3', :link => It.link('/KYC FORM ENGLISH INTL.pdf', :target => '_blank') %></li>
+            <li>Bank statement (with the same address as residency declared on KYC form).</li>
+            <li>Utilities bill (electricity/water) or telephone bill as proof of address.</li>
+            <li>Telephone number.</li>
+          </ul>
+          <h6>Verification requirements for a company  account:</h6>
+          <ul>
+            <li>You must be at least 18 years of age.</li>
+            <li>Business registration (up to date) / Certificate of incorporation.</li>
+            <li><%= it 'account.verification_explain3', :link => It.link('/KYC FORM ENGLISH INTL.pdf', :target => '_blank') %></li>
+            <li>Registered business address.</li>
+            <li>Company’s utilities bill (electricity/water) and bank/credit card statement.</li>
+            <li>For the authorized representative(s): please see the verification requirements for an individual account.</li>
+            <li>Telephone number.</li>
+          </ul>
+          <p>Further we must receive the documents which enable us to verify the identity (as per individual verification, see above) of all the shareholders and to a larger extent the beneficiary owners, in case the shares are owned by another company or several other companies.</p>
+          <p style="font-weight: bold;">In order to avoid delays in the verification, please verify the correctness of the above before submitting the documents, double check you don't send twice the same document and you therefore forget one.</p>
+          <div class="panel">
+            <%= form_tag({:controller => :account, :action => :verify_user}, {:remote => false, :multipart => true}) do %>
+                <label class="control-label" for="kycform"><%= it "account.verification_form", :link => It.link('/KYC FORM ENGLISH INTL.pdf', :target => '_blank') %>
+                </label>
+                <input type="file" name="kycform"/><br/><br/>
+                <label class="control-label" for="idscan"><%= t "account.verification_id" %>
+                  (<%= t "account.verification_id_business" %>)</label>
+                <input type="file" name="idscan"/><br/><br/>
+                <label class="control-label" for="idexpiration"><%= t "account.verification_id_expiration" %></label>
+                <div style="width:30%;display:inline-block"><%= select_year Time.now, prefix: :idexpiration, start_year: 2013, end_year: 2030 %></div>
+                <div style="width:30%;display:inline-block"><%= select_month Time.now, prefix: :idexpiration %></div>
+                <div style="width:30%;display:inline-block"><%= select_day Time.now, prefix: :idexpiration %></div>
+                <br/>
+                <label class="control-label" for="idrep"><%= t "account.verification_id_rep" %></label>
+                <input type="file" name="idrep"/><br/><br/>
+                <label class="control-label" for="proofaddress"><%= t "account.verification_proof_address" %></label>
+                <input type="file" name="proofaddress"/><br/><br/>
+                <label class="control-label" for="bankstatement">Bank statement (not older than 3 months)</label>
+                <input type="file" name="bankstatement"/><br/><br/>
+                <label class="control-label" for="fullname"><%= t "account.verification_fullname" %></label>
+                <input type="text" name="fullname"/><br/>
+                <label class="control-label" for="address"><%= t "account.verification_address" %></label>
+                <input type="text" name="address"/><br/>
+                <label class="control-label" for="address"><%= t "account.verification_city" %></label>
+                <input type="text" name="city"/><br/>
+                <label class="control-label" for="zipcode"><%= t "account.verification_zipcode" %></label>
+                <input type="text" name="zipcode"/><br/>
+                <label class="control-label" for="address"><%= t "account.verification_country" %></label>
+                <%= country_select("cc", "country", ["China", "United States"], {}, {:onchange => 'toggleSelect("hidethem","cc_country")'}) %>
+                <br/>
+                <label class="control-label" for="phone"><%= t "account.verification_phone" %></label>
+                <input type="text" name="phone"/><br/>
+                <div id="unitedstates" class="hidethem" style="display:none;">
+                  <label class="control-label" for="occupation"><%= t "account.verification_occupation" %></label>
+                  <input type="text" name="occupation"/><br/>
+                  <label class="control-label" for="employer"><%= t "account.verification_occupation_employer" %></label>
+                  <input type="text" name="employer"/><br/>
+                </div>
+                <input type="submit" value="Submit"/>
+                <small><%= t "account.verification_mandatory" %></small>
+            <% end %>
+          </div>
+      <% elsif current_user.verified == 1 || current_user.verified == 2 %>
+          <p><%= t "account.verification_pending" %>
+            <a href="mailto:compliance@bitfinex.com">compliance@bitfinex.com</a></p>
+      <% else %>
+          <p><%= t "account.verification_complete" %>
+            <a href="mailto:compliance@bitfinex.com">compliance@bitfinex.com</a></p>
+      <% end %>
+    </div>
+  </div>
+</div>

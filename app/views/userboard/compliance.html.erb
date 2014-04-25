@@ -1,0 +1,83 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Compliance' %>
+<div class="row deposit history" xmlns="http://www.w3.org/1999/html">
+  <div class="large-12 columns">
+    <h6>Compliance information</h6>
+    <% unless @dauser.verified? %>
+        <p>User unverified!</p>
+
+        <p>Verify the user by filling in the fields below:</p>
+
+        <p>
+
+        <form accept-charset="UTF-8" action="/userboard/add_compliance" method="post">
+          <div style="display:inline">
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+            <input type="hidden" id="dauser_id" name="dauser_id" value="<%= @dauser.id %>"/>
+            <label for="fullname">Full
+              Name: </label><input id="fullname" name="fullname" title="Full Name" type="text" value=""/>
+            <label for="address">Full
+              Address: </label><input id="address" name="address" title="Full Address" type="text" value=""/>
+            <label for="phone">Phone: </label><input id="phone" name="phone" title="phone" type="text" value=""/>
+            <label for="city">City: </label><input id="city" name="city" title="city" type="text" value=""/>
+            <label for="country">Country: </label><%= country_select("cc", "country", []) %>
+            <label for="zipcode">Zipcode: </label><input id="zipcode" name="zipcode" title="Zip code" type="text" value=""/>
+            <span>ID expiration date:</span>
+            <div style="width:30%;display:inline-block"><%= select_year Time.now, prefix: :idexpiration, start_year: 2013, end_year: 2030 %></div>
+            <div style="width:30%;display:inline-block"><%= select_month Time.now, prefix: :idexpiration %></div>
+            <div style="width:30%;display:inline-block"><%= select_day Time.now, prefix: :idexpiration %></div>
+            <br/><input type="submit" class="button radius" value="Verify user"/>
+          </div>
+        </form>
+        </p>
+    <% else %>
+        <% if @compliance %>
+            <p>
+
+            <form accept-charset="UTF-8" action="/userboard/change_compliance" method="post">
+              <div style="display:inline">
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+                <input type="hidden" id="dauser_id" name="dauser_id" value="<%= @dauser.id %>"/>
+                <label for="fullname">Full
+                  Name: </label><input id="fullname" name="fullname" title="Full Name" type="text" value="<%= @compliance.fullname %>"/>
+                <label for="address">Full
+                  Address: </label><input id="address" name="address" title="Full Address" type="text" value="<%= @compliance.address %>"/>
+                <label for="phone">Phone: </label><input id="phone" name="phone" title="phone" type="text" value="<%= @compliance.phone %>"/>
+                <label for="city">City: </label><input id="city" name="city" title="city" type="text" value="<%= @compliance.city %>"/>
+                <label for="country">Country: </label><%= country_select("cc", "country", [@compliance.country]) %>
+                <label for="zipcode">Zipcode: </label><input id="zipcode" name="zipcode" title="Zip code" type="text" value="<%= @compliance.zipcode %>"/>
+                <br/><input type="submit" class="button radius" value="Change compliance"/>
+              </div>
+            </form>
+            </p>
+        <% else %>
+            <p>
+
+            <form accept-charset="UTF-8" action="/userboard/new_compliance" method="post">
+              <div style="display:inline">
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+                <input type="hidden" id="dauser_id" name="dauser_id" value="<%= @dauser.id %>"/>
+                <label for="fullname">Full
+                  Name: </label><input id="fullname" name="fullname" title="Full Name" type="text" value=""/>
+                <label for="address">Full
+                  Address: </label><input id="address" name="address" title="Address" type="text" value=""/>
+                <label for="phone">Phone: </label><input id="phone" name="phone" title="Phone" type="text" value=""/>
+                <label for="city">city: </label><input id="city" name="city" title="City" type="text" value=""/>
+                <label for="country">Country: </label><%= country_select("cc", "country", ["China", "United States"], {}) %>
+                <label for="zipcode">Zip
+                  code: </label><input id="zipcode" name="zipcode" title="Zip Code" type="text" value=""/>
+                <span>ID expiration date:</span>
+
+                <div style="width:30%;display:inline-block"><%= select_year Time.now, prefix: :idexpiration, start_year: 2013, end_year: 2030 %></div>
+                <div style="width:30%;display:inline-block"><%= select_month Time.now, prefix: :idexpiration %></div>
+                <div style="width:30%;display:inline-block"><%= select_day Time.now, prefix: :idexpiration %></div>
+                <br/><input type="submit" class="button radius" value="Create new compliance"/>
+              </div>
+            </form>
+            </p>
+        <% end %>
+    <% end %>
+  </div>
+</div>

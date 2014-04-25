@@ -1,0 +1,62 @@
+<% if @dauser_id %>
+    <ul class="button-group radius even-6" id="sub-menu">
+      <li><a href="/userboard/" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'index' %> active
+    <% end %>">Index</a></li>
+      <li><a href="/userboard/actions/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'actions' %> active
+    <% end %>">Actions</a></li>
+      <% if current_user.associate? %>
+          <li><a href="/userboard/compliance/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'compliance' %> active
+    <% end %>">Compliance</a></li>
+      <% end %>
+      <li><a href="/userboard/assets/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'assets' %> active
+    <% end %>">Wallets</a></li>
+      <li><a href="/userboard/trading_sum/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'trading_sum' %> active
+    <% end %>"><%= t "account.trading_sum" %></a></li>
+      <li><a href="/userboard/deposits/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'deposits' %> active
+    <% end %>"><%= 'Movements' %></a></li>
+    </ul>
+    <ul class="button-group radius even-<%= 4 + Currency.currencies.count %>" id="sub-menu">
+      <% Currency.currencies.each do |curr| %>
+          <li><a href="/userboard/ledger/<%= curr.downcase %>/?user=<%= @dauser_id %>" class="button small
+        <% if controller.controller_name == 'userboard' && controller.action_name == 'ledger' && @currency == curr %> active
+        <% end %>"><%= curr %></a></li>
+      <% end %>
+      <li><a href="/userboard/active_positions/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'active_positions' %> active
+    <% end %>">Active positions</a></li>
+      <li><a href="/userboard/active_orders/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'active_orders' %> active
+    <% end %>">Active orders</a></li>
+      <li><a href="/userboard/orders/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'orders' %> active
+    <% end %>"><%= t "trading.order_history" %></a></li>
+      <li><a href="/userboard/trades/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'trades' %> active
+    <% end %>">Trades</a></li>
+    </ul>
+    <ul class="button-group radius even-4" id="sub-menu">
+      <li><a href="/userboard/offers/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'offers' %> active
+    <% end %>"><%= t "credit.offer_history" %></a></li>
+      <li><a href="/userboard/active_offers/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'active_offers' %> active
+    <% end %>">Active offers</a></li>
+      <li><a href="/userboard/active_credits/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'active_credits' %> active
+    <% end %>">Active swaps provided</a></li>
+      <% if current_user.associate? %>
+          <li><a href="/userboard/fees/?user=<%= @dauser_id %>" class="button small
+    <% if controller.controller_name == 'userboard' && controller.action_name == 'fees' %> active
+    <% end %>">Fees schedule</a></li>
+      <% end %>
+    </ul>
+    <% unless @dauser.nil? %>
+        <h5>User <%= @dauser.username %> (ID: <%= @dauser.id %>)</h5>
+    <% end %>
+<% end %>

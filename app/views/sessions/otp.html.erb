@@ -1,0 +1,28 @@
+<% title t "account.two_factor_authentication" %>
+<div class="content">
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="border">
+        <h2><span><%= t "account.two_factor_authentication" %></span></h2>
+
+        <p><%= t "account.enter_otp_prompt" %></p>
+
+        <%= form_tag do %>
+
+
+            <div class="clearfix" style="margin-bottom: 50px">
+              <%= label_tag :otp, t("account.one_time_token") %>
+              <div class="input"><%= text_field_tag :otp, nil, :size => 6, :class => "span2" %></div>
+            </div>
+
+            <div class="actions">
+              <%= submit_tag t("account.authenticate"), :class => "button radius success" %>
+            </div>
+        <% end %>
+        <script>
+            document.forms[0].elements['otp'].focus();
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

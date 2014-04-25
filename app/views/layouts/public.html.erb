@@ -1,0 +1,27 @@
+<% if logged_in? %>
+    <%= render "layouts/header_app" %>
+    <div class="row" id="interface">
+      <div class="large-9 columns">
+        <%= render "layouts/app_menu" %>
+<% else %>
+    <%= render "layouts/header_pub" %>
+<% end %>
+<div class="row">
+  <div class="large-12 columns">
+    <% flash.each do |name, msg| %>
+        <div data-alert class="alert-box <%= name %> radius">
+          <span><%= msg %></span>
+          <a href="#" class="close">&times;</a>
+        </div>
+    <% end %>
+  </div>
+</div>
+<%= yield %>
+<% if logged_in? %>
+    </div>
+    <%= render "layouts/sidebar" %>
+    </div>
+    <%= render "layouts/footer_app" %>
+<% else %>
+    <%= render "layouts/footer_pub" %> 
+<% end %>

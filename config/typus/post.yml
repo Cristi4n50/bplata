@@ -1,0 +1,11 @@
+# Use the README file as a reference to customize settings.
+
+Post:
+  fields:
+    default: id, permalink, title, body, created_at
+    form: title, permalink, body, created_at
+    list: id, title, permalink, created_at
+  search: title, body
+  relationships: 
+  application: Application
+  order_by: -id

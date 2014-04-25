@@ -1,0 +1,48 @@
+﻿<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Our security practices" %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="border">
+        <h2><i class="icon-lock"></i> <span>Security</span></h2>
+
+        <hr/>
+        <div class="row">
+          <div class="large-9 columns">
+            <h4>我们拥有最安全的Bitcoin交易平台。我们对安全系统吹毛求疵，不放过任何一个安全漏洞</h4>
+
+            <p><b>冰冻钱包</b><br/>
+              您的bitcoins保存在冰冻钱包, 服务器通过<a href="http://bitcoinarmory.com/">Armory</a>运行的可读钱包, 查看存款和账户余额。
+              我们通过Bitcoind运行blockchain交易),钱包则由Mav Armory Server script 管理(您能在这里了解更多信息:
+              <a href="https://github.com/thedawnrider/BitcoinArmory-Daemon">source code</a>).<br/>Bitcoins取款通过独立的渠道将取款申请发送到我们的兑换货币合作商。
+
+            <p><b>仅限交易功能的兑换API账户</b><br/>
+              我们提供的兑换货币的API账户经过加密处理，而且不保存在我们的数据苦衷。此账户只有查看余额，买卖bitcoins的功能， 没有取款功能。(与服务器其他功能相隔离。) </p>
+
+            <p><b>自动保存</b><br/>
+              每天平台数据会被自动保存，加密并压缩存档。</br>
+              数据中的用户密码通过哈希值密码加密保存。</p>
+
+            <p><b>数据多重保存</b><br/>
+              一旦一个新的存档完成（数据，日志等）,它会被传递到另外两个地点的服务器。</p>
+
+            <p><b>钱包和兑换货币账户的文件保存</b><br/>
+              这些重要的文件和冰冻钱包的信息被保存在Bitfinex的保险箱内。如有必要，我们会通过Armory恢复文件上记录的钱包信息。</p>
+
+            <p><b>最新linux系统</b><br/>
+              我们使用最专业，最新的linux系统，联合最强大的安全保护工具确保平台服务器的正常运作。</p>
+
+            <p><b>有任何疑问吗?</b><br/>
+              我们非常高兴能收到您的任何问题或建议<a href="mailto:contact@bitfinex.com">contact@bitfinex.com</a>!</p>
+            <a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

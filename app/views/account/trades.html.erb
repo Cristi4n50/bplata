@@ -1,0 +1,60 @@
+<%= render "account/ledger_menu" %>
+</div>
+</div>
+<% title t 'account.ledger' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i>
+      <% if controller.action_name == 'sells' %><%= t "trading.sell_history" %>
+          <% else %><%= t "trading.buy_history" %>
+      <% end %></h6>
+    <% if @trades.empty? %>
+
+        <div class="empty">
+          <h3><%= t "account.no_order" %></h3>
+        </div>
+
+    <% else %>
+        <br/>
+        <br/>
+        <%= paginate @trades %>
+        <br/>
+        <br/>
+        <table class="history table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th><%= t "trading.pair" %></th>
+            <th><%= t "trading.amount" %></th>
+            <th><%= t "trading.price" %></th>
+            <th><%= t "account.date" %></th>
+            <th><%= t "trading.platform" %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @trades.each do |trade| %>
+              <tr>
+                <td><%= trade.id %></td>
+                <td><%= trade.pair %></td>
+                <td>
+                  <% if trade.buyer_id == current_user.id %>
+                      <%= trade.amount.abs %>
+                  <% elsif trade.seller_id == current_user.id %>
+                      <%= -trade.amount.abs %>
+                  <% end %>
+                </td>
+                <td><%= trade.price.round(3) %></td>
+                <td><%= friendly_timestamp(trade.created_at) %></td>
+                <td><%= trade.platform %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <%= paginate @trades %>
+        <br/>
+        <br/>
+    <% end %>
+  </div>
+</div>

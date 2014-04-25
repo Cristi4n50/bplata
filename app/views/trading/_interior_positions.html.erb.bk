@@ -1,0 +1,88 @@
+<table cellspacing="0">
+  <thead>
+  <tr>
+    <th class="header"><%= t 'trading.pair' %></th>
+    <th class="header"><%= t 'trading.amount' %></th>
+    <th class="header"><%= t 'trading.base_price' %></th>
+    <th class="header"><%= t 'trading.liquidation_price' %></th>
+    <th class="header"><%= t 'trading.total_loans' %></th>
+    <th class="header"><%= t 'trading.pl' %> ($)</th>
+    <th class="header"><%= t 'trading.pl' %> (%)</th>
+    <th class="header"><%= t 'trading.swaprate' %></th>
+    <th class="header"><%= t 'trading.swap' %></th>
+    <th class="header"><%= t 'trading.actions' %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if current_user.positions.active.empty? %>
+      <tr>
+        <td colspan="10"><%= t "trading.no_active_positions" %></td>
+      </tr>
+  <% else %>
+
+      <% current_user.positions.active.each do |position| %>
+          <tr>
+            <td><%= position.pair %></td>
+            <td><%= position.amount %></td>
+            <td>
+              <%= accurate_dollar(position.base, "$") if Currency.lastunit(position.pair) == "USD" %>
+              <%= accurate_dollar(position.base, "&#3647;") if Currency.lastunit(position.pair) == "BTC" %>
+            </td>
+            <td>
+              <%= accurate_dollar(position.liquidation_price, "&#3647;") if Currency.lastunit(position.pair) == "BTC" %>
+              <%= accurate_dollar(position.liquidation_price, "$") if Currency.lastunit(position.pair) == "USD" %>
+            </td>
+            <td>
+              <% if @positiontotal %>
+                  <%= @positiontotal[current_user.positions.active.index(position)] %>
+              <% else %>
+                  0
+              <% end %>
+              <% if position.amount > 0 %>
+                  <%= Currency.lastunit(position.pair) %>
+              <% else %>
+                  <%= Currency.firstunit(position.pair) %>
+              <% end %>
+            </td>
+            <td><%= colored_dollar(position.pl) if Currency.lastunit(position.pair) == "USD" %><%= colored_dollar(position.pl, 0, "&#3647;") if Currency.lastunit(position.pair) == "BTC" %></td>
+            <td><%= position.base > 0 ? colored_percentage(position.pl / position.cost) : "N/A" %></td>
+            <td>
+              <% if @positiontotal %>
+                  <%= position.swaprate(@positiontotal[current_user.positions.active.index(position)]) %>%
+              <% else %>
+                  <%= position.swaprate(0) %>%
+              <% end %>
+            </td>
+            <td>
+              <% if position.amount > 0 %>
+                  <%= colored_dollar(position.swap.to_d) if Currency.lastunit(position.pair) == "USD" %>
+                  <%= colored_dollar(position.swap.to_d, 0, "&#3647;") if Currency.lastunit(position.pair) == "BTC" %>
+                  <%= colored_dollar(position.swap.to_d, 0, "") if Currency.lastunit(position.pair) == "LTC" %>
+              <% else %>
+                  <%= colored_dollar(position.swap.to_d) if Currency.firstunit(position.pair) == "USD" %>
+                  <%= colored_dollar(position.swap.to_d, 0, "&#3647;") if Currency.firstunit(position.pair) == "BTC" %>
+                  <%= colored_dollar(position.swap.to_d, 0, "") if Currency.firstunit(position.pair) == "LTC" %>
+              <% end %>
+            </td>
+            <td>
+              &nbsp;
+              <% if current_user.orders.active.margin.empty? %>
+                  <%= link_to t("trading.liquidate"), position, :remote => true, :method => :delete, :confirm => t("trading.liquidate_confirmation") %>
+              <% else %>
+                  <a href="" onclick="window.alert('<%= t 'trading.close_active_orders_before_position_close' %>')"><%= t 'loan.close' %></a>
+              <% end %>
+              <% if position.amount > 0 %>
+                  <!--<br/>
+                  <br/>
+                  <% if (0 - position.base) * position.amount > -position.swap %>
+                      <a href="/positions/claim/<%= position.id %>" data-confirm="Are you sure to claim <%= position.amount %> <%= Currency.firstunit(position.pair) %> in your balance? This service has a fee of <%= Fee.fee('claiming_fee_' + position.floor_volume.to_s) * 100 %>%">Claim</a>
+                  <% else %>
+                      <a href="" onclick="window.alert('You can only claim your position once you have enough profit to cover for the borrowed margin and the swap.<% if position.amount * position.current_price > ((position.base * position.amount) - position.swap) %> You have to sell approximately <%= dollar(((position.base * position.amount) - position.swap) / position.current_price,"")  %> <%= Currency.firstunit(position.pair) %> at the current price to claim the remaining<% end %>'); return false;">Claim</a>
+                  <% end %>-->
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

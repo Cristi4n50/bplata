@@ -1,0 +1,7 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  User: read
+
+associate:
+  User: read, update

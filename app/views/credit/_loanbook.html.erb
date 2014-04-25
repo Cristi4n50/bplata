@@ -1,0 +1,103 @@
+<table cellspacing="0">
+  <thead class="first">
+  <tr class="table-header">
+    <th colspan="5"><%= t 'credit.' + @currency.downcase + 'loans' %></th>
+  </tr>
+  </thead>
+  <thead>
+  <tr>
+    <th><%= t "credit.minperiod" %></th>
+    <th><%= t "credit.rate" %></th>
+    <th><%= t "credit.amount" %></th>
+    <th><%= t "credit.demand_count" %></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% unless @loans.nil? %>
+      <%
+         prev_offer = 0
+         offer_amount = 0
+         offer_count = 0
+         min_offer_period = 3
+         max_offer_period = 3
+         cpt = 0
+      %>
+      <% @loans.each do |offer| %>
+          <%
+             if [(offer.daily_rate * 100).floor(4), 0.0001].max == prev_offer && offer.rate > 0
+               offer_amount += offer.amount.abs
+               offer_count += 1
+               min_offer_period = [min_offer_period.to_i, offer.period.to_i].min
+               max_offer_period = [max_offer_period.to_i, offer.period.to_i].max
+             elsif prev_offer == 0 && offer.rate == 0
+               offer_amount += offer.amount.abs
+               offer_count += 1
+               min_offer_period = [min_offer_period.to_i, offer.period.to_i].min
+               max_offer_period = [max_offer_period.to_i, offer.period.to_i].max
+             else
+          %>
+              <% break if cpt > 40 %>
+              <% cpt += 1 %>
+              <% unless offer_amount == 0 %>
+                  <tr>
+                    <td><% if max_offer_period != min_offer_period %><%= min_offer_period %> - <% end %><%= max_offer_period %></td>
+                    <td>
+                      <% if prev_offer > 0 %>
+                          <input type="hidden" id="rate<%= offer.id %>" name="rate<%= offer.id %>" value="<%= prev_offer %>"/>
+                          <%= prev_offer %>%
+                      <% else %>
+                          <input type="hidden" id="rate<%= offer.id %>" name="rate<%= offer.id %>" value="0"/>
+                          <%= t "credit.vir" %> (current: <%= @avgrate.round(4) %>%)
+                      <% end %>
+                    </td>
+                    <td>
+                      <input type="hidden" id="amount<%= offer.id %>" name="amount<%= offer.id %>" value="<%= offer_amount.round(2) %>"/>
+                      <%= offer_amount.round(2) %>
+                    </td>
+                    <td><%= offer_count %></td>
+                    <td width="20%">
+                      <%= submit_tag t("credit.proposeoffer"), :id => "submit", :name => "submit", :class => "button small success green radius", :onclick => "$('input#direction').val('lend');$('input#lendrate_lend').val(" + prev_offer.to_s + ");$('input#period_lend').val('"+max_offer_period.to_s+"');$('input#amount_lend').val('"+offer_amount.to_s+"');" %>
+                    </td>
+                  </tr>
+              <% end %>
+              <%
+                 prev_offer = [(offer.daily_rate * 100).floor(4), 0.0001].max if offer.rate > 0
+                 prev_offer = 0 if offer.rate == 0
+                 offer_amount = offer.amount.abs
+                 offer_count = 1
+                 min_offer_period = offer.period
+                 max_offer_period = offer.period %>
+          <% end %>
+      <% end %>
+      <% unless offer_amount == 0 %>
+          <tr>
+            <td><% if max_offer_period != min_offer_period %><%= min_offer_period %> - <% end %><%= max_offer_period %></td>
+            <td>
+              <% if prev_offer > 0 %>
+                  <input type="hidden" id="ratelastloan" name="ratelastloan" value="<%= prev_offer %>"/>
+                  <%= prev_offer %>%
+              <% else %>
+                  <input type="hidden" id="ratelastloan" name="ratelastloan" value="0"/>
+                  <%= t "credit.vir" %> (current: <%= @avgrate.round(4) %>%)
+              <% end %>
+            </td>
+            <td>
+              <input type="hidden" id="amountlastloan" name="amountlastloan" value="<%= offer_amount.round(2) %>"/>
+              <%= offer_amount.round(2) %>
+            </td>
+            <td><%= offer_count %></td>
+            <td width="20%">
+              <%= submit_tag t("credit.proposeoffer"), :id => "submit", :name => "submit", :class => "button small success green radius", :onclick => "$('input#direction').val('lend');$('input#lendrate_lend').val(" + prev_offer.to_s + ");$('input#period_lend').val('"+max_offer_period.to_s+"');$('input#amount_lend').val('"+offer_amount.to_s+"');" %>
+            </td>
+          </tr>
+      <% end %>
+  <% else %>
+      <tbody class="empty">
+      <tr>
+        <td colspan="4">Loading...</td>
+        <td colspan="2" class="noborder"></td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>

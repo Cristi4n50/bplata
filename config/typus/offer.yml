@@ -1,0 +1,12 @@
+# Use the README file as a reference to customize settings.
+
+Offer:
+  fields:
+    default: currency, amount, originalamount, offertype, rate, period, status, user_id, created_at, updated_at
+    form: currency, amount, originalamount, offertype, rate, period, status, user_id
+    options:
+      selectors: currency, offertype
+  relationships: 
+  application: Application
+  order_by: -id
+  search: status

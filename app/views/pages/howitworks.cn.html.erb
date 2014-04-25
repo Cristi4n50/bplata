@@ -1,0 +1,62 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title 'How does Bitfinex works?' %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="large-12 columns">
+        <div class="row border">
+          <div class="large-12 columns">
+            <h2><i class="icon-cogs"></i> <span>How it works</span></h2>
+          </div>
+          <div class="large-2 columns">
+            <div class="magellan" data-magellan-expedition="fixed">
+              <ul class="side-nav how-it-works">
+                <li data-magellan-arrival="bitcoins-exchange"><a href="#bitcoins-exchange" class="button green success radius" style="padding:4px;">Bitcoins Exchange</a></li>
+                <li data-magellan-arrival="margin-trading"><a href="#margin-trading" class="button green success radius" style="padding:5px;">Margin Trading</a></li>
+                <li data-magellan-arrival="lending"><a href="#lending" class="button green success radius">Lending</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="large-10 columns">
+            <hr/>
+            <div class="row">
+              <div class="large-11 columns">
+                <p><b>Meta-exchange</b><br/>
+                  Bitfinex works as a meta-exchange. It allows you to access the orderbooks of other main bitcoin exchanges (MtGox and Bitstamp) to have the best liquidity possible, while keeping fees low. What you can see in the global orderbook of bitfinex is a combination of all orderbooks available (level 2 order book).</p>
+                <h4>Bitfinex offers 3 main functions with 3 different type of wallet which work together</h4>
+                <a name="bitcoins-exchange" data-magellan-destination="bitcoins-exchange"></a>
+                <p><b>Bitcoins exchange</b><br/>
+                  The exchange part works like any regular bitcoin exchange: you put your offer to buy or sell bitcoins on the global orderbook. You can choose to execute your orders only on MtGox, only on Bitstamp or only on Bitfinex, for example; that's the routing feature. When an order is matched against another, it is executed.<br/>
+                  The exchange wallet type is used for this feature.
+                </p>
+                <a name="margin-trading" data-magellan-destination="margin-trading"></a>
+                <p><b>Margin trading</b><br/>
+                  Our margin trading feature is unique in the Bitcoin world. Basically, it allows you to borrow funds from lenders (see next feature) to trade bitcoins. If you make a profit, you get the profit and pay the depositor interest. If you make a loss, you reimburse the depositors the whole borrowed amount.<br/>
+                  For example, let's say you want to open a long position for 100 bitcoins. That means you want to buy 100 bitcoins hoping the price will go up. The system will borrow for you 100 * the price of bitcoins in US dollars (let's say 1300 USD) from lenders, at the best rates available. When you close your position, you will reimburse the 1300 USD. Each hour you will be charged an interest rate going to your lender(s). If later you want to increase your position, this will borrow more funds.<br/>
+                  At any time, you can close your position. This will reimburse your lender, and you will keep the profit.<br/>
+                  The same goes for short position (selling bitcoins), where you borrow bitcoins instead of dollars.<br/>
+                  If there is no lender available, you will not be able to open your position. Your order status will be "NO RESERVE ACTIVE", which means that it will be executed as soon as there are funds available.
+                  The trading wallet is used for margin trading. It does not serve the purpose of buying or selling bitcoins, it serves only margin requirements; that is, even if you have 1000 US dollars in this wallet, if you open a 10 BTC long position, you will borrow the needed USD. Funds in this wallet are to cover for eventual losses that may occur. When the losses cover almost all your wallet balances, you may get a margin call and have your position force-closed to avoid further losses.
+                </p>
+                <a name="lending" data-magellan-destination="lending"></a>
+                <p><b>Lending</b><br/>
+                  Our lending feature goes hand in hand with the margin trading feature described above. If you don't feel like a trader and/or prefer safer investments, this feature is for you. Bitfinex allows you, using your deposit wallets, to lend bitcoins and/or dollars to traders. You can put offers with your chosen terms (which rates, for how long, and how much). When an offer is taken by a trader, the money in your wallet will be used to buy or sell bitcoins, and a loan will be opened. When the loan expires (the trader closes his position), bitcoins are bought or sold back and the money is reimbursed to your wallet.<br/>
+                  <br/>
+                  You don't have the exchange risk when you lend with bitfinex. The exchange risk is taken on by the trader, and, in case his position loses money, he will cover the loss with funds in his trading wallet. If a trader end up with more losses than his balance can cover, lenders can lose part of their lent funds, unless they use insured loans (see FAQ for more information).
+                </p>
+
+                <a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

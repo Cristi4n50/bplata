@@ -1,0 +1,79 @@
+<div class="large-6 columns sell">
+  <table cellspacing="0">
+    <thead class="first">
+    <tr class="table-header">
+      <th colspan="5"><%= t "pages.order_book.bids" %></th>
+    </tr>
+    </thead>
+    <thead>
+    <tr>
+      <th><%= t "trading.platform" %></th>
+      <th><%= t "pages.order_book.order_count" %></th>
+      <th><%= t "pages.order_book.bid_price" %></th>
+      <th><%= t "trading.amount" %></th>
+      <th><%= t "pages.order_book.total_amount" %></th>
+    </tr>
+    <% if Setting.get_value("bstp:" + @pair.downcase + ":noselling").to_d > 0 && Currency.externalpairs.include?(@pair) %>
+        <tr>
+          <th colspan="5">
+            <small>Not enough <%= Currency.firstunit(@pair) %> reserve on Bitstamp, you cannot sell on Bitstamp at the moment.</small>
+          </th>
+        </tr>
+    <% end %>
+    </thead>
+    <tbody>
+    <% unless @bids.nil? %>
+        <%
+           prev_bid = 0
+           bid_amount = 0
+           bid_sum = 0
+           bid_count = 0
+           prev_platform = ""
+        %>
+        <% @bids.each do |bid| %>
+            <%
+               if bid.price.round(2) == prev_bid.round(2) and bid.platform == prev_platform and Currency.lastunit(@pair) == "USD"
+                 bid_amount += bid.amount.abs
+                 bid_sum += bid.amount.abs
+                 bid_count += 1
+               elsif bid.price.round(5) == prev_bid.round(5) and bid.platform == prev_platform and Currency.lastunit(@pair) == "BTC"
+                 bid_amount += bid.amount.abs
+                 bid_sum += bid.amount.abs
+                 bid_count += 1
+               else
+            %>
+                <% unless prev_bid == 0 %>
+                    <tr style="<% if bid_amount >= 10 and bid_amount <= 99 %>background-color: rgba(158, 192, 82, 0.29);<% elsif bid_amount >= 100 %>background-color: rgba(158, 192, 82, 0.52);<% else %>background-color: #ffffff;<% end %>" onclick="$('#sell_price').val('<%= prev_bid %>');$('#amount').val('<%= bid_sum.round(2) %>');">
+                      <td><%= prev_platform %></td>
+                      <td><%= bid_count %></td>
+                      <td class="price"><%= dollar(prev_bid.round(2)) if Currency.lastunit(@pair) == "USD" %><%= dollar(prev_bid.round(5), "&#3647;", 5) if Currency.lastunit(@pair) == "BTC" %></td>
+                      <td><%= bid_amount.round(2) %></td>
+                      <td><%= bid_sum.round(2) %></td>
+                    </tr>
+                <% end %>
+                <%
+                   prev_platform = bid.platform.to_s
+                   prev_bid = bid.price.round(2) if Currency.lastunit(@pair) == "USD"
+                   prev_bid = bid.price.round(5) if Currency.lastunit(@pair) == "BTC"
+                   bid_amount = bid.amount.abs
+                   bid_sum += bid.amount.abs
+                   bid_count = 1 %>
+            <% end %>
+        <% end %>
+        <% unless prev_bid == 0 %>
+            <tr style="<% if bid_amount >= 10 and bid_amount <= 99 %>background-color: rgba(158, 192, 82, 0.29);<% elsif bid_amount >= 100 %>background-color: rgba(158, 192, 82, 0.52);<% else %>background-color: #ffffff;<% end %>" onclick="$('#sell_price').val('<%= prev_bid %>');$('#amount').val('<%= bid_sum.round(2) %>');">
+              <td><%= prev_platform %></td>
+              <td><%= bid_count %></td>
+              <td class="price"><%= dollar(prev_bid.round(2)) if Currency.lastunit(@pair) == "USD" %><%= dollar(prev_bid.round(5), "&#3647;", 5) if Currency.lastunit(@pair) == "BTC" %></td>
+              <td><%= bid_amount.round(2) %></td>
+              <td><%= bid_sum.round(2) %></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td colspan="5">Loading...</td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

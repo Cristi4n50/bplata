@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+Trade:
+  fields:
+    default: amount, price, response, created_at, platform, buyer_id, seller_id, pair
+    form: amount, price, response, pair
+  relationships: 
+  application: Application
+  order_by: -id

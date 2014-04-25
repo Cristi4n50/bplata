@@ -1,0 +1,68 @@
+<div class="large-3 columns sidebar">
+
+  <div class="row order-book">
+    <div class="large-12 columns">
+      <a href="/pages/order_book" class="radius small button"><%= t 'nav.order_book' %></a>
+    </div>
+    <!--<div class="large-6 small-12 columns">
+      <a href="/pages/ll_order_book" class="radius small button"><%= t 'nav.ll_order_book' %></a>
+    </div>-->
+  </div>
+
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <form class="custom">
+        <div class="large-12 columns wallet" id="account_overview">
+          <label for="wallet"><%= t 'sidebar.hello' %></label>
+          <select id="wallet" onchange="update_wallets();">
+            <% current_user.wallets.each do |wallet| %>
+                <% if controller.controller_name == "trading" && wallet.name == "trading" %>
+                    <option value="<%= wallet.name %>" selected="selected"><%= wallet.name %></option>
+                <% elsif controller.controller_name == "exchange" && wallet.name == "exchange" %>
+                    <option value="<%= wallet.name %>" selected="selected"><%= wallet.name %></option>
+                <% elsif controller.controller_name == "credit" && wallet.name == "deposit" %>
+                    <option value="<%= wallet.name %>" selected="selected"><%= wallet.name %></option>
+                <% else %>
+                    <option value="<%= wallet.name %>"><%= wallet.name %></option>
+                <% end %>
+            <% end %>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row overview" id="walletrender">
+  </div>
+
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <div class="large-12 small-12 columns manage-wallet">
+        <a href="/account/deposit" class="button radius"><i class="icon-download-alt"></i> <%= t 'sidebar.deposit' %>
+        </a>
+        <a href="/account/withdraw" class="button radius"><i class="icon-upload-alt"></i> <%= t 'sidebar.withdraw' %>
+        </a>
+        <a href="/managewallets" class="button radius"><i class="icon-exchange"></i> <%= t 'account.managewallets' %>
+        </a>
+        <% if current_user.associate? || current_user.monitor? || current_user.accountant? %><a class="button radius" href="/power"><%= "Powerboard" %></a><% end %>
+        <% if current_user.associate? || current_user.support? %><a class="button radius" href="/userboard"><%= "Userboard" %></a><% end %>
+        <% if current_user.associate? || current_user.monitor? %><a class="button radius" href="/marginboard"><%= "Marginboard" %></a><% end %>
+        <% if current_user.representative? %>
+            <a class="button radius" href="/representatives"><%= t 'nav.affiliation' %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <div class="large-12 small-12 columns links">
+        <ul>
+          <li><a<% if controller.controller_name == 'account' && controller.action_name == 'api' %> class="active"<% end %> href="/account/api"><%= t 'nav.api_key' %></a></li>
+          <li><a<% if controller.controller_name == 'pages' && controller.action_name == 'stats' %> class="active"<% end %> href="/pages/stats"><%= t 'nav.stats' %></a></li>
+          <li><a<% if controller.controller_name == 'pages' && controller.action_name == 'public_log' %> class="active"<% end %> href="/pages/public_log"><%= t 'nav.public_log' %></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

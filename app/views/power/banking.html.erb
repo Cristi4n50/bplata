@@ -1,0 +1,149 @@
+<%= render "javascript" %>
+<%= render "menu" %>
+</div>
+</div>
+<% title 'Banking' %>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="<%= Currency.base_currencies.count - CRYPTO_CURRENCIES.count + 1 %>">Balances</th>
+  </tr>
+  <tr>
+    <th>Bank account</th>
+    <% Currency.base_currencies.each do |curr| %>
+        <% unless CRYPTO_CURRENCIES.include?(curr) %>
+            <th><%= curr %></th>
+        <% end %>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @templates.empty? %>
+      <tr>
+        <td colspan="<%= Currency.base_currencies.count - CRYPTO_CURRENCIES.count + 1 %>">No bank template!</td>
+      </tr>
+  <% else %>
+      <% cpt = 1 %>
+      <% @templates.each do |template| %>
+          <tr>
+            <td><%= template.template_name %></td>
+            <% Currency.base_currencies.each do |curr| %>
+                <% unless CRYPTO_CURRENCIES.include?(curr) %>
+                    <td><%= value_setting("cold_" + curr.downcase + "_" + cpt.to_s, curr) %></td>
+                <% end %>
+            <% end %>
+            <% cpt += 1 %>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<table class="history table table-bordered table-striped" style="font-size: small">
+  <thead>
+  <tr>
+    <th colspan="9">Bank templates</th>
+  </tr>
+  <tr>
+    <th>Template name</th>
+    <th>Account name</th>
+    <th>Account number</th>
+    <th>Account address</th>
+    <th>Bank name</th>
+    <th>Bank address</th>
+    <th>SWIFT</th>
+    <th>Default incoming</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <%= form_tag({:controller => :power, :action => :add_bank}, {:remote => false}) do %>
+        <td><%= text_field_tag :template_name, params[:template_name], :value => '', :title => "Template name" %></td>
+        <td><%= text_field_tag :account_name, params[:account_name], :value => '', :title => "Account name" %></td>
+        <td><%= text_field_tag :account_number, params[:account_number], :value => '', :title => "Account number" %></td>
+        <td><%= text_field_tag :account_address, params[:account_address], :value => '', :title => "Account address" %></td>
+        <td><%= text_field_tag :bank_name, params[:bank_name], :value => '', :title => "Bank name" %></td>
+        <td><%= text_field_tag :bank_address, params[:bank_address], :value => '', :title => "Bank address" %></td>
+        <td><%= text_field_tag :swift, params[:swift], :value => '', :title => "SWIFT" %></td>
+        <td colspan="2">
+          <%= submit_tag "Add", :id => "submit", :name => "submit", :class => "button radius" %>
+        </td>
+    <% end %>
+  </tr>
+  <% if @templates.empty? %>
+      <tr>
+        <td colspan="9">No bank template!</td>
+      </tr>
+  <% else %>
+      <% @templates.each do |template| %>
+          <tr>
+            <%= form_tag({:controller => :power, :action => :modify_bank}, {:remote => false}) do %>
+                <td><%= template.template_name %></td>
+                <td><%= template.account_name %></td>
+                <td><%= template.account_number %></td>
+                <td><%= template.account_address %></td>
+                <td><%= template.bank_name %></td>
+                <td><%= template.bank_address %></td>
+                <td><%= template.swift %></td>
+                <td><%= check_box_tag 'default', 1, false, :onchange => "if(confirm('Are you sure?')) {this.form.submit();}" if template.default == 0 %>
+                  <%= check_box_tag 'default', 1, true, :onchange => "if(confirm('Are you sure?')) {this.form.submit();}" if template.default == 1 %>
+                  <input type="hidden" name="templateid" id="templateid" value="<%= template.id %>"/></td>
+                <td></td>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<table class="history table table-bordered table-striped" style="font-size: small">
+  <thead>
+  <tr>
+    <th colspan="4">Countries and organizations definition</th>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <th>Deposit bank account</th>
+    <th>Withdrawal bank account</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <%= form_tag({:controller => :power, :action => :add_country_to_bank}, {:remote => false}) do %>
+        <td><%= country_select("cc", "country", ["China", "United States"], {}) %></td>
+        <td>
+          <select name="bank" id="bank">
+            <% @templates.each do |template| %>
+                <option value="<%= template.id %>"><%= template.template_name %></option>
+            <% end %>
+          </select>
+        </td>
+        <td></td>
+        <td>
+          <%= submit_tag "Add country to this template", :id => "submit", :name => "submit", :class => "button radius" %>
+        </td>
+    <% end %>
+  </tr>
+  <% if @countries.empty? %>
+      <tr>
+        <td colspan="9">No bank template!</td>
+      </tr>
+  <% else %>
+      <% @countries.each do |country| %>
+          <tr>
+            <%= form_tag({:controller => :power, :action => :remove_country}, {:remote => false}) do %>
+                <td>
+                  <input type="hidden" name="countryid" value="<%= country.id %>"/>
+                  <%= country.country_name %>
+                </td>
+                <td><%= country.bank_account.template_name %></td>
+                <td></td>
+                <td>
+                  <%= submit_tag "Remove this link", :id => "submit", :name => "submit", :class => "button radius" %>
+                </td>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

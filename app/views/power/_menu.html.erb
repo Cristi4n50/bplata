@@ -1,0 +1,68 @@
+<ul class="button-group radius even-8" id="sub-menu">
+  <% if current_user.associate? || current_user.monitor? %>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'index' %> active
+      <% end %>" href="/power">Overview</a>
+      </li>
+  <% end %>
+  <% if current_user.associate? || current_user.accountant? %>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'expenses' %> active
+      <% end %>" href="/power/expenses">Expenses</a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'withdrawals' %> active
+      <% end %>" href="/power/withdrawals">Deposits / withdrawals</a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'banking' %> active
+      <% end %>" href="/power/banking">Banking</a>
+      </li>
+  <% end %>
+  <% if current_user.associate? %>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == "compliance" %> active
+      <% end %>" href="/compliance"><%= "Compliance" %></a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'checklog' %> active
+      <% end %>" href="/power/checklog">Checking log</a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'representatives' %> active
+      <% end %>" href="/power/representatives"><%= "Representatives" %></a>
+      </li>
+      <li>
+        <% if current_user.id == 1 %>
+            <a class="button small
+          <% if controller.controller_name == 'power' && controller.action_name == 'associates' %> active
+          <% end %>" href="/power/associates"><%= "Staff" %></a>
+        <% end %></li>
+      </ul>
+      <ul class="button-group radius even-3" id="sub-menu">
+  <% end %>
+  <% if current_user.associate? || current_user.monitor? %>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'tweaks' %> active
+      <% end %>" href="/power/tweaks">System tweaks</a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'trades' %> active
+      <% end %>" href="/power/trades">Trades</a>
+      </li>
+      <li>
+        <a class="button small
+      <% if controller.controller_name == 'power' && controller.action_name == 'pending_orders' %> active
+      <% end %>" href="/power/pending_orders"><%= "Pending orders" %></a>
+      </li>
+  <% end %>
+  </ul>

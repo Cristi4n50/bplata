@@ -1,0 +1,59 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title "Fees schedule" %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6>User fees schedule</h6>
+    <table cellspacing="0">
+      <thead>
+      <tr>
+        <th>Fee name</th>
+        <th>Value</th>
+        <th>Comment</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% fees_list = ["wirewithdrawal_fees", "express_wirewithdrawal_fees"] %>
+      <% last_pair = [] %>
+      <% Currency.pairs.each do |pair| %>
+          <% unless last_pair.include?(Currency.firstunit(pair)) %>
+              <% fees_list << "bfx_fees_#{Currency.firstunit(pair)}" %>
+              <% last_pair << Currency.firstunit(pair) %>
+          <% end %>
+      <% end %>
+      <% fees_list.each do |feename| %>
+          <tr>
+            <% fee_schedule = @dauser.fee_schedules.where(:description => feename).first %>
+            <% if fee_schedule %>
+                <%= form_tag({:controller => :userboard, :action => :mod_fee}, {:remote => false}) do %>
+                    <td><input type="hidden" name="dauser_id" id="dauser_id" value="<%= @dauser_id %>"/>
+                      <input type="hidden" name="fee_id" id="fee_id" value="<%= fee_schedule.id %>"/>
+                      <%= feename %></td>
+                    <td><%= text_field_tag :value, params[:value], :value => fee_schedule.value, :title => "Value" %></td>
+                    <td><%= text_field_tag :comment, params[:comment], :value => fee_schedule.remarks, :title => "Comments" %></td>
+                    <td><%= submit_tag "Modify fee schedule", :id => "submit", :name => "submit", :class => "button radius" %></td>
+                <% end %>
+                <td>
+                  <%= form_tag({:controller => :userboard, :action => :del_fee}, {:remote => false}) do %>
+                      <input type="hidden" name="dauser_id" id="dauser_id" value="<%= @dauser_id %>"/>
+                      <input type="hidden" name="fee_id" id="fee_id" value="<%= fee_schedule.id %>"/>
+                      <%= submit_tag "Delete", :id => "submit", :name => "submit", :class => "button radius" %></td>
+                      <% end %></td>
+            <% else %>
+                <%= form_tag({:controller => :userboard, :action => :add_fee}, {:remote => false}) do %>
+                    <td><input type="hidden" name="dauser_id" id="dauser_id" value="<%= @dauser_id %>"/>
+                      <input type="hidden" name="description" id="description" value="<%= feename %>"/>
+                      <%= feename %></td>
+                    <td><%= text_field_tag :value, params[:value], :value => Fee.fee(feename), :title => "Value" %></td>
+                    <td><%= text_field_tag :comment, params[:comment], :value => '', :title => "Comments" %></td>
+                    <td colspan="2"><%= submit_tag "Add fee schedule", :id => "submit", :name => "submit", :class => "button radius" %></td>
+                <% end %>
+            <% end %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

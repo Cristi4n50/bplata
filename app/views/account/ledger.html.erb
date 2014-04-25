@@ -1,0 +1,47 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title t 'account.ledger' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> <%= t "account.accounting_currency" %></h6>
+    <% if @ledger_entries.empty? %>
+        <div class="row">
+          <div class="large-12 columns"><%= t "account.no_ledger" %>.</div>
+        </div>
+    <% else %>
+        <br/>
+        <br/>
+        <%= paginate @ledger_entries %>
+        <br/>
+        <br/>
+        <table class="history table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th><%= t "account.description" %></th>
+            <th class="green"><%= t "account.credit" %></th>
+            <th class="red"><%= t "account.debit" %></th>
+            <th><%= t "account.balance" %></th>
+            <th><%= t "account.date" %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @ledger_entries.each do |ledger_entry| %>
+              <tr>
+                <td><%= ledger_entry.description %></td>
+                <td class="green"><%= ledger_entry.amount.abs if ledger_entry.amount >= 0 %></td>
+                <td class="red"><%= ledger_entry.amount.abs if ledger_entry.amount < 0 %></td>
+                <td><%= ledger_entry.balance %></td>
+                <td><%= friendly_timestamp(ledger_entry.created_at) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <%= paginate @ledger_entries %>
+        <br/>
+        <br/>
+    <% end %>
+  </div>
+</div>

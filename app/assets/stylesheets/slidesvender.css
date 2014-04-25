@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+#intercambio {width:744px;height:505px;margin:7px 0;
+margin-top:75px;}
+#intercambio ul {list-style:none;padding:0;margin:0}
+#intercambio ul#vender {list-style:none;padding:0;margin:0;width:246px;height:350px;background:url(/assets/pagination-bg.jpg) no-repeat left top}
+#intercambio ul.#vender li {padding:5px 0 0 5px;margin-bottom:-5px;}
+#intercambio ul#vender li a {width:270px;height:85px;background-repeat:no-repeat;background-position:left -85px;background-image:url(/assets/thumb-sprite.png);text-decoration:none;display:block;color:#fff;}
+#intercambio ul#vender li.current a {background-position:left top;color:#fff}
+#intercambio ul#vender li a span {font-size:20px;line-height:1.2em;display:block;padding:14px 0 0 0}
+#intercambio ul#vender li a small {display:inline-block;color:#428301;background-repeat:no-repeat;background-position:right -80px;background-image:url(/assets/arrows.gif);padding:0 17px 0 0}
+#intercambio ul#vender li a span,
+#intercambio ul#vender li a small {padding-left:40px}
+#intercambio ul#vender li.current a small {color:#82b704;background-position:right 5px}
+#intercambio ul#slides li {position:relative;width:100%}
+#intercambio ul#slides li img {
+	position: absolute;
+	top: 0px;
+	right: 35px
+}
+#intercambio ul#slides li a {color:#fff;text-transform:uppercase;text-decoration:none;position:absolute;right:43px;top:217px;font-size:18px;line-height:1.2em;padding-left:8px;background:url(/assets/button-left.png) no-repeat left top;letter-spacing:-1px}
+#intercambio ul#slides li a:hover {color:#8ab805}
+#intercambio ul#slides li a span {display:block;padding-right:8px;background:url(/assets/button-right.png) no-repeat right top}
+#intercambio ul#slides li a span span {background:url(/assets/button-tail.png) repeat-x left top;padding:15px 14px 17px 14px}
+a {outline:0;border:0}

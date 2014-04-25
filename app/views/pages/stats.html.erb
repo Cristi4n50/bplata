@@ -1,0 +1,82 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title t ".stats" %>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page">
+      <h4><%= t '.stats' %></h4>
+      <h6><%= t ".volume" %></h6>
+
+      <p class="volume"><%= t ".vol24h" %>:</p>
+      <ul>
+        <li><strong><%= @vol24h.round(2) %> BTC</strong>
+        </li>
+        <li><strong><%= @vol24hltc.round(2) %> LTC</strong></li>
+      </ul>
+      <p><%= t ".vol7days" %>:</p>
+      <ul>
+        <li><strong><%= @vol7days.round(2) %> BTC</strong></li>
+        <li><strong><%= @vol7daysltc.round(2) %> LTC</strong>
+        </li>
+      </ul>
+      <p>Volume on the last 30 days</p>
+      <ul>
+        <li><strong><%= @vol30days.round(2) %> BTC</strong></li>
+        <li><strong><%= @vol30daysltc.round(2) %> LTC</strong>
+        </li>
+      </ul>
+      <h6><%= t "nav.interest_rates" %></h6>
+
+      <p><%= t ".prevailing_interest_rates", :date => Time.now %></p>
+      <table cellspacing="0">
+        <thead>
+        <tr>
+          <th><%= t 'account.currency' %></th>
+          <th><%= t ".apy" %></th>
+          <th><%= t ".avg_apy" %></th>
+          <th><%= t ".totalamount" %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% Currency.currencies.each do |curr| %>
+            <tr>
+              <td><%= curr %></td>
+              <td><%= @avginterest[Currency.currencies.index(curr)] %>%</td>
+              <td><%= @avgtimeinterest[Currency.currencies.index(curr)] %>%</td>
+              <td><%= dollar(@totalloan[Currency.currencies.index(curr)], "") %> <%= curr %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <p class="small"><%= t '.apy_explain' %><br/><%= t '.avg_apy_explain' %></p>
+      <h6><%= "Bitfinex Sentiment Index" %></h6>
+
+      <p><%= t ".bsi_explain" %></p>
+
+      <p>BSI as of <%= Time.now %>:
+        <br/>
+        <%= @bsi %> -
+        <% if @bulls > 2 * @bears %>
+            <%= t 'pages.bsi.very_bullish' %>
+        <% elsif  @bulls > @bears %>
+            <%= t 'pages.bsi.bullish' %>
+        <% elsif @bulls == @bears %>
+            <%= t 'pages.bsi.neutral' %>
+        <% elsif @bulls * 2 < @bears %>
+            <%= t 'pages.bsi.very_bearish' %>
+        <% else %>
+            <%= t 'pages.bsi.bearish' %>
+        <% end %></p>
+
+      <div class="progress large-12 success radius">
+        <span class="meter" style="width: <%= @bullspercent %>%"></span>
+      </div>
+      <div class="progress large-12 red secondary radius">
+        <span class="meter" style="width:  <%= @bearspercent %>%"></span>
+      </div>
+    </div>
+  </div>
+</div>

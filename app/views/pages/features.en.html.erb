@@ -1,0 +1,93 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Features" %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="large-12 columns">
+        <div class="row border">
+          <div class="large-12 columns">
+            <h2><i class="icon-list"></i> <span>Features</span></h2>
+          </div>
+          <div class="large-2 columns">
+            <div class="magellan" data-magellan-expedition="fixed">
+              <ul class="side-nav">
+                <li data-magellan-arrival="short" class="active"><a href="#short" class="button green success radius">Short</a></li>
+                <li data-magellan-arrival="long"><a href="#long" class="button green success radius">Long</a></li>
+                <li data-magellan-arrival="exchange"><a href="#exchange" class="button green success radius">Exchange</a></li>
+                <li data-magellan-arrival="swap"><a href="#swap" class="button green success radius">Liquidity swaps</a></li>
+                <li data-magellan-arrival="trade-with-leverage"><a href="#trade-with-leverage" class="button green success radius" style="padding:4px;">Trade with leverage</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="large-10 columns">
+            <hr/>
+            <div class="row">
+              <div class="large-11 columns">
+                <a name="short" data-magellan-destination="short"></a>
+                <p><b>Short</b><br/>
+                  To short bitcoins, go to the Margin trade page. There, you will place a sell order, with several options available:</p>
+                <ul>
+                  <li>Choose the amount of bitcoins you want to short</li>
+                  <li>Choose the type of order you want to make: Market Orders are executed at the current market price available.. Limit Order are executed only if the price is above a desired price level. Stop Orders are issued to close your outstanding (all or part)  position if the price of Bitcoin falls below a certain level. </li>
+                  <li>Note: For a short position you need to buy Bitcoin to close your position so you would place a buy stop above the current price. If the price went against you, eventually the buy stop would be triggered and your position would be closed.</li>
+                  <li>Finally, click and the red "Sell" button to place your order. It will appears in the active orders table below. When your order is executed, you will see the corresponding position in the "active position" table.</li>
+                </ul>
+                <ul class="tips">
+                  <li>TIP: Use limit-sell to control the order execution price.</li>
+                  <li>TIP: To short bitcoin you need to take bitcoin from others liquidity providers and then sell those bitcoin. When you close a short position you must buy back the bitcoin so you can repay the liquidity provider. If bitcoin price rises when you are short you will have to buy bitcoin back at a higher price to close your position.</li>
+                </ul>
+                <a name="long" data-magellan-destination="long"></a>
+                <p><b>Long</b><br/>
+                  To take a long bitcoin position, go to the Margin trade page. There, you will place a buy order, with several options available:</p>
+                <ul>
+                  <li>Choose the amount of bitcoins you want to buy on margin</li>
+                  <li>Choose the type of order you want to make: Market Orders are executed at the current market price available. Limit Order are executed only if the price is below the desired price level. Stop Loss Orders are issued to close a your outstanding (all or part) position if the price of Bitcoin rises above a certain level.</li>
+                  <li>Finally, click the green "Buy" button to place your order. It will appear in the active orders table below. When your order is executed, you will see the corresponding position in the "active position" table.</li>
+                </ul>
+                <ul class="tips">
+                  <li>TIP: Use limit-buy to control the order execution price.</li>
+                  <li>TIP: To long bitcoins you need to take US dollars from others liquidity providers. You should become familiar with the Liquidity providing page and understand how Swaps are made. Margin can be taken automatically but you also have the option of managing your CFD directly.</li>
+                </ul>
+                <a name="exchange" data-magellan-destination="exchange"></a>
+                <p><b>Change</b><br/>
+                  To buy or sell bitcoins, you have to first fund your exchange wallet. You can go to the Manage Wallets page and transfer bitcoins or US dollars into your Exchange wallet.<br/>
+                  Then you can go to the Exchange page, where you will be able to place your order, with the various option available:</p>
+                <ul>
+                  <li>Choose the amount of bitcoins you want to buy or to sell</li>
+                  <li>Choose the type of order you want to make: market orders are executed at any price available. Limit order are executed only if the price is above (for sell order) or below (for buy order) a certain price that you decide in the "Price" field.</li>
+                  <li>Choose if you want to route your order. Fees varies with the exchange on which your order is executed. Orders executed on bitfinex have a fee of only 0.1% while other exchanges are generally slightly higher. You may choose to execute your order only on Bitfinex to have less fees, but if you route your order and it involves a larger amount of bitcoin you may want to look at market depth first, i.e., the order books.</li>
+                  <li>When you're all set, click on the "Buy" or the "Sell" button. When executed, your exchange wallet balance will be updated.</li>
+                </ul>
+                <a name="swap" data-magellan-destination="swap"></a>
+                <p><b>Providing liquidity</b><br/>
+                  To provide liquidity, you first have to make sure your deposit wallet contains USD or BTC. If not, you can go to the Manage Wallets page to transfer funds into this wallet.<br/>
+                  Go to the "Liquidity swaps" page to put your offers. Here, choose your conditions for the swap you propose:</p>
+                <ul>
+                  <li>Choose the amount of liquidity you want to provide (amount) .</li>
+                  <li>Choose for how many days you would like to offer this liquidity (period) .</li>
+                  <li>Choose at which rate (in % per day) you want to offer liquidity</li>
+                  <li>When you're all set, click on "Offer Now". Your offer will appear in the "Unfilled demands/offers" table. When it will be taken, you will see the opened positions in the "Funds currently offered" table.</li>
+                </ul>
+                <a name="trade-with-leverage" data-magellan-destination="trade-with-leverage"></a>
+                <p><b>Trade with leverage</b><br/>
+                  To trade bitcoins with leverage, go to the Margin trade page. There, you will pass a sell (for short position) or a buy (for long position) order, with several options available:</p>
+                <ul>
+                  <li>Choose the amount of bitcoins you want to short or long.</li>
+                  <li>Choose the type of order you want to make: market orders are executed at any price available. Limit order are executed only if the price is above (for sell order) or below (for buy order) a certain price that you decide in the "Price" field. Stop order are when you have an opened position. </li>
+                  <li>Finally, click and the "Buy" or "Sell" button to place your order. It will appears in the active orders table below. When your order is executed, you will see the corresponding position in the "active position" table.</li>
+                </ul>
+                <a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

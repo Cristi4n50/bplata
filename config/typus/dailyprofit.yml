@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+Dailyprofit:
+  fields:
+    default: currency, key, amount, created_at, updated_at
+    form: currency, key, amount
+  relationships:
+  application: Application
+  order_by: -id
+  #filters: status

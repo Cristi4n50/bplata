@@ -1,0 +1,41 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title t 'account.trading_sum' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> <%= t "account.trading_sum" %></h6>
+    <br/>
+    <br/>
+    <div class="row">
+      <% btc_volume = current_user.volume("BTCUSD", 30).to_d
+         ltc_volume = current_user.volume("LTCUSD", 30).to_d + current_user.volume("LTCBTC", 30).to_d
+         #usd_volume = Currency.currencyvalue(btc_volume,"BTC",false).to_d + Currency.currencyvalue(ltc_volume, "LTC", false).to_d
+         %>
+      <div class="large-12 columns"><%= t 'account.btc_volume' %>
+        : <%= dollar(btc_volume, "") %></div>
+      <br/><br/>
+
+      <div class="large-12 columns"><%= t 'account.ltc_volume' %>
+        : <%= dollar(ltc_volume, "") %></div>
+      <br/><br/>
+          <div class="large-12 columns">
+            Your fees on Bitfinex (based on your trading volume): <br/>
+            <% ["BTC","LTC"].each do |curr| %>
+                <%= curr %> pairs: <%= percentage(Fee.user_fee("bfx_fees_" + curr, current_user)) %><br/>
+            <% end %>
+          </div>
+      <br/><br/>
+      <hr/>
+      <br/>
+
+      <div class="large-12 columns">
+        <%= t 'account.total_interests_earned', :nbdays => 30 %>:<br/>
+        <% Currency.currencies.each do |curr| %>
+            <%= dollar(current_user.ledger_entries.on_slave.where(["(description like ? or description like ?) and currency = ? and created_at >= ?", "Swap Payment%", "Interest Payment%", curr, Time.now - 30.days]).sum('amount').to_d, "") %> <%= curr %>
+            <br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

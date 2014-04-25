@@ -1,0 +1,18 @@
+# Use the README file as a reference to customize settings.
+
+Representative:
+  fields:
+    default: id, user_id, referrer_code, type, status, currency, created_at
+    list: id, user_id, referrer_code, type, status, currency, created_at
+    form: user_id, referrer_code, type, status, currency, created_at
+#    options:
+#      selectors: user_id
+  relationships: referrals
+  application: Application
+  order_by: -id
+#  filters: wallettype, user_id
+  search: user_id
+  actions:
+    edit: show
+  options:
+    default_action_on_item: show

@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  Representative: read
+
+partner:
+  Representative: read
+
+associate:
+  Representative: read

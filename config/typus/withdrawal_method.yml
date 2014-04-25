@@ -1,0 +1,16 @@
+# Use the README file as a reference to customize settings.
+
+WithdrawalMethod:
+  fields:
+    default: user_id,currency,address,template_name,benef_name,benef_address,benef_acc_num,benef_bank_name,benef_bank_add,benef_bank_city,benef_bank_country,benef_bank_swift,inter_bank_name,inter_bank_add,inter_bank_city,inter_bank_country,inter_bank_account,inter_bank_swift
+    list: user_id,currency,address,template_name,benef_name,benef_address,benef_acc_num,benef_bank_name,benef_bank_add,benef_bank_city,benef_bank_country,benef_bank_swift,inter_bank_name,inter_bank_add,inter_bank_city,inter_bank_country,inter_bank_account,inter_bank_swift
+    form: user_id,currency,address,template_name,benef_name,benef_address,benef_acc_num,benef_bank_name,benef_bank_add,benef_bank_city,benef_bank_country,benef_bank_swift,inter_bank_name,inter_bank_add,inter_bank_city,inter_bank_country,inter_bank_account,inter_bank_swift
+#    options:
+#      selectors: user_id
+  relationships:
+  application: Application
+  order_by: -id
+  actions:
+    edit: show
+  options:
+    default_action_on_item: show

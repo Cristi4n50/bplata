@@ -1,0 +1,18 @@
+<% if !@buyorders.nil? %>
+<% @buyorders.each do |order| %>
+<%= debug order %>
+<% end %>
+<% end %>
+<% if !@sellorders.nil? %>
+<% @sellorders.each do |order| %>
+<%= debug order %>
+<% end %>
+<% end %>
+<% if !@trades.nil? %>
+<% @trades.each do |order| %>
+<%= debug order %>
+<% end %>
+<% end %>
+<% unless @test.nil? %>
+<%= debug @test %>
+<% end %>

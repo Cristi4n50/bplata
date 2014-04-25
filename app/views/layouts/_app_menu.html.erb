@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="button-group radius even-3" id="menu">
+      <% if current_user.level == "exchange" || current_user.level == "trader" %>
+          <li><a href="/exchange" class="button
+            <% if controller.controller_name == 'exchange' %> active
+            <% end %>"><%= t 'nav.exchange' %></a></li>
+      <% end %>
+      <% if current_user.level == "trader" %>
+          <li><a href="/trading" class="button
+            <% if controller.controller_name == 'trading' %> active
+            <% end %>"><%= t 'nav.trading' %></a></li>
+      <% end %>
+      <li><a href="/credit" class="button
+        <% if controller.controller_name == 'credit' %> active
+        <% end %>"><%= t 'nav.credit' %></a></li>
+    </ul>

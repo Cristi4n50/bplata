@@ -1,0 +1,13 @@
+# Use the README file as a reference to customize settings.
+
+Order:
+  fields:
+    default: pair, amount, originalamount, type, price, avg_price, trailingprice, routing, status, user_id, created_at, updated_at
+    form: pair, amount, originalamount, type, price, trailingprice, routing, status, hidden, user_id
+    options:
+      selectors: pair, type
+  relationships: 
+  application: Application
+  order_by: -id
+  filters: type
+  search: status

@@ -1,0 +1,62 @@
+<%= render "javascript" %>
+<%= render "/power/menu" %>
+</div>
+</div>
+<% title 'System trades' %>
+<% if @trades.empty? %>
+
+    <div class="empty">
+      <h3>No trades happened yet!</h3>
+    </div>
+
+<% else %>
+    <br/>
+    <br/>
+    <%= paginate @trades %>
+    <br/>
+    <br/>
+    <table class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th><%= t "trading.pair" %></th>
+        <th><%= t "trading.amount" %></th>
+        <th><%= t "trading.price" %></th>
+        <th><%= t "account.date" %></th>
+        <th><%= t "trading.platform" %></th>
+        <th>Buyer</th>
+        <th>Seller</th>
+        <th>Debug response</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @trades.each do |trade| %>
+          <% if trade.response.nil? || (trade.platform != "debugsystem" && trade.response && (trade.response['price'].nil? || trade.response['amount'].nil?)) %>
+              <tr>
+                <% if (trade.buyer_id == SYSUSER_ID || trade.seller_id == SYSUSER_ID)
+                     sysclass="system_trades"
+                   elsif trade.platform == "debugbitstamp"
+                     sysclass="error_trades"
+                   else
+                     sysclass=""
+                   end %>
+
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.pair %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.amount %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.price %></span></td>
+                <td class="<%= sysclass %>">
+                  <span class="<%= sysclass %>"><%= friendly_timestamp(trade.created_at) %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.platform %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.buyer_id %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.seller_id %></span></td>
+                <td class="<%= sysclass %>"><span class="<%= sysclass %>"><%= trade.response %></span></td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <%= paginate @trades %>
+    <br/>
+    <br/>
+<% end %>

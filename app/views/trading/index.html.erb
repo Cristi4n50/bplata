@@ -1,0 +1,65 @@
+<ul class="button-group radius even-3" id="sub-menu">
+  <% @pairs.each do |currentpair| %>
+      <li><a href="/trading/index/<%= currentpair.downcase %>" class="button small
+        <% if @pair == currentpair %> active
+        <% end %>"><%= currentpair %></a></li>
+  <% end %>
+</ul>
+</div>
+</div>
+<% title t "nav.trading" %>
+<%= render "layouts/notifications" %>
+<%= render "javascript" %>
+
+<%= render "positions" %>
+<%= render "orders" %>
+
+<%= form_tag orders_path, :remote => true, :class => "custom order" do %>
+    <%= render "trading/form" %>
+    <div class="row margin-available">
+      <div class="large-12 columns">
+        <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+          <section>
+            <p class="title" data-section-title><a href="#"><%= t 'trading.margin_available' %> <i></i></a></p>
+
+            <div class="content nopadding" data-section-content>
+              <div class="large-12 columns header">
+                <div class="large-4 columns">
+                  <label for="variableRate">
+                    <input name="includevir" checked="checked" type="checkbox" id="variableRate" style="display: none;" onchange="update_creditbook();"/>
+                    <span class=" custom checkbox"></span> <%= t 'trading.includevir' %>
+                  </label>
+                </div>
+                <div class="large-4 columns">
+                  <label for="maximumMargin">
+                    <input type="checkbox" checked="checked" name="incmaxrate" id="maximumMargin" style="display: none;">
+                    <span class="custom checkbox"></span> <%= t 'trading.maxrate' %>
+                  </label>
+                </div>
+                <div class="large-4 columns">
+                  <div class="large-6 columns">
+                    <input name="maxrate" type="text" placeholder="1" value="1">
+                  </div>
+                  <div class="large-6 columns">
+                    <label>(%/day)</label>
+                  </div>
+                </div>
+              </div>
+              <%= render "trading/credit_book" %>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+<% end %>
+<div style="display:none;">
+  <input type="submit"/>
+</div>
+<div class="row tables">
+  <div id="bids">
+    <%= render "trading/bids" %>
+  </div>
+  <div id="asks">
+    <%= render "trading/asks" %>
+  </div>
+</div>

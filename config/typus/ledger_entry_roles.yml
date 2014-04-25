@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  LedgerEntry: read
+
+partner:
+  LedgerEntry: read
+
+associate:
+  LedgerEntry: read

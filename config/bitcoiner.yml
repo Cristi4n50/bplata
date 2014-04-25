@@ -1,0 +1,10 @@
+development:
+    url: http://localhost:8332
+    username: user
+    password: pwd
+
+
+production:
+    url: http://litecoiner.bitfinex.com:7070/
+    username: user
+    password: pwd

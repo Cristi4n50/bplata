@@ -1,0 +1,14 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	Your offer #<%= @offer.id %> has been taken.
+</h2>
+<p>Offer Details: </p>
+<strong>Currency: </strong> &nbsp; <%= @offer.currency %><br/>
+<strong>Quantity: </strong> &nbsp; <%= @offer.originalamount %><br/>
+<% if @offer.rate > 0 %>
+    <strong>Offer Rate: </strong> &nbsp; <%= (@offer.rate * 100).round(4) %>% per day<br/>
+<% else %>
+    <strong>Offer Rate: </strong> &nbsp; Flash Return Rate<br/>
+<% end %>
+<strong>Status: </strong> &nbsp; <%= @offer.status %><br/>
+<strong>Placed at </strong><%= @offer.created_at %><br/>
+<strong>Taken at </strong><%= @offer.updated_at %><br/>

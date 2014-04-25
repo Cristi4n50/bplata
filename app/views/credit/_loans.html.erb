@@ -1,0 +1,40 @@
+<table cellspacing="0"
+       <% unless current_user.loans.active.empty? %>id="loanstable"
+       <% end %>>
+  <thead>
+  <tr>
+    <th class="header"><%= t 'loan.currency' %></th>
+    <th class="header"><%= t 'loan.amount' %></th>
+    <th class="header"><%= t 'loan.rate' %></th>
+    <th class="header"><%= t 'loan.expireat' %></th>
+    <th class="header"><%= submit_tag t('loan.close_selected'), :id => "submit", :name => "submit", :class => "button radius", :confirm => t('loan.confirmcloseselected') %>
+      <br/>
+      <a href="" onclick="checkAll(document.loans_form,'loans[]');return false;">Check all</a> /
+      <a href="" onclick="uncheckAll(document.loans_form,'loans[]');return false;">Uncheck all</a></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @unusedloans.empty? %>
+      <tr>
+        <td colspan="5"><%= t "loan.no_active_loans" %></td>
+      </tr>
+  <% else %>
+      <% @unusedloans.each do |loan| %>
+          <tr>
+            <td><%= loan.currency %></td>
+            <td><%= loan.amount %></td>
+            <td>
+              <span style="display: none;"><%= loan.rate == 0 ? @virrate[Currency.currencies.index(loan.currency)].round : (loan.rate * 100).round(4) %></span> <%= (loan.rate * 100).round(4).to_s + "%" if loan.rate > 0 %>
+              <%= t('credit.vir') + ', current: ' + @virrate[Currency.currencies.index(loan.currency)].round(4).to_s + '%' if loan.rate == 0 %>
+            </td>
+            <td>
+              <span style="display: none;"><%= (loan.created_at + loan.period.days).to_i %></span> <%= ((loan.created_at + loan.period.days).strftime("%a %d %b %Y - %H:%M")) %>
+            </td>
+            <td>
+              <input value="<%= loan.id %>" id="<%= loan.id %>" name="loans[]" type="checkbox">
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

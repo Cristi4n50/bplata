@@ -1,0 +1,56 @@
+<%= render "javascript" %>
+<%= render "menu" %>
+</div>
+</div>
+<% title 'Representatives' %>
+<p><%= value_setting("rep_fees", "Representatives cut (on affiliates' fees)") %></p>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Type</th>
+    <th>Default currency</th>
+    <th>Referrer code</th>
+    <th>Status</th>
+    <th>Earned in the last 30 days</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <%= form_tag({:controller => :representatives, :action => :create}, {:remote => false}) do %>
+        <td>ID: <%= text_field_tag :user_id, params[:user_id], :value => '', :title => "User ID", :size => 5 %></td>
+        <td><%= select_tag "type", options_for_select({"Representative" => 1}, "Representative") %></td>
+        <td><%= select_tag "currency", options_for_select(Currency.currencies, "USD") %></td>
+        <td colspan="4">Add a representative with the user ID of an existing Bitfinex user:<br /><%= submit_tag "Add representative", :id => "submit", :name => "submit", :class => "button radius" %></td>
+    <% end %>
+  </tr>
+  <% unless @reps.empty? %>
+      <% @reps.each do |rep| %>
+          <tr>
+            <td>
+              <%= rep.user.id %>
+              <br/>
+              <a href="mailto:<%= rep.user.email %>"><%= rep.user.username %></a>
+            </td>
+            <td><%= rep.type.to_s %></td>
+            <td><%= rep.currency.to_s %></td>
+            <td><%= rep.referrer_code.to_s %></td>
+            <td><%= rep.status %></td>
+            <td><%= dollar(rep.referrals.sum('earned_thirty_days').to_d,"") %></td>
+            <td>
+              <% if rep.status == "ACTIVE" %>
+                  <a class="button radius" href="/representatives/activate/<%= rep.id %>" onclick="return confirm('Are you sure to deactive this representative?');">Deactivate</a>
+              <% else %>
+                  <a class="button radius" href="/representatives/activate/<%= rep.id %>" onclick="return confirm('Are you sure to active this representative?');">Activate</a>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+  <% else %>
+      <tr>
+        <td colspan="3">No reps yet!</td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

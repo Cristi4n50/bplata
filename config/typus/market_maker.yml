@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+MarketMaker:
+  fields:
+    default: user_id, pricedistance, amount_insured, ref_currency
+    form: user_id, pricedistance, amount_insured, ref_currency
+  relationships:
+  application: Application
+  order_by: -user_id

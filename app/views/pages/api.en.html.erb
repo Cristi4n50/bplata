@@ -1,0 +1,422 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Api Documentation" %>
+<a name="top"></a>
+<div class="content">
+<div class="row">
+<div class="large-12 columns">
+<div class="border">
+<h2><span><%= 'Api Documentation' %></span></h2>
+
+<h3>URL:</h3>
+
+<p>The URL to use is</p>
+
+<div class="panel radius"><a href="https://api.bitfinex.com/v1">https://api.bitfinex.com/v1</a></div>
+<hr/>
+<h3>Authentication</h3>
+<hr/>
+<p>Authentication is done using an API key and a secret. To generate this pair, go to
+  <a href="https://www.bitfinex.com/account/api">the API page</a></p>
+
+Say the client wants to make a request to
+<div class="panel radius">POST https://api.bitfinex.com/v1/order/new</div>
+With a payload of<br/>
+
+<div class="panel radius">{<br/>
+  "request": "/v1/order/new",<br/>
+  "nonce": "1234",<br/>
+  "option1": ...<br/>
+  }
+</div>
+The nonce provided must be strictly increasing.<br/>
+<br/>
+To authenticate a request, use the following:<br/>
+<br/>
+
+<div class="panel radius">
+  payload = parameters-dictionary -> JSON encode -> base64<br/>
+  signature = HMAC-SHA384(payload, api-secret) as hexadecimal<br/>
+  send (api-key, payload, signature)
+</div>
+These are encoded as HTTP headers named:<br/>
+
+<div class="panel radius">
+  X-BFX-APIKEY<br/>
+  X-BFX-PAYLOAD<br/>
+  X-BFX-SIGNATURE
+</div>
+
+<h3>Parameters nomenclature</h3>
+<div>Requests parameters (presented below in the "Request" sections) are part of the PAYLOAD, not GET parameters.</div>
+
+<hr/>
+<h3>Unauthenticated</h3>
+<hr/>
+<h4>Ticker</h4>
+
+<div class="panel radius">GET /ticker/:symbol</div>
+Gives innermost bid and asks and information on the most recent trade.<br/>
+<h4>Response:</h4>
+mid (price): (bid + ask) / 2<br/>
+bid (price): Innermost bid.<br/>
+ask (price): Innermost ask.<br/>
+last_price (price) The price at which the last order executed.<br/>
+timestamp (time) The timestamp at which this information was valid.<br/>
+<hr/>
+<h4>Today</h4>
+
+<div class="panel radius">GET /today/:symbol</div>
+Today's low, high and volume.<br/>
+<h5>Response</h5>
+low (price)<br/>
+high (price)<br/>
+volume (price)<br/>
+<hr/>
+<!--<h4>Candles</h4>
+
+<div class="panel radius">GET /candles/:symbol</div>
+Get a list of the most recent candlesticks (trading data) for the given symbol.<br/>
+<h5>Request</h5>
+timestamp (time): Optional. Only show trades at or after this timestamp.<br/>
+<h5>Response</h5>
+An array of dictionaries<br/>
+start_at (timestamp)<br/>
+period (integer, period in seconds)<br/>
+open (price)<br/>
+close (price)<br/>
+highest (price)<br/>
+lowest (price)<br/>
+volume (decimal)<br/>
+<hr/>-->
+<h4>Lendbook</h4>
+
+<div class="panel radius">GET /lendbook/:currency</div>
+Get the full lend book.<br/>
+<h5>Request:</h5>
+limit_bids (int): Optional. Limit the number of bids (loan demands) returned. May be 0 in which case the array of bids is empty. Default is 50.
+<br/>
+limit_asks (int): Optional. Limit the number of asks (loan offers) returned. May be 0 in which case the array of asks is empty. Default is 50.
+<br/>
+<h5>Response</h5>
+bids (array of loan demands):<br/>
+rate (rate in % per 365 days)<br/>
+amount (decimal)<br/>
+period (days): minimum period for the loan<br/>
+timestamp (time)<br/>
+asks (array of loan offers)<br/>
+rate (rate in % per 365 days)<br/>
+amount (decimal)<br/>
+period (days): maximum period for the loan<br/>
+timestamp (time)<br/>
+<hr/>
+<h4>Orderbook</h4>
+
+<div class="panel radius">GET /book/:symbol</div>
+Get the full order book.<br/>
+<h5>Request:</h5>
+limit_bids (int): Optional. Limit the number of bids returned. May be 0 in which case the array of bids is empty. Default
+is 50.
+<br/>
+limit_asks (int): Optional. Limit the number of asks returned. May be 0 in which case the array of asks is empty. Default
+is 50.
+<br/>
+<h5>Response</h5>
+bids (array)<br/>
+price (price)<br/>
+amount (decimal)<br/>
+timestamp (time)<br/>
+asks (array)<br/>
+price (price)<br/>
+amount (decimal)<br/>
+timestamp (time)<br/>
+<hr/>
+<h4>Trades</h4>
+
+<div class="panel radius">GET /trades/:symbol</div>
+Get a list of the most recent trades for the given symbol.<br/>
+<h5>Request</h5>
+timestamp (time): Optional. Only show trades at or after this timestamp.<br/>
+limit_trades (int): Optional. Limit the number of trades returned. Must be >= 1. Default is 50.<br/>
+<h5>Response</h5>
+An array of dictionaries:<br/>
+tid (integer)<br/>
+timestamp (time)<br/>
+price (price)<br/>
+amount (decimal)<br/>
+exchange (string)<br/>
+<hr/>
+<h4>Lends</h4>
+
+<div class="panel radius">GET /lends/:currency</div>
+Get a list of the most recent lending data for the given currency: total amount lent and rate (in % by 365 days).<br/>
+<h5>Request</h5>
+timestamp (time): Optional. Only show trades at or after this timestamp.<br/>
+limit_lends (int): Optional. Limit the number of lends returned. Must be >= 1. Default is 50.<br/>
+<h5>Response</h5>
+An array of dictionaries<br/>
+rate (decimal, % by 365 days): Average rate of total loans opened at fixed rates<br/>
+amount_lent (decimal): Total amount of open loans in the given currency<br/>
+timestamp (time)<br/>
+<hr/>
+<h4>Symbols</h4>
+
+<div class="panel radius">GET /symbols</div>
+Get a list of valid symbol IDs.<br/>
+<h5>Response</h5>
+A list of symbol names. Currently just "btcusd".<br/>
+<hr/>
+<h3>Authenticated</h3>
+<hr/>
+<h4>New order</h4>
+
+<div class="panel radius">POST /order/new</div>
+Submit a new order.<br/>
+<h5>Request</h5>
+symbol (string): The name of the symbol (see `/symbols`).<br/>
+amount (decimal): Order size: how much to buy or sell.<br/>
+price (price): Price to buy or sell at. May omit if a market order.<br/>
+exchange (string): "bitfinex", "bitstamp", "all" (for no routing).<br/>
+side (string): Either "buy" or "sell".<br/>
+type (string): Either "market" / "limit" / "stop" / "trailing-stop" / "exchange market" / "exchange limit" / "exchange
+stop" / "exchange trailing-stop". (type starting by "exchange " are exchange orders, others are margin trading orders)
+<br/>
+is_hidden (bool) true if the order should be hidden. Default is false.<br/>
+<h5>Response</h5>
+order_id (int): A randomly generated ID for the order.<br/>
+and the information given by /order/status<br/>
+<table class="history">
+  <thead>
+  <tr>
+    <th colspan="2">Order types</th>
+  </tr>
+  <tr>
+    <th>Margin trading type</th>
+    <th>Exchange type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>LIMIT</td>
+    <td>EXCHANGE LIMIT</td>
+  </tr>
+  <tr>
+    <td>MARKET</td>
+    <td>EXCHANGE MARKET</td>
+  </tr>
+  <tr>
+    <td>STOP</td>
+    <td>EXCHANGE STOP</td>
+  </tr>
+  <tr>
+    <td>TRAILING STOP</td>
+    <td>EXCHANGE TRAILING STOP</td>
+  </tr>
+  <!--    <tr>
+        <td>FOK</td>
+        <td>EXCHANGE FOK</td>
+      </tr>-->
+  </tbody>
+</table>
+<hr/>
+<h4>Multiple new orders</h4>
+
+<div class="panel radius">POST /order/new/multi</div>
+Submit several new orders at once.<br/>
+<h5>Request</h5>
+The request is an array of the array containing the order options sent with the previous call /order/new. That is an
+array of the following array:
+<br/>
+symbol (string): The name of the symbol (see `/symbols`).<br/>
+amount (decimal): Order size: how much to buy or sell.<br/>
+price (price): Price to buy or sell at. May omit if a market order.<br/>
+exchange (string): "bitfinex", "bitstamp", "all" (for no routing).<br/>
+side (string): Either "buy" or "sell".<br/>
+type (string): Either "market" / "limit" / "stop" / "trailing-stop".<br/>
+
+<div class="important">Important: You can not place more than 10 orders at once.</div>
+<h5>Response</h5>
+order_ids (array): An array of randomly generated ID for the orders opened.<br/>
+<br/>
+<hr/>
+<h4>Cancel order</h4>
+
+<div class="panel radius">POST /order/cancel</div>
+Cancel an order.<br/>
+<h5>Request</h5>
+order_id (int): The order ID given by `/order/new`.<br/>
+<h5>Response</h5>
+Result of /order/status for the cancelled order.<br/>
+<hr/>
+<h4>Cancel multiple orders</h4>
+
+<div class="panel radius">POST /order/cancel/multi</div>
+Cancel multiples orders at once.<br/>
+<h5>Request</h5>
+order_ids (array): An array of the order IDs given by `/order/new` or `/order/new/multi`.<br/>
+<h5>Response</h5>
+Confirmation of cancellation of the orders.<br/>
+<hr/>
+<h4>Cancel all active orders</h4>
+
+<div class="panel radius">GET /order/cancel/all</div>
+Cancel all active orders at once.<br/>
+<h5>Response</h5>
+Confirmation of cancellation of all active orders.<br/>
+<h4>Replace order</h4>
+
+<div class="panel radius">POST /order/cancel/replace</div>
+Replace an order with a new one.<br/>
+<h5>Request</h5>
+order_id (int): The order ID (to be replaced) given by `/order/new`.<br/>
+symbol (string): The name of the symbol (see `/symbols`).<br/>
+amount (decimal): Order size: how much to buy or sell.<br/>
+price (price): Price to buy or sell at. May omit if a market order.<br/>
+exchange (string): "bitfinex", "bitstamp", "all" (for no routing).<br/>
+side (string): Either "buy" or "sell".<br/>
+type (string): Either "market" / "limit" / "stop" / "trailing-stop" / "exchange market" / "exchange limit" / "exchange
+stop" / "exchange trailing-stop". (type starting by "exchange " are exchange orders, others are margin trading orders)
+<br/>
+is_hidden (bool) true if the order should be hidden. Default is false.<br/>
+<h5>Response</h5>
+order_id (int): A randomly generated ID for the order.<br/>
+and the information given by /order/status<br/>
+<table class="history">
+  <thead>
+  <tr>
+    <th colspan="2">Order types</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colspan="2">See "/order/new"</td>
+  </tr>
+  </tbody>
+</table>
+<hr/>
+<h4>Order status</h4>
+
+<div class="panel radius">POST /order/status</div>
+Get the status of an order. Is it active? Was it cancelled? To what extent has it been executed? etc.<br/>
+<h5>Request</h5>
+order_id (int): The order ID given by `/order/new`.<br/>
+<h5>Response</h5>
+symbol (string): The symbol name the order belongs to.<br/>
+exchange (string): "bitfinex", "bitstamp".<br/>
+price (decimal): The price the order was issued at (can be null for market orders).<br/>
+avg_execution_price (decimal): The average price at which this order as been executed so far. 0 if the order has not been
+executed at all.
+side (string): Either "buy" or "sell".<br/>
+type (string): Either "market" / "limit" / "stop" / "trailing-stop".<br/>
+timestamp (time): The timestamp the order was submitted.<br/>
+is_live (bool): Could the order still be filled?<br/>
+is_cancelled (bool): Has the order been cancelled?<br/>
+was_forced (bool): For margin only: true if it was forced by the system.<br/>
+executed_amount (decimal): How much of the order has been executed so far in its history?<br/>
+remaining_amount (decimal): How much is still remaining to be submitted?<br/>
+original_amount (decimal): What was the order originally submitted for?<br/>
+<hr/>
+<h4>Active Orders</h4>
+
+<div class="panel radius">POST /orders</div>
+View your active orders.<br/>
+<h5>Response</h5>
+An array of the results of `/order/status` for all your live orders.<br/>
+<hr/>
+<h4>Active Positions</h4>
+
+<div class="panel radius">POST /positions</div>
+View your active positions.<br/>
+<h5>Response</h5>
+An array of your active positions.<br/>
+<hr/>
+<h4>Past trades</h4>
+
+<div class="panel radius">POST /mytrades</div>
+View your past trades<br/>
+<h5>Request</h5>
+symbol (string): The pair traded (BTCUSD, LTCUSD, LTCBTC).<br/>
+timestamp (time): Trades made before this timestamp won't be returned.<br/>
+limit_trades (int): Optional. Limit the number of trades returned. Default is 50.<br/>
+<h5>Response</h5>
+An array of dictionaries:<br/>
+price (price)<br/>
+amount (decimal)<br/>
+timestamp (time)<br/>
+exchange (string)<br/>
+type (string) Sell or Buy<br/>
+<hr/>
+<h4>New offer (lending or borrowing)</h4>
+
+<div class="panel radius">POST /offer/new</div>
+Submit a new offer.<br/>
+<h5>Request</h5>
+currency (string): The name of the currency.<br/>
+amount (decimal): Offer size: how much to lend or borrow.<br/>
+rate (price): Rate to lend or borrow at. <b>In percentage per 365 days</b>.<br/>
+period (integer): Number of days of the loan (in days)<br/>
+direction (string): Either "lend" or "loan".<br/>
+insurance_option (optional, integer): 0 for "No insurance", 1 for "Insurance if available", 2 for "Always insure" (default is 0)<br/>
+<h5>Response</h5>
+offer_id (int): A randomly generated ID for the offer.<br/>
+and the information given by /offer/status<br/>
+<hr/>
+<h4>Cancel offer</h4>
+
+<div class="panel radius">POST /offer/cancel</div>
+Cancel an offer.<br/>
+<h5>Request</h5>
+offer_id (int): The offer ID given by `/offer/new`.<br/>
+<h5>Response</h5>
+Result of /offer/status for the cancelled offer.<br/>
+<hr/>
+<h4>Offer status</h4>
+
+<div class="panel radius">POST /offer/status</div>
+Get the status of an offer. Is it active? Was it cancelled? To what extent has it been executed? etc.<br/>
+<h5>Request</h5>
+offer_id (int): The offer ID given by `/offer/new`.<br/>
+<h5>Response</h5>
+currency (string): The currency name of the offer.<br/>
+rate (decimal): The rate the offer was issued at (in % per 365 days).<br/>
+period (integer): The number of days of the offer.<br/>
+direction (string): Either "lend" or "loan".<br/>
+type (string): Either "market" / "limit" / "stop" / "trailing-stop".<br/>
+timestamp (time): The timestamp the offer was submitted.<br/>
+is_live (bool): Could the offer still be filled?<br/>
+is_cancelled (bool): Has the offer been cancelled?<br/>
+executed_amount (decimal): How much of the offer has been executed so far in its history?<br/>
+remaining_amount (decimal): How much is still remaining to be submitted?<br/>
+original_amount (decimal): What was the offer originally submitted for?<br/>
+<hr/>
+<h4>Active Offers</h4>
+
+<div class="panel radius">POST /offers</div>
+View your active offers.<br/>
+<h5>Response</h5>
+An array of the results of `/offer/status` for all your live offers (lending or borrowing).<br/>
+<hr/>
+<h4>Active Credits</h4>
+
+<div class="panel radius">POST /credits</div>
+View your funds currently lent (active credits).<br/>
+<h5>Response</h5>
+An array of your active credits.<br/>
+<hr/>
+<h4>Wallet Balances</h4>
+
+<div class="panel radius">POST /balances</div>
+See your balances.<br/>
+<h5>Response</h5>
+A list of wallet balances:<br/>
+type (string): "trading", "deposit" or "exchange".<br/>
+currency (string): Currency <br/>
+amount (decimal): How much balance of this currency in this wallet<br/>
+available (decimal): How much X there is in this wallet that is available to trade.
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,58 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Active offers' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6>Active offers</h6>
+    <table cellspacing="0">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t 'credit.currency' %></th>
+        <th><%= t 'credit.type' %></th>
+        <th><%= t 'credit.amount' %></th>
+        <th><%= t 'credit.rate' %></th>
+        <th><%= t "credit.maxperiod" %></th>
+        <th><%= t 'trading.placed' %></th>
+        <th><%= t "credit.insure" %></th>
+        <th><%= t 'nav.status' %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @dauser.offers.active.empty? %>
+          <tr>
+            <td colspan="10"><%= t 'credit.no_active_offers' %></td>
+          </tr>
+      <% else %>
+          <% @dauser.offers.active.each do |offer| %>
+              <tr>
+                <td><%= offer.id %></td>
+                <td><%= offer.currency %></td>
+                <td><%= t "credit.proposeloan" if offer.amount < 0 %><%= t "credit.proposeoffer" if offer.amount > 0 %></td>
+                <td><%= offer.amount.abs.round(2) %></td>
+                <td><%= (offer.daily_rate * 100).round(4).to_s + "%" if offer.rate > 0 %><%= t "credit.vir" if offer.rate == 0 %></td>
+                <td><%= offer.period.to_s %></td>
+                <td><%= friendly_timestamp(offer.created_at) %> </td>
+                <td>
+                  <% if offer.insure.nil? && offer.amount > 0 %>
+                      <%= "No" %>
+                  <% elsif offer.amount > 0 %>
+                      <% if offer.insure == 0 %>
+                          <%= "No" %>
+                      <% elsif offer.insure == 1 %>
+                          <%= t 'credit.insurance_insure_if_possible' %>
+                      <% else %>
+                          <%= t 'credit.insurance_ensure_insured' %>
+                      <% end %>
+                  <% else %>
+                      <%= 'NA' %>
+                  <% end %></td>
+                <td><%= offer.status.downcase %></td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

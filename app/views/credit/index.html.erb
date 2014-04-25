@@ -1,0 +1,247 @@
+<ul class="button-group radius even-3" id="sub-menu">
+  <% Currency.currencies.each do |currentcurrency| %>
+      <li><a href="/credit/index/<%= currentcurrency.downcase %>" class="button small
+        <% if @currency == currentcurrency %> active
+        <% end %>"><%= currentcurrency %></a></li>
+  <% end %>
+</ul>
+</div>
+</div>
+<% title t "nav.credit" %>
+<%= render "layouts/notifications" %>
+<%= render "javascript" %>
+<% if current_user.level == "trader" %>
+    <%= form_tag({:controller => :loan, :action => :close}, {:remote => true, :name => "loans_form"}) do %>
+        <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+        <div class="row active-orders lending-overview">
+          <div class="large-12 columns">
+            <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+              <section>
+                <p class="title" data-section-title><a href="#"><%= t "loan.active_loans" %>
+                  <% unless @totalloans.nil? %>(
+                      <% Currency.currencies.each do |curr| %>
+                          Total <%= curr.downcase %> swaps: <%= @totalloans[Currency.currencies.index(curr)].to_s %>
+                      <% end %>)
+                  <% end %> <i></i></a></p>
+
+                <div class="content" id="loans" data-section-content>
+                  <%= render "loans" %>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <%= form_tag({:controller => :credit, :action => :close}, {:remote => true, :name => "positionloans_form"}) do %>
+        <div class="row active-orders lending-overview">
+          <div class="large-12 columns">
+            <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+              <section>
+                <p class="title" data-section-title>
+                  <a href="#"><%= t "positionloan.active_loans" %>
+                    <% unless @totalposloans.nil? %>(Total
+                        <% current_user.positions.active.each do |pos| %>
+                            <%= @totalposloans[current_user.positions.active.index(pos)].to_s + " " + Currency.firstunit(pos.pair).to_s if pos.amount < 0 %>
+                            <%= @totalposloans[current_user.positions.active.index(pos)].to_s + " " + Currency.lastunit(pos.pair).to_s if pos.amount > 0 %>
+                        <% end %>)
+                    <% end %> <i></i></a></p>
+
+                <div id="positionloans" class="content" data-section-content>
+                  <%= render "positionloans" %>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% end %>
+<div class="row active-orders lending-overview">
+  <div class="large-12 columns">
+    <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+      <section>
+        <p class="title" data-section-title><a href="#"><%= t "credit.active_credits" %>
+          <% unless @lentcredits.empty? %>
+              ( <%= t('credit.avg_rate_1') %>:
+              <% Currency.currencies.each do |curr| %>
+                  <%= "/" unless curr == Currency.currencies.first %> <%= curr.to_s %>
+                  : <%= (current_user.averagedepositapy(curr) * 100).round(4) %>%
+              <% end %>)
+          <% end %> <i></i></a></p>
+
+        <div id="credits" class="content" data-section-content>
+          <%= render "credits" %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="row active-orders lending-overview">
+  <div class="large-12 columns">
+    <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+      <section>
+        <p class="title" data-section-title><a href="#"><%= t "credit.active_offers" %> <i></i></a></p>
+
+        <div id="offers" class="content" data-section-content>
+          <%= render "offers" %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<%= form_tag({:controller => :offers, :action => :create}, {:remote => false, :class => "custom"}) do %>
+    <input type="hidden" id="currency" name="currency" value="<%= @currency.to_s %>"/>
+    <input type="hidden" id="direction" name="direction" value=""/>
+    <input type="hidden" id="autol" name="autol" value=""/>
+    <input type="hidden" id="token" name="token" value="<%= @token %>"/>
+    <div class="row lending-actions">
+      <div class="large-12 columns">
+        <div class="section-container auto" data-section data-options="one_up: true;">
+          <% if current_user.level == "trader" %>
+              <section>
+                <p class="title" data-section-title><a href="#panel1">Take liquidity</a></p>
+
+                <div class="content" data-section-content>
+                  <div class="row">
+                    <div class="large-8 columns">
+                      <div class="large-4 columns">
+                        <input type="text" placeholder="30" name="period_borrow" id="period_borrow" value="30">
+                        <label><%= t "credit.maximum_period" %></label>
+                      </div>
+                      <div class="large-4 columns">
+                        <input type="text" placeholder="<%= @ask %>" name="loanrate" id="loanrate" value="<%= @ask %>">
+                        <label><%= t("credit.rateasked") %></label>
+                      </div>
+                      <div class="large-4 columns">
+                        <input type="text" placeholder="0" name="amount_borrow" id="amount_borrow" value="0">
+                        <label><%= t('credit.amount_offer') %>
+                          <% if @currency == "USD" %>
+                              ($)
+                          <% elsif @currency == "BTC" %>
+                              (&#3647;)
+                          <% elsif @currency == "LTC" %>
+                              (LTC)
+                          <% end %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="large-4 columns">
+                      <%= submit_tag t("credit.proposeloan"), :id => "submit", :name => "submit", :class => "button red secondary radius large", :onclick => "$('input#direction').val('loan');" %>
+                    </div>
+                  </div>
+                </div>
+              </section>
+          <% end %>
+          <section>
+            <p class="title" data-section-title><a href="#panel2">Offer liquidity</a></p>
+
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-8 columns">
+                  <div class="large-4 columns">
+                    <input type="text" placeholder="30" name="period_lend" id="period_lend" value="30">
+                    <label><%= t 'credit.maximum_period' %></label>
+                  </div>
+                  <div class="large-4 columns">
+                    <input type="text" placeholder="<%= @bid %>" name="lendrate_lend" id="lendrate_lend" value="<%= @bid %>">
+                    <label><%= t 'credit.rateasked' %></label>
+                  </div>
+                  <div class="large-4 columns">
+                    <input type="text" placeholder="0" name="amount_lend" id="amount_lend">
+                    <label><%= t('credit.amount_offer') %>
+                      <% if @currency == "USD" %>
+                          ($)
+                      <% elsif @currency == "BTC" %>
+                          (&#3647;)
+                      <% elsif @currency == "LTC" %>
+                          (LTC)
+                      <% end %>
+                    </label>
+                    <a class="button radius small" onclick="$('input#amount_lend').val(document.getElementById('lendable<%= @currency.downcase %>').innerHTML);"><%= t 'credit.lend_all' %></a>
+                  </div>
+                  <div class="large-8 columns">
+                    <small>Tip. Funds offered at rates above 1% are not used to fill orders for users who borrow automatically, through the Margin trading page. Offers of less than 1% are taken far more often.</small>
+                  </div>
+                </div>
+                <div class="large-4 columns">
+                  <%= submit_tag t("credit.proposeoffer"), :id => "submit", :name => "submit", :class => "button success radius large", :onclick => "$('input#direction').val('lend');" %>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <p class="title" data-section-title><a href="#panel3">Autorenew</a></p>
+
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-5 columns">
+                  <div class="large-6 columns">
+                    <input type="text" placeholder="30" name="period_autol" value="30">
+                    <label><%= t 'credit.maximum_period' %></label>
+                  </div>
+                  <div class="large-6 columns">
+                    <input type="text" placeholder="<%= @bid %>" name="rate_autol">
+                    <label><%= t 'credit.rateasked' %></label>
+                  </div>
+                </div>
+                <div class="large-7 columns" id="autolend">
+                  <%= render "credit/autolend" %>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="row active-orders options">
+      <div class="large-12 columns">
+        <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+          <section>
+            <p class="title" data-section-title><a href="#"><%= t 'credit.options' %> <i></i></a></p>
+
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="large-4 columns large-offset-1">
+                    <label for="variableInterest">
+                      <input type="checkbox" id="variableInterest" style="display: none;" name="vir">
+                      <span class="custom checkbox"></span> <%= t "credit.vir" %>
+                    </label>
+                    <label for="notify">
+                      <input type="checkbox" id="notify" style="display: none;" name="notifyoffer">
+                      <span class="custom checkbox"></span> <%= t "credit.notify_offer" %>
+                    </label>
+                  </div>
+                  <div class="large-7 columns">
+                    <p><%= t 'credit.insurance_total' %>(<%= @currency.to_s %>): <%= @total_insurance.to_s %></p>
+
+                    <p><%= t 'credit.insurance_remaining' %>: <%= @remaining_insurance.to_s %></p>
+
+                    <div class="row">
+                      <div class="large-5 columns">
+                        <select id="insurance" name="insurance_option" class="small">
+                          <option value="0"><%= t 'credit.insurance_dont_insure' %></option>
+                          <option value="1"><%= t 'credit.insurance_insure_if_possible' %></option>
+                          <option value="2"><%= t 'credit.insurance_ensure_insured' %></option>
+                        </select>
+                      </div>
+                      <div class="large-7 columns">
+                        <label for="insurance" class="insurance"><%= t "credit.insurance_fee", :insurance_fee => @insurance_fee.round(0) %></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="row tables">
+      <div class="large-6 columns buy" id="lendoffers">
+        <%= render "/credit/offerbook" %>
+      </div>
+      <div class="large-6 columns sell" id="loanoffers">
+        <%= render "/credit/loanbook" %>
+      </div>
+    </div>
+<% end %>

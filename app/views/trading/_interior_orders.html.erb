@@ -1,0 +1,55 @@
+<table cellspacing="0"<% unless current_user.orders.active.empty? %> id="orderstable"<% end %>>
+  <thead>
+  <tr>
+    <th></th>
+    <th>#</th>
+    <th><%= t 'trading.pair' %></th>
+    <th><%= t 'trading.type' %></th>
+    <th><%= t 'trading.original_amount' %></th>
+    <th><%= t 'trading.amount' %></th>
+    <th><%= t 'trading.price' %></th>
+    <th><%= t 'trading.placed' %></th>
+    <th><%= t 'trading.status' %></th>
+    <th>
+      <%= form_tag({:controller => :orders, :action => :cancel_all}, {:remote => true}) do %>
+          <%= submit_tag "Cancel all", :id => "submit", :name => "submit", :class => "button radius", :confirm => t("trading.confirm_close_all_orders") %>
+      <% end %>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if current_user.orders.active.empty? %>
+      <tr>
+        <td colspan="9"><%= t "trading.no_active_orders" %></td>
+      </tr>
+  <% else %>
+      <% current_user.orders.active.each do |order| %>
+          <tr>
+            <td class="<%= "buying" if order.amount > 0 %> <%= "selling" if order.amount < 0 %> stripe"></td>
+            <td><%= order.id %></td>
+            <td><%= order.pair %></td>
+            <td><%= t "trading.order_types." + order.type.downcase %></td>
+            <td><%= order.originalamount %></td>
+            <td><%= order.amount.round(2) %></td>
+            <td class="price"><%= "-" if order.price.nil? || order.type == "MARKET" || order.type == "EXCHANGE MARKET" %><%= accurate_dollar(order.price, "") unless order.price.nil? || order.type == "MARKET" || order.type == "EXCHANGE MARKET" %></td>
+            <td class="nowrapping">
+              <%= friendly_timestamp(order.created_at) %>
+            </td>
+            <td><%= order.status.downcase unless order.status.start_with?("PARTIALLY") %>
+              <%= "partially filled" if order.status.start_with?("PARTIALLY") %></td>
+            <td>
+              <% if order.status.start_with?("ACTIVE") or order.status.start_with?("NO RESERVE") or order.status.start_with?("PARTIALLY") %>
+                  <%= link_to t("cancel"), order, :remote => true, :method => :delete %>
+                  &nbsp;
+                  <% if order.notify? %>
+                      <span class="label label-success"><%= t 'trading.will_notify' %></span>
+                  <% else %>
+                      <%= link_to t("trading.notify"), "/orders/notify/#{order.id}", :remote => true %>
+                  <% end %>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

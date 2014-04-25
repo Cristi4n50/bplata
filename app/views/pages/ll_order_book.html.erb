@@ -1,0 +1,20 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<div class="row order-book">
+  <div class="large-12 columns">
+    <h6><%= t 'nav.ll_order_book' %></h6>
+    <ul class="button-group radius even-3" id="sub-menu">
+      <li><a href="/pages/ll_order_book/?pair=BTCUSD" class="button small active">BTCUSD</a></li>
+    </ul>
+  </div>
+</div>
+<%= render "javascript" %>
+<% title t "nav.ll_order_book" %>
+<p>
+  <% t "nav.ll_orderbook_information" %></p>
+<div class="row tables" id="orderbook">
+  <%= render "/trading/bids" %>
+  <%= render "/trading/asks" %>
+</div>

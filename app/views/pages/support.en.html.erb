@@ -1,0 +1,255 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title "Support" %>
+<a name="top"></a>
+<div class="content">
+<div class="row">
+<div class="large-12 columns">
+<div class="large-12 columns">
+<div class="row border">
+<div class="large-12 columns">
+  <h2><i class="icon-question-sign"></i> <span>FAQ</span></h2>
+</div>
+<div class="large-2 columns sidebar">
+  <a href="https://community.bitfinex.com/content.php" class="success green radius button" target="_blank"><i class="icon-group"></i><br/>Forum</a>
+  <a href="https://community.bitfinex.com/showwiki.php" class="success green radius button" target="_blank"><i class="icon-globe"></i><br/>Wiki</a>
+  <a href="/pages/contact" class="button green success radius contact"><span>Contact Us</span><br/><br/><i class="icon-envelope"></i></a>
+</div>
+<div class="large-10 columns faq">
+<hr/>
+<div class="section-container accordion" data-section="accordion">
+<%= render '/pages/support_short' %>
+<section>
+  <p class="title" data-section-title>
+    <a href="#" class="long">I have money in my wallet but the system won't let me open a position, it
+      says "NO RESERVE"? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>When you trade on margin you need to take liquidity from liquidity providers. If there is no
+      liquidity provider available your order status says "no reserve active" which means that the order
+      will be executed as soon as there is liquidity available.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#">I would like to just buy or sell like on any other exchanges, what should I do?
+      <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>You can open an "Exchange" account and use the "Exchange" tab of Bitfinex.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#">I am a long term Bitcoin/Litecoin holder, what type of account suits me the best? <i></i></a>
+  </p>
+
+  <div class="content" data-section-content>
+    <p>You can open a "deposit account" and provide liquidity in Bitcoins/Litecoins to other Bitfinex
+      traders.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#" class="long">How can I take advantage of the Bitcoin/Litecoin market using the Bitfinex
+      trading platform even if I don't feel like buying Bitcoins or Litecoins? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>You can open a "deposit account" and provide liquidity in US dollars to other Bitfinex traders.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#">Why do I need to take liquidity when I want to trade with leverage (margin trading)?
+      <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>To execute a buy or sell order you need to have the corresponding Bitcoins/Litecoins or US dollars.
+      With a regular exchange you buy or sell with the funds you own. With margin trading you have to take
+      liquidity from liquidity providers The Bitcoins/Litecoins or US dollars you have in your trading
+      wallet serve as collateral only. This enables the liquidity providers to be reimbursed if the market
+      goes against you. You can't open a margin position without taking liquidity. </p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What's your Margin Call Policy? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>You will receive a margin call when the net value of your account reaches the required margin. When
+      the net value falls below the required margin the position will be forced liquidated. The drop after
+      which you can be liquidated depends on your leverage. When you have a margin position, you will see
+      an estimated liquidation price (the price at which you would be liquidated). </p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What does it mean to "claim" my position? <i></i></a>
+  </p>
+
+  <div class="content" data-section-content>
+    <p>When you reduce a long position on Bitfinex, you actually realize a profit (or a loss), that is
+      kept in the unrealized P/L of the position by moving the base price. The idea is that at some point,
+      you will realize enough profit to cover for the swap and the pending swap returns of the position.
+      When this happen, the Bitcoins of the position can actually be yours, since the liquidity you took
+      to open your position won't be needed anymore.<br/>
+      So when this happen you can claim the position. Which means the following:
+    <ul>
+      <li>You will be credited the realized profit in USD (minus paid back swaps).</li>
+      <li>You will be charged the pending swap returns (always lower than previous USD profit).</li>
+      <li>The position amount in BTC will be credited on your balance directly (with a fee based on the
+        amount credited).
+      </li>
+    </ul>
+    There is no trading involved at any time.<br/>
+    If you don't have enough realized profit to claim the position, when you'll click on "Claim", the
+    system will tell you "You need to sell approximately XX Bitcoins at the current price to claim the
+    position", but it's up to you to sell those Bitcoins with the type of orders you want.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What are the fees you charge? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>You can find our fees schedule <a href="/pages/fees">on the fees page</a></p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What is a "Hidden order"? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>A hidden order is an order which does not appear in the orderbook, and thus doesn't influence other
+      market participants. <a href="/pages/fees">See the fees page</a> for minimum size and fee
+      applicable.</p>
+  </div>
+</section>
+<!--<section>
+  <p class="title" data-section-title>
+    <a href="#">Is my order posted on Bitstamp's orderbook when I route it on Bitstamp? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>No, currently your order stays on our internal orderbook and is executed at your set price (or
+      better) when that price is reached on Bitstamp's orderbook. Bitstamp doesn't provide a reliable way
+      of knowing the history of a specific order and thus of updating your order if we place it on its
+      orderbook.</p>
+  </div>
+</section>-->
+<section>
+  <p class="title" data-section-title>
+    <a href="#">How is the return on our swaps calculated? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>The swap return is calculated hourly. Liquidity providers set their own return rates. When you open a position
+      the system chooses the best offers to leverage your trade.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">When do I receive my swap return payment? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>The swap return is credited to your deposit wallet balance every day around 00:00 GMT, even for swaps closed
+      earlier in the day</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What is the minimum amount for offering liquidity? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>The minimum amount for one offer is USD 100.- or the equivalent in other currencies. There is a trick for
+      liquidity providers who have very a small amount: If you use auto-renew the minimum amount is USD 10.- for an
+      offer to be posted.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What are the risks of providing liquidity? <i></i></a>
+  </p>
+
+  <div class="content" data-section-content>
+    <p>The risks are low.<br/>
+      We have taken the following steps to avoid that liquidity providers are losing money:
+    <ul>
+      <li>If a trader's position is at a loss he will cover the loss with funds in his trading wallet. The funds in the
+        trading wallet serve as collateral only. 
+      </li>
+      <li>A trader's position is forced liquidated when the net value of his account falls below the required margin. 
+      </li>
+      <li>In case of a flash crash event and if the market doesn't allow the trader's position(s) to be liquidated fast
+        enough the uninsured swaps may not be fully repaid.<br/>
+        If this happens the losses will be equally shared among all uninsured swaps.
+      </li>
+    </ul>
+    </p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#">What is the difference between insured and uninsured liquidity swaps? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>Unless uninsured liquidity swaps the insured liquidity swaps are guaranteed to be repaid in full including the accrued swap return. Bitfinex holds an allocated reserve for this.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title>
+    <a href="#">What is the "Flash Return Rate"? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>"Flash Return Rate" swaps are a special kind of swaps: they are based not on an agreed
+      fixed rate, but on the average of all fixed-rate swaps, of all terms, weighted by their amount,
+      <a href="https://www.bitfinex.com/pages/stats">as displayed here</a>. The Flash Return Rate (FRR)
+      varies every hour. The advantage is that return rates tend to follow bitcoin price: when the price goes
+      up, return rates for USD tend to go up, and similarly for BTC return rates when price goes down.
+      Liquidity providers can then safely provide liquidity knowing that they won't miss opportunities if the market return rate goes up.
+      Traders will find it even more interesting, because if the return rate they pay goes up, that
+      usually mean their position is profitable.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">Can traders withdraw the amount of the swap they hold? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>No, the liquidity a trader takes serves only to open margin positions. The actual funds always stay in either the liquidity provider's account or on the exchange as part of a position. </p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">What is the "auto-renew" feature? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>When "Auto-renew" is activated, all the balance available in your "deposit" wallet is automatically offered at your set parameters. This is especially useful if you want to re-invest your daily return payments. </p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">Can I deposit or withdraw in Bitcoins/Litecoins? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>Yes! You can send Bitcoins/Litecoins to your deposit address easily displayed on the "Deposit" page. You can also withdraw Bitcoins/Litecoins to your wallet. Please note that you should only deposit to the address displayed on the "Deposit" page. Previous deposits addresses are not available for security reasons.</p>
+  </div>
+</section>
+<section>
+  <p class="title" data-section-title><a href="#">How long does it take for a BTC/LTC withdrawal to be processed? <i></i></a></p>
+
+  <div class="content" data-section-content>
+    <p>When you enable two-factor authentication you are able to withdraw your Bitcoins/Litecoins instantly. To activate two-factor authentication you will receive an email with a confirmation link. <br/>
+      If you haven't enabled two-factor authentication you will receive an email to confirm your withdrawal. Please note that if you withdraw a substantial amount (more than the equivalent of USD 200k in BTC/LTC) and/or our "hot wallet" (special wallet used to process withdrawals) is empty, the withdrawal may be delayed for a few hours.</p>
+
+  </div>
+</section>
+    <section>
+      <p class="title" data-section-title><a href="#">How long does it take to for a USD withdrawal to be processed? <i></i></a></p>
+
+      <div class="content" data-section-content>
+        <p>A USD withdrawal by wire is sent within 3 to 5 business days, unless the option "Express" is chosen (for a fee), in which case the wire is sent within 24 business hours.<br/>
+          A USD withdrawal by Egopay is processed instantly unless there are no funds available on Egopay (it may take 10 hours on business days to have the funds replenished).</p>
+  </div>
+</section>
+</div>
+<br/>
+<a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,86 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Users list' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> Users list</h6>
+    <%= form_tag({:controller => :userboard, :action => :searchuser}, {:remote => false}) do %>
+        <table>
+          <tr>
+            <td>Username or email:
+              <%= text_field_tag :keyword, params[:keyword], :value => '', :title => "Keyword" %>
+            </td>
+            <td>
+              <%= submit_tag "Search", :id => "submit", :name => "submit", :class => "button radius" %>
+            </td>
+          </tr>
+        </table>
+    <% end %>
+    <% unless @dausers.nil? %>
+        <%= @dausers.count %> results:<br/>
+        <table class="history table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created at</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @dausers.each do |user| %>
+              <% unless (user.id == SETTLE_USER || user.id == RESERVE_USER || user.id == SYSUSER_ID) && !current_user.associate? %>
+                  <tr>
+                    <td><a href="/userboard/actions/?user=<%= user.id %>"><%= user.id %></a></td>
+                    <td><a href="/userboard/actions/?user=<%= user.id %>"><%= user.username %></a></td>
+                    <td><%= user.email %></td>
+                    <td><%= friendly_timestamp(user.created_at) %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
+    <% unless @users.nil? %>
+        <% if @users.empty? %>
+            <div class="row">
+              <div class="large-12 columns"><%= t "account.no_ledger" %>.</div>
+            </div>
+        <% else %>
+            <br/>
+            <br/>
+            <%= paginate @users %>
+            <br/>
+            <br/>
+            <table class="history table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Created at</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @users.each do |user| %>
+                  <% unless (user.id == SETTLE_USER || user.id == RESERVE_USER || user.id == SYSUSER_ID) && !current_user.associate? %>
+                      <tr>
+                        <td><a href="/userboard/actions/?user=<%= user.id %>"><%= user.id %></a></td>
+                        <td><a href="/userboard/actions/?user=<%= user.id %>"><%= user.username %></a></td>
+                        <td><%= user.email %></td>
+                        <td><%= friendly_timestamp(user.created_at) %></td>
+                      </tr>
+                  <% end %>
+              <% end %>
+              </tbody>
+            </table>
+            <br/>
+            <br/>
+            <%= paginate @users %>
+            <br/>
+            <br/>
+        <% end %>
+    <% end %>
+  </div>
+</div>

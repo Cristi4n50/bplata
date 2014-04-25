@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+Associate:
+  fields:
+    default: user_id, part, prefcurrency, prefwallet, associate, monitor
+    form: user_id, part, prefcurrency, prefwallet, associate, monitor
+  relationships: 
+  application: Application
+  order_by: -user_id

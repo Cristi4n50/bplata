@@ -1,0 +1,81 @@
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+
+    <div id="signup-modal" class="reveal-modal small" data-options="closeOnBackgroundClick:false">
+      <h3><%= t 'account.signup' %>></h3>
+      <a class="close-reveal-modal"><i class="icon-remove-sign" style="color:#fff;"></i></a>
+      <!--<form data-abide>-->
+      <div class="name-field">
+        <input name="user[username]" type="text" required placeholder="<%= t 'account.username' %>">
+        <small class="error"><%= t 'account.username_is_required' %>.</small>
+      </div>
+      <div class="email-field">
+        <input name="user[email]" type="email" required placeholder="<%= t 'account.email' %>">
+        <small class="error"><%= t 'account.email_is_required' %>.</small>
+      </div>
+      <div class="password-field">
+        <input name="user[password]" type="password" required placeholder="Password">
+        <label>
+          <small><%= t 'account.insert_correct_password' %>.</small>
+        </label>
+        <small class="error"><%= t 'account.insert_correct_password' %>.</small>
+      </div>
+      <div class="password-field">
+        <input name="user[password_confirmation]" type="password" required placeholder="Confirm password">
+        <small class="error"><%= t 'account.insert_correct_password' %>.</small>
+      </div>
+      <div class="date-field">
+        <input name="user[timezone]" type="date" required placeholder="Time zone">
+      </div>
+      <hr/>
+      <div class="currency-field">
+        <label class="currency"><b><%= t 'account.prefcurrency' %></b><br/><%= t 'account.prefcurrency_explain' %>
+        </label>
+        <label for="dollar" onclick="" class="columns large-6 small-6 dollar">
+          <input name="user[prefcurrency]" type="radio" id="currency" required class="hidden-field">
+          <span class="custom radio"></span>
+          <i class="icon-usd"></i> Dollar
+        </label>
+        <label for="bitcoin" onclick="" class="columns large-6 small-6">
+          <input name="user[prefcurrency]" type="radio" id="currency" required class="hidden-field">
+          <span class="custom radio"></span>
+          <i class="icon-btc"></i> <%= t 'account.bitcoin' %>
+        </label>
+        <label for="litecoin" onclick="" class="columns large-6 small-6">
+          <input name="user[prefcurrency]" type="radio" id="currency" required class="hidden-field">
+          <span class="custom radio"></span>
+          <i class="icon-ltc"></i> <%= t 'account.litecoin' %>
+        </label>
+      </div>
+      <hr/>
+      <div class="account-type-field">
+        <label class="account-type"><b><%= t 'account.level' %></b><br/><%= t 'account.level_explain' %>.</label>
+        <label for="trader" onclick="" class="columns large-4 small-4 trader">
+          <input name="user[level]" type="radio" id="account-type" required class="hidden-field">
+          <span class="custom radio"></span>
+          Trader
+        </label>
+        <label for="exchange" onclick="" class="columns large-4 small-4 exchange">
+          <input name="user[level]" type="radio" id="account-type" required class="hidden-field">
+          <span class="custom radio"></span>
+          Exchange
+        </label>
+        <label for="deposit" onclick="" class="columns large-4 small-4">
+          <input name="user[level]" type="radio" id="account-type" required class="hidden-field">
+          <span class="custom radio"></span>
+          Deposit
+        </label>
+      </div>
+      <hr/>
+      <div class="terms-field">
+        <label class="terms"><b><%= t 'footer.tos' %></b></label>
+        <label for="terms" onclick="">
+          <input name="user[agreed_tos]" type="checkbox" id="terms" required class="hidden-field">
+          <span class="custom checkbox"></span>
+          <%= it 'account.agree_to_bfx_tos', :link => It.link('/pages/tos', :target => '_blank') %>
+        </label>
+      </div>
+      <hr/>
+      <button type="submit" class="submit success green radius"><%= t 'account.open_account' %></button>
+      <!--</form>-->
+    </div>
+<% end %>

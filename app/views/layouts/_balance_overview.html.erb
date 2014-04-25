@@ -1,0 +1,42 @@
+<% total_balance = []
+   Currency.currencies.each do |curr|
+     total_balance << 0
+   end
+   walbal = []
+   total_usd = 0
+   current_user.wallets.each do |wallet|
+     bal_bal = 0
+     curr_bal = []
+     Currency.currencies.each do |curr|
+       bal_bal = wallet.balance(curr)
+       curr_bal << bal_bal
+       total_balance[Currency.currencies.index(curr)] += bal_bal
+       total_usd += Currency.currencyvalue(bal_bal,curr,false)
+     end
+     walbal << curr_bal
+   end
+%>
+<table cellspacing="0">
+  <thead>
+  <tr>
+    <th colspan="2"><%= t 'nav.your_balance' %></th>
+    <th colspan="2"><%= dollar(total_usd) %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% current_user.wallets.each do |wallet| %>
+      <tr>
+        <td class="right"><%= wallet.name %></td>
+        <% Currency.currencies.each do |curr| %>
+            <td class="wallet_<%= wallet .name %> currency_<%= curr %>"><span id="<%= wallet.name %><%= curr %>" style="display: none;"><%= walbal[current_user.wallets.index(wallet)][Currency.currencies.index(curr)] %></span><%= dollar(walbal[current_user.wallets.index(wallet)][Currency.currencies.index(curr)], "", 2) %> <%= curr %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  <tr>
+    <td class="right">Total</td>
+    <% Currency.currencies.each do |curr| %>
+        <td><b><%= dollar(total_balance[Currency.currencies.index(curr)], "", 2) %> <%= curr %></b></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

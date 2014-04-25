@@ -1,0 +1,115 @@
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title t 'footer.fees' %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns contact">
+      <div class="border">
+        <h2><i class="icon-btc"></i> <span><%= t '.title' %></span></h2>
+        <hr/>
+        <div class="row">
+          <div class="large-10 columns">
+            <h4><%= t 'pages.fees.order_execution' %></h4>
+            <table>
+              <thead>
+              <tr>
+                <th><%= t '.executed_on', :exchange => 'Bitfinex' %> (BTC)</th>
+                <th><%= t 'pages.fees.fees' %></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% Fee.marks.each do |mark| %>
+              <tr>
+                <td><%= t '.volume_traded_last_days', :days => 30, :mark => mark %></td>
+                <td class="green"><%= @bfxorderbtc[Fee.marks.index(mark)] * 100 %>%</td>
+              </tr>
+                  <% end %>
+              <tr>
+                <td><%= t 'pages.fees.mm_high_vol' %></td>
+                <td class="green"><a href="/pages/contact"><%= t 'account.contact_us' %></a></td>
+              </tr>
+              </tbody>
+            </table>
+            <table>
+              <thead>
+              <tr>
+                <th><%= t '.executed_on', :exchange => 'Bitfinex' %> (LTC)</th>
+                <th><%= t 'pages.fees.fees' %></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% Fee.marks.each do |mark| %>
+              <tr>
+                <td><%= t '.volume_traded_last_days', :days => 30, :mark => mark %></td>
+                <td class="green"><%= @bfxorderltc[Fee.marks.index(mark)] * 100 %>%</td>
+              </tr>
+                  <% end %>
+              <tr>
+                <td><%= t 'pages.fees.mm_high_vol' %></td>
+                <td class="green"><a href="/pages/contact"><%= t 'account.contact_us' %></a></td>
+              </tr>
+              </tbody>
+            </table>
+            <h4><%= t '.hidden_order' %></h4>
+            <table>
+              <thead>
+              <tr>
+                <th><%= t '.min_order_size', :min => @minhidden %></td>
+                <th class="green"><%= @hiddenfee %> BTC/LTC</td>
+              </tr>
+              </thead>
+            </table>
+            <h4><%= t('account.deposit').upcase! %></h4>
+            <table>
+              <thead>
+              <tr>
+                <th>EgoPay</td>
+                <th class="green"><%= Fee.fee("egopay_deposit_fee").to_d == 0 ? "free" : percentage(Fee.fee("egopay_deposit_fee").to_d) %></td>
+              </tr>
+              </thead>
+            </table>
+            <h4><%= t '.withdrawal' %></h4>
+            <table>
+              <thead>
+              <tr>
+                <th>Bitcoin</td>
+                <th class="green"><%= @btcwithdrawal > 0 ? dollar(@btcwithdrawal) : "free" %></td>
+              </tr>
+              <tr>
+                <th>Litecoin</td>
+                <th class="green"><%= @ltcwithdrawal > 0 ? dollar(@ltcwithdrawal) : "free" %></td>
+              </tr>
+              <tr>
+                <th><%= t '.international_wire' %></td>
+                <th class="green"><%= @wirewithdrawal > 0 ? dollar(@wirewithdrawal) : "free" %></td>
+              </tr>
+              <tr>
+                <th>EgoPay</td>
+                <th class="green">Depends on your egopay account type, no fee charged by Bitfinex</td>
+              </tr>
+              </thead>
+            </table>
+            <h4><%= t '.loans' %></h4>
+            <table>
+              <thead>
+              <tr>
+                <th><%= t '.charged_on_uninsured_loans' %></td>
+                <th class="green"><%= t '.fee_interests_generated_loans', :lendingcut => @lendingcut %></td>
+              </tr>
+              <tr>
+                <th><%= t '.charged_on_insured_loans' %></td>
+                <th class="green"><%= t '.fee_interests_generated_loans', :lendingcut => @insuredlendingcut %></td>
+              </tr>
+              </thead>
+            </table>
+            <a href="#top" class="top">TOP <i class="icon-angle-up"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

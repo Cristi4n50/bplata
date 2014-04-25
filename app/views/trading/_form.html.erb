@@ -1,0 +1,90 @@
+<input type="hidden" id="direction" name="direction" value=""/>
+<input type="hidden" name="pair" value="<%= @pair %>"/>
+<div class="row actions">
+  <div class="large-5 columns buy">
+    <div class="panel">
+      <div class="row">
+        <div class="large-6 columns">
+          <span class="value exchange_rate" id="selling-btcusd"><%= t 'trading.ask' %>
+            =<%= exchange_rate(Ticker.last_tick(@pair).selling) %></span>
+          <a class="button radius large success" onclick="$('input#direction').val('BUY');if(validateOptions('BUY','<%= @minhidden.to_s %>')) {$('form.order').submit();}"><% if controller.controller_name == 'exchange' %><%= t 'trading.buy' %><% else %>MARGIN BUY<% end %></a>
+        </div>
+        <div style="display:none;" id="ask-btcusd"><%= Ticker.last_tick(@pair).selling.round(5) %></div>
+        <div class="large-6 columns">
+          <div class="row">
+            <div class="large-12 columns ordertype">
+              <label for="buy_type"><%= t 'trading.order_type' %></label>
+              <select tabindex=1 name="buy_type" id="buy_type" class="small" onfocus="$('input#direction').val('BUY');" onchange="showHideBuyPrice(); updateOrderPriceEquiv('buy', '<%= Currency.lastunit(@pair) %>');">
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>LIMIT" id="buy_limit"><%= t 'trading.order_types.limit' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>MARKET" id="buy_market"><%= t 'trading.order_types.market' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>STOP" id="buy_stop"><%= t 'trading.order_types.stop' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>TRAILING STOP" id="buy_trailing_stop"><%= t 'trading.order_types.trailing_stop' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>FOK" id="buy_fok"><%= t 'trading.order_types.fok' %></option>
+              </select>
+              <input tabindex=2 id="buy_price" name="buy_price" class="order_price" type="text" value="<%= Ticker.last_tick(@pair).selling.round(5) %>" placeholder="
+                <% if Currency.lastunit(@pair) == "USD" %>$ <% end %>Price" onfocus="$('input#direction').val('BUY');if($('option#buy_market')[0].selected){$('option#buy_limit').attr('selected', true);}"
+				onkeyup="updateOrderPriceEquiv('buy', '<%= Currency.lastunit(@pair) %>');">
+              <p style="font-size:80%;" id="buy_price_equiv"></p>
+              <% if controller.controller_name == 'exchange' %>
+                  <div class="blockbutton" id="buyall">
+                    <a class="button radius small" onclick="$('input#amount').val(fullBalance(document.getElementById('exchange<%= Currency.lastunit(@pair) %>').innerHTML,1,'buy')); updateOrderPriceEquiv('buy', '<%= Currency.lastunit(@pair) %>');"><%= t 'trading.buy_all' %></a>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-2 columns options">
+    <div class="panel">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="large-12 columns ordersize">
+            <label><%= t 'trading.order_size' %> (<%= Currency.firstunit(@pair) %>)</label>
+            <input tabindex=3 id="amount" name="amount" type="text" placeholder="How much?" onkeyup="updateOrderPriceEquiv('sell', '<%= Currency.lastunit(@pair) %>'); updateOrderPriceEquiv('buy', '<%= Currency.lastunit(@pair) %>');">
+            <label for="hideOrder">
+              <input type="checkbox" id="hideOrder" name="hiddenorder" style="display: none;">
+              <span class="custom checkbox"></span> <%= t "trading.hideorder" %>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-5 columns sell">
+    <div class="panel">
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="row">
+            <div class="large-12 columns ordertype">
+              <label for="sell_type"><%= t 'trading.order_type' %></label>
+              <select tabindex=4 name="sell_type" id="sell_type" class="small" onfocus="$('input#direction').val('SELL');" onchange="showHideSellPrice(); updateOrderPriceEquiv('sell', '<%= Currency.lastunit(@pair) %>');">
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>LIMIT" id="sell_limit"><%= t 'trading.order_types.limit' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>MARKET" id="sell_market"><%= t 'trading.order_types.market' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>STOP" id="sell_stop"><%= t 'trading.order_types.stop' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>TRAILING STOP" id="sell_trailing_stop"><%= t 'trading.order_types.trailing_stop' %></option>
+                <option value="<% if controller.controller_name == 'exchange' %>EXCHANGE <% end %>FOK" id="sell_fok"><%= t 'trading.order_types.fok' %></option>
+              </select>
+              <input tabindex=5 type="text" id="sell_price" name="sell_price" class="order_price" value="<%= Ticker.last_tick(@pair).buying.round(5) %>" placeholder="
+                <% if Currency.lastunit(@pair) == "USD" %>$ <% end %>Price" onfocus="$('input#direction').val('SELL');if($('option#sell_market')[0].selected){$('option#sell_limit').attr('selected', true);}"
+				onkeyup="updateOrderPriceEquiv('sell', '<%= Currency.lastunit(@pair) %>');">
+              <p style="font-size:80%;" id="sell_price_equiv"></p>
+              <% if controller.controller_name == 'exchange' %>
+                  <div class="blockbutton" id="sellall">
+                    <a class="button radius small" onclick="$('input#amount').val(fullBalance(document.getElementById('exchange<%= Currency.firstunit(@pair) %>').innerHTML,0,'sell')); updateOrderPriceEquiv('sell', '<%= Currency.lastunit(@pair) %>');"><%= t 'trading.sell_all' %></a>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <span class="value exchange_rate" id="buying-btcusd"><%= t 'trading.bid' %>
+            =<%= exchange_rate(Ticker.last_tick(@pair).buying) %></span>
+          <a class="button radius large red secondary" onclick="$('input#direction').val('SELL');if(validateOptions('SELL','<%= @minhidden.to_s %>')) {$('form.order').submit();}"><% if controller.controller_name == 'exchange' %><%= t 'trading.sell' %><% else %>MARGIN SELL<% end %></a>
+        </div>
+        <div style="display:none;" id="bid-btcusd"><%= Ticker.last_tick(@pair).buying.round(5) %></div>
+      </div>
+    </div>
+  </div>
+</div>

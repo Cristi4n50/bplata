@@ -1,0 +1,15 @@
+<% lastbtc = Trade.last_trade("BTCUSD")
+   lastltc = Trade.last_trade("LTCUSD")
+   dailybtc = Trade.daily_change("BTCUSD").to_d
+   dailyltc = Trade.daily_change("LTCUSD").to_d
+   dailypercbtc = dailybtc / [Trade.last_trade("BTCUSD"),0.0001].max
+   dailypercltc = dailyltc / [Trade.last_trade("LTCUSD"),0.0001].max
+   %>
+<div class="large-6 columns">
+  <h5>Bitcoin last price: <span class="green" id="lastbtc"><%= dollar(lastbtc,"$",4) %></span></h5>
+  <h6>Daily Change: <span class="<% if dailybtc > 0 %>green<% else %>red<% end %>" id="dailychangebtc"><%= dollar(dailybtc,"") %> (<%= percentage(dailypercbtc) %>)</span></h6>
+</div>
+<div class="large-6 columns">
+  <h5>Litecoin last price: <span class="green" id="lastltc"><%= dollar(lastltc,"$",4) %></span></h5>
+  <h6>Daily Change: <span class="<% if dailyltc > 0 %>green<% else %>red<% end %>" id="dailychangeltc"><%= dollar(dailyltc,"") %> (<%= percentage(dailypercltc) %>)</span></h6>
+</div>

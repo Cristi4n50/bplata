@@ -1,0 +1,43 @@
+<% title t 'account.ledger' %>
+<%= render "ledger_menu" %>
+<h3><%= t 'credit.credit_history' %></h3>
+
+<% if @credits.empty? %>
+
+    <div class="empty">
+      <h3><%= t 'credit.no_credits' %></h3>
+    </div>
+
+<% else %>
+
+    <table class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t "credit.currency" %></th>
+        <th><%= t "credit.amount" %></th>
+        <th><%= t 'credit.maximum_period' %></th>
+        <th><%= t "credit.rate" %></th>
+        <th><%= t 'credit.opened_at' %></th>
+        <th><%= t 'credit.closed_at' %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @credits.each do |credit| %>
+          <tr>
+            <td><%= credit.id %></td>
+            <td><%= credit.currency %></td>
+            <td><%= credit.amount %></td>
+            <td><%= credit.period %> <%= t 'days' %></td>
+            <td><%= (credit.rate * 100).round(4).to_s + "%" if credit.rate > 0 %>
+                <%= 'VIR' if credit.rate == 0 %>
+            </td>
+            <td><%= friendly_timestamp(credit.created_at) %></td>
+            <td><%= friendly_timestamp(credit.updated_at) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="left"><% if @page > 0 %><a href="/account/credits/">First</a><% end %></div>
+    <div class="right"><% unless @credits.empty? %><a href="/account/credits/<%= @credits.last.id %>">Next</a><% end %></div>
+<% end %>

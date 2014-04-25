@@ -1,0 +1,38 @@
+<table cellspacing="0" id="creditbook">
+  <tbody>
+  <tr>
+    <td width="33%"></td>
+    <td width="33%"><b>Long</b></td>
+    <td width="33%"><b>Short</b></td>
+  </tr>
+  <tr>
+    <td><%= t "trading.marginreserved" %></td>
+    <td>
+      <% if @longpossible > 0 %>
+          <b><%= @longpossible %> <%= Currency.firstunit(@pair) %></b>
+      <% else %>
+          <b>0</b>,
+          <a href="/credit/index/<%= Currency.lastunit(@pair) %>" target="_blank"><%= t 'trading.margin_go_reserve' %></a>
+      <% end %>
+    </td>
+    <td>
+      <% if @shortpossible > 0 %>
+          <b><%= @shortpossible %> <%= Currency.firstunit(@pair) %></b>
+      <% else %>
+          <b>0</b>,
+          <a href="/credit/index/<%= Currency.firstunit(@pair) %>" target="_blank"><%= t 'trading.margin_go_reserve' %></a>
+      <% end %>
+      </tr>
+  <tr>
+    <td><%= t "trading.margin_available" %></td>
+    <td><b><%= @remaininglong.round(2) %> <%= Currency.firstunit(@pair) %>
+      <% if @remaininglong > 0.1 %>
+          at <strong><%= (Offer.askoffer(Currency.lastunit(@pair)) * 100).round(2) %> to <%= (@interest_long * 100).round(2).to_s %>%/day</strong>
+      <% end %></b></td>
+    <td><b><%= @remainingshort.round(2) %> <%= Currency.firstunit(@pair) %>
+      <% if @remainingshort > 0.1 %>
+          at <strong><%= (Offer.askoffer(Currency.firstunit(@pair)) * 100).round(2) %> to <%= (@interest_short * 100).round(2).to_s %>%/day</strong>
+      <% end %></b></td>
+  </tr>
+  </tbody>
+</table>

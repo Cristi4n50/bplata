@@ -1,0 +1,78 @@
+<%= render "javascript" %>
+<%= render "/power/menu" %>
+</div>
+</div>
+<% title 'Users verification table' %>
+<h4><%= t "Users to verify" %></h4>
+<% if @compliance.empty? %>
+
+<div class="empty">
+	<h6>There is no user to verify for now.</h6>
+</div>
+
+<% else %>
+
+<table class="history table table-bordered table-striped">
+  	<thead>
+      <tr>
+		<th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Remark</th>
+		<th>Action</th>
+      </tr>
+    </thead>
+	<tbody>
+		<% @compliance.each do |user| %>
+      <tr>
+		<td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><a href="mailto:<%= user.email %>" target="_blank" ><%= user.email %></a></td>
+        <td><%= remark_compliance(user.id) %></td>
+        <td>
+          <%= link_to "Accept verification", {:controller => "compliance/accept/#{user.id}"}, :confirm => "Are you sure to verify #{user.username}", :remote => false, :method => :accept %>    -
+          <%= link_to "Mark as pending", {:controller => "compliance/delay/#{user.id}"}, :remote => false, :method => :delay %>    -
+          <%= link_to "Refuse verification", {:controller => "compliance/refuse/#{user.id}"}, :confirm => "Are you sure to refuse #{user.username}", :remote => false, :method => :refuse %>
+        </td>
+      </tr>
+	<% end %>
+	</tbody>
+</table>
+
+<% end %>
+<h4><%= "Users pending verification" %></h4>
+<% if @pendingcompliance.empty? %>
+
+    <div class="empty">
+      <h3>There is no user whose verification is pending for now.</h3>
+    </div>
+
+<% else %>
+
+    <table class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Remark</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @pendingcompliance.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><a href="mailto:<%= user.email %>" target="_blank" ><%= user.email %></a></td>
+            <td><%= remark_compliance(user.id) %></td>
+            <td>
+              <%= link_to "Accept verification", {:controller => "compliance/accept/#{user.id}"}, :confirm => "Are you sure to verify #{user.username}", :remote => false, :method => :accept %>    -
+              <%= link_to "Refuse verification", {:controller => "compliance/refuse/#{user.id}"}, :confirm => "Are you sure to refuse #{user.username}", :remote => false, :method => :refuse %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+<% end %>

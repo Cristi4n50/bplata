@@ -1,0 +1,17 @@
+<h2 style="margin: 1.75em 0 .5em;color: #333;font-weight: bold;font-size: 1.1em;">
+	You have idle deposits
+</h2>
+<p>You have <%= @idlebtcdeposit.round(2) %> BTC and <%= @idleusddeposit.round(2) %> USD on your deposit wallet, which are not lend nor offered to be lend.</p>
+<p>You can make them work for you by going to the <a style="font-weight:bold;" href="https://bitfinex.com/credit">Lending page</a> and propose your own offer(s), at your own rate.</p>
+<% if @avgusdinterest + @avgbtcinterest > 0 %>
+	<p>Our lenders are currently lending at an average rate of:</p>
+	<ul>
+	<% if @avgusdinterest > 0 %>
+		<li><%= @avgusdinterest %>% a year for USD</li>
+	<% end %>
+	<% if @avgbtcinterest > 0 %>
+		<li><%= @avgbtcinterest %>% a year for bitcoins</li>
+	<% end %>
+	</ul>
+<% end %>
+<p>Thank you for choosing us and enjoy Bitfinex!</p>

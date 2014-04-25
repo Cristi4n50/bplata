@@ -1,0 +1,31 @@
+<%= render "layouts/header" %>
+<div id="Menu">
+  <div class="row">
+    <div class="large-3 small-12 columns logo">
+      <a href="/" id="logo"><img src="/assets/logo.png" alt="Bplata" title="Bplata" data-interchange="[/assets/logo.png, (retina)]"/></a>
+    </div>
+    <% if logged_in? %>
+        <div class="large-6 small-6 columns account">
+          <a href="#" class="success green radius button dropdown" data-dropdown="profile-menu"><%= current_user.username %></a>
+          <ul id="profile-menu" class="f-dropdown tiny" data-dropdown-content>
+            <li><a href="/account/ledger"><i class="icon-align-justify"></i> <%= t 'sidebar.ledger' %></a></li>
+            <li><a href="/user/edit"><i class="icon-wrench"></i> <%= t 'sidebar.account_settings' %></a></li>
+            <li><a href="/account/security"><i class="icon-lock"></i> <%= t 'sidebar.two_factor_authentication' %></a>
+            </li>
+            <li><a href="/logout"><i class="icon-remove"></i> <%= t 'nav.logout' %></a></li>
+          </ul>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="sub-header">
+  <div class="row">
+    <div class="large-6 small-12 columns last-prices" id="lastprices">
+      <%= render "layouts/last_prices" %>
+    </div>
+    <div class="large-6 small-12 columns" id="overview_balance">
+      <% if logged_in? %><%= render 'layouts/balance_overview' %><% end %>
+    </div>
+  </div>
+</div>

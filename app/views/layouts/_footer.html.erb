@@ -1,0 +1,35 @@
+<script>
+    document.write('<script src=' +
+            ('__proto__' in {} ? '/assets/vendor/zepto' : '/assets/vendor/jquery') +
+            '.js><\/script>')
+</script>
+
+<!--<%= javascript_include_tag "foundation.min" %>-->
+<%= javascript_include_tag "foundation/foundation" %>
+<%= javascript_include_tag "foundation/foundation.interchange" %>
+<%= javascript_include_tag "foundation/foundation.dropdown" %>
+<%= javascript_include_tag "foundation/foundation.abide" %>
+<%= javascript_include_tag "foundation/foundation.placeholder" %>
+<%= javascript_include_tag "foundation/foundation.forms" %>
+<%= javascript_include_tag "foundation/foundation.alerts" %>
+<%= javascript_include_tag "foundation/foundation.magellan" %>
+<%= javascript_include_tag "foundation/foundation.reveal" %>
+<%= javascript_include_tag "foundation/foundation.tooltips" %>
+<%= javascript_include_tag "foundation/foundation.orbit" %>
+<%= javascript_include_tag "foundation/foundation.section" %>
+<%= javascript_include_tag "foundation/foundation.topbar" %>
+
+<script>
+    $(document).foundation();
+
+    $('a#change-login').bind('click', function() {
+        $('#login-modal').foundation('reveal', 'close');
+    });
+
+    $('a#options-trigger').bind('click', function() {
+        $('#interface .actions .more-options').toggle();
+    });
+
+</script>
+</body>
+</html>

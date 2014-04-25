@@ -1,0 +1,15 @@
+# Use the README file as a reference to customize settings.
+
+Deposit:
+  fields:
+    default: amount, currency, method, remark, user_id, status, created_at
+    form: amount, currency, method, remark, user_id, status
+    options:
+      selectors: currency, status, method
+  relationships: 
+  application: Application
+  order_by: -id
+  filters: status
+  search: remark, method
+  actions:
+    index: approve_all

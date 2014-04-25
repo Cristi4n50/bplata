@@ -1,0 +1,65 @@
+<div class="large-12 columns">
+  <table cellspacing="0">
+    <tbody>
+    <% Currency.currencies.each do |curr| %>
+        <tr>
+          <td><%= curr.to_s %></td>
+          <td><%= dollar(@trading_balance[Currency.currencies.index(curr)],"") %></td>
+        </tr>
+    <% end %>
+    <% unless @marginbalance.nil? %>
+        <tr>
+          <td><%= t "sidebar.margin_balance" %></td>
+          <td><%= dollar(@marginbalance) %></td>
+        </tr>
+    <% end %>
+    <% unless @tradablebalance.nil? %>
+        <tr>
+          <td><%= t "sidebar.tradable_balance" %></td>
+          <td><%= dollar(@tradablebalance) %></td>
+        </tr>
+    <% end %>
+    <% unless @unrealizedpl.nil? %>
+        <tr>
+          <td><%= t "sidebar.unrealized_pl" %></td>
+          <td><%= colored_dollar(@unrealizedpl) %></td>
+        </tr>
+    <% end %>
+    <% unless @unrealizedswap.nil? %>
+        <tr>
+          <td><%= t "sidebar.unrealized_swap" %></td>
+          <td><%= colored_dollar(@unrealizedswap) %></td>
+        </tr>
+    <% end %>
+    <% unless @netvalue.nil? || @minimumnetvalue.nil? %><tr><td><%= t "sidebar.net_value" %></td><td><%= colored_dollar(@netvalue, @minimumnetvalue * 2) %></td></tr>
+    <% end %>
+    <% unless @minimumnetvalue.nil? %>
+        <tr>
+          <td><%= t "sidebar.maintenance" %></td>
+          <td><%= dollar(@minimumnetvalue) %></td>
+        </tr>
+    <% end %>
+    <% unless @leverage.nil? %>
+        <tr>
+          <td><%= t "sidebar.leverage" %></td>
+          <td><%= @leverage %>:1</td>
+        </tr>
+    <% end %>
+    <% unless @marginrequirements.nil? %>
+        <tr>
+          <td><%= t "sidebar.margin_requirement" %></td>
+          <td><%= @marginrequirements %>%</td>
+        </tr>
+    <% end %>
+    <!--
+    <tr>
+      <td><%= t 'account.btc_volume' %></td>
+      <td><%=  %></td>
+    </tr>
+    <tr>
+      <td><%= t 'account.ltc_volume' %></td>
+      <td><%=  %></td>
+    </tr>-->
+    </tbody>
+  </table>
+</div>

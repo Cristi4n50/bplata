@@ -1,0 +1,17 @@
+<!--<div class="alert-box alert">
+  <p>Our platform will be migrated the 19th of December, at 16:00 GMT, for a downtime of 30 minutes. Thank you for your comprehension.</p>
+</div>-->
+<% if current_user.level == "trader" %>
+    <% if current_user.positions.active.first %>
+        <% if current_user.net_value < current_user.minimum_net_value * 2 %>
+            <div class="alert-box alert radius">
+
+              <strong><%= t "notifications.margin_danger" %></strong> <%= t "notifications.margin_danger_1" %>
+              <a class="button secondary round" href="/account/deposit"><%= t "notifications.deposit_now" %></a>
+              <a href="#" class="close">&times;</a>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>
+<% if (controller.controller_name == 'exchange' || controller.controller_name == 'trading') %>
+<% end %>

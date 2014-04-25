@@ -1,0 +1,50 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Active orders' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6>Active orders</h6>
+    <table cellspacing="0" id="orderstable">
+      <thead>
+      <tr>
+        <th></th>
+        <th>#</th>
+        <th><%= t 'trading.pair' %></th>
+        <th><%= t 'trading.type' %></th>
+        <th><%= t 'trading.original_amount' %></th>
+        <th><%= t 'trading.amount' %></th>
+        <th><%= t 'trading.price' %></th>
+        <th><%= t "trading.routing_order" %></th>
+        <th><%= t 'trading.placed' %></th>
+        <th><%= t 'trading.status' %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @dauser.orders.active.empty? %>
+          <tr>
+            <td colspan="8"><%= t "trading.no_active_orders" %></td>
+          </tr>
+      <% else %>
+          <% @dauser.orders.active.each do |order| %>
+              <tr>
+                <td class="<%= "buying" if order.amount > 0 %> <%= "selling" if order.amount < 0 %> stripe"></td>
+                <td><%= order.id %></td>
+                <td><%= order.pair %></td>
+                <td><%= t "trading.order_types." + order.type.downcase %></td>
+                <td><%= order.originalamount %></td>
+                <td><%= order.amount.round(2) %></td>
+                <td class="price"><%= "-" if order.price.nil? || order.type == "MARKET" || order.type == "EXCHANGE MARKET" %><%= accurate_dollar(order.price, "") unless order.price.nil? || order.type == "MARKET" || order.type == "EXCHANGE MARKET" %></td>
+                <td><%= order.routing.to_s unless order.routing.nil? %></td>
+                <td class="nowrapping">
+                  <%= friendly_timestamp(order.created_at) %>
+                </td>
+                <td><%= order.status.downcase unless order.status.start_with?("PARTIALLY") %>
+                  <%= "partially filled" if order.status.start_with?("PARTIALLY") %></td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

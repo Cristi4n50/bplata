@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+Ticker:
+  fields:
+    default: pair, buying, selling, created_at
+    form: pair, buying, selling
+  relationships: 
+  application: Application
+  order_by: -id

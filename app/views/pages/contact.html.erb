@@ -1,0 +1,87 @@
+<div id='contenidomenu'>
+<div id="Menu">
+
+<div id="Logo1"><BR><BR><BR><BR>
+<%= image_tag('logotipo.png') %>
+<div id="Desc">El primer sitio bitcoin seguro y facil para latinoam&eacute;rica</div><!-- Desc -->
+</div><!-- Logo -->
+<div id="Monedas">
+<ul id="aa">
+<li><a href="#">BTC 1020 USD</a></li>
+<li><a href="#">BTC 0,33 LTC</a></li>
+<li><a href="#">LTC 25 USD</a></li>
+</ul>
+<ul id='idiomas'>
+  <li><%= image_tag('idespañol.png', :width=>'30') %></li>
+  <li><%= image_tag('idprotugal.png', :width=>'30') %></li>
+  <li><%= image_tag('idingles.png', :width=>'30') %></li>
+</ul>
+<ul id='soporte'>
+  <li id='support'
+    <% if controller.controller_name == 'pages' && controller.action_name == 'support' %> class="active"
+    <% end %>><a  href="/pages/support"><%= t 'nav.support' %></a></li>
+</ul>
+</div><!-- Monedas -->
+<ul id="Menusec">
+<li><a id="Act" href="/">INICIO</a></li>
+<li><a href="intercambio.html">INTERCAMBIO</a></li>
+<li><a href="#">MERCADO</a></li> 
+<li><a href="#">DEP&Oacute;SITO</a></li>
+<li><a href="#">RETIROS</a></li>
+<li><a href="#">CUENTA</a></li>
+</ul>
+</div><!-- Menu -->
+</div>
+<% if logged_in? %>
+    </div>
+    </div>
+<% end %>
+<%= render "javascript" %>
+<% title t 'account.contact_us' %>
+<a name="top"></a>
+<div class="content">
+  <div class="row">
+    <div class="large-12 columns contact">
+      <div class="border">
+        <h2><i class="icon-envelope"></i> <span><%= t 'account.contact_us' %></span></h2>
+        <hr/>
+        <div class="row">
+          <div class="large-5 columns">
+            <%= render '/pages/contact_short' %>
+          </div>
+          <!--<div class="large-6 columns">
+            <form>
+              <div class="row">
+                <div class="large-6 columns">
+                  <input type="text" placeholder="Name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns">
+                  <input type="text" placeholder="Email">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns">
+                  <input type="text" placeholder="Object">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <textarea placeholder="Message"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns right">
+                  <a class="button radius medium">Send</a>
+                </div>
+              </div>
+
+            </form>
+          </div>-->
+          <div class="large-1 columns"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

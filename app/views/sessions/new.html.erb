@@ -1,0 +1,22 @@
+<h1><%= t "account.login" %></h1>
+  <p id='signup'><%= t "account.no_account" %> <%= link_to t("account.signup"), signup_path %></p>
+  <div id='contenidologin'>
+    <%= form_tag sessions_path do %>
+    <%= label_tag :login, t("account.username_or_email"), :id=>'col' %>
+      <div id='user'>
+        <%= text_field_tag :login, params[:login], :autocorrect => "off", :autocapitalize => "off" %>
+      </div>
+      <br>
+      <%= label_tag :password, t("account.password"), :id=>'col' %>
+      <div id='user'>
+        <%= password_field_tag :password %>
+      </div>
+      <br>
+      <div class="clearfix">
+        <span class="small"><a href="/pages/reset_pass"><%= t 'account.forgot_your_pasword' %></a></span>
+      </div>
+      <div class="actions">
+        <%= submit_tag t("account.login"), :class => "button radius success" %>
+      </div>
+  </div>
+<% end %>

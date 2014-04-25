@@ -1,0 +1,34 @@
+<div class="large-12 columns">
+  <table cellspacing="0">
+    <% cpt = 0 %>
+    <% Currency.currencies.each do |curr| %>
+        <tr>
+          <td><%= curr.to_s %></td>
+          <td><%= dollar(@deposit_balance[Currency.currencies.index(curr)], "") %></td>
+        </tr>
+        <% unless @credittotal.nil? %>
+            <tr>
+              <td><%= curr.to_s %> Swap total:</td>
+              <td>
+                <%= dollar(@credittotal[cpt], "") %>
+              </td>
+            </tr>
+        <% end %>
+        <% unless @currentrate.nil? %>
+            <tr>
+              <td><%= curr.to_s %> Current rate (APY):</td>
+              <td>
+                <%= @currentrate[cpt].round(2) %>%
+              </td>
+            </tr>
+        <% end %>
+        <tr>
+          <td><%= curr.to_s %> <%= t "credit.lendablebalance" %>:</td>
+          <td><%= dollar(@lendable_balance[Currency.currencies.index(curr)].to_d, "") %>
+            <span style="display:none;" id="lendable<%= curr.downcase %>"><%= @lendable_balance[Currency.currencies.index(curr)].to_d %></span>
+          </td>
+        </tr>
+        <% cpt += 1 %>
+    <% end %>
+  </table>
+</div>

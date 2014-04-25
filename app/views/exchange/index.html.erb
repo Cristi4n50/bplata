@@ -1,0 +1,29 @@
+<ul class="button-group radius even-3" id="sub-menu">
+  <% @pairs.each do |currentpair| %>
+      <li><a href="/exchange/index/<%= currentpair.downcase %>" class="button small
+        <% if @pair == currentpair %> active
+        <% end %>"><%= currentpair %></a></li>
+  <% end %>
+</ul>
+</div>
+</div>
+<% title t "nav.exchange" %>
+<%= render "layouts/notifications" %>
+<%= render "javascript" %>
+
+<%= render "/trading/orders" %>
+
+<%= form_tag orders_path, :remote => true, :class => "custom order" do %>
+    <%= render 'trading/form' %>
+<% end %>
+<div style="display:none;">
+  <input type="submit"/>
+</div>
+<div class="row tables">
+  <div id="bids"> 
+    <%= render "trading/bids" %>
+  </div>
+  <div id="asks">
+    <%= render "trading/asks" %>
+  </div>
+</div>

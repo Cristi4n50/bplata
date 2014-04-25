@@ -1,0 +1,293 @@
+*
+{
+	margin:auto;
+}
+
+body
+{
+	background-image:url(/assets/wallpaper_nine.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 750px;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	font-family:"lato";
+}
+
+#Container
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+#Menu
+{
+	background-image:url(/assets/bgtop-1.jpg);
+	background-repeat:repeat-x;
+	padding:10px;
+	width:100%;
+	height:112px;
+}
+
+#Menu ul
+{
+	
+	text-align:center;
+}
+
+#Menu #ppl
+{
+	text-align:left;
+	margin-left:250px;
+	font-size:12px;
+}
+
+#Menu ul li
+{
+	display:inline-block;
+	list-style:none;
+	z-index:10;
+}
+
+#Menu ul li a
+{
+	text-decoration:none;
+	margin-right:12px;
+	font-size:14px;
+	color:rgba(112,112,112,1.00);
+	transition:all 0.5s;
+	-webkit-transition:all 0.5s;
+	-moz-transition:all 0.5s;
+}
+
+#Menu ul li a:hover
+{
+	color:rgba(255,255,255,1.00);
+}
+
+#Menu ul li > #Actual
+{
+	color:rgba(255,255,255,1.00) !important;
+	font-size:12px;
+}
+
+#Select
+{
+	position:absolute;
+	top:-30px;
+	left:275px;
+	z-index:2;
+}
+
+#Logo
+{
+	margin-left:60px;
+	margin-top:-5px;
+}
+
+#Desc
+{
+	margin-top:-30px;
+	color:rgba(112,112,112,1.00);
+}
+
+#Monedas
+{
+	text-align:center;
+	margin-top:-50px;
+}
+
+#Monedas #Descmonedas
+{
+	font-weight:bold;
+	font-size:18px;
+	color:rgba(113,113,113,1.00);
+}
+
+#Monedas > #aa
+{
+	background-image:url(/assets/shadows.png);
+	background-repeat:no-repeat;
+	background-position:142px center;
+	width:520px;
+	text-align:center;
+}
+
+#Monedas ul li > a
+{
+	
+	font-size:12px !important;
+	margin-right:10px;
+}
+
+
+#Menu #Menusec
+{
+	text-align:right;
+	margin-right:80px;
+	margin-top:-25px;
+}
+
+#Menu #Menusec #Act
+{
+	color:rgba(255,255,255,1.00);
+}
+
+table
+{
+	margin-right:10px;
+	margin-top:-20px;
+	cursor:pointer;
+}
+
+#Container #Contenido table #Inicio
+{
+	background-image:url(/assets/registersession.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	width:270px;
+	height:33px;
+	padding-top:15px;
+}
+
+#Container #Contenido table #Registro
+{
+	background-image:url(/assets/startsession.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	width:270px;
+	height:33px;
+	padding-top:15px;
+}
+
+#Container #Contenido table ul li
+{
+	list-style:none;
+	text-align:center;
+	margin-right:70px;
+}
+
+#Container #Contenido table ul li a
+{
+	text-align:center;
+	font-size:14px;
+	text-decoration:none;
+	color:rgba(255,255,255,1.00);
+}
+
+#Container #Contenido #Info
+{
+	width:400px;
+	color:rgba(255,255,255,1.00);
+	margin-left:150px;
+	margin-top:-40px;
+	font-family:"lato";
+}
+
+#Container #Contenido #Info p
+{
+	font-family:"lato-ligth";
+}
+
+#Container #Contenido #Info img
+{
+	top:45px;
+	left:-70px;
+	position:relative;
+}
+
+#Container #Contenido #Login #Inicio, #Registro li a
+{
+	font-family:"lato-ligth";
+}
+
+#Preguntas
+{
+	margin-right:120px;
+	margin-top:-40px;
+}
+
+#Container #Contenido #Preguntas table li
+{
+	text-align:right;
+}
+
+#Container #Contenido table #ques
+{
+	
+	width:270px;
+	height:33px;
+	padding-top:15px;
+	padding-right:30px;
+	
+}
+
+#Container #Contenido table #ques:hover
+{
+	background-image:url(/assets/qesbitcoinslogosmall.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#Container #Contenido table #comp
+{
+	
+	width:270px;
+	height:33px;
+	padding-top:15px;
+	padding-right:30px;
+	background-image:url(/assets/comprayvendelogosmall.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+
+}
+
+#Container #Contenido table #comp:hover
+{
+	}
+
+#Container #Contenido table #como
+{
+	
+	width:270px;
+	height:33px;
+	padding-top:15px;
+	padding-right:30px;
+}
+
+#Container #Contenido table #como:hover
+{
+	background-image:url(/assets/comohacerlologosmall.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#Container #Contenido table #qui
+{
+	
+	width:270px;
+	height:33px;
+	padding-top:15px;
+	padding-right:30px;
+}
+
+#Container #Contenido table #qui:hover
+{
+	background-image:url(/assets/activerightmenu.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+@font-face
+{
+	font-family:"lato";
+	src:url(../Lato-Reg.ttf);
+}
+
+@font-face
+{
+	font-family:"lato-ligth";
+	src:url(../Lato-Lig.ttf);
+}

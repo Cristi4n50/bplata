@@ -1,0 +1,1 @@
+<span class="small center"><%= t 'trading.your_fees_are_bfx', :bfx_fees => (100 * Fee.user_fee("bfx_fees_" + Currency.firstunit(@pair).to_s,current_user)).to_s + '%' %><% if @pair == "BTCUSD" %>, <%= t 'trading.your_fees_are_bstp', :bstp_fees => (100 *Fee.user_fee("bitstamp_fees",current_user)).to_s + '%' %><% end %></span>

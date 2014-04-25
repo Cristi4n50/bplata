@@ -1,0 +1,144 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Assets' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> Wallets</h6>
+    <% unless @dauser.nil? %>
+        <% total_balance = []
+           Currency.currencies.each do |curr|
+             total_balance << 0
+           end
+           walbal = []
+           total_usd = 0
+           availbal = []
+           @dauser.wallets.each do |wallet|
+             bal_bal = 0
+             curr_bal = []
+             curr_avail = []
+             Currency.currencies.each do |curr|
+               bal_bal = wallet.balance(curr)
+               curr_bal << bal_bal
+               curr_avail << @dauser.available_balance(curr,wallet.name)
+               total_balance[Currency.currencies.index(curr)] += bal_bal
+               total_usd += Currency.currencyvalue(bal_bal, curr, false)
+             end
+             walbal << curr_bal
+             availbal << curr_avail
+           end
+        %>
+        <div>
+          <table cellspacing="0">
+            <thead>
+            <tr>
+              <th colspan="2">Total balance</th>
+              <th colspan="2"><%= dollar(total_usd) %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @dauser.wallets.each do |wallet| %>
+                <tr>
+                  <td class="right"><%= wallet.name %></td>
+                  <% Currency.currencies.each do |curr| %>
+                      <td>
+                        <%= dollar(walbal[@dauser.wallets.index(wallet)][Currency.currencies.index(curr)].to_d, "", 8) %> <%= curr %>
+                      </td>
+                  <% end %>
+                </tr>
+            <% end %>
+            <tr>
+              <td class="right">Total</td>
+              <% Currency.currencies.each do |curr| %>
+                  <td><b><%= dollar(total_balance[Currency.currencies.index(curr)], "", 8) %> <%= curr %></b></td>
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
+          <table cellspacing="0" class="large-12">
+            <thead>
+            <tr>
+            <th colspan="<%= Currency.currencies.count + 1 %>">Available balance</th>
+            </thead>
+            <tbody>
+            <% @dauser.wallets.each do |wallet| %>
+                <tr>
+                  <td class="right"><%= wallet.name %></td>
+                  <% Currency.currencies.each do |currency| %>
+                      <td><%= availbal[@dauser.wallets.index(wallet)][Currency.currencies.index(currency)].to_d.floor(8) %> <%= currency.to_s %></td>
+                  <% end %>
+            <% end %>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <%= t 'account.available_balance_explain' %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td>
+                <table cellspacing="0">
+                  <thead>
+                  <tr>
+                    <th colspan="2">Trading wallet</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><%= t "sidebar.margin_balance" %></td>
+                    <td><%= dollar(@dauser.margin_balance) %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "sidebar.tradable_balance" %></td>
+                    <td><%= dollar(@dauser.tradable_balance) %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "sidebar.maintenance" %></td>
+                    <td><%= dollar(@dauser.minimum_net_value) %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "sidebar.leverage" %></td>
+                    <td><%= @dauser.leverage %>:1</td>
+                  </tr>
+                  <tr>
+                    <td><%= t "sidebar.margin_requirement" %></td>
+                    <td><%= @dauser.margin_requirement %>%</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table cellspacing="0">
+                  <thead>
+                  <tr>
+                    <th colspan="2">Deposit wallet</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% Currency.currencies.each do |curr| %>
+                      <tr>
+                        <td><%= curr.to_s %> Credit total:</td>
+                        <td>
+                          <%= dollar(@dauser.lend_value(curr), "") %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><%= curr.to_s %> <%= t "credit.lendablebalance" %>:</td>
+                        <td><%= dollar(@dauser.lendable_balance(curr).to_d, "") %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+    <% else %>
+        No user selected
+    <% end %>
+  </div>
+</div>

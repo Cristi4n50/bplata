@@ -1,0 +1,7 @@
+<% if @notification %>
+$.pnotify({
+    title: '',
+    text: '<%= @notification %>'
+    });
+<% end %>
+update_account_overview();

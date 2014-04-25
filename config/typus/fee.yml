@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+Fee:
+  fields:
+    default: user_id, description, value, remarks
+    form: user_id, description, value, remarks
+  relationships:
+  application: Application
+  #order_by: key

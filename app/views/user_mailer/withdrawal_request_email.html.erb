@@ -1,0 +1,2 @@
+<h2>A withdrawal request has been made from your account</h2>
+<p>Today, at <%= Time.now %>, a withdrawal request of <%= @withdrawal.amount.abs %> <%= @withdrawal.currency %> via <%= @withdrawal.method %> has been made. If you did not approve this withdrawal, please respond to this email to cancel the withdrawal request.</p>

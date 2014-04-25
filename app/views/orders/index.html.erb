@@ -1,0 +1,61 @@
+<%= render "account/ledger_menu" %>
+</div>
+</div>
+<% title t 'account.ledger' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6><i class="icon-time"></i> <%= t "trading.order_history" %></h6>
+    <% if @orders.empty? %>
+
+        <div class="empty">
+          <h3><%= t 'orders.no_orders' %></h3>
+        </div>
+
+    <% else %>
+        <br/>
+        <br/>
+        <%= paginate @orders %>
+        <br/>
+        <br/>
+        <table style="font-size: small" class="history table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th><%= t "trading.pair" %></th>
+            <th><%= t "trading.type" %></th>
+            <th><%= t "trading.amount" %></th>
+            <th><%= t "trading.executed_amount" %></th>
+            <th><%= t "trading.price" %></th>
+            <th><%= t "trading.avg_price" %></th>
+            <th><%= t "trading.routing_order" %></th>
+            <th><%= t "account.updated" %></th>
+            <th><%= t "trading.status" %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.id %></td>
+                <td><%= order.pair %></td>
+                <td><%= order.type.capitalize %></td>
+                <td><%= accurate_dollar(order.originalamount,"") %></td>
+                <td><%= accurate_dollar(order.originalamount - order.amount,"") unless order.originalamount.nil? %></td>
+                <td><%= "-" if order.price.nil? %><%= accurate_dollar(order.price) unless order.price.nil? || Currency.lastunit(order.pair) != "USD" %>
+                  <%= order.price unless order.price.nil? || Currency.lastunit(order.pair) == "USD" %></td>
+                <td><%= accurate_dollar(order.avg_price) unless Currency.lastunit(order.pair) != "USD" %>
+                  <%= accurate_dollar(order.avg_price,"") unless Currency.lastunit(order.pair) == "USD" %></td>
+                <td><%= order.routing.to_s unless order.routing.nil? %></td>
+                <td><%= friendly_timestamp(order.updated_at) %></td>
+                <td><%= order.status["EXECUTED"] == "EXECUTED" ? order.status.capitalize : order.status.downcase %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <%= paginate @orders %>
+        <br/>
+        <br/>
+    <% end %>
+  </div>
+</div>

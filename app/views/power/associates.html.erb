@@ -1,0 +1,87 @@
+<%= render "javascript" %>
+<%= render "menu" %>
+</div>
+</div>
+<% title 'Staff' %>
+<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Associate</th>
+    <th>Monitor</th>
+    <th>Accountant</th>
+    <th>Support</th>
+    <th>Part</th>
+    <th>Pref wallet</th>
+    <th>Profit for the current month (if 100% dividend)
+      <div style="display:none;"><%= Capital.get_value("profit system") %></div>
+    </th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <%= form_tag({:controller => :power, :action => :newassociate}, {:remote => false}) do %>
+        <td><%= text_field_tag :user_id, params[:user_id], :value => '', :title => "User ID", :size => 5 %></td>
+        <td><%= check_box_tag 'associate', 1, false %></td>
+        <td><%= check_box_tag 'monitor', 1, false %></td>
+        <td><%= check_box_tag 'accountant', 1, false %></td>
+        <td><%= check_box_tag 'support', 1, false %></td>
+        <td><%= text_field_tag :part, params[:part], :value => 0, :title => "Part (%)", :size => 5 %></td>
+        <td><%= select_tag "prefwallet", options_for_select(["trading", "exchange", "deposit"], "trading") %></td>
+        <td></td>
+        <td><%= submit_tag "Add associate", :id => "submit", :name => "submit", :class => "button radius" %></td>
+    <% end %>
+  </tr>
+  <% unless @associates.nil? %>
+      <% total_part = 0 %>
+      <% @associates.each do |associate| %>
+          <tr>
+            <td>
+              <%= associate.user.id %>
+              <br/>
+              <a href="mailto:<%= associate.user.email %>"><%= associate.user.username %></a>
+            </td>
+            <td>
+              <% unless associate.associate? %>
+                  <%= link_to "Make associate", {:controller => "power/changeassociate/#{associate.id}"}, :confirm => "Are you sure to make #{associate.user.username} an associate", :remote => false %>
+              <% else %>
+                  <%= link_to "Disable associate", {:controller => "power/changeassociate/#{associate.id}"}, :confirm => "Are you sure to fire #{associate.user.username} as an associate", :remote => false %>
+              <% end %></td>
+            <td>
+              <% unless associate.monitor? %>
+                  <%= link_to "Make monitor", {:controller => "power/changemonitor/#{associate.id}"}, :confirm => "Are you sure to make #{associate.user.username} a monitor", :remote => false %>
+              <% else %>
+                  <%= link_to "Disable monitor", {:controller => "power/changemonitor/#{associate.id}"}, :confirm => "Are you sure to fire #{associate.user.username} as a monitor", :remote => false %>
+              <% end %></td>
+            <td>
+              <% unless associate.accountant? %>
+                  <%= link_to "Make accountant", {:controller => "power/changeaccountant/#{associate.id}"}, :confirm => "Are you sure to make #{associate.user.username} an accountant", :remote => false %>
+              <% else %>
+                  <%= link_to "Disable accountant", {:controller => "power/changeaccountant/#{associate.id}"}, :confirm => "Are you sure to fire #{associate.user.username} as an accountant", :remote => false %>
+              <% end %></td>
+            <td>
+              <% unless associate.support? %>
+                  <%= link_to "Make support", {:controller => "power/changesupport/#{associate.id}"}, :confirm => "Are you sure to make #{associate.user.username} a support tech", :remote => false %>
+              <% else %>
+                  <%= link_to "Disable support", {:controller => "power/changesupport/#{associate.id}"}, :confirm => "Are you sure to fire #{associate.user.username} as a support tech", :remote => false %>
+              <% end %></td>
+            <td><%= associate.part * 100 %>%</td>
+            <td><%= associate.prefwallet.to_s %></td>
+            <td><%= colored_dollar(associate.part * Capital.get_value("profit system")) %></td>
+            <td>
+              <a class="button radius" href="/power/removeassociate/<%= associate.id %>" onclick="return confirm('Are you sure to remove this associate?');">Remove
+                associate</a></td>
+          </tr>
+          <% total_part += associate.part %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<% if total_part > 1 %>
+    <p class="important">Warning, the total of associate parts is more than 100% (<%= percentage(total_part) %>), please
+      check carefully!</p>
+<% end %>
+<h3>Distribution of dividends</h3>
+<div>Percentage of profit to distribute as
+  dividends: <%= text_field_tag :percdistrib, params[:percdistrib], :value => 100, :title => "Distribution" %></div>

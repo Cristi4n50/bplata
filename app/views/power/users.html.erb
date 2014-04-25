@@ -1,0 +1,76 @@
+<%= render "javascript" %>
+<%= render "/power/menu" %>
+</div>
+</div>
+<% title 'Users data' %>
+<h3><%= t "Statistics" %></h3>
+<div>Total users with more than 1 dollars in their wallets: <%= @total_users_positive %></div>
+<div>Total users with more than 100 dollars in their wallets: <%= @total_users_positive_100 %></div>
+<div>Total users that traded in the last 30 days: <%= @total_traders_last_month %></div>
+<!--<div>Total profit/loss realised by margin traders in the last 30
+  days: <%= colored_dollar(0) %></div>
+<div>Total profit/loss realised by margin traders in the last 7
+  days: <%= colored_dollar(0) %></div>-->
+<!--<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="3"><h3>Ranking of traders by realized profit/loss in the last 30 days</h3></th>
+  </tr>
+  <tr>
+    <th>#</th>
+    <th>User</th>
+    <th>Profit/Loss</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% unless @traders.nil? %>
+      <% cpt = 0 %>
+      <% @traders.reverse.each do |trader| %>
+          <tr>
+            <td><%= cpt %></td>
+            <td>
+              <%= trader.id %>
+              <br />
+              <%= trader.username %>
+              <br/>
+              <a href="mailto:<%= trader.email %>"><%= trader.email %></a></td>
+            <td><%= colored_dollar(trader.real_pl) %></td>
+          </tr>
+          <% cpt += 1 %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>-->
+<!--<table class="history table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th colspan="3"><h3>Users with at least 100 USD of assets in their accounts</h3></th>
+  </tr>
+  <tr>
+    <th>#</th>
+    <th>User</th>
+    <th>Total assets</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% unless @bigusers.nil? %>
+      <% cpt = 1 %>
+      <% @bigusers.reverse.each do |user| %>
+
+          <% break if user.total_assets < 100 %>
+          <% next if user.id == 1 %>
+          <tr>
+            <td><%= cpt %></td>
+            <td>
+              <%= user.id %>
+              <br />
+              <%= user.username %>
+              <br/>
+              <a href="mailto:<%= user.email %>"><%= user.email %></a></td>
+            <td><%= colored_dollar(user.total_assets) %></td>
+          </tr>
+          <% cpt += 1 %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>-->

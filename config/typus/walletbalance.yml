@@ -1,0 +1,18 @@
+# Use the README file as a reference to customize settings.
+
+Walletbalance:
+  fields:
+    default: id, wallet_id, balance, unsettled_interest, currency
+    list: id, wallet_id, balance, unsettled_interest, currency
+    form: id, balance
+#    options:
+#      selectors: user_id
+  relationships:
+  application: Application
+  order_by: -id
+#  filters: wallettype, user_id
+#  search: wallettype
+  actions:
+    edit: show
+  options:
+    default_action_on_item: show

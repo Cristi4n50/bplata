@@ -1,0 +1,41 @@
+<div class="row active-orders lending-overview">
+  <div class="large-12 columns">
+    <div class="section-container accordion" data-options="one_up: false;" data-section="accordion">
+      <section>
+        <p class="title" data-section-title><a href="#"><%= t "account.recent_deposits_and_withdrawals" %> <i></i></a>
+        </p>
+
+        <div class="content" data-section-content>
+          <table cellspacing="0">
+            <thead>
+            <tr>
+              <th><%= t "account.currency" %></th>
+              <th><%= t "account.amount" %></th>
+              <th><%= t "account.method" %></th>
+              <th><%= t "account.updated" %></th>
+              <th><%= t "nav.status" %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% current_user.deposits.order("id DESC").limit(50).each do |deposit| %>
+                <tr>
+                  <td><%= deposit.currency %></td>
+                  <td><%= deposit.amount %></td>
+                  <td><%= deposit.method %></td>
+                  <td><%= friendly_timestamp(deposit.updated_at) %></td>
+                  <td><span class="label"><%= t deposit.status.downcase unless deposit.status.blank? %></span>
+                    <% if deposit.status.downcase != deposit.remark.downcase %><%= deposit.remark %>
+                    <% end %>
+                    <% if deposit.status == "PENDING APPROVAL" %>
+                        &nbsp;&nbsp;&nbsp; <a href="/account/withdrawal_cancel/<%= deposit.id %>">Cancel</a>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

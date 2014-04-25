@@ -1,0 +1,60 @@
+<%= render "ledger_menu" %>
+</div>
+</div>
+<% title 'Active swaps provided' %>
+<div class="row deposit history">
+  <div class="large-12 columns">
+    <h6>Active swaps provided</h6>
+    <table cellspacing="0">
+      <thead>
+      <tr>
+        <th><%= t 'credit.currency' %></th>
+        <th><%= t 'credit.amount' %></th>
+        <th><%= t 'credit.rate' %></th>
+        <th><%= t 'credit.expirein' %></th>
+        <th><%= t "credit.insured" %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @lentcredits.empty? %>
+          <tr>
+            <td colspan="6"><%= t "credit.no_active_credits" %></td>
+          </tr>
+      <% else %>
+          <% unless @dauser.credits.active.nil? %>
+              <% @dauser.credits.active.each do |credit| %>
+                  <tr>
+                    <td><%= credit.currency %></td>
+                    <td><%= credit.amount %></td>
+                    <td><%= (credit.rate * 100).round(4).to_s + "%" if credit.rate > 0 %><%= t "credit.vir" if credit.rate == 0 %></td>
+                    <td><%= distance_of_time_in_words((credit.created_at + credit.period.days - Time.now).to_i) %></td>
+                    <td>
+                      <% if credit.insured? %>
+                          <%= 'Yes' %>
+                      <% else %>
+                          <%= "No" %>
+                      <% end %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+          <% unless @dauser.lends.active.nil? %>
+              <% @dauser.lends.active.each do |lend| %>
+                  <tr>
+                    <td><%= lend.currency %></td>
+                    <td><%= lend.amount %></td>
+                    <td><%= (lend.rate * 100).round(4).to_s + "%" if lend.rate > 0 %><%= t "credit.vir" if lend.rate == 0 %></td>
+                    <td><%= distance_of_time_in_words((lend.created_at + lend.period.days - Time.now).to_i) %></td>
+                    <td>
+                      <% if lend.insured? %>
+                          <%= "Yes" %>
+                      <% else %>
+                          <%= "No" %>
+                      <% end %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

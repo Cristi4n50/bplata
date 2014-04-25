@@ -1,0 +1,2 @@
+<p>A withdrawal of <%= @withdrawal.amount.abs %> <%= @withdrawal.currency %> has been requested on your Bitfinex account. To confirm your withdrawal please click on the link below. To cancel the withdrawal, please connect to your account and cancel it <a href="https://www.bitfinex.com/account/withdraw">here</a></p>
+<p><a href="https://www.bitfinex.com/account/confirm_withdrawal/?tk=<%= @datoken %>&wid=<%= @withdrawal.id %>">Click here to confirm your withdrawal</a></p>

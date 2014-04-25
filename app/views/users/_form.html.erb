@@ -1,0 +1,210 @@
+ <div class='modal-body'>
+<% @user = User.new %>
+<%= form_for @user, :html => {:class => "form-horizontal", :remote => true, :data => {:abide => ''}} do |f| %>
+    <%= f.error_messages %>
+    <h6 id='infor'><%= t "account.userinfo" %></h6>
+    <% if @user.new_record? %>
+     <br>
+        <div class="row">
+          <div class="row">
+            <div class="large-6 columns">
+              <div id='moverinput' class="large-8 ">
+                <%= f.time_zone_select(:timezone) %>
+              </div>
+              <label>
+                <div class='time'>
+                  <small id='colortime' ><%= t 'account.time_zone' %></small>
+                </div>
+              </label>
+            </div>
+          </div>
+          <hr id='hr1'/>
+
+          <div class="large-6 columns"> 
+            <div id='inputuser'>
+            <%= f.text_field :username %>
+          </div>
+            <label>
+              <div class='colorlabel'>
+              <small id='colorspan'><%= t 'account.username' %></small>
+            </div>
+            </label>
+          </div>
+          <div class="large-6 columns">
+            <div id='inputemail'>
+            <%= f.text_field :email %>
+            </div>
+            <label>
+              <div class='colorlabel'>
+              <small id='email'><%= t 'account.email' %></small>
+            </div>
+            </label>
+          </div>
+        </div><br>
+    <% else %>
+        <p><%= t 'account.username' %>: <span><%= current_user.username %></span><p>
+
+        <p><%= t 'account.email' %>: <span><%= current_user.email %></span><p>
+
+        <p><%= it 'account.contact_us_to_change_userinfo', :mailto => It.link('mailto:support@bitfinex.com') %></p>
+    <% end %><br>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="password-field">
+          <div id='inputuser'>
+          <%= f.password_field :password %>
+        </div>
+          <label>
+            <div class='colorlabel'>
+            <small id='colorspan'><%= t 'account.password' %></small>
+            </div>
+          </label>
+          <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special
+            character.
+          </small>
+        </div>
+      </div>
+      <div class="large-6 columns">
+        <div class="password-field">
+          <div id='confipass'>
+          <%= f.password_field :password_confirmation, :input_html => {:class =>'span12'} %>
+          </div>
+          <label id='conpas'>
+            <div class='colorlabel'>
+            <small id='conpass'><%= t 'account.password_confirmation' %></small>
+            </div>
+          </label>
+          <small class="error">Error. Check the spelling.</small>
+        </div>
+      </div>
+    </div><br><br>
+    <hr id='hr1'/>
+    <div class="row">
+      <div class="large-5 columns">
+        <h6 id='inforr'><%= t 'account.prefcurrency' %></h6>
+        <br>
+        <p id='inforrr'><%= t 'account.prefcurrency_explain' %></p>
+
+        <div id='usd' class="currency-field large-12">
+          <%= select :user, :prefcurrency, Currency.currencies, :include_blank => true %>
+        </div>
+      </div>
+    </div>
+    <hr id='hr1'/>
+    <% unless @level.nil? %>
+        <div class="row">
+          <div class="large-5 columns">
+            <h6><%= t "account.level" %></h6>
+
+            <p><%= t "account.level_explain" %></p>
+
+            <div class="account-type-field">
+                  <label for="<%= level %>" onclick="" class="columns large-4 small-4 trader">
+                    <% unless current_user.nil? %>
+                        <% if level == current_user.level %>
+                            <td><%= f.radio_button :level, level, :checked => true %> &nbsp; <%= level %></td>
+                        <% else %>
+                            <td><%= f.radio_button :level, level, :checked => false %> &nbsp; <%= level %></td>
+                        <% end %>
+                    <% else %>
+                        <td><%= f.radio_button :level, level, :checked => false %> &nbsp; <%= level %></td>
+                    <% end %>
+                    <span class="custom radio"></span>
+                  </label>
+                  <label class="large-3"></label>
+            </div>
+          </div>
+        </div>
+        <hr/>
+    <% end %>
+    <% if @user.new_record? %>
+        <div class="row">
+          <div class="large-12 columns">
+            <div id='check1'>
+            <%= f.check_box :agreed_tos %>
+            </div>
+            <label>
+              <small id='col'><%= t 'footer.tos' %></small>
+            </label>
+
+            <p id='text1'><%= it 'account.agree_to_bfx_tos', :link => It.link('/pages/tos', :target => '_blank') %></p>
+
+          </div>
+        </div>
+        <hr id='hr1'/>
+    <% end %>
+
+
+    <% unless @user.new_record? %>
+        <div class="row">
+          <div class="large-12 columns">
+            <h6><%= t 'account.email_notifications_options' %></h6>
+
+            <p><%= t 'account.email_me_when' %></p>
+
+            <div class="account-type-field">
+              <label for="email1" class="columns large-4 small-4">
+                <%= f.check_box :notify_withdrawal %>
+                <span class="custom checkbox"></span> <%= t 'account.notify_withdrawal' %>
+              </label>
+              <label for="email2" class="columns large-8 small-4">
+                <%= f.check_box :notify_deposit %>
+                <span class="custom checkbox"></span> <%= t 'account.notify_deposit' %>
+              </label>
+
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <% if @user.level == "trader" %>
+            <div class="row">
+              <div class="large-12 columns">
+                <h6><%= t 'account.leverage_options' %></h6>
+
+                <table cellspacing="0">
+                  <thead>
+                  <tr>
+                    <th><%= t 'sidebar.leverage' %></th>
+                    <th><%= t 'sidebar.maintenance' %></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <% User.leverage.each do |leverage| %>
+                  <% next if leverage > current_user.max_leverage %>
+                          <tr>
+                            <td>
+                              <label for="<%= leverage %>" onclick="">
+                                <% if leverage == current_user.leverage %>
+                                    <%= f.radio_button :leverage, leverage, :checked => true %> &nbsp;
+                                <% else %>
+                                    <%= f.radio_button :leverage, leverage, :checked => false %> &nbsp;
+                                <% end %>
+                                <span class="custom radio"></span> <%= leverage %> : 1
+                            </td>
+                            <td><%= Setting.get_value("margin_requirement_" + leverage.to_s).to_d * 100 %>%</td>
+                          </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+
+                <p><%= t "account.leverage_tips" %></p>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+    <br/>
+
+    <div class="row">
+      <% unless @user.new_record? %>
+          <div class="large-2 large-offset-3 columns">
+            <a href="/" class="secondary red  radius button">CANCEL</a>
+          </div>
+      <% end %>
+      <div id='sudmit' class="large-4 columns">
+        <% submit_text = @user.new_record? ? t("sign_up") : t("update") %>
+        <%= f.submit submit_text, :class => "green success  radius button" %>
+      </div>
+      <div class="large-3 columns"></div>
+    </div>
+<% end %>
+</div>

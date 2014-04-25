@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  WithdrawalMethod: read
+
+partner:
+  WithdrawalMethod: read
+
+associate:
+  WithdrawalMethod: read

@@ -1,0 +1,9 @@
+# Use the README file as a reference to customize settings.
+
+LitecoinTransaction:
+  fields:
+    default: amount, status, time, address, txid, confirmations, created_at
+    form: amount, status, time, address, txid, confirmations
+  relationships: 
+  application: Application
+  order_by: -id

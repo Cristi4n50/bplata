@@ -1,0 +1,59 @@
+<% title t 'account.ledger' %>
+<%= render "/account/ledger_menu" %>
+</div>
+</div>
+<h3><%= t 'credit.credit_history' %></h3>
+<p>
+  <% if controller.action_name == 'unused_swaps' %>
+  <%= t 'account.unused_swaps_explain' %>
+  <% else %>
+  <%= t 'account.margin_swaps_explain' %>
+  <% end %>
+</p>
+
+<% if @credits.empty? %>
+
+    <div class="empty">
+      <h3><%= t 'credit.no_credits' %></h3>
+    </div>
+
+<% else %>
+    <br/>
+    <br/>
+    <%= paginate @credits %>
+    <br/>
+    <br/>
+    <table class="history table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t "credit.currency" %></th>
+        <th><%= t "credit.amount" %></th>
+        <th><%= t 'credit.maximum_period' %></th>
+        <th><%= t "credit.rate" %></th>
+        <th><%= t 'credit.opened_at' %></th>
+        <th><%= t 'credit.closed_at' %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @credits.each do |credit| %>
+          <tr>
+            <td><%= credit.id %></td>
+            <td><%= credit.currency %></td>
+            <td><%= credit.amount %></td>
+            <td><%= credit.period %> <%= t 'days' %></td>
+            <td><%= (credit.rate * 100).round(4).to_s + "%" if credit.rate > 0 %>
+                <%= 'Flash Return Rate' if credit.rate == 0 %>
+            </td>
+            <td><%= friendly_timestamp(credit.created_at) %></td>
+            <td><%= friendly_timestamp(credit.updated_at) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <%= paginate @credits %>
+    <br/>
+    <br/>
+<% end %>

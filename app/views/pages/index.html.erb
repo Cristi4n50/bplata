@@ -1,0 +1,177 @@
+<div id="Container1">
+<div id="Menu">
+
+<div id="Logo">
+<img src="assets/logotipo.png"/>
+<div id="Desc">El primer sitio bitcoin seguro y facil para latinoam&eacute;rica</div><!-- Desc -->
+</div><!-- Logo -->
+<div id="Monedas">
+<ul id="aa">
+<li><a href="#">BTC 1020 USD</a></li>
+<li><a href="#">BTC 0,33 LTC</a></li>
+<li><a href="#">LTC 25 USD</a></li>
+</ul>
+<ul id='idiomas'>
+  <li><img src="assets/idespañol.png" width='30'></li>
+  <li><img src="assets/idprotugal.png" width='30'></li>
+  <li><img src="assets/idingles.png" width='30'></li>
+</ul>
+<ul id='soporte'>
+  <li id='support'
+    <% if controller.controller_name == 'pages' && controller.action_name == 'support' %> class="active"
+    <% end %>><a  href="/pages/support"><%= t 'nav.support' %></a></li>
+</ul>
+</div><!-- Monedas -->
+<ul id="Menusec">
+<li><a id="Act" href="/">INICIO</a></li>
+<li><a href="/exchange/index">INTERCAMBIO</a></li>
+<li><a href="#">MERCADO</a></li> 
+<li><a href="#">DEP&Oacute;SITO</a></li>
+<li><a href="#">RETIROS</a></li>
+<li><a href="#">CUENTA</a></li>
+</ul>
+</div><!-- Menu -->
+<div id="Contenido1">
+<div id="Login">
+<ul>
+<% unless logged_in? || request.env['HTTP_HOST'] == 'bplata.com' %>
+    <li id="Inicio"><a href="#"  >INICIAR SESIÓN</a></li>
+    <li id="Registro"><a href="#" >REGISTRARSE</a></li>
+<% end %>
+</ul>
+</div><!-- Login -->
+ 
+<div id="contenido">
+  <% unless request.env['HTTP_HOST'] == 'bitfinex.com.hk' %>
+	<div class="menu">
+		<div class="container clearfix">
+	<div id="Preguntas1">
+        <ul class="navegation">
+            <li  data-slide="1" id="ques" class='Active'><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¿Qué es Bitcoin?</p></li>
+            <li data-slide="2" id="comp"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compra y Venta Bitcoins?</p></li>
+            <li data-slide="3" id="como"><p>&nbsp;&nbsp;&nbsp;¿Cómo hacerlo?</p></li>
+            <li data-slide="4" id="qui"><p>¿Quiénes somos?</p></li>
+             <li data-slide="5" id="security"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seguridad</p></li>
+            <li data-slide="6" id='contact'><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contáctenos</p></li>
+             <li data-slide="7" id='terminos'><p >Términos de Servicio</p></li></li>
+        </ul>
+	</div>
+
+
+		</div>
+	</div>
+  <% end %>
+  <div id='div1'>
+    <div id="Info1">
+			   <img src="assets/iconobitcoin.png" title="Bitcoin"/> 
+          <h2 id='quee'>¿Qué es Bitcoin?</h2>
+				    <p>Bitcoin es una moneda electr&oacute;nica y un sistema de
+              transacciones electr&oacute;nicas que no depende de la 
+              confianza, sino que  permite realizar transferencias de
+              forma directa sin la necesidad de un intermediario.
+              <br/>
+              <br/>
+              Al contrario de la mayor&iacute;a de las monedas, bitcoin no
+              est&aacute; respaldado por ning&uacute;n gobierno ni depende de la
+              confianza en ning&uacute;n emisor central, sino que utiliza
+              un sistema de prueba de trabajo para impedir el doble
+              gasto y alcanzar el consenso entre todos los nodos
+              que integran la red.</p>
+	</div>
+</div>
+
+<div id='div2'>
+  <div id="inf">
+      <img id='comve' src="assets/comprayvendelogo.png" title="Bitcoin"/> 
+        <h2 id='quees'>Compra y Venta de Bitcoin</h2>
+				  <p>El proceso de compra y venta de bitocins...</p>
+	</div>
+</div>
+
+
+<div id='div3'>
+  <div id="inf">
+    <img id='comve' src="assets/comohacerlologo.png" title="Bitcoin"/> 
+    <h2 id='quees'>¿Cómo hacerlo?</h2>
+		<p>Para empezar necesitas tener una cuenta registrada
+		en nuestro sitio.Despu&eacute;s de obtener una cuenta se
+    puede comenzar a vender, comprar y depositar bitcoins
+    en tu propia cuenta..</p>
+  </div>
+</div>
+
+
+
+<div id='div4'>
+  <div id="inf">
+    <img id='comve' src="assets/quensomoslogo.png" title="Bitcoin"/> 
+    <h2 id='quees'>¿Quiénes Somos?</h2>
+		<p>Bplata es una página....</p>
+		</div>
+</div>
+
+<div id='div5'>
+  <div id="inf">
+    <img id='comve' src="assets/quensomoslogo.png" title="Bitcoin"/> 
+    <h2 id='quees'>Seguridad</h2>
+    <p>Bplata es una página....</p>
+    </div>
+</div>
+
+<div id='div6'>
+  <div id="inf">
+    <img id='comve' src="assets/quensomoslogo.png" title="Bitcoin"/> 
+    <h2 id='quees'>Contáctenos</h2>
+      <article id="Infoc" >
+      <div class="texto-intro contactenos">
+        <form class="contact_form" action="">
+
+          <label id="nombr"><b>Nombre</b><input type="text" id="nombre" required></label>
+          <label id="corre"><b>Correo</b><input type="text" id="correo" required></label>
+          <label id="telefon"><b>Teléfono</b><input type="text" id="telefono" required></label>
+          <label id="pai"><b>País</b><input type="text" id="pais" required></label>
+          <label id="ciuda"><b>Ciudad</b><input type="text" id="ciudad" required></label>
+          
+          <label id="ciuda"><b>Mensaje</b><textarea name="mensaje" id="mensaje" required></textarea></label>
+
+          <input type="submit" id="enviar">
+
+              </form>
+      </div>
+    </article><!-- Info -->
+    </div>
+</div>
+
+<div id='div7'>
+  <div id="inf">
+    <img id='comve' src="assets/quensomoslogo.png" title="Bitcoin"/> 
+    <h2 id='quees'>Terminos de Servicio</h2>
+    <p>Bplata es una página....</p>
+    </div>
+</div>
+
+ </div>
+</div><!-- Contenido -->
+<div id="ContPreview" >
+  <div id="Pre" >
+      <img src="assets/security.png"/>
+      <div id="Cerrar">
+        <li id="Cerrarl"><a href="#" ><img src="assets/close.png"></a></li>
+      </div>
+      <%= render template: "sessions/new"%>
+      </div>
+    </div>
+  <div id="ContPreviewR">
+    <div id="PreR">
+      <div id='titulo'>
+      <img id='reg' src="assets/Pen.png"/>
+      <h1 >Registrarse</h1>
+      </div>
+      <div id="CerrarR">
+        <li id="Cerrarr"><a href="#" ><img src="assets/close.png"></a></li>
+      </div>
+      <%= render :partial => "users/form"%>
+    </div><!-- PreR -->
+  </div><!-- ContpreviewR -->
+</div><!-- Container -->
+

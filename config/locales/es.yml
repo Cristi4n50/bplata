@@ -1,0 +1,870 @@
+---
+es: 
+  account:
+    account_name: "Nombre de cuenta"
+    account_fulladdress: "dirección de la cuenta"
+    account_number: "Número de cuenta (o IBAN)"
+    account_number_strict: "Número de cuenta"
+    account_settings: "configuración de la cuenta"
+    account_token: "Moneda de la cuenta"
+    account_token_key: "Moneda de la cuenta (símbolo)"
+    account_verification: "Estado Verificación"
+    accounting_currency: "Contabilización de la Moneda"
+    agree_to_bfx_tos: "Acepto %{link:Bitfinex Terminos del Servicio}"
+    already_have_account: "Already an account?"
+    amount: Amount
+    at_least_n_characters: "At least %{n} characters"
+    api_generation_page: "API management"
+    api_explain: "Here you can generate a new API key and secret. Store them carefully as the API key cannot be recovered."
+    api_explain1: "Please treat the security of both your API keys and API secrets as you would treat a password. If you suspect either one has been compromised, cancel / change it immediately."
+    api_generate: "Generate an API key"
+    api_revoke: "To revoke your API key, click"
+    api_save: "Write down your API key now or you will never be able to recover it!"
+    api_your_api_key: "Your API key is"
+    api_your_api_secret: "Your API secret is"
+    authenticate: Authenticate
+    available_balance: "Available Balance"
+    available_balance_explain: "This is your available balance. If you have limit orders, open positions, unused or active swaps, this will decrease your available balance. To increase it, you can cancel limit orders or reduce/close your positions."
+    balance: Balance
+    bank_address: "Bank Address"
+    bank_city: "Bank City"
+    bank_country: "Bank Country"
+    bank_name: "Bank Name"
+    bank_statement: "Bank statement"
+    beneficiary_account_name: "Beneficiary Name"
+    beneficiary_account_address: "Beneficiary Full Address (including city/zip code)"
+    beneficiary_account_number: "Beneficiary Account Number (or IBAN)"
+    beneficiary_bank_name: "Beneficiary Bank Name"
+    beneficiary_bank_address: "Beneficiary Bank Address"
+    beneficiary_bank_city: "Beneficiary Bank City"
+    beneficiary_bank_zipcode: "Beneficiary Bank Zip code"
+    beneficiary_bank_country: "Beneficiary Bank Country"
+    beneficiary_bank_swift: "Beneficiary Bank SWIFT Code"
+    bitcoin: Bitcoin
+    bitcoin_daemon_down: "Bitcoin watchonly daemon temporary down, please come back later"
+    btc_volume: "BTC volume (last 30 days)"
+    buys: Buys
+    litecoin: Litecoin
+    litecoin_daemon_down: "Litecoin daemon temporary down, please come back later"
+    change_address: "Change Address"
+    click_here_reset_password: "Click here to reset your password"
+    contact_us: "Contact us"
+    contact_us_to_change_userinfo: "To change username or email, please contact us at %{mailto:support@bitfinex.com}"
+    credit: Credit
+    currency: Currency
+    date: Date
+    debit: Debit
+    deposit: Deposit
+    deposit_by_mtgox_code: "Deposit by Mt. Gox Code (Instant)"
+    deposit_by_wire: "Deposit by International Wire Transfer (1-3 business days)"
+    deposit_method: "Deposit method"
+    description: Description
+    ? "document rejected"
+    : "Document Rejected"
+    details_payment_wire: "Message for Beneficiary / Notes"
+    disabled: "Disabled"
+    egopay: EgoPay
+    egopay_email_address: "Egopay Email Address"
+    email: "Email address"
+    email_explain: "For security reason, to change your current email address, you have to contact "
+    email_is_required: "An email address is required"
+    emailoptions: "Email options"
+    email_me_when: "Email me when"
+    email_notifications_options: "Email Notification Options"
+    enabled: "Enabled"
+    ensure_correct_wire: "Please ensure that all information is exactly correct and you have included the transaction reference. All incoming wires must comes from a bank account belonging to your verified name (or company). After sending the wire transfer, please create a deposit notification:"
+    enter_otp_prompt: "Please enter your Google Authenticator one-time token."
+    forced_liquidation: Liquidation
+    forgot_your_pasword: "Forgot your password?"
+    full_name: "Full Name"
+    iban: IBAN
+    important: Important!
+    initiate_a_wire: "You can now deposit US dollars via Wire deposit:"
+    insert_correct_password: "Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character"
+    insert_correct_username: "Insert your correct username or email"
+    intermediary_bank_name: "Intermediary Bank Name"
+    intermediary_bank_address: "Intermediary Bank Address"
+    intermediary_bank_city: "Intermediary Bank City"
+    intermediary_bank_country: "Intermediary Bank Country"
+    intermediary_bank_account: "Intermediary Bank Account"
+    intermediary_bank_swift: "Intermediary Bank SWIFT code"
+    international_wire_transfer: "International Wire Transfer"
+    international_wire_transfer_fee: "A fee of $%{fee} will be charged for this Wire Transfer."
+    withdrawal_explain: "For security reason, withdrawals will be automatically processed only if you have enabled OTP authentication (Account Security menu). Otherwise, you will receive an email with a confirmation link to approve the withdrawal. Large withdrawals will be processed manually."
+    ltc_volume: "LTC volume (last 30 days)"
+    ledger: History
+    level: "Account Type"
+    level_explain: "There are 3 differents types of accounts: Deposit, Exchange and Margin (trader) accounts. Traders have access to all features, exchange don't have access to margin trading and deposit have only access to swap feature."
+    leverage_options: "Leverage Options"
+    leverage_tips: "The higher the leverage, the higher the profits... and the losses. We recommend 1.0 : 1 for investors and starters, 2.5 : 1 for most speculators, miners and merchants, and higher for those who know what they are doing."
+    close_to_increase_available_balance: "You can close some positions to increase your available balance."
+    login: "Log in"
+    managewallets: "Manage Wallets"
+    managewallets_explain: "Here you can move your funds between your various wallets"
+    margin_call: "Margin Call"
+    margin_swaps: "Margin Swaps"
+    margin_swaps_explain: "Margin swaps are swaps you provided that were used in a margin position"
+    max_tolerated_loss: "Max. Tolerated Loss"
+    method: Method
+    minimum_n_dollar: "Minimum $%{n}."
+    no_account: "No account yet?"
+    no_order: "You don't have any order yet."
+    no_ledger: "You don't have any ledger record yet"
+    notify_deposit: "A Bitcoin or Wire Transfer deposit arrives"
+    notify_withdrawal: "A withdrawal completes"
+    one_time_token: "One-time Token"
+    open_account: "Open Account"
+    otp_disable: "Disable Two-factor Authentication"
+    otp_enable: "Enable Two-factor Authentication"
+    otp_enter: "Please enter your Google Authenticator one-time token."
+    otp_explain1: "We will not show this token on this page after two-factor authentication is enabled. If you have multiple devices, please add your account token into all of them before enabling two-factor authentication."
+    otp_explain2: "Note: Your Account Token will change each time you load this page."
+    otp_alt_download: "If you do not have access to the Android Market, please click here to download Google Authenticator for Android:"
+    otp_help: "Please refer to %{link:Google Authenticator Installation Instructions}"
+    otp_is_currently_html: "Two-factor authentication is currently <strong>%{status}</strong> on your account"
+    otp_number: "OTP number"
+    otp_scan: "Scan this QR Code in your Google Authenticator app"
+    passport: Passport
+    password: Password
+    password_confirmation: "Password confirmation"
+    ? "pending verification"
+    : "Pending Verification"
+    postal_code: "Postal Code"
+    prefcurrency: "Default currency"
+    prefcurrency_explain: "Your default currency to deduct fees from (for margin trading)"
+    proceed_to_x: "Proceed to %{x}"
+    proof_of_address: "Proof of Address"
+    recent_deposits_and_withdrawals: "Recent Deposits and Withdrawals"
+    recommend_otp: "We recommend you enable two-factor authentication to protect your account."
+    redeem_and_deposit: "Redeem and Deposit"
+    referrer: "Referrer code"
+    referrer_explain: "(optional) Enter the code given by your referrer, and get a 10% discount on your trading fees for the first 30 days."
+    request_for_withdrawal: "Request for Withdrawal"
+    reset_password: "Reset your password"
+    select: "Select deposit method"
+    select_wallet: "Select wallet"
+    select_withdraw: "Select withdrawal method"
+    sells: Sells
+    send_to_bitcoin: "Please send Bitcoin to your deposit address displayed below: "
+    send_to_litecoin: "Please send litecoins to your deposit address displayed below: "
+    signup: "Sign up"
+    six_confirmations: "We require 3 confirmations for Bitcoin transactions (about half an hour)"
+    six_confirmations_litecoin: "We require 6 confirmations for Litecoin transactions (about 1/4 hour)"
+    swift: "SWIFT Code"
+    aba: "ABA (for USA only)"
+    time_zone: "Time zone"
+    tolerated_loss_explanation: "Tolerated loss is an indicative scale of the maximum movement against your position when you utilize full leverage to prevent margin call or forced close."
+    total_fees_paid: "Total fees paid (last 30 days), for exchange and margin orders"
+    total_interests_earned: "Total interests earned on your lent funds in the last %{nbdays} days"
+    total_profit_loss: "Your total margin trading profit/loss for the last %{nbdays} days (including fees) is"
+    traderoptions: "Margin trading options"
+    trades: Trades
+    trading_sum: "Performance summary"
+    transaction_reference: "Transaction number"
+    transfer: Transfer
+    transfer_confirm: "Are you sure?"
+    trusted: Trusted
+    two_factor_authentication: "Two-factor authentication"
+    unlimited: Unlimited
+    unused_swaps: "Unused swaps"
+    unused_swaps_explain: "Unused swaps are swaps you provided that were not used in a margin position. They give you a minimum of 1 hour of return."
+    unverified: Unverified
+    updated: Updated
+    upload_documents: "Upload Documents"
+    userinfo: "Account information"
+    username: Username
+    username_or_email: "Username or Email"
+    username_is_required: "Username is required"
+    utility_bill: "Utility bill (water, electricity or gas bill)"
+    verification_account_unverified: "Your account is currently unverified"
+    verification_address: "Address (as shown on your bank statement)"
+    verification_address_business: "Registered business address"
+    verification_city: "City"
+    verification_company: "For companies or other organizations"
+    verification_complete: "Your account has been verified. To complete or change your personal information, contact us at"
+    verification_country: "Country"
+    verification_explain1: "When you either deposit USD funds to or withdraw USD funds from your Bitfinex account you must have your account verified. We do require this in order to comply with international laws for AML/KYC (Anti Money Laundering/Know Your Customer) policies."
+    verification_explain2: "The documents must show the following informations"
+    verification_explain3: "KYC form duly filled and signed. You can download the form %{link:here}"
+    verification_form: "Completed verification form (download it %{link:here})"
+    verification_fullname: 'Full Name (for individual) or Company Name (for business)'
+    verification_fulladdress: 'Full address'
+    verification_id: "Valid government-issued ID or passport"
+    verification_id_expiration: "Expiration date of ID document (DD/MM/YYYY)"
+    verification_id_business: "Business registration (up-to-date) / Certificate of incorporation"
+    verification_id_rep: "Government-issued ID or passport of the authorized representative (for Businesses only)"
+    verification_mandatory: "All the fields are mandatory. Accepted documents types are: pdf, jpeg, png, text (txt), msword"
+    verification_occupation: "Occupation (job, business,...)"
+    verification_occupation_employer: "Employer (if relevant)"
+    verification_only_verified_can_wire: "Only verified account can deposit US dollars"
+    verification_pending: "Your verification request is currently pending. Once we review your documents, you will be able to have a 'Verified' status. If you have any questions about your current verification, contact us at"
+    verification_phone: "Phone number"
+    verification_private: "For private individuals"
+    verification_proof_address: "Proof of address (electrical bill or other utility bill not older than 3 months, including bank/credit card statements)"
+    verification_representative_business: "ID copy and proof of address of the authorized representative"
+    verification_zipcode: "Zip Code"
+    verification_go_verify: "You can verify your account on the"
+    wallet: "Wallet"
+    wallet_address: "Wallet Address"
+    walletfrom: "From wallet"
+    walletto: "To wallet"
+    what_is_otp: "Bitfinex uses the Time-based One-time Password (TOTP) algorithm, and supports Google Authenticator's implementation."
+    we_accept_mtgox_code: "We accept Mt. Gox redeemable code in either USD or BTC."
+    we_accept_the_following_documents: "We accept the following documents"
+    withdraw: Withdraw
+    withdraw_bitcoin: "We will send Bitcoins to your Bitcoin Wallet."
+    withdraw_litecoin: "We will send Litecoins to your Litecoin Wallet."
+    withdraw_mtgox_code_btc: "We will issue Mt. Gox redeemable code in Bitcoin."
+    withdraw_mtgox_code_usd: "We will issue Mt. Gox redeemable code in US Dollar."
+    withdraw_bitstamp_code_usd: "We will issue BitStamp redeemable code in US Dollar."
+    withdraw_bitstamp_code_btc: "We will issue BitStamp redeemable code in Bitcoin."
+    wire_confirmation: "By clicking the button below, I confirm that I have sent a wire transfer with the correct transaction reference and I accept that some fees may be applied by the banks involved in the transaction. No fee will be taken by Bitfinex."
+    wire_create_notification: "Create Deposit Notification"
+    you_have_several_deposit_methods: "Here are the methods to deposit money."
+    you_have_several_withdraw_methods: "Here are the methods to withdraw money from your Bitfinex account."
+  active: Active
+  ago: " ago"
+  cancel: Cancel
+  completed: Completed
+  date: 
+    abbr_day_names: 
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+    abbr_month_names: 
+      - ~
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    day_names: 
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+    formats: 
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names: 
+      - ~
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    order: 
+      - !ruby/symbol year
+      - !ruby/symbol month
+      - !ruby/symbol day
+  datetime: 
+    distance_in_words: 
+      about_x_hours: 
+        one: "about 1 hour"
+        other: "about %{count} hours"
+      about_x_months: 
+        one: "about 1 month"
+        other: "about %{count} months"
+      about_x_years: 
+        one: "about 1 year"
+        other: "about %{count} years"
+      almost_x_years: 
+        one: "almost 1 year"
+        other: "almost %{count} years"
+      half_a_minute: "half a minute"
+      less_than_x_minutes: 
+        one: "less than a minute"
+        other: "less than %{count} minutes"
+      less_than_x_seconds: 
+        one: "less than 1 second"
+        other: "less than %{count} seconds"
+      over_x_years: 
+        one: "over 1 year"
+        other: "over %{count} years"
+      x_days: 
+        one: "1 day"
+        other: "%{count} days"
+      x_minutes: 
+        one: "1 minute"
+        other: "%{count} minutes"
+      x_months: 
+        one: "1 month"
+        other: "%{count} months"
+      x_seconds: 
+        one: "1 second"
+        other: "%{count} seconds"
+    prompts: 
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors: 
+    format: "%{attribute} %{message}"
+    messages: 
+      accepted: "must be accepted"
+      blank: "can't be blank"
+      confirmation: "doesn't match confirmation"
+      empty: "can't be empty"
+      equal_to: "must be equal to %{count}"
+      even: "must be even"
+      exclusion: "is reserved"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      inclusion: "is not included in the list"
+      invalid: "is invalid"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      odd: "must be odd"
+      record_invalid: "Validation failed: %{errors}"
+      taken: "has already been taken"
+      too_long: 
+        one: "is too long (maximum is 1 character)"
+        other: "is too long (maximum is %{count} characters)"
+      too_short: 
+        one: "is too short (minimum is 1 character)"
+        other: "is too short (minimum is %{count} characters)"
+      wrong_length: 
+        one: "is the wrong length (should be 1 character)"
+        other: "is the wrong length (should be %{count} characters)"
+    template: 
+      body: "There were problems with the following fields:"
+      header: 
+        one: "1 error prohibited this %{model} from being saved"
+        other: "%{count} errors prohibited this %{model} from being saved"
+  credit:
+    autolending_propose: "Automatically offer your available %{currency} at the rate and period of time you wish"
+    autolending_currently_at: "Currently auto-renewing %{currency} at %{rate}% per day for maximum %{period} day(s)"
+    autolending_currently_at_vir: "Currently auto-renewing %{currency} at flash Return Rate for maximum %{period} day(s)"
+    available_balance: "Available balance"
+    avg_rate_1: "Average rate per day"
+    avg_rate_365: "Average rate per 365 days"
+    usdoffers: "USD Liquidity offers"
+    active_credits: "Swaps currently provided"
+    active_offers: "Unfilled swap demand/offers"
+    btcoffers: "BTC Liquidity offers"
+    credit_history: "Swap history"
+    frr: "Flash Return Rate"
+    ltcoffers: "LTC Liquidity offers"
+    lend_all: "Offer all"
+    usdloans: "USD Liquidity demand"
+    btcloans: "BTC Liquidity demand"
+    ltcloans: "LTC Liquidity demand"
+    offer_history: "Offer history"
+    offer_history_explain: "Negative amount means you made a demand for credit, positive amount means you offered a credit."
+    offer_types:
+      limit: Limit
+      market: Market
+    options: "Options"
+    rateasked: "Rate (% per day)"
+    proposeoffer: "Offer liquidity"
+    proposeloan: "Take liquidity"
+    insurance_dont_insure: "Don't insure swap"
+    insurance_ensure_insured: "Don't lend unless insured"
+    insurance_fee: "Insured swaps have an additional fee of %{insurance_fee}% on generated interest"
+    insurance_insure_if_possible: "Insure if available"
+    insurance_remaining: "Remaining insurance available"
+    insurance_total: "Total insurance funds "
+    insure: "Insure swap?"
+    insured: "Insurance"
+    no_active_credits: "No active credits"
+    no_credits: "No credits"
+    no_active_offers: "No active offers"
+    notify_offer: "Notify when offer is taken"
+    rate: "Rate (% per day)"
+    type: "Type"
+    fee_explain: "*: Including a fee of %{fee}% (of the interest generated from active credits)"
+    autorenew: "Auto-renew (swaps offers)"
+    autolend: "Auto-renew your deposit"
+    autorenewed: "Auto-renew"
+    dontrenew: "Don't renew swap"
+    desactivateautolend: "Deactivate auto-renew"
+    activateautolend: "Activate auto-renew"
+    credit_notify: "You will be notified when this credit is paid back partially or totally."
+    credit_nonotify: "Notifications have been turned off."
+    renew: "Renew swap"
+    expirein: "Expire in"
+    currency: "Currency"
+    amount: "Amount"
+    offer_count: "Offer count"
+    demand_count: "Demand count"
+    lendablebalance: "Swappable balance"
+    confirmdontrenew: "Are you sure to remove swap auto-renewal?"
+    confirmrenew: "Are you sure to activate auto-renewal of swap?"
+    amount_offer: "Amount: "
+    maximum_period: "Period (in days)"
+    maxperiod: "Swap time range (days)"
+    minperiod: "Swap time range (days)"
+    credit_explain: "This is where you can make your loan offers. Choose the amount to lend, for how long (in days), and your rate (in % per day). Your offer will be filled as soon as a trader needs to open a position and there is no better offer for him."
+    vir: "Flash Return Rate"
+    opened_at: "Opened at"
+    closed_at: "Closed at"
+  loan:
+    active_loans: "Unused swaps"
+    rate: "Rate (% per day)"
+    expireat: "Expire on"
+    expirein: "Expire in"
+    currency: "Currency"
+    amount: "Amount"
+    close: Close
+    close_selected: "Close selected"
+    confirmclose: "Are you sure to close this swap?"
+    confirmcloseselected: "Are you sure to close selected swap(s)?"
+    no_active_loans: "No active swaps"
+    no_loans: "You don't have any swaps yet"
+  managewallets:
+    from_wallet: "from wallet"
+    no_more_one_wallet: "You don't have more than one wallet with available balance"
+    transfer_from: "Transfer"
+    to_wallet: "to wallet"
+  positionloan:
+    active_loans: "Swaps used in a margin position"
+    no_active_loans: "No active swaps"
+    position_id: "Position #"
+    confirmclose: "Are you sure to close this swap?"
+  exchange: 
+    active_orders: "Active exchange orders"
+    amount: Amount
+    amount_to_spent: "Amount to spent"
+    calculate: Calculate
+    enter_amount: "Enter amount"
+    exchange: Exchange
+    infotitle: "Exchange - Buy and sell bitcoins"
+    maximum_amount: "Maximum amount is %{n} BTC."
+  footer: 
+    about: "About us"
+    api: "Our API"
+    contact: "Contact us"
+    community: Community
+    faq: FAQ
+    fees: "Our fees"
+    getverified: "Get verified"
+    help: Help
+    howitworks: "How it works"
+    help: Help
+    iwantto: "I want to..."
+    privacy: Privacy
+    security: Security
+    system_status: "System Status"
+    tos: "Terms of service"
+    transparency: Transparency
+    verification: "Verification"
+    wiki: Wiki
+  helpers: 
+    select: 
+      prompt: "Please select"
+    submit: 
+      create: "Create %{model}"
+      submit: "Save %{model}"
+      update: "Update %{model}"
+  nav: 
+    account: Account
+    affiliation: "Affiliation"
+    autolock: "Automatically reinvest"
+    api_key: "Api access"
+    bsi: BSI
+    charts: Charts
+    contact: Contact
+    continue: continue
+    current_language: English
+    currentrates: "Current average rates (per 24h)"
+    exchange: Exchange
+    features: Features
+    h3: "Invest in the future - BETA"
+    help: Help
+    home: "Home"
+    installation: Installation
+    interest_rates: "Rates on Contract for Difference (CFD)"
+    investdeposit: "Invest your deposit"
+    investdepositexplain: "To invest your deposit and thus earn interests on it, you can use the form below: choose your investment period and click on the 'Update investment' button. The funds in your deposit wallet will then be locked during the period you choose, to be lend to margin traders. You will not be able to withdraw from this wallet during this period."
+    ll_order_book: "Level 2 Order Book"
+    ll_orderbook_information: "This page displays all orders available on Bitfinex and MtGox."
+    lock: "Update investment"
+    login: "Sign in"
+    logout: Logout
+    maxperiod: "Maximum time to held the position"
+    menu: "Menu"
+    order_book: "Order Book"
+    credit_book: "Credit Book"
+    credit: "Liquidity swaps"
+    orderbook_information: "This page displays the public order book of active limit orders."
+    position: Position
+    public_log: "Public Trades History"
+    publiclog_information: "This page displays the log of the last 100 trades"
+    remainingamount: "Remaining amount to open position (in BTC)"
+    settings: Settings
+    signup: "Sign Up"
+    status: Status
+    stats: "Market Statistics"
+    support: Support
+    trading: "Margin Trade"
+    your_balance: "YOUR BALANCE"
+  notifications: 
+    deposit_now: "Deposit Now"
+    margin_danger: "Your margin is in danger!"
+    margin_danger_1: "Your positions will be closed when your net value falls below margin requirements. Please either make deposit now or liquidate some positions yourself."
+    unverified: "Your account is unverified."
+    unverified_1: "Please verify your account to enable lift limits on withdrawals and prevent other service restricitions in the future."
+    verify_now: "Verify Now"
+    welcome_to_bitfinex: "Welcome to Bitfinex!"
+    welcome_to_bitfinex_1: "To start enjoying Bitfinex, you can deposit instantly via Bitcoin, Litecoin or International Wire Transfer. Then you can transfer your money between your various wallets to use the different functions of Bitfinex."
+    empty_deposit: "Your deposit wallet is empty. You can transfer instantly from your others wallets to be able to lend, or deposit money."
+    empty_exchange: "Your exchange wallet is empty. You can transfer instantly from your others wallets to be able to exchange, or deposit money."
+    manage_wallets: "Transfer into your wallets now"
+    mtgox_lag: "MtGox is currently having some issues. Orders routed to MtGox will not be processed."
+  number: 
+    currency: 
+      format: 
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format: 
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human: 
+      decimal_units: 
+        format: "%n %u"
+        units: 
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ""
+      format: 
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units: 
+        format: "%n %u"
+        units: 
+          byte: 
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage: 
+      format: 
+        delimiter: ""
+    precision: 
+      format: 
+        delimiter: ""
+  orders: 
+    active: Active
+    canceled: Canceled
+    error: "An error has occured. Please try again."
+    ? "insufficient margin"
+    : "Insufficient Margin"
+    invalid: Invalid
+    order_canceled: "Your order #%{id} has been canceled."
+    order_cannot_be_canceled: "Your order #%{id} cannot be canceled."
+    order_notify: "You will receive an email when order #%{id} executes."
+    order_placed: "Your order #%{id} has been placed."
+    no_orders: "You don't have any order yet."
+  offers:
+    offer_canceled: "Offer has been canceled."
+    offer_notify: "You will receive an email when offer #%{id} executes."
+    offer_placed: "Offer placed"
+    error: "Your offer couldn't be placed"
+    no_offers: "You don't have any offer yet."
+  pages: 
+    amount: Amount
+    bsi: 
+      bsi_explain: "Our Bitfinex Sentiment Index allows you to see what the market currently feels like, bullish or bearish. It is based on market participants sentiment."
+      bearish: Bearish
+      bullish: Bullish
+      neutral: Neutral
+      very_bearish: "Very Bearish"
+      very_bullish: "Very Bullish"
+    contact:
+      thank_you_contact_us: "Don't hesitate to get in touch"
+      for_business: "For Business and Press"
+      for_compliance: "For AML/KYC related topics"
+      for_suggestions: "For Suggestions"
+      for_support: "For general support"
+      we_answer_fast: "We answer within 24h on business days"
+    fees:
+      account_maintenance: "Account maintenance"
+      charged_on_uninsured_loans: "Charged on your existing uninsured swaps, paid by the liquidity provider"
+      charged_on_insured_loans: "Charged on your existing insured swaps, paid by the liquidity provider"
+      executed_on: "Executed on %{exchange}"
+      fee: Fee
+      fees: Fees
+      fee_interests_generated_loans: "%{lendingcut}% (of the swaps generated by active contracts)"
+      hidden_order: "HIDDEN ORDER"
+      international_wire: "International wire"
+      loans: "SWAPS"
+      min_order_size: "Minimum size: %{min} BTC/LTC"
+      mm_high_vol: "Market makers or very high volume"
+      order_execution: "ORDER EXECUTION"
+      title: "Fees schedule"
+      type: Type
+      volume_traded_last_days: "%{mark} or more traded in the last %{days} days (for the traded pair)"
+      withdrawal: WITHDRAWAL
+    index:
+      apy: "Average swap rates in % per day"
+      average_spread: "average spread"
+      currency_exchange: "Currency Exchange"
+      equivalent_fees: "equivalent fees (indicative)"
+      fast_signup: "Start trading today, sign up for free!"
+      h1: "Bitfinex"
+      h2: "The place to trade bitcoins and litecoins - Easy - Secure - Margin trading, swaps market, crypto-currencies exchange"
+      how_it_works: "How it works"
+      interest_rates_explain: "Liquidity providers get their swaps rate minus a fee of %{cut}% of the total amount per day"
+      open_account: "Open your account"
+      other_questions: "Other question?"
+      prevailing_interest_rates: "Average rates of the open swaps (positions) as of %{date}."
+      read_more_features: "Look at our features"
+      read_more_how_it_works: "Discover how it works"
+      read_more_security: "Read more about our security"
+      speech_intro: "Bitfinex is the most advanced financial place in the Bitcoin world, with 3 main features offered"
+      speech_feature1_title: "Exchange"
+      speech_feature1: "Here you can buy and sell bitcoins or litecoins not only from Bitfinex but also other exchanges, for maximum liquidity and lower fees"
+      speech_feature2_title: "Margin trading"
+      speech_feature2: "You can open leveraged positions using funds from lenders"
+      speech_feature3_title: "Liquidity swaps"
+      speech_feature3: "Put up your swap offers.  Enjoy great and insured return rates on dollars, BTC or LTC paid by other traders willing to short or leverage BTC or LTC."
+      speech_line1: "Bitfinex is the most advanced financial place in the bitcoin world!"
+      speech_line2: "See how secure we are %{link:here}"
+      speech_line3: "See how Bitfinex works %{link:here}"
+      speech_line4: "See how to use our various features %{link:here}"
+      speech_line5: "See our %{link:FAQ} for all questions you may have"
+      totalamount: "Total sum of active swaps"
+      traded: traded
+    interest: 
+      apy: "Average swap rates in % per day"
+      avgperiod: "Average swaps period"
+      totalamount: "Total sum of active swaps"
+      prevailing_interest_rates: "This page displays the average rates of the open swaps (positions) as of %{date}."
+      interest_rates_explain: "Lenders get their swap rate minus a fee of %{cut}% of the total amount"
+    iwantto:
+      iwantto: "I want to..."
+    help:
+      help_explain: "An image being worth a thousand words, here is a description of how to use all features of Bitfinex (click to enlarge)"
+    howitworks:
+      howitworks: "How does Bitfinex works?"
+    ll_order_book: 
+      amount: Amount
+      ask_price: "Ask Price"
+      asks: "Asks"
+      bid_price: "Bid Price"
+      bids: "Bids"
+      order_count: "Order Count"
+      platform: Exchange
+      total_amount: "Total Amount"
+    order_book: 
+      amount: Amount
+      ask_price: "Ask Price"
+      asks: "Asks"
+      bid_price: "Bid Price"
+      bids: "Bids"
+      order_count: "Order Count"
+      total_amount: "Total Amount"
+    public_log:
+      execution_time: "Execution time"
+      trade_price: "Execution price"
+    reset_pass:
+      enter_email: "Enter your email address"
+    transparency:
+      transparency: "Transparency page"
+      type: "Type"
+      currency: Currency
+      amount: "Amount"
+      method: "Method"
+      txid: "Transaction ID or bitcoin addresses (for bitcoin)"
+      status: "Status"
+      deposit: "Deposit"
+      withdrawal: "Withdrawal"
+      openlong: "Open Long (BTC)"
+      openshort: "Open short (BTC)"
+      statistics: "Statistics: "
+      mtgoxaddress1: "Our Mtgox deposit address is : 1AsU1u6HDVfBS5GyXmuL6f2E9kAP8wjor6"
+      mtgoxaddress2: "This address is signed to prove ownership, using Mtgox address signing feature: BPlvWZeiqu+EzyY4PTG3RE9yTV0X+4D68sSaBak86dIm1QwBFR4gUj+EdisVkdcEB3nhQi6+EfuXLWIDH1jPHl4wRgIhANwhv566KC+4O1EJOb5EuVmoDRux7XL62/LSy9fj7hszAiEA/ancQbfMnCBoUwZ6eUfL4mAXqiKsmaauae7NxhMURYcB"
+      vol24h: "Volume on the last 24 hours"
+      vol7days: "Volume on the last 7 days"
+      explain: "You can find here our statistics and transactions list, which will allow you, for bitcoin at least, to verify by yourself in the blockchain the validity of our information."
+      deposittransactionstitle: "Deposits and withdrawals list"
+    stats:
+      stats: "Statistics"
+      bsi_explain: "Our Bitfinex Sentiment Index allows you to see what the market of BTCUSD currently feels like, bullish or bearish. It is based on market participants sentiment about BTCUSD price."
+      openlong: "Open Long (BTC)"
+      openshort: "Open short (BTC)"
+      statistics: "Statistics: "
+      vol24h: "Volume on the last 24 hours"
+      vol7days: "Volume on the last 7 days"
+      volume: "Volume"
+      irrationalindex: "Bitfinex Irrational Index"
+      irrationalindex_explain: "This index analyzes user behavior on the market and reflects their coherence and commitment to make profit"
+      greedscore: "Bitfinex Greed Score"
+      greedscore_explain: "This score shows how much bitfinex users love and are able to make profit"
+      riskscore: "Bitfinex Risk Score"
+      riskscore_explain: "The risk score shows how much traders are willing to risk on the market"
+      apy: "Flash Return Rate (*)"
+      apy_explain: "*: Average Rate on Contract for Difference (CFD) of current swaps (per day)"
+      avg_apy: "Average Variable Rate on CFD (**)"
+      avg_apy_explain: "**: Average Rates on Contract for Difference (CFD) (per day of the CFD of the last 90 days)"
+      avgperiod: "Average swap period"
+      totalamount: "Total sum of active swaps"
+      prevailing_interest_rates: "Average rates of the open swaps (positions) as of %{date}."
+      interest_rates_explain: "Liquidity providers get their swaps rate minus a fee of %{cut}% of the total amount"
+  pending: Pending
+  processing: Processing
+  representatives:
+    affiliate_list: "Your affiliates list"
+    default_currency: "Currency to receive income"
+    generated_income: "Generated income"
+    in_last_x_days: "In the last %{days} days"
+    no_affiliate_yet: "No affiliates yet!"
+    ref_code: "Your referrer code (give this code to your affiliates when they register on Bitfinex)"
+    rep_explain: "The affiliate program gives you access to the following benefits"
+    rep_explain_1: "%{rep_fees}% on affiliates' trading fees"
+    rep_explain_2: "%{rep_fees}% on affiliates' lending fees"
+    rep_explain_disclaimer: "Bitfinex reserves the right to make adjustments or changes to the affiliate program"
+    total: "Total"
+    your_account_is: "Your representative account is %{status}"
+    your_parameters: "Your parameters"
+  sidebar: 
+    account_settings: "Account Settings"
+    actions: Actions
+    currency_account: Balances
+    deposit: Deposit
+    exchange_account: "Exchange Wallet"
+    hello: "Account overview"
+    ledger: History
+    leverage: Leverage
+    maintenance: "Required Margin"
+    margin_balance: "Margin Balance"
+    net_value: "Net Value"
+    longpossible: "Long possible"
+    shortpossible: "Short possible"
+    tradable_balance: "Tradable Balance"
+    trading_account: "Trading Wallet"
+    two_factor_authentication: "Account Security"
+    realized_pl: "Realized P/L"
+    unrealized_pl: "Unrealized P/L"
+    unrealized_swap: "Unrealized Swap"
+    verification: Verification
+    withdraw: Withdraw
+  sign_up: "Sign Up"
+  support: 
+    array: 
+      last_word_connector: ", and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time: 
+    am: am
+    formats: 
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm
+  trading: 
+    actions: Actions
+    active_orders: "My active orders"
+    active_positions: "My active positions"
+    amount: Amount
+    ask: Ask
+    avg_price: "Average execution price"
+    base_price: "Base price"
+    bid: Bid
+    buy: BUY
+    buy_all: "Buy all"
+    buy_history: "Buy history"
+    close_active_orders_before_position_close: "Please close all your active orders before closing your position"
+    confirm_close_all_orders: "Are you sure to cancel all of your active orders?"
+    date: "Date"
+    depth: Depth
+    dontnotify: "Don't notify"
+    executed_amount: "Executed amount"
+    pricechart: "Price Chart"
+    hideorder: "Hide order"
+    includevir: "Include variable rates?"
+    indicative_margin: "Your indicative rate(*):"
+    indicative_margin_explain: "*: Based on the amount entered in the 'Amount' field"
+    infotitle: "Margin trading - Leverage your positions"
+    liquidation_price: "Liquidation Price (**)"
+    long: "Long"
+    lp_explain: "**: Liquidation Price is indicative: it varies with your trading balance and your swap, and does not represent a contractual price"
+    liquidate: Close
+    liquidate_confirmation: "Are you sure you want to close this position with a MARKET order?"
+    marginreserved: "Margin reserved"
+    margin_available: "Margin available"
+    margin_go_reserve: "Go reserve some!"
+    maxperiod: "Expiration period"
+    maxperioddate: "Swap expiration"
+    maxrate: "Maximum margin rate?"
+    no_active_orders: "No active orders."
+    no_active_positions: "No active positions."
+    notify: Notify
+    platform: "Platform"
+    remaining_amount: "Remaining"
+    renew: "Renew"
+    renew_confirmation: "Are you sure to renew this swap?"
+    order_history: "Order history"
+    order_type: "Order Type"
+    order_types: 
+      limit: Limit
+      market: Market
+      stop: Stop
+      trailing_stop: "Trailing stop"
+      fok: "Fill or Kill"
+    order_size: "Order size"
+    original_amount: "Original Amount"
+    pair: Pair
+    pl: "P/L (*)"
+    pl_explain: "*: P/L is indicative: it is based on best ask and bid, and includes the maximum order fees you can have when closing the position."
+    placed: Placed
+    positionexpiration: "Position maximum period"
+    price: Price
+    pricedifference: "Price distance"
+    routing: "Route order"
+    routing_order: Route
+    sell: SELL
+    sell_all: "Sell all"
+    sell_history: "Sell history"
+    short: "Short"
+    status: Status
+    swap: Swap
+    swaprate: "Swap rate (per day)"
+    total_loans: "Total swaps of positions"
+    type: Type
+    will_notify: "Will notify"
+    your_fees_are_bfx: "Your fees on Bitfinex: %{bfx_fees}"
+    your_fees_are_bstp: "Bitstamp: %{bstp_fees}"
+    your_fees_are_mtgox: "MtGox: %{mtgox_fees}"
+  update: Update

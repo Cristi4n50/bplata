@@ -1,0 +1,10 @@
+# Use the README file as a reference to customize settings.
+
+Compliance:
+  fields:
+    default: user_id, fullname, address, phone, city, country, zipcode, remark, created_at, id_expiration_date
+    form: user_id, fullname, address, phone, city, country, zipcode, remark, created_at, id_expiration_date
+  relationships:
+  application: Application
+  #order_by: key
+  search: user_id, fullname

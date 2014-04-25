@@ -1,0 +1,85 @@
+<%= render "javascript" %>
+<% title 'Representative Dashboard' %>
+</div>
+</div>
+<div class="row tables">
+  <div class="large-12 columns">
+    <div class="large-12 columns page">
+      <table class="center history">
+        <tr>
+          <td colspan="2" class="
+            <% if current_user.representative.status == "ACTIVE" %>green
+            <% else %>red
+            <% end %>"><%= t 'representatives.your_account_is', :status => current_user.representative.status %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= t 'representatives.ref_code' %>
+          </td>
+          <td>
+            <span class="important"><%= @ref_code %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">You can refer people with the following URL: <a href="https://www.bitfinex.com/?refcode=<%= @ref_code %>">https://www.bitfinex.com/?refcode=<%= @ref_code %></a></td>
+        </tr>
+        <tr>
+          <td><%= t 'representatives.default_currency' %></td>
+          <td><%= current_user.representative.currency %></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <%= t 'representatives.rep_explain' %>:
+            <ul>
+              <li><%= t 'representatives.rep_explain_1', :rep_fees => (100 * Fee.fee("rep_fees")) %></li>
+              <li><%= t 'representatives.rep_explain_2', :rep_fees => (100 * Fee.fee("rep_fees")) %></li>
+            </ul>
+            <p class="small"><%= t 'representatives.rep_explain_disclaimer' %>.</p>
+          </td>
+        </tr>
+      </table>
+      <table class="history table table-bordered table-striped"
+             <% unless @affialiates.empty? %> id="reptable"
+             <% end %>>
+        <thead>
+        <tr>
+          <th colspan="4"><%= t 'representatives.affiliate_list' %></th>
+        </tr>
+        <tr>
+          <th>#</th>
+          <th><%= t 'account.userinfo' %></th>
+          <th><%= t 'representatives.in_last_x_days', :days => 7 %></th>
+          <th><%= t 'representatives.in_last_x_days', :days => 30 %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% unless @affialiates.empty? %>
+            <% cpt = 1 %>
+            <% @affialiates.each do |affiliate| %>
+                <tr>
+                  <td><%= cpt %></td>
+                  <td>
+                    <a href="mailto:<%= affiliate.referee.email %>"><%= affiliate.referee.username %></a>
+                  </td>
+                  <td><%= dollar(affiliate.earned_seven_days,"") %>
+                  </td>
+                  <td><%= dollar(affiliate.earned_thirty_days,"") %>
+                  </td>
+                </tr>
+                <% cpt += 1 %>
+            <% end %>
+        <% else %>
+            <tr>
+              <td colspan="4"><%= t 'representatives.no_affiliate_yet' %></td>
+            </tr>
+        <% end %>
+        <tr>
+          <td colspan="2">Total fees earned</td>
+          <td><%= dollar(current_user.representative.referrals.sum('earned_seven_days').to_d,"") %></td>
+          <td><%= dollar(current_user.representative.referrals.sum('earned_thirty_days').to_d,"") %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
